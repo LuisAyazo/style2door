@@ -1,0 +1,157 @@
+page-login {
+
+
+@font-face{
+  font-family: 'Indie Flower';
+  src: url('../../assets/fonts/Indie_Flower/IndieFlower.ttf');
+
+}
+  .container{
+    .appColor{
+      color: white;
+    }
+      background: map-get($colors, color-app) !important;
+      margin-top: 0px !important;
+      // background: map-get($colors, color-app) !important;
+
+      .logo-row-app {
+            padding-top: 0px !important;
+            margin-top: 0px !important;
+            padding-bottom: 10px;
+            ion-col {
+              // background: white !important;
+              text-align: center;
+              height: 200px;
+              // line-height: 200px;
+              // background: white;
+              // margin-top: 130px;
+              margin-bottom: 30px;
+
+                  // SI SE VA A COLOCAR UNA IMAGEN DE FONDO COMO UN LOGO
+                  // img{
+                  //     margin-top: 40px;
+                  //     background-image: url('../assets/images/logo3.png');
+                  //     background-repeat: no-repeat;
+                  //     -webkit-background-size: 100% 100%;           /* Safari 3.0 */
+                  //     -moz-background-size: 100% 100%;           /* Gecko 1.9.2 (Firefox 3.6) */
+                  //     -o-background-size: 100% 100%;           /* Opera 9.5 */
+                  //     background-size: 100% 100%;           /* Gecko 2.0 (Firefox 4.0) and other CSS3-compliant browsers */
+                  //     width: 80vw;
+                  //     padding:100px 100px 100px 51px;
+                  // }
+
+                  // SI EL SE VA A DEJAR EL NOMBRE DE LA APP SIN LOGO DE FONDO
+                  .bgtext {
+                    position: relative;
+                  }
+                  .bgtext:after {
+                    content: "ufioly";
+                    color: white;
+                    // color: color($colors, color-app);
+                    text-align: center !important;
+                    font-size: 80px;
+                    font-family: "Indie Flower" !important;
+                    // margin-top: 40px;
+                    // width: 80vw;
+                    // padding:100px 100px 100px 51px;
+                    // position: absolute;
+                    // top: 0;
+                    // left: 0;
+                    z-index: -1;
+                  }
+          }
+      }
+
+
+      // img.backimg{ // fondo
+      //   position: fixed;
+      //   top:-1px;
+      //   right: 0px;
+      //   // left:50;
+      //   //background-image: url('../assets/images/.jpg') ;
+      //   background: map-get($colors, color-app);
+      //   height: 101vh;
+      //   -webkit-background-size: 100% 100%;           /* Safari 3.0 */
+      //   -moz-background-size: 100% 100%;           /* Gecko 1.9.2 (Firefox 3.6) */
+      //   -o-background-size: 100% 100%;           /* Opera 9.5 */
+      //   background-size: 100% 100%;           /* Gecko 2.0 (Firefox 4.0) and other CSS3-compliant browsers */
+      //   width:101vw;
+      //   // opacity: 0.85;
+      //   background-attachment: fixed;
+      //
+      //   // -webkit-filter: blur(1px);
+      //   // filter: blur(1px);
+      // }
+
+      ion-item{
+        background: white !important;
+        opacity: 0.9;
+        // opacity: 0.3;
+        // filter:  alpha(opacity=30);
+        border:none !important;
+        // color:white !important;
+        // box-shadow: 0px 10px 1px black;
+        // margin-top:5px;
+        margin-bottom: 5px;
+        border-style: none !important;
+        font-size: 16px !important;
+        ion-input{
+                  text-align: center !important;
+
+        }
+        ::-webkit-input-placeholder { /* Chrome/Opera/Safari */
+          color: #8b8a8b;
+          font-size: 13px;
+          // font-weight: bold;
+        }
+        ::-moz-placeholder { /* Firefox 19+ */
+          color: #8b8a8b;
+          font-size: 13px;
+          // font-weight: bold;
+        }
+        :-ms-input-placeholder { /* IE 10+ */
+          color: #8b8a8b;
+          font-size: 13px;
+          // font-weight: bold;
+        }
+        :-moz-placeholder { /* Firefox 18- */
+          color: #8b8a8b;
+          font-size: 13px;
+          // font-weight: bold;
+        }
+
+
+      }
+
+      ion-buttons{
+          margin-top: 10px;
+          button{
+            // opacity: 0.9px !important;
+            margin-top: 10px !important;
+            height: 40px !important;
+            font-size: 12px !important;
+            // font-weight: bold;
+          }
+      }
+
+
+      ion-label.cambia{
+        margin-top: 10px;
+        font-size: 11px !important;
+        // font-family: cursive;
+        // font-weight: bold;
+        color: #0b2133 !important;
+        // text-shadow: 1px 1px 0px white;
+        // opacity: 0.9;
+      }
+
+      ion-label{
+        text-align: center !important;
+        font-size: 10px;
+        color: white !important;
+        position: relative;
+        margin-top: -10px;
+      }
+
+  }
+}

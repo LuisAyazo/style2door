@@ -1,16 +1,151 @@
-// http://ionicframework.com/docs/v2/theming/
+menu-app{
+        ion-menu{
+                ion-content.background{
+                        background: map-get($colors, color-app) !important;
+                        opacity: 0.9;
+                        ion-header {
+                                height: 200px;
+                                background: white;
 
+                                ion-label{
+                                        margin-top:-44px;
+                                        font-size: 10px;
+                                        text-align: right;
+                                        // color: map-get($colors, color-app);
+                                        // height: 10px;
+                                        line-height: 44px;
 
-// App Global Sass
-// --------------------------------------------------
-// Put style rules here that you want to apply globally. These
-// styles are for the entire app and not just one component.
-// Additionally, this file can be also used as an entry point
-// to import other Sass files to be included in the output CSS.
-//
-// Shared Sass variables, which can be used to adjust Ionic's
-// default Sass variables, belong in "theme/variables.scss".
-//
-// To declare rules for a specific mode, create a child rule
-// for the .md, .ios, or .wp mode classes. The mode class is
-// automatically applied to the <body> element in the app.
+                                }
+
+                                img{
+                                        background-image: url('../assets/images/logo-header.png') ;
+                                        margin: 20px 10px !important;
+                                        -webkit-background-size: 100% 100%;           /* Safari 3.0 */
+                                        -moz-background-size: 100% 100%;           /* Gecko 1.9.2 (Firefox 3.6) */
+                                        -o-background-size: 100% 100%;           /* Opera 9.5 */
+                                        background-size: 100% 100%;
+                                        width:65vw;
+                                        // height:140px;
+                                        // outline:none;
+                                        padding:80px 80px 80px 51px;
+                                        // margin:0 auto 5px auto;
+                                        background-repeat:no-repeat;
+                                        /** fin **/
+                                }
+                          }
+
+                        /********  Imagen fondo en el menu ************/
+                        //  background-image: url("../assets/03.jpg");
+                        //  opacity: 0.9;
+                        //  -webkit-filter: blur(1px);
+                        //  filter: blur(1px);
+                        //  background: map-get($colors, color-app);
+
+                        ion-list {
+                                margin-top:200px;
+
+                                h2{
+                                        margin-top: 5px;
+                                }
+                                p{
+                                        margin-top: 5px;
+                                        color: #37474F;
+                                }
+                        }
+
+                        ion-list.menu-list{
+
+                                button{
+                                        font-size: 14px;
+                                        // margin-bottom: 0px !important;
+                                        // color: red;
+
+                                }
+                                //estilo boton activo del menu
+                                button.activeHighLight{
+                                        ion-icon{
+                                                color: map-get($colors, white) !important;
+                                        }
+                                 background-color: map-get($colors,light);
+                                  -webkit-box-shadow: inset 0px 8px 5px -8px rgba(0, 0, 0, 1);
+                                  -moz-box-shadow: inset 0px 8px 5px -8px rgba(0, 0, 0,1);
+                                  box-shadow: inset 0px 8px 5px -8px rgba(0, 0, 0, 1);
+                                  text-shadow: 0px 0.2px 0px inset rgba(255, 255, 255, 1);
+                                  color: white !important;
+                                }
+
+                        }
+                        hr.hr_style{
+                                padding: 0 !important;
+                                // border: none !important;
+                                // height: 1px !important;
+                                background-image: -webkit-linear-gradient(left, rgba(0,0,0,0), rgba(0,0,0,0.75), rgba(0,0,0,0)) !important;
+                                background-image: -moz-linear-gradient(left, rgba(0,0,0,0), rgba(0,0,0,0.75), rgba(0,0,0,0)) !important;
+                                background-image: -ms-linear-gradient(left, rgba(0,0,0,0), rgba(0,0,0,0.75), rgba(0,0,0,0)) !important;
+                                background-image: -o-linear-gradient(left, rgba(0,0,0,0), rgba(0,0,0,0.75), rgba(0,0,0,0)) !important;
+                                border-top: 0.1px #fff solid !important;
+                                text-align: center !important;
+                        }
+
+                        hr.hr_style:after {
+                                content:" " !important;
+                                display: inline-block !important;
+                                position: relative !important;
+                                top: -1.3em !important;
+                                font-size: 1.5em !important;
+                                padding: 10px 1.75em !important;
+                                background:map-get($colors, white) url('../assets/images/logo-header.png') no-repeat scroll center !important;
+                                background-size: 100px 50px !important;
+                                height: 30px !important;
+                                width: 40px !important;
+                        }
+
+                        ion-list.logout{
+                                margin:0 !important;
+                                padding: 0 !important;
+                                height: 105px !important;
+                                text-align: left;
+                                ion-icon{
+                                        // text-align: left;
+                                        position: absolute;
+                                        left:90px;
+                                }
+                                // margin-left: 18px !important;
+                                button {
+                                        font-size: 14px;
+                                }
+                        }
+                        .color-button-menu{
+                                //background: dimgray;
+                                //background: rgb(0, 0, 0);
+                                /* Para navegadores que soportan RGBa mostramos el color sólido con un 80% de opacidad */
+                                background: rgba(0, 0, 0, 0.0);
+                                color:black;
+                                border-bottom:none !important;
+                                border-top: none !important;
+                                padding-left: 30px;
+                                ion-icon{
+                                        font-size: 22px !important;
+                                        //color:map-get($colors,color2);
+                                        color:#D8D8D8;
+                                        //line-height: 55px!important;
+                                        margin-right: 15px;
+                                        margin-top: 0px;
+                                }
+                        }
+                        // // color del texto del footer
+                        // ion-footer button{
+                        //         margin-bottom: 0px;
+                        // }
+                        // .toolbar-title-md {
+                        //         color: #000000;
+                        //         text-align: center;
+                        // }
+                        // capa sombra negra en el menu
+                        .scroll-content {
+                               //background: rgba(0, 0, 0, 0.7);
+
+                        }
+                }
+        }
+}

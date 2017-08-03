@@ -1,0 +1,128 @@
+page-onboarding {
+  .onbo_img{
+    display: block;
+    width:100vw;
+    height: 100vh;
+    // background: url('assets/images/onb_1.png');
+
+    -webkit-background-size: 100% 100%;           /* Safari 3.0 */
+    -moz-background-size: 100% 100%;           /* Gecko 1.9.2 (Firefox 3.6) */
+    -o-background-size: 100% 100%;           /* Opera 9.5 */
+    background-size: 100% 100%;
+    // width:80vw;
+    // height:140px;
+    // outline:none;
+    // padding:80px 80px 80px 51px;
+    // margin:0 auto 5px auto;
+    background-repeat:no-repeat;
+    /** fin **/
+  }
+
+  .onbo_img2-1{
+    width:100vw;
+    height:50vh;
+    position: absolute;
+    top:-0%;
+    -webkit-background-size: 100% 100%;           /* Safari 3.0 */
+    -moz-background-size: 100% 100%;           /* Gecko 1.9.2 (Firefox 3.6) */
+    -o-background-size: 100% 100%;           /* Opera 9.5 */
+    background-size: 100% 100%;
+    background-repeat:no-repeat;
+    z-index: -1;
+
+  }
+
+  .onbo_img2-2{
+    width:100vw;
+    height:50vh;
+    position: absolute;
+    top:50%;
+    -webkit-background-size: 100% 100%;           /* Safari 3.0 */
+    -moz-background-size: 100% 100%;           /* Gecko 1.9.2 (Firefox 3.6) */
+    -o-background-size: 100% 100%;           /* Opera 9.5 */
+    background-size: 100% 100%;
+    background-repeat:no-repeat;
+    z-index: -1;
+  }
+
+h1,h3,h4, .o2{
+  font-family: 'Great Vibes';
+}
+  h1 {
+    color:map-get($colors, color-app);
+    position: relative;
+    top:-70%;
+    font-size: 45px;
+    padding: 15px;
+
+    // z-index: 100;
+  }
+
+  h3{
+    color:map-get($colors, color-app);
+    position: relative;
+    top:-300px;
+    font-size: 35px;
+
+  }
+
+  h4 {
+    color:map-get($colors, color-app);
+    position: relative;
+    top:-70%;
+    font-size: 35px;
+    padding: 20px;
+    // text-align: justify;
+    // z-index: 100;
+  }
+  .sombra{
+    background: black;
+    height: 100vh;
+    width: 100vw;
+    opacity: 0.8;
+    margin: 0px;
+  }
+  .sombra2{
+    background: black;
+    height: 150vh;
+    width: 100vw;
+    opacity: 0.8;
+    position: absolute;
+
+    // z-index: -1;
+     top:-155px;
+  }
+
+ .o2{
+   color:map-get($colors, color-app);
+   position: relative;
+   display: block;
+   top:50%;
+   // left: 20px;
+   font-size: 35px;
+  //  font-weight: bold;
+   padding:20px;
+  //  text-align: justify;
+   z-index: 2;
+ }
+  .swiper-pagination-bullet-active{
+    background: #bd3c95;
+  }
+  //
+
+  button.btn_empezar{
+    margin-top: -35px !important;
+    font-size: 15px !important;
+    font-family: 'Open Sans';
+  }
+
+} // fin del page-onboarding
+
+// puntos del slide
+.swiper-container-horizontal > .swiper-pagination-bullets{
+  bottom:50px !important;
+}
+.swiper-pagination-bullet{
+  background: #ffffff;
+  opacity: 0.6;
+}

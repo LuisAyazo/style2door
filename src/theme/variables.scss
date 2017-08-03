@@ -32,13 +32,18 @@ $app-direction: ltr;
 // to match your app's branding. Ionic uses a Sass map of
 // colors so you can add, rename and remove colors as needed.
 // The "primary" color is the only required color in the map.
+//bd3c95
 
 $colors: (
   primary:    #488aff,
   secondary:  #32db64,
   danger:     #f53d3d,
-  light:      #f4f4f4,
-  dark:       #222
+  light:      #6a6666,
+  dark:       #222,
+  color-app:  #bd3c95,
+  white:      #ffffff,
+  facebook-color : #3b5998,
+  googleplus-color : #d34836
 );
 
 
@@ -86,3 +91,18 @@ $colors: (
 
 @import "roboto";
 @import "noto-sans";
+
+// custom fonts
+@font-face {
+  font-family: 'Open Sans';
+  font-style: normal;
+  src: url('../assets/fonts/Open_Sans/OpenSans-Regular.ttf');
+}
+
+@font-face {
+  font-family: 'Great Vibes';
+  font-style: normal;
+  src: url('../assets/fonts/Great_Vibes/GreatVibes-Regular.ttf');
+}
+
+$font-family-base: 'Open Sans';

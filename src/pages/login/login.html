@@ -1,0 +1,33 @@
+<ion-content class="container">
+    <!-- <img class="backimg" /> -->
+    <ion-row class="logo-row-app">
+      <ion-col width-75>
+        <img  />
+        <h2><i class="fa fa-ravelry fa-3x appColor" aria-hidden="true"></i></h2>
+        <!-- <div class="bgtext"></div> -->
+      </ion-col>
+    </ion-row>
+
+    <form #FormLogin="ngForm" padding >
+        <ion-item>
+           <ion-input type="text" placeholder="Email" autocapitalize="none" name="username" [(ngModel)]="userData.username" required></ion-input>
+         </ion-item>
+         <ion-item no-lines>
+           <ion-input placeholder="Contrasena" [(ngModel)]="userData.password" name="password" type="password" required></ion-input>
+         </ion-item>
+         <ion-buttons padding text-center>
+             <button ion-button color="white"  (click)="login()">Ingresar al sitio</button>
+             <button ion-button color="white" outline (click)="register()">Registrate</button>
+             <ion-label class="forgot-passwd">Olvide la contrasena!</ion-label>
+             <button ion-button icon-only color="facebook-color" full (click)='loginFb()'><ion-icon name='logo-facebook'></ion-icon>Ingresar con Facebook</button>
+             <button ion-button icon-only color="googleplus-color" full><ion-icon name='logo-googleplus'></ion-icon>Ingresar con Google</button>
+             <!-- <br /> -->
+             <!-- <button ion-button icon-only color="facebook-color"><ion-icon name='logo-facebook'></ion-icon></button>
+             <button ion-button icon-only color="googleplus-color"><ion-icon name='logo-googleplus'></ion-icon></button> -->
+
+         </ion-buttons>
+    </form>
+    <ion-label>Necesitas ayuda</ion-label>
+    <!-- <br /> -->
+    <ion-label>Terminos y Condiciones</ion-label>
+</ion-content>
