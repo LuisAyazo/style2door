@@ -2,7 +2,7 @@ import { Component, ViewChild } from '@angular/core';
 import { Nav, Platform, MenuController } from 'ionic-angular';
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
-
+import { Facebook } from '@ionic-native/facebook';
 
 @Component({
   selector: 'menu-app',
@@ -12,39 +12,48 @@ export class MyApp {
   @ViewChild(Nav) nav: Nav;
 
   rootPage: any;
-  isLogged: boolean = false;
+  // isLogged: boolean = false;
+  isLoggedIn: boolean = false;
   activePage: any;
 
 
     pages: Array<{title: string, component: any, description: string, icon: any}>;
 
-  constructor(public platform: Platform, public statusBar: StatusBar, public splashScreen: SplashScreen, public  menu: MenuController) {
+  constructor(public platform: Platform, public statusBar: StatusBar, public splashScreen: SplashScreen, public  menu: MenuController, private fb: Facebook) {
     // this.menu = menu;
     this.menu.swipeEnable(false);// deshabilita el sidemenu
 
-    if( this.isLogged === true){
-
+    if( this.isLoggedIn === true){
+      // this.rootPage = 'LoginPage';
+      // this.rootPage = 'AddPayMentsPage';
+      // this.rootPage = "ProfileSettingsPage";
       // this.usuario = this.auth.userName();
-      this.rootPage = 'HomePage';
+      this.rootPage = 'TabsHomePage';
       console.log("Entrando al home");
     }else{
       this.rootPage = 'OnboardingPage';
+      // this.rootPage = 'OnboardingPage';
     }
 
     this.initializeApp();
 
     // used for an example of ngFor and navigation
     this.pages = [
-      { title: 'Home', component: 'HomePage', description: 'Chat', icon: 'home' },
-      { title: 'WeblogicPage', component: 'HomePage', description: 'Llamar', icon: 'code-download' },
-      { title: 'Database', component: 'HomePage', description: 'Noticias', icon: 'md-git-branch' },
-      { title: 'Jenkins', component: 'HomePage', description: 'Compartir', icon: 'flash' },
-      { title: 'Gitlab', component: 'HomePage', description: 'Quejas y sugerencia', icon: 'logo-facebook' },
-      { title: 'Ajustes', component: 'HomePage', description: 'Juega y gana', icon: 'person' },
-      { title: 'Jenkins', component: 'HomePage', description: 'Espejo', icon: 'flash' },
-      { title: 'Gitlab', component: 'HomePage', description: 'Promociones', icon: 'more' },
-      { title: 'Jenkins', component: 'HomePage', description: 'Spa', icon: 'flash' }
+      { title: 'TabsHomePage', component: 'TabsHomePage', description: 'Style2Door', icon: 'ios-home' },
+      { title: 'Home', component: 'HomePage', description: 'Chat', icon: 'chatboxes' },
+      // { title: 'WeblogicPage', component: 'HomePage', description: 'Llamar', icon: 'code-download' },
+      // { title: 'Database', component: 'HomePage', description: 'Noticias', icon: 'md-git-branch' },
+      // { title: 'Gitlab', component: 'HomePage', description: 'Quejas y sugerencia', icon: 'logo-facebook' },
+      // { title: 'Ajustes', component: 'HomePage', description: 'Juega y gana', icon: 'person' },
+      // { title: 'Jenkins', component: 'HomePage', description: 'Espejo', icon: 'flash' },
+      // { title: 'Gitlab', component: 'HomePage', description: 'Promociones', icon: 'more' },
+      // { title: 'Jenkins', component: 'HomePage', description: 'Spa', icon: 'flash' },
 
+      { title: 'Informacion y Soporte', component: 'InformacionSoportePage', description: 'Paquetes para novios', icon: 'information-circle' },
+      { title: 'Paquetes para novias', component: 'QuejasReclamosPage', description: 'Paquetes para novias', icon: 'sad' },
+      { title: 'Informacion y Soporte', component: 'InformacionSoportePage', description: 'Informacion y soporte', icon: 'information-circle' },
+      { title: 'Quejas y reclamos', component: 'QuejasReclamosPage', description: 'Quejas y Reclamos', icon: 'sad' }
+      // { title: 'Jenkins', component: 'HomePage', description: 'Compartir', icon: 'flash' }
     ];
 
     this.activePage = this.pages[0];
@@ -54,8 +63,12 @@ export class MyApp {
     this.platform.ready().then(() => {
       // Okay, so the platform is ready and our plugins are available.
       // Here you can do any higher level native things you might need.
-      this.statusBar.styleDefault();
-      this.splashScreen.hide();
+      // this.statusBar.styleDefault();
+      // this.splashScreen.hide();
+      this.statusBar.overlaysWebView(false);
+      this.statusBar.styleBlackTranslucent();
+      // this.statusBar.backgroundColorByName('black'); supported colors -> black, darkGray, lightGray, white, gray, red, green, blue, cyan, yellow, magenta, orange, purple, brown
+      this.statusBar.backgroundColorByHexString("#9a056d");
     });
   }
 
@@ -70,13 +83,20 @@ export class MyApp {
     return page == this.activePage;
   }
 
+  perfilPage(){
+    this.nav.setRoot("PerfilPage");
+    this.menu.close();//(false);// Quitar automaticamente el sidemenu
+  }
+
   logout(){
     console.log("Saliendo de la app");
     // this.auth.logout();
-    //this.rootPage = LoginPage;
     this.menu.close();//(false);// Quitar automaticamente el sidemenu
-    this.nav.setRoot('LoginPage');
-    this.menu.swipeEnable(false);// deshabilita el sidemenu
+    this.fb.logout().then( res => this.isLoggedIn = false).catch(e => console.log('Error logout from Facebook', e));
+    this.rootPage = "LoginPage";
+
+    // this.nav.setRoot('LoginPage');
+    // this.menu.swipeEnable(false);// deshabilita el sidemenu
   }
 
 }

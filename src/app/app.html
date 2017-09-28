@@ -1,20 +1,36 @@
 <ion-menu [content]="content">
   <ion-content class="background" no-scroll>
-     <ion-header ><img alt=""/>
+     <ion-header ><img src="assets/images/logo_sidemenu.jpg" alt="logo_sidemenu"/>
         <!-- <ion-label clas="usurname"><b>{{usuario}}</b></ion-label> -->
-        <ion-label clas="position">Luis Ayazo Herrera</ion-label>
+        <!-- <ion-label clas="position">Luis Ayazo Herrera</ion-label> -->
      </ion-header>
 
     <ion-list no-lines class="menu-list">
       <button  menuClose ion-item *ngFor="let p of pages" [class.activeHighLight]="checkActive(p)" (click)="openPage(p)" class="color-button-menu" >
-          <ion-icon name="{{p.icon}}"></ion-icon>{{p.description}}
+          <ion-icon name="{{p.icon}}"></ion-icon><span class="description_sidemenu_btn">{{p.description}}</span>
       </button>
     </ion-list>
     <!-- <hr class="hr_style"/> -->
-    <ion-list class="logout">
-        <button ion-button icon-only full color="white" (click)="logout()" ><ion-icon name="ios-exit-outline"></ion-icon>Salir</button>
+
+    <ion-list>
+      <ion-item>
+        <h3>Comparte con tus amigos</h3>
+        <button ion-button icon-only clear><i class="fa fa-facebook-official fa-2x facebook-color" aria-hidden="true"></i></button>
+        <button ion-button icon-only clear><i class="fa fa-google-plus fa-2x googleplus-color" aria-hidden="true"></i></button>
+        <button ion-button icon-only clear><i class="fa fa-twitter fa-2x twitter-color" aria-hidden="true"></i></button>
+        <button ion-button icon-only clear><i class="fa fa-whatsapp fa-2x whatsapp-color" aria-hidden="true"></i></button>
+      </ion-item>
     </ion-list>
+    <!-- <hr class="hr_style"/> -->
   </ion-content>
+  <ion-footer>
+    <ion-toolbar>
+      <!-- <button ion-button icon-only full color="color-app-oscuro" (click)="logout()" ><ion-icon name="ios-exit-outline"></ion-icon>Cuenta</button> -->
+      <button ion-button icon-only  color="color-app-oscuro" (click)="perfilPage()"><i class="fa fa-user fa-lg" aria-hidden="true"></i><span class="_logout_profile">Cuenta</span></button>
+      <button ion-button icon-only  color="color-app-oscuro" (click)="logout()" ><i class="fa fa-sign-out fa-lg" aria-hidden="true"></i><span class="_logout_profile">Salir</span></button>
+    <!-- <ion-title>Footer</ion-title> -->
+    </ion-toolbar>
+  </ion-footer>
 </ion-menu>
 
 

@@ -1,0 +1,184 @@
+.toolbar-title-md {
+    color: map-get($colors, color-app) !important;
+
+
+}
+page-woman {
+    ion-header{
+        ion-navbar{
+            ion-title{
+                // color: color-contrast($colors, white) !important;
+            }
+            ion-buttons{
+                color: map-get($colors, color-app) !important;
+                ion-badge{
+                    background: white !important;
+                    color: map-get($colors, danger) !important;
+                    margin-left:-10px !important;
+                    margin-top: 15px !important;
+                }
+            }
+        }
+    }
+
+    ion-content{
+    // background: gray !important;
+        ion-list{
+            // height: 120px;
+            // background: green;
+            margin-top: 10px !important;
+            margin-bottom: 30px !important;
+            ion-list-header{
+                border-top: None !important;
+                border-bottom: None !important;
+                margin-bottom: 0px !important;
+            }
+            ion-slides img{
+                height: 100% !important;
+                width: 100% !important;
+            }
+            ion-slides{
+                padding: 0px ;
+                margin-left: 10px;
+                height: 210px;
+                button.swiper-pagination-bullet{
+                    opacity: 0 !important;
+                    background: white !important;
+                    // background: green !important;
+                }
+                ion-slide{
+                    width: 200px !important;
+                    height: 202px !important;
+                    border: 0.7px #dedede solid;
+                    // border: 0.5px solid #d6d6d6;
+                    // background: red;
+
+                    button{
+                        height: 200px !important;
+
+                        img{
+                        position: absolute;
+                        // height: 120px;
+                        -webkit-background-size: 100% 100%;           /* Safari 3.0 */
+                           -moz-background-size: 100% 100%;           /* Gecko 1.9.2 (Firefox 3.6) */
+                             -o-background-size: 100% 100%;           /* Opera 9.5 */
+                                background-size: 100% 100%
+                        }
+
+                        .space_price {
+                          position: absolute;
+                        //   border-bottom: 0.5px solid red;
+                        //   top:-10px;
+                          z-index: 10;
+                          // display: inline-block;
+                          width: 100vw;
+                          max-width: 100%;
+                          // float: right;
+                          height: 40px;
+                          background: white;
+                        //   background: Green;
+
+
+                          right: 0px;
+                          bottom: 0px;
+                          // text-align: center;
+                          // text-align: justify;
+                          opacity: 1;
+                          // bottom:-30px;
+                          word-wrap: break-word;
+                          h2{
+                              //   font-family: 'Great Vibes';
+                              font-family: 'Open Sans';
+                              // text-shadow: 1px 1px 2px black;
+                              z-index: 4;
+                              color: black;
+                              // font-family: 'Open Sans';
+                              font-size: 13px;
+                              //   color: black;
+                              position: absolute;
+                              text-transform: capitalize;
+                              //  top: 40px;
+                               left: 5px;
+                               top: -12px;
+                              //  text-align:  justify;
+                              //   color: map-get($colors, color-app);
+                              //   font-weight: 580;
+                          }
+                          p{
+                              color:black;
+                              position: absolute;
+                              z-index: 4;
+                              top: 14px;
+                              left: 5px;
+                              float: left;
+                              font-size: 12px;
+                              // right: 15px;
+
+                          }
+
+                        }
+                        .div_check{
+                            ion-checkbox{
+                                position: absolute;
+                                z-index: 1000;
+                                // display: inline-block;
+                                width: 100vw;
+                                max-width: 100%;
+                                float: right;
+                                height: 100%;
+                                // background: red;
+                                right: 0px;
+                                top: 5px;
+                                // text-align: center;
+                                // text-align: justify;
+                                opacity: 1;
+                                // bottom: 0px;
+                                // word-wrap: break-word;
+                                // position: absolute;
+                                // // display: inline;
+                                // // right: 10px;
+                                // z-index: 100;
+                                // // height: 100%;
+                                // // width: 100% !important;
+                                // float: left !important;
+                                .checkbox-icon{
+                                    // float: right;
+                                    position: absolute;
+                                    right: 3px;
+                                    bottom: 5px;
+                                    border-color: white !important;
+                                    opacity: 0.7 !important;
+                                }
+                                .checkbox-checked{
+                                    background: map-get($colors, color-app) !important;
+                                }
+
+
+                            }
+
+                        }
+                        button.info_btn{
+
+                            i{
+
+                            }
+                            // background: gray !important;
+                            // position: absolute !important;
+                            // z-index: 1000px !important;
+                            position: absolute;
+                            z-index: 1000;
+                            right: 0px;
+                            top: -85px;
+                            // left: -5px;
+                            color: #8a8a8a;
+                            font-size: 13px;
+                            // height: 20px !important;
+                            // border-color: green;
+                        }
+                    }
+                }
+            }
+        }
+
+    }//content
+}//page-woman

@@ -1,0 +1,67 @@
+page-profile-settings {
+::-webkit-input-placeholder { /* WebKit, Blink, Edge */
+    color: #909 !important;
+    opacity: 0.7;
+    font-size: 1.2rem;
+}
+:-moz-placeholder { /* Mozilla Firefox */
+   color: #909 !important;
+   opacity:  0.7;
+   font-size: 1.2rem;
+
+}
+::-ms-input-placeholder { /* Microsoft Edge */
+   color: #909 !important;
+   opacity: 0.7;
+   font-size: 1.2rem;
+}
+
+    ion-thumbnail {
+        img {
+            position: relative;
+            margin: 0 auto;
+            margin-top:10px;
+
+            // top:-50px;
+            height: 100px;
+            width: 100px;
+            border-radius: 50px !important;
+        }
+        .edit_cam_profile{
+            float: center;
+            padding:0px !important;
+            margin-top:-30px;
+            margin-left: 45px;
+        //   position: absolute;
+            text-align: center !important;
+          // left: -100px;
+          button{
+              i{
+                  color: #636262 !important;
+                  text-shadow: 1px 1px 4px white;
+              }
+          }
+        }
+
+    }// fin ion-thumbnail
+
+    form{
+        ion-list{
+            ion-item{
+              ion-label{
+                font-size: 14px !important;
+                color: #000000 !important;
+                font-weight: 500;
+              }
+              input{}
+            }
+            .notifiaciones{
+                font-size: 1.3rem;
+                ion-toggle{
+                    font-size: 1.5rem;
+                }
+            }
+        }
+    }// fin form
+
+}

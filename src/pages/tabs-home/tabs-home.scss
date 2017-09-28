@@ -1,0 +1,27 @@
+// page-tabs-home {
+  .tabs-md .tab-button {
+  color: #FFC400 !important;
+ }
+
+  .tabs-md .tab-button[aria-selected=true] {
+    color: #DD2C00 !important;
+  }
+
+
+
+ // ion-icon:active{
+ //   color: map-get($colors, color-app) !important;
+ // }
+//  .activated {
+//     background-color: red !important;
+//  }
+//
+//  ion-tabs {
+//   @include tabs-standard-color('tabs-color-active-[red]',
+//    [main color], [color if not selected]);
+// }
+
+//  .tab-item.tab-item-active, .tab-item.active, .tab-item.activated {
+//     color: red !important;
+// }
+// }

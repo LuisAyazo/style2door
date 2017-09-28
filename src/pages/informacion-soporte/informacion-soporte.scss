@@ -1,0 +1,30 @@
+page-informacion-soporte {
+  .toolbar-title{
+    text-align: left !important;
+    font-size: 12px !important;
+  }
+
+  ion-content{
+    text-align: center;
+
+    ion-icon{
+      font-size: 70px;
+    }
+    .info-content{
+      margin:10px;
+    }
+    .info-soporte, .info-soporte-domain{
+      margin-top:35px;
+      // line-height: 10px;
+      ion-label{
+        margin:0px;
+      }
+    }
+
+    .info-soporte-domain{
+      color: #0d48a1;
+    }
+  }
+
+
+}

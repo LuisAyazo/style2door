@@ -1,0 +1,33 @@
+<ion-header>
+  <ion-navbar>
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>Hombres</ion-title>
+    <ion-buttons end>
+      <!-- <button ion-button icon-only (click)="perfilPage()">
+        <ion-icon name="person"></ion-icon>
+      </button> -->
+      <button ion-button icon-only (click)="openModal()">
+        <ion-icon name="notifications"></ion-icon>
+      </button>
+      <button ion-button icon-only (click)="openModal()">
+        <ion-icon name="cart"></ion-icon>
+      </button>
+      <button ion-button icon-only (click)="openModal()">
+        <ion-icon name="more"></ion-icon>
+      </button>
+    </ion-buttons>
+  </ion-navbar>
+</ion-header>
+
+<ion-content>
+  <ion-list no-lines>
+    <button full ion-button (click)="goToPage('PeinadosPage')"><img src="assets/images/peinados/peinados_hombres.jpg"/><h3>Cortes</h3></button>
+    <button full ion-button (click)="goToPage('ManicurePedicurePage')"><img src="assets/images/manicure/manicure_pedicure_hombres.jpg"/><h3>Manicure y Pedicure</h3></button>
+    <!-- <button full ion-button (click)="goToPage('MaquillajePage')"><img src="assets/images/maquillaje/maquillaje3.jpg"/><h3>Maquillaje</h3></button> -->
+    <button full ion-button><img src="assets/images/masajes/masajes_hombres.jpg"/><h3>Masajes</h3></button>
+    <button full ion-button><img src="assets/images/depilacion/depilacion_hombres.jpg"/><h3>Depilacion</h3></button>
+  </ion-list>
+
+</ion-content>

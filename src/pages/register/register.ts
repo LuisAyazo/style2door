@@ -28,7 +28,7 @@ export class RegisterPage {
 
   conntinue(){
     console.log("Going Home");
-    this.navCtrl.setRoot('HomePage');
+    this.navCtrl.setRoot('TabsHomePage');
   }
 
 }

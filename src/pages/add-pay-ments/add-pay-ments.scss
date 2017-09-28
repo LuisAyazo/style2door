@@ -1,0 +1,96 @@
+.button-round-md, .button-round-ios{
+  border-radius: 0px !important;
+}
+
+page-add-pay-ments {
+  // tamano del texto del dropdown
+  .select-text{
+    font-size: 1.3rem;
+    color: #336882;
+  }
+  // color del dropdown de los metodos de pagos
+  .select-icon-inner{
+    color: map-get($colors, color-app-oscuro) !important;
+    margin-top: 0px  !important;
+  }
+text-align: center; // alinear el texto y el boton de agregar
+// justify-content:center !important:;
+  ion-list{
+    // color: #757575 !important;
+    ion-list-header{
+      margin-bottom: -10px !important;
+    }
+    ion-item{
+      color: #606060!important;
+      i.money{
+        color: green;
+        margin-right: 5px;
+      }
+      i.credit-card{
+        color: #3b5f77;
+        margin-right: 5px;
+      }
+    }
+  }
+
+  // permitir que 'agreggar metodo de pago' muestre toda la informacion
+  ion-label{
+    // white-space: normal !important;
+    font-size: 1.2rem !important;
+    /* color: #757575; */
+    font-family: "Open sans";
+  }
+  ion-card{
+    // justify-content:center;
+    .cc_date, .cc_cvc{
+      float: left;
+      width: 50% !important;
+      // background: red;
+      text-align: center;
+      margin-bottom: 10px;
+      ion-input{
+        text-align: center !important;
+      }
+
+      ion-datetime{
+        border: 0.5px solid #dedede !important;
+
+      }
+    }
+    ion-label{
+      color: #383838 !important;
+    }
+    ion-input{
+      border: 0.5px solid #dedede !important;
+      padding: 5px;
+      font-size: 13px;
+
+    }
+    button{
+      // width: 90% !important;
+
+    }
+  }// fin ion-card
+
+  /***** Credit card style ******/
+  ion-card ion-card-header{
+      border-bottom: 2px solid #dddddd !important;
+      word-wrap: break-word !important;
+
+      font-weight: 500;
+      h6{
+        margin:10px 0px  !important;
+        font-size: 10px !important;
+        color: #5d5d5d !important;
+        text-align: justify;
+        line-height: 1.5rem !important;
+      }
+
+
+
+  }
+
+
+
+
+}

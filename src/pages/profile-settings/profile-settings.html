@@ -1,0 +1,65 @@
+<ion-header>
+  <ion-navbar color='color-app'>
+    <!-- <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button> -->
+    <ion-title>Editar Perfil</ion-title>
+    <!-- <ion-buttons end>
+      <button ion-button icon-only (click)="openModal()">
+        <ion-icon name="mail"></ion-icon>
+      </button>
+      <button ion-button icon-only (click)="openModal()">
+        <ion-icon name="information-circle"></ion-icon>
+      </button>
+    </ion-buttons> -->
+  </ion-navbar>
+</ion-header>
+
+
+<ion-content padding>
+  <ion-thumbnail item-start>
+    <img src="assets/images/avatares/mifoto.jpg">
+    <div class="edit_cam_profile">
+      <button ion-button icon-only clear (click)="UpdateProfilePicture()">
+        <i class="fa fa-camera-retro fa-lg" aria-hidden="true"></i>
+      </button>
+    </div>
+  </ion-thumbnail>
+
+
+<form #FormUpdateProfile="ngForm" (ngSubmit)="updateProfile(FormUpdateProfile)">
+  <ion-list>
+    <ion-item>
+      <ion-label stacked>Nombre</ion-label>
+      <ion-input type="text" name="profile_firstname" placeholder="Luis" [(ngModel)]="FormUpdateProfile.profile_firstname" required></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label stacked>Apellido</ion-label>
+      <ion-input type="text" name="profile_lastname" placeholder="Ayazo Herrera" [(ngModel)]="FormUpdateProfile.profile_lastname" required></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label stacked>Usuario</ion-label>
+      <ion-input type="text" name="profile_username" placeholder="Luis Ayazo Herrera" [(ngModel)]="FormUpdateProfile.profile_username" required></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label stacked>Correo</ion-label>
+      <ion-input type="text" name="profile_mail" placeholder="luiayas@hotmail.com" [(ngModel)]="FormUpdateProfile.profile_mail" required></ion-input>
+    </ion-item>
+    <ion-item class="cc_date">
+      <ion-label stacked>Fecha de nacimiento</ion-label>
+      <ion-datetime displayFormat="DD/MM/YYYY" min="1960" placeholder="28/06/1988" name="profile_birthday" [(ngModel)]="FormUpdateProfile.profile_birthday" required></ion-datetime>
+    </ion-item>
+    <ion-item class="cc_cvc">
+      <ion-label stacked>Telefono</ion-label>
+      <ion-input type="text" name="profile_celphone" placeholder="3186685937" [(ngModel)]="FormUpdateProfile.profile_celphone" required></ion-input>
+    </ion-item>
+    <ion-item class=notifiaciones>
+      <ion-label>Notificaciones</ion-label>
+      <ion-toggle ng-reflect-model="true" [(ngModel)]="FormUpdateProfile.notificaciones" name="notificaciones"></ion-toggle>
+    </ion-item>
+  </ion-list>
+  <button ion-button full [disabled]="!FormUpdateProfile.form.valid" type="submit" color="color-app">Actualizar perfil</button>
+</form>
+
+
+</ion-content>

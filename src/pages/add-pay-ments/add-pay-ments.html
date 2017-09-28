@@ -1,0 +1,101 @@
+<ion-header>
+  <ion-navbar color='color-app'>
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>Formas de pago</ion-title>
+    <ion-buttons end>
+      <!-- <button ion-button icon-only (click)="perfilPage()">
+        <ion-icon name="person"></ion-icon>
+      </button> -->
+      <button ion-button icon-only (click)="openModal()">
+        <ion-icon name="notifications"></ion-icon>
+      </button>
+      <!-- <button ion-button icon-only (click)="openModal()">
+        <ion-icon name="cart"></ion-icon>
+      </button> -->
+      <button ion-button icon-only (click)="openModal()">
+        <ion-icon name="more"></ion-icon>
+      </button>
+    </ion-buttons>
+  </ion-navbar>
+</ion-header>
+
+
+<ion-content padding>
+  <img src="assets/images/payments.png" />
+
+  <ion-list no-lines *ngIf="action != null" >
+    <ion-list-header>
+      Metodos de pago
+    </ion-list-header>
+    <!-- <div *ngIf="buttonClicked"> -->
+    <ion-item *ngFor="let item of payment_method_list" >
+         <i class="fa fa-{{item.icon_method}} {{item.icon_method}}" aria-hidden="true"></i> {{item.es_name}}
+    </ion-item>
+  <!-- </div> -->
+    <!-- <ion-item>The Empire Strikes Back</ion-item> -->
+    <!-- <ion-item>Blade Runner</ion-item> -->
+  </ion-list>
+
+  <ion-list>
+    <ion-item>
+      <ion-label>Agregar un metodo de pago</ion-label>
+        <ion-select [(ngModel)]="payments" (ngModelChange)="onChange($event)" multiple="false" cancelText="Cancelar" okText="Agregar">
+        <ion-option value="creditcard">Tarjeta de credito</ion-option>
+        <ion-option value="cash">Efectivo</ion-option>
+        <ion-option value="paypal">Paypal</ion-option>
+        <ion-option value="pse">PSE</ion-option>
+      </ion-select>
+    </ion-item>
+  </ion-list>
+
+
+
+
+
+<form #FormCreditCard="ngForm" (ngSubmit)="AddCreditCard(FormCreditCard)" *ngIf="creditcardClicked" >
+<ion-card>
+  <ion-card-header text-wrap>
+          Agregar Tarjeta de Credito
+          <h6>Para el ejercicio de los derechos que le confiere la Ley, presentar peticiones, quejas o reclamos el
+              CLIENTE manifiesta que ha sido informado y que conoce que podrá actuar personalmente.
+          </h6>
+  </ion-card-header>
+  <ion-list>
+    <ion-item>
+      <ion-label stacked>Nombre(Como aparece en la tarjeta)</ion-label>
+      <ion-input type="text" name="cc_name" [(ngModel)]="FormCreditCard.cc_name" required></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label stacked>Numero de tarjeta</ion-label>
+      <ion-input type="text" name="cc_number" [(ngModel)]="FormCreditCard.cc_number" required></ion-input>
+    </ion-item>
+    <ion-item class="cc_date">
+      <ion-label stacked>Fecha de expiracion</ion-label>
+      <ion-datetime displayFormat="MM/YYYY" min="2016" max="2025-12-31" name="cc_expiration_date" [(ngModel)]="FormCreditCard.cc_expiration_date" required></ion-datetime>
+    </ion-item>
+    <ion-item class="cc_cvc">
+      <ion-label stacked>CVC</ion-label>
+      <ion-input type="text" name="cc_security_code" [(ngModel)]="FormCreditCard.cc_security_code" required></ion-input>
+    </ion-item>
+  </ion-list>
+  <button ion-button round [disabled]="!FormCreditCard.form.valid" type="submit" color="color-app">Agregar Tarjeta</button>
+</ion-card>
+</form>
+  <!--
+<select class="form-control" [(ngModel)]="selectedWorkout" (change)="onChange($event.target.value)">
+  <option *ngFor="#workout of workouts" [value]="workout.id" >{{workout.name}}</option>
+</select> -->
+
+<!-- <select class="form-control" [ngModel]="selectedWorkout" (ngModelChange)="onChange($event)">
+    <option *ngFor="#workout of workouts" [value]="workout.id">{{workout.name}}</option>
+</select> -->
+
+<!-- <option *ngFor="let currentData of allData" [ngValue]="currentData">
+      {{data.name}}
+ </option> -->
+
+
+
+</ion-content>

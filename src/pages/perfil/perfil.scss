@@ -1,0 +1,114 @@
+.ios, .md {
+  page-perfil {
+    ion-content{
+
+
+      ion-list{
+        ion-list-header{
+          margin-top: 10px;
+          border-bottom: 0.5px solid #dedede !important;
+          border-top: None !important;
+
+        }
+        ion-item{
+          font-size: 13px !important;
+          // padding: 0px !important;
+          width: 100%;
+          // line-height: 10px;
+          // height: 10px;
+          i{
+            margin-left: 10px;
+            margin-right: 18px;
+            color: #a1a1a1;
+            font-size: 14px;
+          }
+        }
+      }
+
+
+
+
+
+      .color-app{
+        color:map-get($colors, color-app);
+      }
+      .card-ios, .card-md {
+        margin: 0 !important;
+        width: 100vw;
+      }
+      // ion-card > img{
+      //   height: 40vh !important;
+      // }
+
+      ion-card {
+          // width: 200px;
+          height: 150px;
+          overflow: hidden;
+      }
+
+      ion-card img {
+          // width: 400px;
+          height: 300px;
+          // margin: -75px 0 0 -100px;
+      }
+
+      ion-thumbnail img {
+        position: relative;
+        margin: 0 auto;
+        margin-top:10px;
+
+        // top:-50px;
+        height: 100px;
+        width: 100px;
+        border-radius: 50px !important;
+      }
+
+      ion-row{
+        // margin-top:10px;
+        // margin-bottom: 20px;
+        ion-col{
+          text-align: center !important;
+          .button-inner{
+            margin-left: 35px !important;
+            // margin-top: 10px !important;
+            justify-content: left !important;
+          }
+
+          button  i{
+            margin-right: 15px !important;
+
+            // justify-content: left !important;
+            //
+            // text-align: left !important;
+          }
+        }
+      }
+      h3.perfilName{
+        color: #444040;
+        font-size: 14px;
+        position: relative;
+        // margin: 0 auto !important;
+        // top:-56px;
+        // width: 100px;
+        text-align: center;
+      }
+      h6{
+        position: relative;
+        color: #a7acad;
+        text-align: center;
+        top:-70px;
+
+      }
+
+      p.description{
+        color: #444240;
+        font-size: 14px;
+        line-height: 20px;
+        text-align: justify;
+        position: relative;
+        top: -60px;
+        margin: 0 30px;
+      }
+    }
+  }
+}

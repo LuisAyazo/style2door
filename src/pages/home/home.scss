@@ -1,3 +1,55 @@
-page-home {
+// cambiar color de fuente del texto del header para IOS
+.toolbar-ios-white .toolbar-title-ios, .toolbar-ios-white .bar-button-clear-ios, .toolbar-ios-white .bar-button-default-ios{
+  color: map-get($colors, color-app) !important;
+}
 
+page-home {
+  ion-header{
+    ion-navbar{
+      ion-title{
+        font-family: 'Great Vibes';
+        font-size: 2.4rem !important;
+        // font-size: 23px !important;
+      }
+    }
+  }
+
+
+  .color-app{
+    color:map-get($colors, color-app);
+  }
+  // ion-list{
+  //   ion-item{
+  //     button{
+  //       height: 100px !important;
+  //       font-size: 18px !important;
+  //       i{
+  //         margin-right: 10px;
+  //       }
+  //     }
+  //   }
+  // }
+
+  //
+  // .fa-calendar:before {
+  //   content: "";
+  // }
+  ion-row{
+    margin-top:10px;
+    margin-bottom: 10px;
+    ion-col{
+      text-align: center !important;
+      .button-inner{
+        margin-left: 15px !important;
+        // margin-top: 10px !important;
+        justify-content: left !important;
+      }
+      i{
+        margin-right: 15px !important;
+        // justify-content: left !important;
+        //
+        text-align: center !important;
+      }
+    }
+  }
 }

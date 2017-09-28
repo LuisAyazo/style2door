@@ -1,151 +1,281 @@
-menu-app{
-        ion-menu{
-                ion-content.background{
-                        background: map-get($colors, color-app) !important;
-                        opacity: 0.9;
-                        ion-header {
-                                height: 200px;
-                                background: white;
+        menu-app{
 
-                                ion-label{
-                                        margin-top:-44px;
-                                        font-size: 10px;
-                                        text-align: right;
-                                        // color: map-get($colors, color-app);
-                                        // height: 10px;
-                                        line-height: 44px;
-
-                                }
-
-                                img{
-                                        background-image: url('../assets/images/logo-header.png') ;
-                                        margin: 20px 10px !important;
-                                        -webkit-background-size: 100% 100%;           /* Safari 3.0 */
-                                        -moz-background-size: 100% 100%;           /* Gecko 1.9.2 (Firefox 3.6) */
-                                        -o-background-size: 100% 100%;           /* Opera 9.5 */
-                                        background-size: 100% 100%;
-                                        width:65vw;
-                                        // height:140px;
-                                        // outline:none;
-                                        padding:80px 80px 80px 51px;
-                                        // margin:0 auto 5px auto;
-                                        background-repeat:no-repeat;
-                                        /** fin **/
-                                }
-                          }
-
-                        /********  Imagen fondo en el menu ************/
-                        //  background-image: url("../assets/03.jpg");
-                        //  opacity: 0.9;
-                        //  -webkit-filter: blur(1px);
-                        //  filter: blur(1px);
-                        //  background: map-get($colors, color-app);
-
-                        ion-list {
-                                margin-top:200px;
-
-                                h2{
-                                        margin-top: 5px;
-                                }
-                                p{
-                                        margin-top: 5px;
-                                        color: #37474F;
-                                }
-                        }
-
-                        ion-list.menu-list{
-
-                                button{
-                                        font-size: 14px;
-                                        // margin-bottom: 0px !important;
-                                        // color: red;
-
-                                }
-                                //estilo boton activo del menu
-                                button.activeHighLight{
-                                        ion-icon{
-                                                color: map-get($colors, white) !important;
-                                        }
-                                 background-color: map-get($colors,light);
-                                  -webkit-box-shadow: inset 0px 8px 5px -8px rgba(0, 0, 0, 1);
-                                  -moz-box-shadow: inset 0px 8px 5px -8px rgba(0, 0, 0,1);
-                                  box-shadow: inset 0px 8px 5px -8px rgba(0, 0, 0, 1);
-                                  text-shadow: 0px 0.2px 0px inset rgba(255, 255, 255, 1);
-                                  color: white !important;
-                                }
-
-                        }
-                        hr.hr_style{
-                                padding: 0 !important;
-                                // border: none !important;
-                                // height: 1px !important;
-                                background-image: -webkit-linear-gradient(left, rgba(0,0,0,0), rgba(0,0,0,0.75), rgba(0,0,0,0)) !important;
-                                background-image: -moz-linear-gradient(left, rgba(0,0,0,0), rgba(0,0,0,0.75), rgba(0,0,0,0)) !important;
-                                background-image: -ms-linear-gradient(left, rgba(0,0,0,0), rgba(0,0,0,0.75), rgba(0,0,0,0)) !important;
-                                background-image: -o-linear-gradient(left, rgba(0,0,0,0), rgba(0,0,0,0.75), rgba(0,0,0,0)) !important;
-                                border-top: 0.1px #fff solid !important;
-                                text-align: center !important;
-                        }
-
-                        hr.hr_style:after {
-                                content:" " !important;
-                                display: inline-block !important;
-                                position: relative !important;
-                                top: -1.3em !important;
-                                font-size: 1.5em !important;
-                                padding: 10px 1.75em !important;
-                                background:map-get($colors, white) url('../assets/images/logo-header.png') no-repeat scroll center !important;
-                                background-size: 100px 50px !important;
-                                height: 30px !important;
-                                width: 40px !important;
-                        }
-
-                        ion-list.logout{
-                                margin:0 !important;
-                                padding: 0 !important;
-                                height: 105px !important;
-                                text-align: left;
-                                ion-icon{
-                                        // text-align: left;
-                                        position: absolute;
-                                        left:90px;
-                                }
-                                // margin-left: 18px !important;
-                                button {
-                                        font-size: 14px;
-                                }
-                        }
-                        .color-button-menu{
-                                //background: dimgray;
-                                //background: rgb(0, 0, 0);
-                                /* Para navegadores que soportan RGBa mostramos el color sólido con un 80% de opacidad */
-                                background: rgba(0, 0, 0, 0.0);
-                                color:black;
-                                border-bottom:none !important;
-                                border-top: none !important;
-                                padding-left: 30px;
-                                ion-icon{
-                                        font-size: 22px !important;
-                                        //color:map-get($colors,color2);
-                                        color:#D8D8D8;
-                                        //line-height: 55px!important;
-                                        margin-right: 15px;
-                                        margin-top: 0px;
-                                }
-                        }
-                        // // color del texto del footer
-                        // ion-footer button{
-                        //         margin-bottom: 0px;
-                        // }
-                        // .toolbar-title-md {
-                        //         color: #000000;
-                        //         text-align: center;
-                        // }
-                        // capa sombra negra en el menu
-                        .scroll-content {
-                               //background: rgba(0, 0, 0, 0.7);
-
-                        }
+                .toolbar-content-ios, .toolbar-content-md{
+                        margin: -10px !important;
                 }
-        }
-}
+
+                .toolbar-md {
+                    padding: 0px !important;
+                //     min-height: 35px;
+                //     height: 50px;
+                //     margin-right: 30px !important;
+                }
+                // dejamos fijo el header para todas las paginas en android
+                // .toolbar-background-md{
+                //         background-color: map-get($colors, color-app-oscuro) !important;
+                //
+                // }
+
+                .button-md-color-app-oscuro {
+                        height: 56px !important;
+                        left: 10px !important;
+                }
+                /***** Quitar los borders del item de redes sociales ********/
+                .list-ios > .item-block:last-child, .list-ios > .item-wrapper:last-child .item-block{
+                        border-bottom: None !important;
+                }
+
+                .list-ios > .item-block:first-child {
+                        border-top: None !important;
+                }
+                /***** Fin quitar border *****/
+
+
+                ion-menu{
+                        margin: 0px;
+                        ion-content.background{
+                                background: map-get($colors, color-app) !important;
+                                opacity: 0.9;
+                                ion-item{
+                                //   height: 30px;
+                                }
+                                ion-header {
+                                        height: 0px;
+                                        // background: white;
+
+                                        // ion-label{
+                                        //         margin-top:-44px;
+                                        //         font-size: 15px;
+                                        //         text-align: center;
+                                        //         // color: map-get($colors, color-app);
+                                        //         // height: 10px;
+                                        //         // line-height: 10px;
+                                        //
+                                        // }
+
+                                        img{
+                                                // background-image: url('../assets/images/logo_sidemenu.jpg') ;
+                                                // margin: 20px 10px !important;
+                                                // -webkit-background-size: 120% 100%;           /* Safari 3.0 */
+                                                // -moz-background-size: 120% 100%;           /* Gecko 1.9.2 (Firefox 3.6) */
+                                                // -o-background-size: 100% 100%;           /* Opera 9.5 */
+                                                background-size: 100% auto;
+                                                width:100%;
+                                                // height:auto;
+                                                // position: relative;
+                                                // position:fixed;
+                                                left:-20px;
+
+                                                // outline:none;
+                                                // padding:100px 10px 10px 51px;
+                                                // margin:0 auto 5px auto;
+                                                background-repeat:no-repeat;
+                                                /** fin **/
+                                        }
+                                  }
+
+                                /********  Imagen fondo en el menu ************/
+                                //  background-image: url("../assets/03.jpg");
+                                //  opacity: 0.9;
+                                //  -webkit-filter: blur(1px);
+                                //  filter: blur(1px);
+                                //  background: map-get($colors, color-app);
+
+                                ion-list { /******* list redes sociales ****/
+                                        ion-item{
+                                                text-align: center;
+                                                // background-color: map-get($colors, color-app);
+                                                h3{
+                                                        // position: absolute;
+                                                        // left: 30px !important;
+                                                        // height: 20px !important;
+                                                        font-size: 15px;
+                                                        font-weight: 600;
+                                                        color: map-get($colors, color-app-oscuro);
+                                                }
+                                                button{
+                                                        // text-align: left;
+                                                        // margin-top: 20px;
+                                                        margin-left: 20px !important;
+                                                        // margin-right: 5px;
+                                                }
+                                                .facebook-color{
+                                                        // color: #dddddd;
+                                                        // text-shadow: 2px 2px 2px black;
+                                                        color: map-get($colors, facebook-color);
+                                                }
+                                                //
+                                                .googleplus-color{
+                                                          //  color: #dddddd;
+                                                        color: map-get($colors, googleplus-color);
+                                                }
+                                                //
+                                                .twitter-color{
+                                                          //  color: #dddddd;
+                                                        color: map-get($colors, twitter-color);
+                                                }
+                                                //
+                                                .whatsapp-color{
+                                                          //  color: #dddddd;
+                                                        color: map-get($colors, whatsapp-color);
+                                                }
+                                        }
+                                        // h2{
+                                        //         margin-top: 5px;
+                                        // }
+                                        // p{
+                                        //         margin-top: 5px;
+                                        //         color: #37474F;
+                                        // }
+                                }
+
+                                ion-list.menu-list{
+                                        margin-top:108px;
+
+                                        button{
+                                                font-size: 14px;
+                                                // margin-bottom: 0px !important;
+                                                // color: red;
+                                                // ion-icon{
+                                                //         margin-right: 20px;
+                                                // }
+                                                // .description_sidemenu_btn{
+                                                //
+                                                // }
+
+                                        }
+                                        //estilo boton activo del menu
+                                        button.activeHighLight{
+                                                ion-icon{
+                                                        color: map-get($colors, white) !important;
+                                                        // color: map-get($colors, color-app-oscuro) !important;
+
+                                                }
+                                                  background-color: rgba(#b3b3b3, 0.41);
+                                                //  background-color: map-get($colors,light);
+                                                  -webkit-box-shadow:  1px 0px 0px 0px rgba(0, 0, 0, 1);
+                                                  -moz-box-shadow:  1px 0px 0px 0px rgba(0, 0, 0,1);
+                                                  box-shadow:  1px 0px 0px 0px rgba(0, 0, 0, 1);
+                                                  text-shadow: 0px 0.2px 0px rgba(255, 255, 255, 1);
+                                                  // color: white !important;
+                                                //   color: map-get($colors, color-app-oscuro) !important;
+                                        }
+
+                                }
+                                hr.hr_style{
+                                        padding: 0 !important;
+                                        // border: none !important;
+                                        margin-top: -25px;
+                                        // height: 1px !important;
+                                        background-image: -webkit-linear-gradient(left, rgba(0,0,0,0), rgba(0,0,0,0.75), rgba(0,0,0,0)) !important;
+                                        background-image: -moz-linear-gradient(left, rgba(0,0,0,0), rgba(0,0,0,0.75), rgba(0,0,0,0)) !important;
+                                        background-image: -ms-linear-gradient(left, rgba(0,0,0,0), rgba(0,0,0,0.75), rgba(0,0,0,0)) !important;
+                                        background-image: -o-linear-gradient(left, rgba(0,0,0,0), rgba(0,0,0,0.75), rgba(0,0,0,0)) !important;
+                                        border-top: 0.1px map-get($colors, color-app-oscuro) solid !important;
+                                        text-align: center !important;
+                                }
+                                //
+                                // hr.hr_style:after {
+                                //         content:" " !important;
+                                //         display: inline-block !important;
+                                //         position: relative !important;
+                                //         top: -1.3em !important;
+                                //         font-size: 1.5em !important;
+                                //         padding: 10px 1.75em !important;
+                                //         background:map-get($colors, color-app) url('../assets/images/favicon.png') no-repeat scroll center !important;
+                                //         background-size: 100px 50px !important;
+                                //         height: 30px !important;
+                                //         width: 40px !important;
+                                // }
+
+                                ion-list.logout{
+                                        margin:0 !important;
+                                        padding: 0 !important;
+                                        height: 105px !important;
+                                        text-align: left;
+                                        ion-icon{
+                                                // text-align: left;
+                                                position: absolute;
+                                                left:90px;
+                                        }
+                                        // margin-left: 18px !important;
+                                        button {
+                                                font-size: 14px;
+                                        }
+                                }
+                                .color-button-menu{/**** icono y descricion sidemenu ****/
+                                        //background: dimgray;
+                                        //background: rgb(0, 0, 0);
+                                        /* Para navegadores que soportan RGBa mostramos el color sólido con un 80% de opacidad */
+                                        background: rgba(0, 0, 0, 0.0);
+                                        color:white;
+                                        border-bottom:none !important;
+                                        border-top: none !important;
+                                        padding-left: 32px;
+                                        line-height: 13px;
+                                        padding-top:-5px !important;
+                                        ion-icon{
+                                                font-size: 22px !important;
+                                                //color:map-get($colors,color2);
+                                                color:white;
+                                                //line-height: 55px!important;
+                                                margin-right: 25px;
+                                                // margin-top: 5px;
+                                        }
+                                }
+                                // // color del texto del footer
+                                // ion-footer button{
+                                //         margin-bottom: 0px;
+                                // }
+                                // .toolbar-title-md {
+                                //         color: #000000;
+                                //         text-align: center;
+                                // }
+                                // capa sombra negra en el menu
+                                .scroll-content {
+                                       //background: rgba(0, 0, 0, 0.7);
+
+                                }
+                        }/***** Fin ion-content *****/
+
+
+                  ionc-footer{
+                        margin:0px !important;
+                        padding:0px !important;
+
+                        ion-toolbar{
+                                margin:0px !important;
+                                padding: 0px !important;
+                                // text-align: left !important;
+                        }
+
+
+                  }
+
+                ion-footer ion-toolbar button{
+                        width: 50%;
+                        margin: 0px !important;
+                        padding: 0px !important;
+                        -webkit-border-radius: 0px !important;
+                           -moz-border-radius: 0px !important;
+                             -o-border-radius: 0px !important;
+                                border-radius: 0px !important;
+                        float: left;
+                }
+
+                ion-footer ion-toolbar button i{
+                          position: absolute;
+                          left: 25px;
+                  }
+
+                ._logout_profile{ /** button de logout y cuenta***/
+                          position: absolute;
+                          left: 47px;
+                          font-size: 14px;
+
+                        //   color:green !important;
+                  }
+
+
+          }/**** fin ion-menu ******/
+}/***** fin menu-app *****/

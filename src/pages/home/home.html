@@ -1,12 +1,49 @@
 <ion-header>
-  <ion-navbar color='color-app'>
+  <ion-navbar color='white'>
     <button ion-button menuToggle>
-      <ion-icon name="menu"></ion-icon>
+      <ion-icon name="menu" color="color-app"></ion-icon>
     </button>
-    <ion-title>Home</ion-title>
+    <ion-title>Style2Door</ion-title>
+    <ion-buttons end>
+      <!-- <button ion-button icon-only (click)="perfilPage()">
+        <ion-icon name="person"></ion-icon>
+      </button> -->
+      <button ion-button icon-only (click)="openModal()">
+        <ion-icon name="notifications" color="color-app"></ion-icon>
+      </button>
+      <button ion-button icon-only (click)="openModal()">
+        <ion-icon name="cart" color="color-app"></ion-icon>
+      </button>
+      <button ion-button icon-only (click)="openModal()">
+        <ion-icon name="more" color="color-app"></ion-icon>
+      </button>
+    </ion-buttons>
+    <ion-thumbnail item-end>
+      <img src="assets/images/avatares/mifoto.jpg">
+    </ion-thumbnail>
   </ion-navbar>
 </ion-header>
 
+
 <ion-content padding>
-  <h3>Bienvenidos a  STYLE2DOOR</h3>
+  <ion-grid>
+    <ion-row align-items-start>
+      <ion-col>
+        <button ion-button block outline color='color-app' (click)="expressService()">
+          <i class="fa fa-map-marker fa-2x color-app" aria-hidden="true"></i>
+          Solicitar servicio express!
+        </button>
+      </ion-col>
+    </ion-row>
+
+    <ion-row align-items-start>
+      <ion-col>
+        <button ion-button block outline color='color-app' (click)="perfilPage()">
+          <i class="fa fa-calendar fa-2x color-app" aria-hidden="true"></i>
+          Programar servicio
+        </button>
+      </ion-col>
+    </ion-row>
+
+  </ion-grid>
 </ion-content>

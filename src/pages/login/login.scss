@@ -15,9 +15,9 @@ page-login {
             margin-top: 0px !important;
             padding-bottom: 10px;
             ion-col {
-              // background: white !important;
+              justify-content: center !important;
               text-align: center !important;
-              height: 160px;
+              height: 170px;
               margin: 0 auto;
               // line-height: 200px;
               background: white;
@@ -28,15 +28,17 @@ page-login {
                   img{
                       // text-align: right;
                       margin-top: 20px;
-                      margin-left: 20px;
-                      background-image: url('../assets/images/symbol.png');
+                      margin-left: 0px;
+                      margin-bottom: 10px;
+                      background-image: url('../assets/images/logo-01.png');
                       background-repeat: no-repeat;
-                      -webkit-background-size: 85% 85%;           /* Safari 3.0 */
-                      -moz-background-size: 85% 85%;           /* Gecko 1.9.2 (Firefox 3.6) */
-                      -o-background-size: 85% 85%;           /* Opera 9.5 */
-                      background-size: 85% 85%;           /* Gecko 2.0 (Firefox 4.0) and other CSS3-compliant browsers */
-                      width: 100vw;
-                      height: 100px;
+                      -webkit-background-size: 100% 100%;           /* Safari 3.0 */
+                      -moz-background-size: 100% 100%;           /* Gecko 1.9.2 (Firefox 3.6) */
+                      -o-background-size: 100% 100%;           /* Opera 9.5 */
+                      background-size: 100% 100%;           /* Gecko 2.0 (Firefox 4.0) and other CSS3-compliant browsers */
+                      width: 80vw;
+                      max-width: 280px;
+                      height: 80px;
                       border: none !important;
                       border-color: map-get($colors, color-app) !important;
                       // margin: none !importan;
@@ -128,7 +130,7 @@ page-login {
       }
 
       ion-buttons{
-          margin-top: 0px;
+          margin-top: 60px;
           button{
             // opacity: 0.9px !important;
             margin-top: 0px !important;
@@ -162,7 +164,7 @@ page-login {
         font-size: 10px;
         color: white !important;
         position: relative;
-        line-height: 30px;
+        line-height: 20px;
         // margin-top: -10px;
       }
 
