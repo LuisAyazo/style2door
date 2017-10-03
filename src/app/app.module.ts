@@ -22,6 +22,12 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { Geolocation } from '@ionic-native/geolocation';
 import { GoogleMaps } from '@ionic-native/google-maps';
 
+// Firebase
+import { AngularFireModule } from 'angularfire2';
+import { FIREBASE_CONFIG } from './app.firebase.config';
+import { AngularFireAuthModule } from 'angularfire2/auth';
+
+
 @NgModule({
   declarations: [
     MyApp,
@@ -30,7 +36,9 @@ import { GoogleMaps } from '@ionic-native/google-maps';
     BrowserModule,HttpModule,
     PipesModule,
     IonicModule.forRoot(MyApp,{tabsPlacement: 'bottom',tabsHideOnSubPages: true, swipeBackEnabled: true}),
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    AngularFireModule.initializeApp(FIREBASE_CONFIG.firebase),
+    AngularFireAuthModule
   ],
   bootstrap: [IonicApp],
   entryComponents: [

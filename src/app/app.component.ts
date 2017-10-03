@@ -31,8 +31,8 @@ export class MyApp {
       this.rootPage = 'TabsHomePage';
       console.log("Entrando al home");
     }else{
-      this.rootPage = 'OnboardingPage';
       // this.rootPage = 'OnboardingPage';
+      this.rootPage = 'RegisterPage';
     }
 
     this.initializeApp();
