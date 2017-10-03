@@ -1,21 +1,20 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { AngularFireAuth } from 'angularfire2/auth';
+import { User } from '../../models/user';
 
-/**
- * Generated class for the RegisterPage page.
- *
- * See http://ionicframework.com/docs/components/#navigation for more info
- * on Ionic pages and navigation.
- */
 @IonicPage()
 @Component({
   selector: 'page-register',
   templateUrl: 'register.html',
 })
 export class RegisterPage {
-
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
-  }
+  user = {} as User;
+  constructor(
+    public navCtrl: NavController,
+    public navParams: NavParams,
+    private angularFauth:AngularFireAuth
+  ) {}
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad RegisterPage');
@@ -31,4 +30,15 @@ export class RegisterPage {
     this.navCtrl.setRoot('TabsHomePage');
   }
 
+  async register(user: User){
+
+    console.log(user.email + ' ----- ' + user.password);
+    try{
+      const result = await this.angularFauth.auth.createUserWithEmailAndPassword(user.email, user.password);
+      console.log(result);
+    }
+    catch(e){
+      console.error(e);
+    }
+  }
 }

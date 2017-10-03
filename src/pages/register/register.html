@@ -1,65 +1,24 @@
-<!-- <ion-header>
+<ion-header>
 
   <ion-navbar>
     <ion-title>Registro</ion-title>
   </ion-navbar>
 
-</ion-header> -->
+</ion-header>
 
-<ion-content class="container">
-    <img class="backimg" />
-    <ion-row class="logo-row-app">
-      <!-- <ion-col></ion-col> -->
-      <ion-col width-75>
-        <img  />
-      </ion-col>
-      <!-- <ion-col></ion-col> -->
-    </ion-row>
-    <ion-label class="cambia">Registro</ion-label>
+<ion-content padding>
+  <ion-item>
+      <ion-label floating>Email Address</ion-label>
+      <ion-input type="text" [(ngModel)]="user.email"></ion-input>
+    </ion-item>
 
-    <form #FormLogin="ngForm" padding >
-        <ion-item>
-            <img class="mail"/>
-           <ion-input type="text" placeholder="Nombre" autocapitalize="none" name="username" [(ngModel)]="FormLogin.username" required></ion-input>
-         </ion-item>
+    <ion-item>
+      <ion-label floating>Password</ion-label>
+      <ion-input type="password" [(ngModel)]="user.password"></ion-input>
+    </ion-item>
 
-         <ion-item no-lines>
-            <img class="padlock"/>
-           <ion-input placeholder="Apellido" [(ngModel)]="FormLogin.password" name="password" type="password" required></ion-input>
-         </ion-item>
+    <button ion-button (click)="login(user)">Login</button>
+    <button ion-button color="light" (click)="register(user)">Register</button>
 
-        <ion-item no-lines>
-           <img class="padlock"/>
-          <ion-input placeholder="Correo" [(ngModel)]="FormLogin.password" name="password" type="password" required></ion-input>
-        </ion-item>
-
-
-        <ion-item no-lines>
-           <img class="padlock"/>
-          <ion-input placeholder="Telefono" [(ngModel)]="FormLogin.password" name="password" type="password" required></ion-input>
-        </ion-item>
-         <ion-item no-lines>
-            <img class="padlock"/>
-           <ion-input placeholder="Contrasena" [(ngModel)]="FormLogin.password" name="password" type="password" required></ion-input>
-         </ion-item>
-         <!-- Genero
-         <ion-list radio-group name='genero' [(ngModel)]="FormLogin.relationship">
-           <ion-item>
-             <ion-label>Masculino</ion-label>
-             <ion-radio value="Masculino" checked="true"></ion-radio>
-           </ion-item>
-           <ion-item>
-             <ion-label>Femenino</ion-label>
-             <ion-radio value="Femenino"></ion-radio>
-           </ion-item>
-         </ion-list> -->
-         <!-- <button ion-button full [disabled]="!FormLogin.form.valid" type="submit" color="infrapp-header" (click)="loginEmail()">Entrar</button> -->
-         <ion-buttons padding text-center>
-           <button ion-button color="white" outline (click)="goBack()">Cancelar</button>
-             <button ion-button color="white" (click)="conntinue()">Registrarse</button>
-             <!-- <button ion-button color="facebook-color" full><ion-icon name='logo-facebook'></ion-icon>&nbsp;Conectar con Facebook</button> -->
-         </ion-buttons>
-    </form>
-
-    <ion-label>Terminos y Condiciones</ion-label>
+<ion-label>Terminos y Condiciones</ion-label>
 </ion-content>
