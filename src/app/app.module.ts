@@ -22,11 +22,13 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { Geolocation } from '@ionic-native/geolocation';
 import { GoogleMaps } from '@ionic-native/google-maps';
 
-// Firebase
-import { AngularFireModule } from 'angularfire2';
-import { FIREBASE_CONFIG } from './app.firebase.config';
-import { AngularFireAuthModule } from 'angularfire2/auth';
 
+// Firebase
+// import * as firebase from 'firebase';
+import { AngularFireModule } from 'angularfire2';
+import { AngularFireAuthModule } from 'angularfire2/auth';
+import { AngularFireDatabase, AngularFireDatabaseModule } from 'angularfire2/database';
+import { FIREBASE_CONFIG } from './app.firebase.config';
 
 @NgModule({
   declarations: [
@@ -37,8 +39,10 @@ import { AngularFireAuthModule } from 'angularfire2/auth';
     PipesModule,
     IonicModule.forRoot(MyApp,{tabsPlacement: 'bottom',tabsHideOnSubPages: true, swipeBackEnabled: true}),
     BrowserAnimationsModule,
+    // firebase.initializeApp,
     AngularFireModule.initializeApp(FIREBASE_CONFIG.firebase),
-    AngularFireAuthModule
+    AngularFireAuthModule,
+    AngularFireDatabaseModule
   ],
   bootstrap: [IonicApp],
   entryComponents: [
@@ -52,7 +56,8 @@ import { AngularFireAuthModule } from 'angularfire2/auth';
     NativeStorage,
     AuthServiceProvider,
     Geolocation,
-    GoogleMaps
+    GoogleMaps,
+    AngularFireDatabase
 
   ]
 })

@@ -1,15 +1,52 @@
 // cambiar color de fuente del texto del header para IOS
 .toolbar-ios-white .toolbar-title-ios, .toolbar-ios-white .bar-button-clear-ios, .toolbar-ios-white .bar-button-default-ios{
   color: map-get($colors, color-app) !important;
+  text-align: left !important;
 }
 
 page-home {
+
+.item-md, .item-ios {
+  background: None !important;
+  padding-left: 0px !important;
+
+}
+
+.toolbar-title-md{
+  font-size: 2.8rem !important;
+  // text-align: left !important;
+}
+
+.toolbar-title-ios{
+  font-size: 2.1rem !important;
+  font-weight: normal !important;
+  // text-align: left !important;
+}
+
+.bar-button-ios {
+  font-size: 15px !important;
+}
+
+.item-md.item-block .item-inner{
+  padding-right: 0 !important;
+  border-bottom: None !important;
+}
+
+.item-md ion-avatar[item-end]{
+  margin: 0 !important;
+}
+
   ion-header{
     ion-navbar{
       ion-title{
         font-family: 'Great Vibes';
         font-size: 2.4rem !important;
         // font-size: 23px !important;
+      }
+
+      ion-avatar{
+        border-radius: 50% !important;
+
       }
     }
   }

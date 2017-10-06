@@ -1,0 +1,32 @@
+page-forward-email-after-email-registration {
+  ion-content{
+    // background: map-get($colors, color-app) !important;
+    // justify-content: center !important;
+    text-align: center !important;
+    h1{
+      text-align: center;
+      color:map-get($colors, color-app-oscuro);
+      margin-top:50px !important;
+    }
+    h2{
+      // font-family: 'News Cycle';
+      // font-family:"Open Sans";
+      font-family: 'Noto Serif';
+      text-align: justify;
+      font-size: 19px;
+      margin-top:20px !important;
+
+    }
+    .icon-page-app{
+      // background-color: green;
+
+      font-size: 70px !important;
+    }
+   h4{
+    //  color:white;
+     font-family:"Open Sans";
+     font-size:15px;
+     margin-top:20px !important;
+   }
+ }
+}

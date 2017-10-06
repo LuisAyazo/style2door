@@ -1,0 +1,21 @@
+page-email-login {
+  ion-content {
+    .log{
+      margin-top: 30px;
+      height: 43px !important;
+      left: 0px  !important;
+    }
+    .forgot-passwd{
+      text-transform: capitalize;
+      font-size: 12px;
+      text-align: center !important;
+    }
+    .regist{
+      text-transform: capitalize;
+      font-size: 13px;
+      // border-left: 1px #b7b9b8 solid !important;
+      height: 15px;
+      text-align: center !important;
+    }
+  }
+}

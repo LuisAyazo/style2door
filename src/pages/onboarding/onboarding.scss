@@ -8,7 +8,9 @@ button.swiper-pagination-bullet{
 }
 page-onboarding {
   justify-content: center !important;
-  background: map-get($colors, color-app) !important;
+  // background: map-get($colors, color-app) !important;
+  // background: map-get($colors, white) !important;
+
   .onbo_img{
 
     display: block;
@@ -18,13 +20,13 @@ page-onboarding {
     height: 100vh;
     // background: url('assets/images/onb_1.png');
     img{
-      width:50vw;
-      height: 50vh;
+      width:65vw;
+      height: 65vh;
 
       position: absolute;
       z-index: 10;
-      top: 25%;
-      left: 25%;
+      top: 15%;
+      left: 18%;
       // border-radius: 50px;
       -webkit-background-size: 100% 100%;           /* Safari 3.0 */
       -moz-background-size: 100% 100%;           /* Gecko 1.9.2 (Firefox 3.6) */
@@ -41,101 +43,67 @@ page-onboarding {
       mask-image: linear-gradient(rgba(255, 0, 161, 0.8) 66%,transparent);
       // -webkit-mask-image: linear-gradient(green 20%, transparent 100%);
     }// img
-    span{
-      color:map-get($colors, white);
-      position: absolute;
-      bottom: 25px;
-      left:50%;
-      transform: translate(-50%, -50%);
-      -webkit-transform: translate(-50%, -50%);
-      font-size: 30px;
-      min-width: 300px !important;
-      max-width: 400px !important;
-      line-height: 25px;
-
-
-    }
 
     /** fin **/
   }
 
-  .onbo_img2-1{
-    width:100vw;
-    height:50vh;
-    position: absolute;
-    top:-0%;
-    -webkit-background-size: 100% 100%;           /* Safari 3.0 */
-    -moz-background-size: 100% 100%;           /* Gecko 1.9.2 (Firefox 3.6) */
-    -o-background-size: 100% 100%;           /* Opera 9.5 */
-    background-size: 100% 100%;
-    background-repeat:no-repeat;
-    z-index: -1;
-
-  }
-
-  .onbo_img2-2{
-    width:100vw;
-    height:50vh;
-    position: absolute;
-    top:100%;
-    -webkit-background-size: 100% 100%;           /* Safari 3.0 */
-    -moz-background-size: 100% 100%;           /* Gecko 1.9.2 (Firefox 3.6) */
-    -o-background-size: 100% 100%;           /* Opera 9.5 */
-    background-size: 100% 100%;
-    background-repeat:no-repeat;
-    z-index: -1;
-  }
 
 h1,h3,h4, .o2, span{
-  font-family: 'Great Vibes';
+  // font-family: 'Great Vibes';
       // font-family: 'Open Sans';
+      // font-family: 'Open Sans Condensed';
+      font-family: 'Noto Serif';
+
+
 }
 
   h1 {
-    color:map-get($colors,white);
-    line-height: 25px;
+    // color:map-get($colors, color-app);
+    color:map-get($colors, white);
+
+    line-height: 30px;
     /***** centrar texto con posicion absolute *****/
     position: absolute;
-    top: 80px;
-    left:50%;
+    top: 27px;
+    left: 50%;
     transform: translate(-50%, -50%);
     -webkit-transform: translate(-50%, -50%);
-    font-size: 35px;
+    font-size: 25px;
     min-width: 300px !important;
     max-width: 400px !important;
+    text-shadow: 1px 1px 1px #9a9a9a;
     /***** fin centrar texto con posicion absolute ***/
-
-
-    // padding: 15px;
-
-    // z-index: 100;
   }
 div{
-  h3{
-    color:map-get($colors, white);
+  h2{
+    // color:map-get($colors, color-app);
     color:map-get($colors, white);
     position: absolute;
-    bottom: 25px;
+    bottom: 45px;
     left:50%;
     transform: translate(-50%, -50%);
     -webkit-transform: translate(-50%, -50%);
-    font-size: 30px;
+    font-size: 22px;
     min-width: 300px !important;
     max-width: 400px !important;
     line-height: 25px;
-
+  }
+  h3{
+    // color:map-get($colors, color-app);
+    color:map-get($colors, white);
+    position: absolute;
+    bottom: 15px;
+    left:50%;
+    transform: translate(-50%, -50%);
+    -webkit-transform: translate(-50%, -50%);
+    font-size: 18px;
+    min-width: 300px !important;
+    max-width: 400px !important;
+    line-height: 25px;
   }
 }
 
-  h4 {
-    color:map-get($colors, color-app);
-    position: relative;
-    top:-70%;
-    font-size: 35px;
-    padding: 20px;
-    // text-align: justify;
-    // z-index: 100;
-  }
+
   .sombra{
     background: map-get($colors, color-app);
     height: 100vh;
@@ -143,16 +111,7 @@ div{
     // opacity: 0.2;
     margin: 0px;
   }
-  .sombra2{
-    background: map-get($colors, color-app-oscuro);
-    height: 150vh;
-    width: 100vw;
-    // opacity: 0.2;
-    position: absolute;
 
-    // z-index: -1;
-     top:-155px;
-  }
 
  .o2{
    color:map-get($colors, color-app);

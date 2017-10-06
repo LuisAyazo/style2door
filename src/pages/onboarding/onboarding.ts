@@ -41,6 +41,7 @@ export class OnboardingPage {
   }
 
   go_login(){
+    window.localStorage.setItem("onboarding_init", 'onboarding_pass'); 
     this.navCtrl.setRoot('LoginPage');
   }
 

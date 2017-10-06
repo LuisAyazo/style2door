@@ -1,4 +1,4 @@
-<ion-content>
+<!-- <ion-content>
   <ion-slides pager (ionSlideDidChange)="slideChanged()" (ionSlideDrag)="slideMoved()">
     <ion-slide>
       <h1>Estilo a la puerta de tu casa</h1>
@@ -13,7 +13,6 @@
     </ion-slide>
     <ion-slide>
       <div class='onbo_img'>
-        <!-- <ion-icon ios="ios-analytics" md="md-analytics" color="primary" [@bounce]='state' (@bounce.done)="animationDone($event)"></ion-icon> -->
         <img src='assets/images/onb_2.1.jpg' [@bounce]='state' (@bounce.done)="animationDone($event)"/>
         <div class='sombra'>
         </div>
@@ -28,6 +27,44 @@
         <div class='sombra'>
         </div>
         <div [@bounce]='state'>
+          <h3>En tan solo 3 simples pasos puedes acceder a nuestra red de talentosos estilistas</h3>
+        </div>
+      </div>
+    </ion-slide>
+  </ion-slides>
+  <button class='btn_empezar' ion-button clear color="white" (click)="go_login()">{{onboadrBtnMsg}}</button>
+</ion-content> -->
+
+
+<ion-content>
+  <ion-slides pager (ionSlideDidChange)="slideChanged()" (ionSlideDrag)="slideMoved()">
+    <ion-slide>
+      <h1>Estilo a la puerta de tu casa</h1>
+      <div class='onbo_img'>
+        <img src='assets/images/onb_1.png'/>
+        <div class='sombra'>
+        </div>
+        <div>
+          <h2>Bienvenidos</h2>
+        </div>
+      </div>
+    </ion-slide>
+    <ion-slide>
+      <div class='onbo_img'>
+        <img src='assets/images/onb_2.1.jpg' />
+        <div class='sombra'>
+        </div>
+        <div >
+          <h3 >La mejor seleccion de estilistas, manicuristas y masajistas de la ciudad</h3>
+        </div>
+      </div>
+    </ion-slide>
+    <ion-slide>
+      <div class='onbo_img'>
+        <img src='assets/images/onb_3.jpg' />
+        <div class='sombra'>
+        </div>
+        <div>
           <h3>En tan solo 3 simples pasos puedes acceder a nuestra red de talentosos estilistas</h3>
         </div>
       </div>

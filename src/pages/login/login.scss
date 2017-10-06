@@ -1,19 +1,34 @@
 page-login {
 
-  .container{
-
+  ion-content{
+      text-align: center !important;
+      .dark{
+        color: #6f6f70 !important;
+        font-size: 12px;
+        text-transform: capitalize;
+        height: 50px !important;
+        
+      }
+      .condiciones{
+        height: 50px !important;
+        margin-top: 10px;
+        margin-bottom: -15px;
+        color: #939693 !important;
+        font-size: 13px;
+        text-transform: capitalize;
+      }
     // .appColor{
     //   color: white;
     // }
     // background: #e643b8 !important;
       // background: map-get($colors, white) !important;
       margin-top: 0px !important;
-      // background: map-get($colors, color-app) !important;
+      background: map-get($colors, white) !important;
 
-      .logo-row-app {
+      ion-row{
             padding-top: 0px !important;
-            margin-top: 0px !important;
-            padding-bottom: 10px;
+            margin-top: 10px !important;
+            padding-bottom: 100px;
             ion-col {
               justify-content: center !important;
               text-align: center !important;
@@ -27,20 +42,20 @@ page-login {
                   // SI SE VA A COLOCAR UNA IMAGEN DE FONDO COMO UN LOGO
                   img{
                       // text-align: right;
-                      margin-top: 20px;
+                      margin-top: 30px;
                       margin-left: 0px;
-                      margin-bottom: 10px;
+                      margin-bottom: 100px;
                       background-image: url('../assets/images/logo-01.png');
                       background-repeat: no-repeat;
                       -webkit-background-size: 100% 100%;           /* Safari 3.0 */
                       -moz-background-size: 100% 100%;           /* Gecko 1.9.2 (Firefox 3.6) */
                       -o-background-size: 100% 100%;           /* Opera 9.5 */
                       background-size: 100% 100%;           /* Gecko 2.0 (Firefox 4.0) and other CSS3-compliant browsers */
-                      width: 80vw;
-                      max-width: 280px;
-                      height: 80px;
+                      width: 100vw;
+                      max-width: 300px;
+                      height: 100px;
                       border: none !important;
-                      border-color: map-get($colors, color-app) !important;
+                      // border-color: map-get($colors, color-app) !important;
                       // margin: none !importan;
                       // padding: none !important;
                       padding:70px;

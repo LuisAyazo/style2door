@@ -1,8 +1,9 @@
 import { Component, ViewChild } from '@angular/core';
-import { Nav, Platform, MenuController } from 'ionic-angular';
+import { Nav, Platform, MenuController, ToastController } from 'ionic-angular';
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import { Facebook } from '@ionic-native/facebook';
+import { AngularFireAuth } from 'angularfire2/auth';
 
 @Component({
   selector: 'menu-app',
@@ -19,21 +20,77 @@ export class MyApp {
 
     pages: Array<{title: string, component: any, description: string, icon: any}>;
 
-  constructor(public platform: Platform, public statusBar: StatusBar, public splashScreen: SplashScreen, public  menu: MenuController, private fb: Facebook) {
+  constructor(
+    public platform: Platform,
+    public statusBar: StatusBar,
+    public splashScreen: SplashScreen,
+    public  menu: MenuController,
+    public toastCtrl: ToastController,
+    private fb: Facebook,
+    private angularFauth:AngularFireAuth
+  ) {
+
+    // this.rootPage = 'TabsHomePage';
+
+    if(window.localStorage.getItem('onboarding_init')){
+        // this.rootPage = 'LoginPage';
+        this.angularFauth.authState.subscribe( data => {
+              // alert("PASAS por a  u QUII");
+              if (data.uid){
+                  console.log(JSON.stringify(data));
+                  // alert(JSON.stringify(data.providerData[0].providerId));
+                  if ( data.providerData[0].providerId == "password" ){
+                      console.log(JSON.stringify("ESTOY EN EL IF"));
+                      if(data && data.email && data.uid){
+                        console.log("PASO APP.COMPONENT.TS" +  JSON.stringify(data));
+                        this.rootPage = 'TabsHomePage';
+                      }
+                      else{
+                        this.rootPage = 'LoginPage';
+                      }
+                  }
+
+                  if ( data.providerData[0].providerId == "facebook.com" ){
+                      // alert("ES DE FACE ==== "+JSON.stringify(data));
+                      this.rootPage = 'TabsHomePage';
+                  }
+                  // else{
+                  //   this.rootPage = 'TabsHomePage';
+                  // }
+              }
+
+        })
+    }else{
+        this.rootPage = 'OnboardingPage';
+    }
+
+
+
+    // this.angularFauth.auth.currentUser.providerData.forEach( profile =>{
+
+
+    //
+    //   this.angularFauth.authState.subscribe(data =>{
+    //   if(data && data.email && data.uid){
+    //     // this.toastCtrl.create({
+    //     //   message: `Bienvenidos a Style2Door, ${data.email}`,
+    //     //   duration: 3000
+    //     // }).present();
+    //     console.log("PASO APP.COMPONENT.TS" +  JSON.stringify(data));
+    //     this.rootPage = 'TabsHomePage';
+    //   }
+    //   else{
+    //     // this.nav.setRoot('LoginPage');
+    //     this.rootPage = 'LoginPage';
+    //     // this.toastCtrl.create({
+    //     //   message: `NO se ha logeado correctamente`,
+    //     //   duration: 3000
+    //     // }).present();
+    //   }
+    // })
+  // })
     // this.menu = menu;
     this.menu.swipeEnable(false);// deshabilita el sidemenu
-
-    if( this.isLoggedIn === true){
-      // this.rootPage = 'LoginPage';
-      // this.rootPage = 'AddPayMentsPage';
-      // this.rootPage = "ProfileSettingsPage";
-      // this.usuario = this.auth.userName();
-      this.rootPage = 'TabsHomePage';
-      console.log("Entrando al home");
-    }else{
-      // this.rootPage = 'OnboardingPage';
-      this.rootPage = 'RegisterPage';
-    }
 
     this.initializeApp();
 
@@ -88,15 +145,29 @@ export class MyApp {
     this.menu.close();//(false);// Quitar automaticamente el sidemenu
   }
 
+  // logout(){
+  //   console.log("Saliendo de la app");
+  //   // this.auth.logout();
+  //   this.menu.close();//(false);// Quitar automaticamente el sidemenu
+  //   this.fb.logout().then( res => this.isLoggedIn = false).catch(e => console.log('Error logout from Facebook', e));
+  //   this.rootPage = "LoginPage";
+
+  //   // this.nav.setRoot('LoginPage');
+  //   // this.menu.swipeEnable(false);// deshabilita el sidemenu
+  // }
+
   logout(){
     console.log("Saliendo de la app");
-    // this.auth.logout();
-    this.menu.close();//(false);// Quitar automaticamente el sidemenu
-    this.fb.logout().then( res => this.isLoggedIn = false).catch(e => console.log('Error logout from Facebook', e));
-    this.rootPage = "LoginPage";
-
-    // this.nav.setRoot('LoginPage');
-    // this.menu.swipeEnable(false);// deshabilita el sidemenu
+    this.angularFauth.auth.signOut().then( result => {
+      this.menu.close();//(false);// Quitar automaticamente el sidemenu
+      this.nav.setRoot("LoginPage");
+      // Sign-out successful.
+      console.log(result)
+    }).catch((error) => {
+      console.log(error);
+      console.error(error);
+      // An error happened.
+    });;
   }
 
 }

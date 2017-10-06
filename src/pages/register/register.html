@@ -8,17 +8,18 @@
 
 <ion-content padding>
   <ion-item>
-      <ion-label floating>Email Address</ion-label>
+      <ion-label floating>Correo Electronico</ion-label>
       <ion-input type="text" [(ngModel)]="user.email"></ion-input>
     </ion-item>
-
     <ion-item>
-      <ion-label floating>Password</ion-label>
+      <ion-label floating>Contraseña</ion-label>
       <ion-input type="password" [(ngModel)]="user.password"></ion-input>
     </ion-item>
+    <!-- <button ion-button (click)="login(user)">Login</button> -->
+    <span class=info>
+      Toca registrarse para recibir una confirmacion por correo electronico de Style2door para poder acceder a la aplicacion.
+    </span>
+    <button ion-button color="color-app" (click)="register(user)">Registrarse</button>
 
-    <button ion-button (click)="login(user)">Login</button>
-    <button ion-button color="light" (click)="register(user)">Register</button>
-
-<ion-label>Terminos y Condiciones</ion-label>
+<button clear class="condiciones" ion-button block (click)='condiciones()'>Terminos y Condiciones</button>
 </ion-content>
