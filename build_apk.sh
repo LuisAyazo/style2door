@@ -6,21 +6,39 @@ export ANDROID_HOME=$ANDROID_HOME
 rm -rf style2door*.apk
 
 # ADD platforms
-#ionic cordova platform add ios
-ionic cordova platform add android
+# ionic cordova platform add ios
+# ionic cordova platform add android
 
 
 # Creando archivo gradle.properties para android
-echo "cdvReleaseSigningPropertiesFile=${ANDROID_HOME}/ant.properties" > platforms/android/gradle.properties
-
+# Archivo ant.properties example
+#
+# storeFile=style2Door.keystore
+# storePassword=beabby
+# keyAlias=style2Door
+# keyPassword=beabby
+#
+# echo "cdvReleaseSigningPropertiesFile=${ANDROID_HOME}/ant.properties" > platforms/android/gradle.properties
 # Construir
-ionic cordova build android --release
+# ionic cordova build android --release
+
+
+# Si no utilizamos gradle realizamos el proceso con un json y al build le colocamos --buildConfig file.json
+# El archivo de gradle.properties no debe existir
+# Construir
+ionic cordova build --buildConfig=properties.json android --release
+
+# eliminar mensaje "jarsigner: unable to sign jar: java.util.zip.ZipException: invalid entry compressed size (expected 23707 but got 24246 bytes)"
+zip -d platforms/android/build/outputs/apk/android-release.apk META-INF/\*
+
+# Firmamos el APK
+jarsigner -verbose -sigalg SHA1withRSA -digestalg SHA1 -keystore style2door.keystore platforms/android/build/outputs/apk/android-release.apk style2door -storepass beabby
 
 # facebook key hash
-keytool -exportcert -alias 1 -keystore /home/luis/Android/Sdk/my-release-key.keystore | openssl sha1 -binary | openssl base64
+keytool -storepasswd -storepass beabby -exportcert -alias style2door -keystore style2door.keystore | openssl sha1 -binary | openssl base64
 
 #obtener huella digital
-#keytool -list -v -keystore /home/luis/Android/Sdk/my-release-key.keystore 
+#keytool -list -v -keystore /home/luis/Android/Sdk/my-release-key.keystore
 
 
 # Verificar

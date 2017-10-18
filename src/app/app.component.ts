@@ -18,7 +18,9 @@ export class MyApp {
   activePage: any;
 
 
-    pages: Array<{title: string, component: any, description: string, icon: any}>;
+
+
+  pages: Array<{title: string, component: any, description: string, icon: any}>;
 
   constructor(
     public platform: Platform,
@@ -32,64 +34,36 @@ export class MyApp {
 
     // this.rootPage = 'TabsHomePage';
 
+
     if(window.localStorage.getItem('onboarding_init')){
         // this.rootPage = 'LoginPage';
         this.angularFauth.authState.subscribe( data => {
               // alert("PASAS por a  u QUII");
-              if (data.uid){
-                  console.log(JSON.stringify(data));
+              // console.log(JSON.stringify(data));
+              if (data){
+                  // console.log(JSON.stringify(data));
                   // alert(JSON.stringify(data.providerData[0].providerId));
                   if ( data.providerData[0].providerId == "password" ){
-                      console.log(JSON.stringify("ESTOY EN EL IF"));
+                      // console.log(JSON.stringify("ESTOY EN EL IF"));
                       if(data && data.email && data.uid){
-                        console.log("PASO APP.COMPONENT.TS" +  JSON.stringify(data));
+                        // console.log("PASO APP.COMPONENT.TS" +  JSON.stringify(data));
                         this.rootPage = 'TabsHomePage';
                       }
-                      else{
-                        this.rootPage = 'LoginPage';
-                      }
                   }
-
                   if ( data.providerData[0].providerId == "facebook.com" ){
                       // alert("ES DE FACE ==== "+JSON.stringify(data));
                       this.rootPage = 'TabsHomePage';
                   }
-                  // else{
-                  //   this.rootPage = 'TabsHomePage';
-                  // }
               }
-
+              else{
+                this.rootPage = 'LoginPage';
+              }
         })
     }else{
         this.rootPage = 'OnboardingPage';
     }
 
 
-
-    // this.angularFauth.auth.currentUser.providerData.forEach( profile =>{
-
-
-    //
-    //   this.angularFauth.authState.subscribe(data =>{
-    //   if(data && data.email && data.uid){
-    //     // this.toastCtrl.create({
-    //     //   message: `Bienvenidos a Style2Door, ${data.email}`,
-    //     //   duration: 3000
-    //     // }).present();
-    //     console.log("PASO APP.COMPONENT.TS" +  JSON.stringify(data));
-    //     this.rootPage = 'TabsHomePage';
-    //   }
-    //   else{
-    //     // this.nav.setRoot('LoginPage');
-    //     this.rootPage = 'LoginPage';
-    //     // this.toastCtrl.create({
-    //     //   message: `NO se ha logeado correctamente`,
-    //     //   duration: 3000
-    //     // }).present();
-    //   }
-    // })
-  // })
-    // this.menu = menu;
     this.menu.swipeEnable(false);// deshabilita el sidemenu
 
     this.initializeApp();
@@ -106,8 +80,8 @@ export class MyApp {
       // { title: 'Gitlab', component: 'HomePage', description: 'Promociones', icon: 'more' },
       // { title: 'Jenkins', component: 'HomePage', description: 'Spa', icon: 'flash' },
 
-      { title: 'Informacion y Soporte', component: 'InformacionSoportePage', description: 'Paquetes para novios', icon: 'information-circle' },
-      { title: 'Paquetes para novias', component: 'QuejasReclamosPage', description: 'Paquetes para novias', icon: 'sad' },
+      // { title: 'Informacion y Soporte', component: 'InformacionSoportePage', description: 'Paquetes para novios', icon: 'information-circle' },
+      // { title: 'Paquetes para novias', component: 'QuejasReclamosPage', description: 'Paquetes para novias', icon: 'sad' },
       { title: 'Informacion y Soporte', component: 'InformacionSoportePage', description: 'Informacion y soporte', icon: 'information-circle' },
       { title: 'Quejas y reclamos', component: 'QuejasReclamosPage', description: 'Quejas y Reclamos', icon: 'sad' }
       // { title: 'Jenkins', component: 'HomePage', description: 'Compartir', icon: 'flash' }
@@ -126,8 +100,12 @@ export class MyApp {
       this.statusBar.styleBlackTranslucent();
       // this.statusBar.backgroundColorByName('black'); supported colors -> black, darkGray, lightGray, white, gray, red, green, blue, cyan, yellow, magenta, orange, purple, brown
       this.statusBar.backgroundColorByHexString("#9a056d");
+
     });
   }
+
+
+
 
   openPage(page) {
     // Reset the content nav to have just this page

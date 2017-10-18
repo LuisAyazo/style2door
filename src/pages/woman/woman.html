@@ -1,20 +1,20 @@
-<ion-header>
+<ion-header no-shadow>
   <ion-navbar color="white">
     <button ion-button menuToggle color="color-app">
       <ion-icon name="menu"></ion-icon>
     </button>
     <ion-title>Mujeres</ion-title>
     <ion-buttons end>
-      <button ion-button icon-only (click)="openModal()" color="color-app">
+      <button ion-button icon-only (tap)="notificationModal()" color="color-app">
         <ion-icon name="notifications"></ion-icon>
       </button>
       <button ion-button icon-only (click)="openModal()" color="color-app">
         <ion-icon name="cart"></ion-icon>
-        <ion-badge>13</ion-badge>
+        <ion-badge *ngIf="count != 0">{{count}}</ion-badge>
       </button>
-      <button ion-button icon-only (click)="openModal()" color="color-app">
+      <!-- <button ion-button icon-only (click)="openModal()" color="color-app">
         <ion-icon name="more"></ion-icon>
-      </button>
+      </button> -->
     </ion-buttons>
   </ion-navbar>
 </ion-header>
@@ -24,10 +24,10 @@
       <ion-list-header>
         Manicure y Pedicure
       </ion-list-header>
-      <ion-slides slidesPerView=2 spaceBetween=10   effect="slide" pager>
+      <ion-slides slidesPerView=3 spaceBetween=10   effect="slide" pager>
       <!-- <ion-slide *ngFor="let item of itemMP ;"> -->
       <!-- Voy a poner algo aqui -->
-      <ion-slide *ngFor="let item of itemMP;">
+      <ion-slide *ngFor="let item of itemMP; let i = index">
         <button full clear ion-button  >
           <!-- <ion-checkbox item-right [(ngModel)]="item.title" (ngModelChange)="textChanged($event)"></ion-checkbox> -->
           <img src="assets/images/manicure/{{ item.title | changespace }}.jpg"/>
@@ -36,7 +36,7 @@
             <p>$ {{item.value}}</p>
           </div>
           <div class="div_check">
-            <ion-checkbox [checked]="item.checked" value="item.title" (ionChange)="datachanged('item.title', $event.checked)"></ion-checkbox>
+            <ion-checkbox [checked]="item.checked"  value="item.title" (ionChange)="datachanged(item.id, item.title, item.value, $event.checked)"></ion-checkbox>
           </div>
           <button class="info_btn" ion-button icon-only clear (click)="detalle('pruebaa')"> <ion-icon name="information-circle"></ion-icon></button>
         </button>
@@ -96,15 +96,4 @@
       <ion-slide class='slide-right'></ion-slide>
     </ion-slides>
   </ion-list>
-
-
-
-
-    <!-- <ion-list no-lines>
-      <button full ion-button (click)="goToPage('ManicurePedicurePage')"><img src="assets/images/manicure/manicure_pedicure.jpg"/><h3>Manicure y Pedicure</h3></button>
-      <button full ion-button (click)="goToPage('PeinadosPage')"><img src="assets/images/peinados/peinados.jpg"/><h3>Peinados</h3></button>
-      <button full ion-button (click)="goToPage('MaquillajePage')"><img src="assets/images/maquillaje/maquillaje3.jpg"/><h3>Maquillaje</h3></button>
-      <button full ion-button><img src="assets/images/depilacion/depilacion.jpg"/><h3>Depilacion</h3></button>
-      <button full ion-button><img src="assets/images/masajes/masajes.jpg"/><h3>Masajes</h3></button>
-    </ion-list> -->
 </ion-content>

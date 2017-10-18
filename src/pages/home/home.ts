@@ -10,6 +10,11 @@ import { AngularFireAuth } from 'angularfire2/auth';
   templateUrl: 'home.html'
   })
 export class HomePage {
+  // 2 definiciones para el splash
+  // splash: boolean = true;
+  // tabBarElement: any;
+
+
   constructor(
     public navCtrl: NavController,
     private fb: Facebook,
@@ -26,7 +31,8 @@ export class HomePage {
   //   console.log("  Email: "+profile.email);
   //   console.log("  Photo URL: "+profile.photoURL);
   // });
-
+    // this.tabBarElement = document.querySelector('.tabbar');
+    // this.sp.pay();
   }
 
   perfilPage(){
@@ -37,23 +43,12 @@ export class HomePage {
     this.navCtrl.push('ExpressServicePage');
   }
 
-  ionViewDidLoad(){
-
-    // this.angularFauth.authState.subscribe(data =>{
-    //   if(data && data.email && data.uid && data.emailVerified==true){
-    //     this.toastCtrl.create({
-    //       message: `Bienvenidos a Style2Door, ${data.email}`,
-    //       duration: 3000
-    //     }).present();
-    //   }
-    //   else{
-    //     this.navCtrl.setRoot('LoginPage');
-    //     // this.toastCtrl.create({
-    //     //   message: `NO se ha logeado correctamente`,
-    //     //   duration: 3000
-    //     // }).present();
-    //   }
-    // })
-  }
+  // ionViewDidLoad(){
+  //   this.tabBarElement.style.display = 'none';
+  //   setTimeout(()=>{
+  //       this.splash = false;
+  //       this.tabBarElement.style.display = 'flex';
+  //     }, 4000);
+  // }
 
 }

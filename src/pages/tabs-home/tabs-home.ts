@@ -18,6 +18,10 @@ export class TabsHomePage {
   man: any = 'ManPage';
   child: any = 'ChildPage';
 
+  // 2 definiciones para el splash
+  splash: boolean = true;
+  // tabBarElement: any;
+
   @Output() notify: EventEmitter<string> = new EventEmitter<string>();
 
   onTab(tabName: string) {
@@ -26,10 +30,15 @@ export class TabsHomePage {
 
 
   constructor(public navCtrl: NavController, public navParams: NavParams) {
+    // this.tabBarElement = document.querySelector('.tabbar');
   }
 
-  ionViewDidLoad() {
-    console.log('ionViewDidLoad TabsHomePage');
-  }
+  // ionViewDidLoad(){
+  //   // this.tabBarElement.style.display = 'none';
+  //   setTimeout(()=>{
+  //       this.splash = false;
+  //       // this.tabBarElement.style.display = 'flex';
+  //     }, 3000);
+  // }
 
 }

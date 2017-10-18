@@ -1,33 +1,132 @@
 <ion-header>
-  <ion-navbar>
-    <button ion-button menuToggle>
+  <ion-navbar color="white">
+    <button ion-button menuToggle color="color-app">
       <ion-icon name="menu"></ion-icon>
     </button>
     <ion-title>Hombres</ion-title>
     <ion-buttons end>
-      <!-- <button ion-button icon-only (click)="perfilPage()">
-        <ion-icon name="person"></ion-icon>
-      </button> -->
-      <button ion-button icon-only (click)="openModal()">
+      <button ion-button icon-only (click)="notificationModal()" color="color-app">
         <ion-icon name="notifications"></ion-icon>
       </button>
-      <button ion-button icon-only (click)="openModal()">
+      <button ion-button icon-only (click)="openModal()" color="color-app">
         <ion-icon name="cart"></ion-icon>
+        <ion-badge>1</ion-badge>
       </button>
-      <button ion-button icon-only (click)="openModal()">
+      <!-- <button ion-button icon-only (click)="openModal()" color="color-app">
         <ion-icon name="more"></ion-icon>
-      </button>
+      </button> -->
     </ion-buttons>
   </ion-navbar>
 </ion-header>
 
-<ion-content>
+<ion-content padding>
   <ion-list no-lines>
-    <button full ion-button (click)="goToPage('PeinadosPage')"><img src="assets/images/peinados/peinados_hombres.jpg"/><h3>Cortes</h3></button>
-    <button full ion-button (click)="goToPage('ManicurePedicurePage')"><img src="assets/images/manicure/manicure_pedicure_hombres.jpg"/><h3>Manicure y Pedicure</h3></button>
-    <!-- <button full ion-button (click)="goToPage('MaquillajePage')"><img src="assets/images/maquillaje/maquillaje3.jpg"/><h3>Maquillaje</h3></button> -->
-    <button full ion-button><img src="assets/images/masajes/masajes_hombres.jpg"/><h3>Masajes</h3></button>
-    <button full ion-button><img src="assets/images/depilacion/depilacion_hombres.jpg"/><h3>Depilacion</h3></button>
+    <button full ion-button (click)="goToPage('PeinadosPage')"><img src="assets/images/peinados/peinados_hombres.jpg"/>
+      <div class="detail_price" text-wrap>
+        <h2>Corte</h2>
+        <h6 >$12.500</h6>
+        <ion-icon color='dark' name="heart-outline"></ion-icon>
+        <button class="add_cart" ion-button color="primary">Quiero Esto</button>
+      </div>
+    </button>
+    <button full ion-button (click)="goToPage('PeinadosPage')"><img src="assets/images/hombre/barba.jpg"/>
+      <div class="detail_price" text-wrap>
+        <h2>Barba</h2>
+        <h6 >$12.500</h6>
+        <ion-icon color='dark' name="heart-outline"></ion-icon>
+        <button class="add_cart" ion-button color="primary">Quiero Esto</button>
+      </div>
+    </button>
+    <button full ion-button (click)="goToPage('PeinadosPage')"><img src="assets/images/hombre/perfilado_barba.jpg"/>
+      <div class="detail_price" text-wrap>
+        <h2>Perfilado de Barba</h2>
+        <h6 >$12.500</h6>
+        <ion-icon color='dark' name="heart-outline"></ion-icon>
+        <button class="add_cart" ion-button color="primary">Quiero Esto</button>
+      </div>
+    </button>
+    <button full ion-button (click)="goToPage('PeinadosPage')"><img src="assets/images/hombre/keratina.jpg"/>
+      <div class="detail_price" text-wrap>
+        <h2>Keratina</h2>
+        <h6 >$12.500</h6>
+        <ion-icon color='dark' name="heart-outline"></ion-icon>
+        <button class="add_cart" ion-button color="primary">Quiero Esto</button>
+      </div>
+    </button>
+    <button full ion-button (click)="goToPage('PeinadosPage')"><img src="assets/images/hombre/depilacion_oidos.jpg"/>
+      <div class="detail_price" text-wrap>
+        <h2>Depilacion de Oidos</h2>
+        <h6 >$12.500</h6>
+        <ion-icon color='dark' name="heart-outline"></ion-icon>
+        <button class="add_cart" ion-button color="primary">Quiero Esto</button>
+      </div>
+    </button>
+    <button full ion-button (click)="goToPage('PeinadosPage')"><img src="assets/images/hombre/depilacion_nariz.jpg"/>
+      <div class="detail_price" text-wrap>
+        <h2>Depilacion de Nariz</h2>
+        <h6 >$12.500</h6>
+        <ion-icon color='dark' name="heart-outline"></ion-icon>
+        <button class="add_cart" ion-button color="primary">Quiero Esto</button>
+      </div>
+    </button>
+    <button full ion-button (click)="goToPage('PeinadosPage')"><img src="assets/images/hombre/depilacion_cejas.jpg"/>
+      <div class="detail_price" text-wrap>
+        <h2>Depilacion de Cejas</h2>
+        <h6 >$12.500</h6>
+        <ion-icon color='dark' name="heart-outline"></ion-icon>
+        <button class="add_cart" ion-button color="primary">Quiero Esto</button>
+      </div>
+    </button>
+    <button full ion-button (click)="goToPage('PeinadosPage')"><img src="assets/images/hombre/ampolleta.jpg"/>
+      <div class="detail_price" text-wrap>
+        <h2>Ampolleta</h2>
+        <h6 >$12.500</h6>
+        <ion-icon color='dark' name="heart-outline"></ion-icon>
+        <button class="add_cart" ion-button color="primary">Quiero Esto</button>
+      </div>
+    </button>
+    <button full ion-button (click)="goToPage('PeinadosPage')"><img src="assets/images/hombre/mascarilla_facial.jpg"/>
+      <div class="detail_price" text-wrap>
+        <h2>Mascarilla Facial</h2>
+        <h6 >$12.500</h6>
+        <ion-icon color='dark' name="heart-outline"></ion-icon>
+        <button class="add_cart" ion-button color="primary">Quiero Esto</button>
+      </div>
+    </button>
+    <button full ion-button (click)="goToPage('PeinadosPage')"><img src="assets/images/hombre/cubrimiento_canas.jpg"/>
+      <div class="detail_price" text-wrap>
+        <h2>Cubrimiento de Canas</h2>
+        <h6 >$12.500</h6>
+        <ion-icon color='dark' name="heart-outline"></ion-icon>
+        <button class="add_cart" ion-button color="primary">Quiero Esto</button>
+      </div>
+    </button>
+    <button full ion-button (click)="goToPage('PeinadosPage')"><img src="assets/images/hombre/base_tintura.jpg"/>
+      <div class="detail_price" text-wrap>
+        <h2>Base y Tintura</h2>
+        <h6 >$12.500</h6>
+        <ion-icon color='dark' name="heart-outline"></ion-icon>
+        <button class="add_cart" ion-button color="primary">Quiero Esto</button>
+      </div>
+    </button>
+    <!-- <button full ion-button (click)="goToPage('ManicurePedicurePage')"><img src="assets/images/manicure/manicure_pedicure_hombres.jpg"/><h2>Barba</h2></button>
+
+    <button full ion-button><img src="assets/images/masajes/masajes_hombres.jpg"/><h2>Perfilado de Barba</h2><h6>$ 12.500</h6></button>
+    <button full ion-button><img src="assets/images/depilacion/depilacion_hombres.jpg"/><h2>Keratina</h2></button>
+    <button full ion-button>
+      <img src="assets/images/depilacion/depilacion_hombres.jpg"/>
+      <div clas="detail_price">
+        <h2>Depilacion de Oidos Depilacion de Oidos</h2>
+        <h6>$12.500</h6>
+      </div>
+    </button>
+    <button full ion-button><img src="assets/images/depilacion/depilacion_hombres.jpg"/><h2>Depilacion de Nariz</h2></button>
+    <button full ion-button><img src="assets/images/depilacion/depilacion_hombres.jpg"/><h2>Depilacion de Cejas</h2></button>
+    <button full ion-button><img src="assets/images/depilacion/depilacion_hombres.jpg"/><h2>Ampolleta</h2></button>
+    <button full ion-button><img src="assets/images/depilacion/depilacion_hombres.jpg"/><h2>Mascarilla Cacial</h2></button>
+    <button full ion-button><img src="assets/images/depilacion/depilacion_hombres.jpg"/><h2>Cubrimiento de Cañas</h2></button>
+    <button full ion-button><img src="assets/images/depilacion/depilacion_hombres.jpg"/><h2>Base y Tintura</h2></button> -->
   </ion-list>
+
 
 </ion-content>

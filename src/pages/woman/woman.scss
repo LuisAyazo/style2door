@@ -12,10 +12,12 @@ page-woman {
             ion-buttons{
                 color: map-get($colors, color-app) !important;
                 ion-badge{
-                    background: white !important;
-                    color: map-get($colors, danger) !important;
-                    margin-left:-10px !important;
-                    margin-top: 15px !important;
+                  background: #e43030 !important;
+                  color: map-get($colors, white) !important;
+                  margin-left:-10px !important;
+                  margin-top: -20px !important;
+                  border-radius: 50% !important;
+                  padding: 3px 6px !important;
                 }
             }
         }

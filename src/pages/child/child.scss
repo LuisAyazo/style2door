@@ -1,3 +1,95 @@
-page-child {
+.toolbar-title-md {
+    color: map-get($colors, color-app) !important;
 
+
+}
+
+
+page-child {
+    .segment-md .segment-button.activated, .segment-md .segment-button.segment-activated {
+        border-color: map-get($colors, color-app-oscuro) !important;
+    }
+
+    .segment-md .segment-button {
+        color: map-get($colors, color-app) !important;
+    }
+    ion-header{
+        ion-navbar{
+            ion-title{
+                // color: color-contrast($colors, white) !important;
+            }
+            ion-buttons{
+                color: map-get($colors, color-app) !important;
+                ion-badge{
+                    background: #e43030 !important;
+                    color: map-get($colors, white) !important;
+                    margin-left:-10px !important;
+                    margin-top: -20px !important;
+                    border-radius: 50% !important;
+                    padding: 3px 6px !important;
+                }
+            }
+        }
+    }
+    ion-content{
+      .add_cart{
+          height: 42px !important;
+          background-color: #4381eb !important;
+          text-transform: capitalize !important;
+      }
+      ion-list{
+            margin: 0px !important;
+            button{
+                  justify-content: flex-end;
+                  text-align: left !important;
+                  height: 10em !important;
+                  margin-bottom:10px !important;
+                  background: white !important;
+                  img{
+                    position: absolute;
+                    left:0px !important;
+                    z-index: -10;
+                    -webkit-background-size: 100% 100%;           /* Safari 3.0 */
+                    -moz-background-size: 100% 100%;           /* Gecko 1.9.2 (Firefox 3.6) */
+                    -o-background-size: 100% 100%;           /* Opera 9.5 */
+                    background-size: 100% 100%;
+                    width:60vw;
+                    height: 10em;
+                  }
+                  .detail_price{
+                      width:35%;
+                      text-align: center;
+                      position: absolute;
+                      right: 0px;
+                      display: block;
+                      float:right;
+
+
+                              h2{
+                                //   font-family: 'Great Vibes';
+                                top:15px;
+                                font-family: 'Noto Serif';
+                                // max-width: 100px;
+                                color: black;
+                                // text-shadow: 1px 1px 2px black;
+                                // font-family: 'Open Sans';
+                                text-transform: capitalize;
+                                font-size: 16px;
+                                //   color: black;
+                                //   position: relative;
+                                //   top: -30px;
+                                //   color: map-get($colors, color-app);
+                                font-weight: bold;
+                                // padding-right:5px ;
+                                // padding-left:4px ;
+                              }
+                              h6{
+                                  margin-top: -6px;
+                                  color: #cd3131;
+                              }
+                  }
+
+            }
+      }
+    }
 }

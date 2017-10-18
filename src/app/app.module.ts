@@ -1,5 +1,5 @@
 import { BrowserModule } from '@angular/platform-browser';
-import { ErrorHandler, NgModule } from '@angular/core';
+import { ErrorHandler, NgModule, enableProdMode } from '@angular/core';
 import { IonicApp, IonicErrorHandler, IonicModule } from 'ionic-angular';
 import { HttpModule } from '@angular/http';
 import { MyApp } from './app.component';
@@ -10,6 +10,7 @@ import { SplashScreen } from '@ionic-native/splash-screen';
 import { Facebook } from '@ionic-native/facebook';
 import { NativeStorage } from '@ionic-native/native-storage';
 import { AuthServiceProvider } from '../providers/auth-service/auth-service';
+
 
 // Pipes
 import { PipesModule } from '../pipes/changespace/pipes.module';
@@ -27,19 +28,21 @@ import { GoogleMaps } from '@ionic-native/google-maps';
 // import * as firebase from 'firebase';
 import { AngularFireModule } from 'angularfire2';
 import { AngularFireAuthModule } from 'angularfire2/auth';
-import { AngularFireDatabase, AngularFireDatabaseModule } from 'angularfire2/database';
+import { AngularFireDatabaseModule } from 'angularfire2/database';
 import { FIREBASE_CONFIG } from './app.firebase.config';
 
+// Activar modo produccion
+// enableProdMode();
 @NgModule({
   declarations: [
     MyApp,
   ],
   imports: [
-    BrowserModule,HttpModule,
+    BrowserModule,
+    HttpModule,
     PipesModule,
     IonicModule.forRoot(MyApp,{tabsPlacement: 'bottom',tabsHideOnSubPages: true, swipeBackEnabled: true}),
     BrowserAnimationsModule,
-    // firebase.initializeApp,
     AngularFireModule.initializeApp(FIREBASE_CONFIG.firebase),
     AngularFireAuthModule,
     AngularFireDatabaseModule
@@ -57,7 +60,6 @@ import { FIREBASE_CONFIG } from './app.firebase.config';
     AuthServiceProvider,
     Geolocation,
     GoogleMaps,
-    AngularFireDatabase
 
   ]
 })

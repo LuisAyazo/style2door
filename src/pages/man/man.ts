@@ -1,12 +1,7 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, ModalController } from 'ionic-angular';
 
-/**
- * Generated class for the ManPage page.
- *
- * See http://ionicframework.com/docs/components/#navigation for more info
- * on Ionic pages and navigation.
- */
+
 @IonicPage()
 @Component({
   selector: 'page-man',
@@ -14,7 +9,11 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 })
 export class ManPage {
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+  constructor(
+    public navCtrl: NavController,
+    public navParams: NavParams,
+    public modalCtrl: ModalController
+  ) {
   }
 
   ionViewDidLoad() {
@@ -24,5 +23,11 @@ export class ManPage {
   perfilPage(){
     this.navCtrl.push('PerfilPage');
   }
+
+  notificationModal() {
+   let contactModal = this.modalCtrl.create("NotificationsPage");
+   contactModal.present();
+ }
+
 
 }

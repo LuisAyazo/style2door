@@ -1,5 +1,5 @@
 export const FIREBASE_CONFIG = {
-production: true,
+production: false,
 firebase: {
     apiKey: "AIzaSyCzLIN_FaTun47akB9foEJLoiAhGUu9JwM",
     authDomain: "style2door-180721.firebaseapp.com",

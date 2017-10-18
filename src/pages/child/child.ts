@@ -13,7 +13,7 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
   templateUrl: 'child.html',
 })
 export class ChildPage {
-
+package: string = "novios";
   constructor(public navCtrl: NavController, public navParams: NavParams) {
   }
 

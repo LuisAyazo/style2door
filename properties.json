@@ -1,0 +1,18 @@
+{
+    "android": {
+        "debug": {
+            "keystore": "style2door-debug.keystore",
+            "storePassword": "beabby",
+            "alias": "style2door",
+            "password" : "beabby",
+            "keystoreType": ""
+        },
+        "release": {
+            "keystore": "style2door.keystore",
+            "storePassword": "beabby",
+            "alias": "style2door",
+            "password" : "beabby",
+            "keystoreType": ""
+        }
+    }
+}

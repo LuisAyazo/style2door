@@ -22,10 +22,14 @@ export class PerfilPage {
 
   fbAll: any;
   profile: any;
-  constructor(public navCtrl: NavController, public navParams: NavParams, private auth:AuthServiceProvider) {
-    this.fbAll = this.auth.facebookProfileInfo();
-    this.profile = JSON.parse(this.fbAll);
-    console.log(this.profile.picture);
+  constructor(
+    public navCtrl: NavController,
+    public navParams: NavParams,
+    private auth:AuthServiceProvider
+  ) {
+    // this.fbAll = this.auth.facebookProfileInfo();
+    // this.profile = JSON.parse(this.fbAll);
+    // console.log(this.profile.picture);
   }
 
   ionViewDidLoad() {
