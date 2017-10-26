@@ -1,0 +1,63 @@
+page-cart {
+  .segment-md .segment-button.activated, .segment-md .segment-button.segment-activated{
+    border-color: #636362 !important;
+    // border-color: map-get($colors, color-app) !important;
+
+  }
+
+  ion-segment-button{
+    color: #636362 !important;
+  }
+
+  ion-card {
+    height: 110px;
+    ion-card-content{
+      padding: 0 !important;
+      h2{
+        position: absolute;
+        top:20px;
+      }
+      p.price_color{
+        position: absolute;
+        top:40px;
+        color:rgba(193, 29, 29, 0.77) !important;
+      }
+      .personCount{
+        height: 50px;
+        p{
+          position: absolute;
+          top: 40%;
+          right: 15px;
+        }
+        float: right;
+        span.peopleNumber{
+          position: relative;
+          top: 40px;
+        }
+        .lessPeople{
+          position: absolute;
+          bottom: 5px;
+          right: 40px;
+        }
+        .morePeople{
+          position: absolute;
+          top: 5px;
+          right: 40px;
+        }
+        button{
+        //
+        //   // color: map-get($colors, color-app) !important;
+          color: #adadad !important;
+        //   // background: #adadad !important;
+        //   // border-radius: 30% !important;
+        //   padding: 3px;
+        //   // position: relative;
+        //   // top:15px;
+        }
+      }
+    }
+  }
+}
+
+
+// 504 5572 51-74

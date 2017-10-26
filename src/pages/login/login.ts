@@ -3,7 +3,7 @@ import { IonicPage, NavController, NavParams, MenuController, AlertController, T
 // import { Http, Response } from '@angular/http';
 // provider
 import { AuthServiceProvider } from '../../providers/auth-service/auth-service';
-import { NativeStorage } from '@ionic-native/native-storage';
+// import { NativeStorage } from '@ionic-native/native-storage';
 import { Facebook, FacebookLoginResponse } from '@ionic-native/facebook';
 
 import firebase from 'firebase';
@@ -36,7 +36,7 @@ export class LoginPage {
     public  menu: MenuController,
     public fb: Facebook,
     public alertCtrl: AlertController,
-    private nativeStorage: NativeStorage,
+    // private nativeStorage: NativeStorage,
     public toastCtrl: ToastController,
     public loadingCtrl: LoadingController,
     private angularFauth:AngularFireAuth

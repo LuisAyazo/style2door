@@ -15,15 +15,15 @@ export class HomePage {
   // tabBarElement: any;
 
 
-  constructor(
-    public navCtrl: NavController,
-    private fb: Facebook,
-    public alertCtrl: AlertController,
-    private nativeStorage: NativeStorage,
-    public toastCtrl: ToastController,
-    public modalCtrl:ModalController,
-    private angularFauth:AngularFireAuth
-  ) {
+  // constructor(
+    // public navCtrl: NavController,
+    // private fb: Facebook,
+    // public alertCtrl: AlertController,
+    // // private nativeStorage: NativeStorage,
+    // public toastCtrl: ToastController,
+    // public modalCtrl:ModalController,
+    // private angularFauth:AngularFireAuth
+  // ) {
   //   this.angularFauth.auth.currentUser.providerData.forEach(function (profile) {
   //   console.log("Sign-in provider: "+profile.providerId);
   //   console.log("  Provider-specific UID: "+profile.uid);
@@ -33,15 +33,15 @@ export class HomePage {
   // });
     // this.tabBarElement = document.querySelector('.tabbar');
     // this.sp.pay();
-  }
+  // }
 
-  perfilPage(){
-    this.navCtrl.push('PerfilPage');
-  }
-
-  expressService(){
-    this.navCtrl.push('ExpressServicePage');
-  }
+  // perfilPage(){
+  //   this.navCtrl.push('PerfilPage');
+  // }
+  //
+  // expressService(){
+  //   this.navCtrl.push('ExpressServicePage');
+  // }
 
   // ionViewDidLoad(){
   //   this.tabBarElement.style.display = 'none';

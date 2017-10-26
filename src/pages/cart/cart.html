@@ -1,0 +1,77 @@
+<!-- <ion-header [elasticHeader]="myContent" no-border> -->
+<ion-header no-border>
+
+  <ion-navbar color="white">
+<ion-buttons left>
+    <button ion-button icon-only navPop color='color-app' clear>
+      <!-- <span ion-text color="blanco" showWhen="ios,android, windows">Cancelar</span> -->
+      <ion-icon name='md-arrow-round-back'></ion-icon>
+    </button>
+</ion-buttons>
+    <ion-title>Style2Door</ion-title>
+    <ion-buttons right >
+      <button ion-button icon-only (tap)="notificationModal()" color="color-app">
+        <ion-icon name="notifications"></ion-icon>
+      </button>
+      <button ion-button icon-only (tap)="cartShoppingModal()" color="color-app">
+        <ion-icon name="cart"></ion-icon>
+        <ion-badge *ngIf="count != 0">{{count}}</ion-badge>
+      </button>
+    </ion-buttons>
+  </ion-navbar>
+</ion-header>
+
+<!-- <ion-content fullscreen #myContent padding> -->
+
+<ion-content>
+<div>
+  <ion-segment [(ngModel)]="checkout">
+    <ion-segment-button value="currentOrder">
+      Orden Actual
+    </ion-segment-button>
+    <ion-segment-button value="history">
+      Historial
+    </ion-segment-button>
+  </ion-segment>
+</div>
+
+<div [ngSwitch]="checkout">
+  <ion-list *ngSwitchCase="'currentOrder'">
+    <ion-card *ngFor="let itemCart of article; let i = index">
+      <ion-card-content>
+        <ion-item>
+          <ion-thumbnail item-start>
+            <img src="assets/images/avatares/avatar2.jpg">
+          </ion-thumbnail>
+          <h2>{{itemCart.nombre}}</h2>
+          <p class="price_color">${{itemCart.precio}}</p>
+          <div class="personCount">
+            <button class="lessPeople" ion-button icon-only clear (tap)="removePeople(itemCart,i)"><ion-icon name="md-remove"></ion-icon></button>
+            <p>{{itemCart.cantidad}} Persona(s)</p>
+            <!-- <span class="peopleNumber">{{itemCart.cantidad}}</span> -->
+            <button class="morePeople" ion-button icon-only clear (tap)="addPeople(itemCart,i)"><ion-icon name="md-add"></ion-icon></button>
+        </div>
+        </ion-item>
+      </ion-card-content>
+    </ion-card>
+  </ion-list>
+
+
+<!--  HISTORY OF ORDERS-->
+  <ion-list *ngSwitchCase="'history'">
+    <ion-item>
+      <ion-thumbnail item-start>
+        <img src="img/thumbnail-kitten-1.jpg">
+      </ion-thumbnail>
+      <h2>Luna</h2>
+    </ion-item>
+  </ion-list>
+</div>
+</ion-content>
+
+<ion-footer>
+  <ion-toolbar>
+    <ion-title>Total</ion-title>
+    <h6>check out!</h6>
+  </ion-toolbar>
+</ion-footer>

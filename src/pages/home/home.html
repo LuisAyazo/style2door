@@ -7,7 +7,7 @@
   </div>
 </div> -->
 
-<ion-header no-shadow no-border> 
+<ion-header no-shadow no-border>
   <ion-navbar color='white'>
     <button ion-button menuToggle>
       <ion-icon name="menu" color="color-app"></ion-icon>
@@ -26,7 +26,7 @@
       <!-- <button ion-button icon-only (click)="openModal()">
         <ion-icon name="more" color="color-app"></ion-icon>
       </button> -->
-      <button ion-button clear icon-only (click)="perfilPage()">
+      <button ion-button clear icon-only navPush="PerfilPage">
         <ion-item>
         <ion-avatar item-end>
           <img src="assets/images/avatares/mifoto.jpg">
@@ -42,7 +42,7 @@
   <ion-grid>
     <ion-row align-items-start>
       <ion-col>
-        <button ion-button block outline color='color-app' (click)="expressService()">
+        <button ion-button block outline color='color-app' navPush="ExpressServicePage">
           <i class="fa fa-map-marker fa-2x color-app" aria-hidden="true"></i>
           Solicitar servicio express!
         </button>
@@ -51,7 +51,7 @@
 
     <ion-row align-items-start>
       <ion-col>
-        <button ion-button block outline color='color-app' (click)="perfilPage()">
+        <button ion-button block outline color='color-app' navPush="PerfilPage">
           <i class="fa fa-calendar fa-2x color-app" aria-hidden="true"></i>
           Programar servicio
         </button>

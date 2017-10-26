@@ -1,10 +1,13 @@
-import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams, ModalController } from 'ionic-angular';
-import { AngularFireDatabase, AngularFireList } from 'angularfire2/database';
+import { Component, ViewChild, OnInit } from '@angular/core';
+import { IonicPage, NavController, NavParams, ModalController, Slides } from 'ionic-angular';
+import { AngularFireDatabase  } from 'angularfire2/database';
 import { AngularFireAuth } from 'angularfire2/auth';
 import * as firebase from 'firebase/app';
 import { ShoppingItem } from '../../models/shopping-item/shopping-item.interface';
+import { Item } from '../../models/item/item.model';
 
+import { AngularFirestore, AngularFirestoreCollection } from 'angularfire2/firestore';
+import { Observable } from 'rxjs/Observable';
 
 @IonicPage()
 @Component({
@@ -12,112 +15,196 @@ import { ShoppingItem } from '../../models/shopping-item/shopping-item.interface
   templateUrl: 'woman.html',
 })
 export class WomanPage {
+  @ViewChild(Slides) slides: Slides;
+
+  //firestore
+  private itemsCollection: AngularFirestoreCollection<any>;
+  items: any;
+
+
+  public loader;
   chk_service: boolean;
   redirectPage:any;
   obj_buy: any[] = []; // Definir e inicializar array en blanco
   data: any;
-  count:number = 0;
-  fb_data:any = [];
-  itemMP: Array<{id: any, title: string, checked: any, description: string, value: any}>;
+  count: number;
+  fb_data: any = [];
+  itemMP: any;
+  itemCheckedFromFirebase: any;
+  // item: Item = {
+  //   name: '',
+  //   quantity: 0,
+  //   price: 0
+  // }
+
+  // itemMP: Array<{id: any, title: string, checked: any, description: string, value: any}>;
   private userId;
-  shoppingListRef$: AngularFireList<ShoppingItem[]>;
+  // shoppingListRef$: AngularFireList<ShoppingItem[]>;
 
 
   constructor(
     public navCtrl: NavController,
+    // public loadingCtrl: LoadingController,
     public navParams: NavParams,
     public modalCtrl: ModalController,
     private database: AngularFireDatabase,
-    private angularFauth:AngularFireAuth
+    private angularFauth:AngularFireAuth,
+    private readonly angularFirestore: AngularFirestore
   ) {
 
-    this.userId = this.angularFauth.auth.currentUser.uid;
-    this.itemMP = [
-      { id:1, title: 'Manicure', checked: false, description: 'Esmaltes de alta duración con brillos de última tecnología que hacen tu manicure mucho más duradero', value: '14.500'},
-      { id:2, title: 'Pedicure', checked: false, description: 'Esmaltes de alta duración con brillos de última tecnología que hacen tu manicure mucho más duradero', value: '17.800' },
-      { id:3, title: 'Remocion semi permanente', checked: false, description: 'Esmaltes de alta duración con brillos de última tecnología que hacen tu manicure mucho más duradero', value: '10.000' },
-      { id:4, title: 'Manicure semi permanente', checked: false, description: 'Esmaltes de alta duración con brillos de última tecnología que hacen tu manicure mucho más duradero', value: '12.600' },
-      { id:5, title: 'Pedicure semi permanente', checked: false, description: 'Esmaltes de alta duración con brillos de última tecnología que hacen tu manicure mucho más duradero', value: '11.000' },
-      { id:6, title: 'Cambio de manos y pies', checked: false, description: 'Esmaltes de alta duración con brillos de última tecnología que hacen tu manicure mucho más duradero', value: '35.000' }
-    ];
+    this.angularFauth.authState.subscribe( data => {
+      // conso
+        if(data.uid){
+          this.angularFirestore.collection('users' ).doc(`${data.uid}`).collection('shopping_list_temp').valueChanges().subscribe(
+            data => {
+              console.log(data.length);
+              this.itemCheckedFromFirebase = data;
+              this.count = data.length;
+              // console.log(data);
+              // for (var entry of data) {
+              //     console.log(entry.checked); // 1, "string", false
+              // }
+            }
+          )
+        }
+    });
+  }
 
-    this.shoppingListRef$ = this.database.list('shopping-list-temp');
-    // this.shoppingListRef$.subscribe( dta =>{
-    //   console.log(dta);
-    // });
+  ngOnInit() {
 
+      this.itemsCollection = this.angularFirestore.collection<any>('servicios/mujeres/manicure-pedicure');
+      this.itemsCollection.valueChanges().subscribe(
+        (data) =>
+        {
+          this.items = data;
+          // console.log(data);
 
-    // this.database.list('shopping-list-temp').subscribe( (data) =>{
-    //   this.fb_data = data;
-    //   console.log(this.fb_data);
-    //   // id: 1;
-    //   // title: "perro";
-    //   // checked: true;
-    //   // description: "allakskasdkka";
-    //   // value: 45210;
-    // });
-
-    // Mantener el check en los productos
-    var dataGuardada:any = localStorage.getItem("userDataBuy");
-    if ( dataGuardada === null) {
-
-      console.log("NO esta el userData");
-      this.data = {
-        "wrk": "", "checked": "false"
-      };
-    }else{
-      this.count = JSON.parse(dataGuardada).length;
-      var dataGuardada = JSON.parse(dataGuardada);
-
-
-    }
+        }
+      // ,
+      //   (error) =>
+      //   console.log(error)
+      );
 
 
   }
 
 
-  // Agregar elementos al carrito
-  addItem(id, item, value, e){
 
-    console.log(this.userId);
-    this.obj_buy.push({
-        id: id,
-        title: item,
-        price: value,
-        checked: e
-    });
+
+  ngAfterViewInit() {
+      this.slides.freeMode = true;
+  }
+
+  // carrito de compra
+  cartShoppingModal(){
+    let modal = this.modalCtrl.create("CartPage");
+    modal.present();
+  }
+
+  // Agregar elementos al carrito
+  addItem(item, e){
+
+    // console.log(this.userId);
+    let item_to_send = {
+        id: item.id,
+        nombre: item.nombre,
+        precio: item.precio,
+        checked: e,
+        cantidad: 1
+    };
+
+    this.obj_buy.push(item_to_send);
 
     // localStorage.setItem('userDataBuy', this.data);
     // console.log(this.obj_buy);
-    const shopping = JSON.stringify(this.obj_buy);
+    // const shopping_list_temp = this.obj_buy;
     // localStorage.setItem('userDataBuy', shopping_list_temp);
-    console.log('--'+shopping);
+    // console.log('--'+shopping_list_temp);
 
-    firebase.database().ref('shopping-list-temp/' + this.userId).set({
-      shopping
+    this.angularFauth.authState.subscribe( data => {
+      // conso
+        if(data.uid){
+          // firebase.database().ref('users/' + data.uid).set({
+          //   shopping_list_temp
+          // });
+
+          this.angularFirestore.collection('users' ).doc(`${data.uid}`).collection('shopping_list_temp').doc(item.nombre).set(item_to_send);
+          this.angularFirestore.collection('users' ).doc(`${data.uid}`).collection('shopping_list_temp').valueChanges();
+          // .subscribe(
+          //   data => {
+          //     console.log(data.length);
+          //     this.count = data.length;
+          //   }
+          // )
+
+          // this.angularFirestore.collection('users' ).doc(`${data.uid}`).collection('shopping_list_temp').doc(item.nombre).update({
+          //     "checked": true,
+          // })
+          // .then(function() {
+          //     console.log("Document successfully updated!");
+          // });
+
+
+        }
     });
 
 
   }
 
     // Eliminar elementos al carrito
-  removeItem(id){
-    console.log("Longitud: "+this.obj_buy.length)
+  removeItem(item){
+    // console.log("Longitud: "+this.obj_buy.length)
     // console.log("BBJEE "+this.obj_buy[0].id);
-    for(let i = 0; i < this.obj_buy.length; i++) {
-        if(this.obj_buy[i].id == id){
-            this.obj_buy.splice(i, 1);
-        }
-    }
+    // for(let i = 0; i < this.obj_buy.length; i++) {
+    //     if(this.obj_buy[i].id == item.id){
+    //         this.obj_buy.splice(i, 1);
+    //     }
+    // }
 
-    const shopping = JSON.stringify(this.obj_buy);
+    // const shopping_list_temp = this.obj_buy;
     // localStorage.setItem('userDataBuy', newa);
-    console.log('--'+shopping);
-    console.log(this.obj_buy);
+    // console.log('--'+shopping);
+    // console.log(this.obj_buy);
+    this.angularFauth.authState.subscribe( data => {
+      // conso
+        if(data.uid){
+          this.angularFirestore.collection('users' ).doc(`${data.uid}`).collection('shopping_list_temp').doc(item.nombre).delete().then(function() {
+              console.log("Document successfully deleted!");
+          }).catch(function(error) {
+              console.error("Error removing document: ", error);
+          });
 
-    firebase.database().ref('shopping-list-temp/' + this.userId).set({
-      shopping
+          // this.angularFirestore.collection('users' ).doc(`${data.uid}`).collection('shopping_list_temp').valueChanges().subscribe(
+          //   data => {
+          //     console.log(data.length);
+          //
+          //     this.count = data.length;
+          //
+          //   }
+          // )
+
+          // this.angularFirestore.collection('servicios' ).doc(`${data.uid}`).collection('shopping_list_temp').doc(item.nombre).update({
+          //     "checked": false,
+          // })
+          // .then(function() {
+          //     console.log("Document successfully updated!");
+          // });
+
+          // AL parecer es para eliminar doc con sacando el id --- falta agregar la parte del borrado
+          // this.itemsCollection = this.angularFirestore.collection<any>('user').doc(`${data.uid}`).collection('shopping_list_temp');
+          //   this.itemsCollection.snapshotChanges().map(actions => {
+          //     return actions.map(a => {
+          //       const data = a.payload.doc.data();
+          //       const id = a.payload.doc.id;
+          //       // return { id, ...data };
+          //       console.log(id,data);
+          //     });
+          //   })
+
+        }
+
     });
+
 
   }
 
@@ -126,69 +213,32 @@ export class WomanPage {
    contactModal.present();
   }
 
-  perfilPage(){
-    this.navCtrl.push('PerfilPage');
-  }
+  // perfilPage(){
+  //   this.navCtrl.push('PerfilPage');
+  // }
 
-  goToPage(page){
-    this.redirectPage = page;
-    this.navCtrl.push(this.redirectPage);
-  }
+  // goToPage(page){
+  //   this.redirectPage = page;
+  //   this.navCtrl.push(this.redirectPage);
+  // }
 
 
-  datachanged(id:number, item: any, value:any, e: any){
-    console.log('ID:  '+ id);
-    console.log('Valor del item '+ item);
+  datachanged(item:any, e: any){
+    console.log('ID:  '+ item.id);
+    console.log('Valor del item '+ item.nombre);
     console.log('Valor del estado '+ e);
 
     if (e == true){
-      this.addItem(id, item, value, e);
-      this.count = this.obj_buy.length;
+      this.addItem(item, e);
+      // this.count = this.obj_buy.length;
 
     }else{
-      this.removeItem(id);
-      this.count = this.obj_buy.length;
+      this.removeItem(item);
+      // this.count = this.obj_buy.length;
       // this.count =1;
     }
-    console.log(this.count);
+    // console.log(this.count);
 
-    // if ( dataGuardada === null) {
-    // console.log("NO esta el userData");
-    //
-    //
-  // this.data ={"wrk": item, "checked": e};
-    // }
-  // localStorage.setItem('userData', JSON.stringify(this.data));
-  // if ( dataGuardada != null) {
-  // var dataGuardada = JSON.parse(dataGuardada);
-  //
-  //   console.log('este es el valor de la data: '+dataGuardada.checked);
-  //   console.log("si existe");
-
-
-  //   this.data = {
-  //     "wrk": dataGuardada.wrk, "checked": dataGuardada.checked
-  //   };
-  //
-  //   console.log('Esto es dentro del if no null '+this.data.checked);
-  // }
-  //
-  // var count = Object.keys(this.data.checked).length;
-  // console.log(count);
-  //
-  // console.log("-------> "+count);
-
-
-    // this.data = {
-    //   "wrk": item, "checked": e
-    // };
-
-    // console.log(JSON.stringify(this.data));
-
-  // return this.data
-
-
-    // console.log(e);
   }
 
 

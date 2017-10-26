@@ -1,7 +1,7 @@
 export interface ShoppingItem {
-    id: number;
+    id?: number;
     title: string;
     checked: boolean;
     description: string;
-    value: string;
+    price: string;
 }

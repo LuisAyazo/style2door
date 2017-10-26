@@ -26,8 +26,8 @@ rm -rf style2door*.apk
 # Si no utilizamos gradle realizamos el proceso con un json y al build le colocamos --buildConfig file.json
 # El archivo de gradle.properties no debe existir
 # Construir
-ionic cordova build --buildConfig=properties.json android --release
-
+#ionic cordova build --buildConfig=properties.json android --release
+ionic cordova build --buildConfig=properties.json android --minifyjs --minifycss --optimizejs --release
 # eliminar mensaje "jarsigner: unable to sign jar: java.util.zip.ZipException: invalid entry compressed size (expected 23707 but got 24246 bytes)"
 zip -d platforms/android/build/outputs/apk/android-release.apk META-INF/\*
 

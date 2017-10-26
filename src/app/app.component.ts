@@ -5,6 +5,7 @@ import { SplashScreen } from '@ionic-native/splash-screen';
 import { Facebook } from '@ionic-native/facebook';
 import { AngularFireAuth } from 'angularfire2/auth';
 
+
 @Component({
   selector: 'menu-app',
   templateUrl: 'app.html'
@@ -17,9 +18,6 @@ export class MyApp {
   isLoggedIn: boolean = false;
   activePage: any;
 
-
-
-
   pages: Array<{title: string, component: any, description: string, icon: any}>;
 
   constructor(
@@ -29,7 +27,8 @@ export class MyApp {
     public  menu: MenuController,
     public toastCtrl: ToastController,
     private fb: Facebook,
-    private angularFauth:AngularFireAuth
+    private angularFauth:AngularFireAuth,
+
   ) {
 
     // this.rootPage = 'TabsHomePage';
@@ -63,8 +62,8 @@ export class MyApp {
         this.rootPage = 'OnboardingPage';
     }
 
-
-    this.menu.swipeEnable(false);// deshabilita el sidemenu
+    // this.rootPage = 'CartPage';
+    // this.menu.swipeEnable(false);// deshabilita el sidemenu
 
     this.initializeApp();
 
@@ -96,10 +95,11 @@ export class MyApp {
       // Here you can do any higher level native things you might need.
       // this.statusBar.styleDefault();
       // this.splashScreen.hide();
-      this.statusBar.overlaysWebView(false);
-      this.statusBar.styleBlackTranslucent();
+      // this.statusBar.overlaysWebView(false);
+      // this.statusBar.styleBlackTranslucent();
       // this.statusBar.backgroundColorByName('black'); supported colors -> black, darkGray, lightGray, white, gray, red, green, blue, cyan, yellow, magenta, orange, purple, brown
       this.statusBar.backgroundColorByHexString("#9a056d");
+      this.splashScreen.hide();
 
     });
   }
@@ -118,32 +118,17 @@ export class MyApp {
     return page == this.activePage;
   }
 
-  perfilPage(){
-    this.nav.setRoot("PerfilPage");
-    this.menu.close();//(false);// Quitar automaticamente el sidemenu
-  }
-
-  // logout(){
-  //   console.log("Saliendo de la app");
-  //   // this.auth.logout();
-  //   this.menu.close();//(false);// Quitar automaticamente el sidemenu
-  //   this.fb.logout().then( res => this.isLoggedIn = false).catch(e => console.log('Error logout from Facebook', e));
-  //   this.rootPage = "LoginPage";
-
-  //   // this.nav.setRoot('LoginPage');
-  //   // this.menu.swipeEnable(false);// deshabilita el sidemenu
-  // }
-
   logout(){
-    console.log("Saliendo de la app");
+    // console.log("Saliendo de la app");
     this.angularFauth.auth.signOut().then( result => {
       this.menu.close();//(false);// Quitar automaticamente el sidemenu
       this.nav.setRoot("LoginPage");
       // Sign-out successful.
-      console.log(result)
+      // console.log(result)
     }).catch((error) => {
-      console.log(error);
-      console.error(error);
+      // console.log(error);
+      // console.error(error);
+      alert(error)
       // An error happened.
     });;
   }
