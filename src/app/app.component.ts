@@ -3,6 +3,7 @@ import { Nav, Platform, MenuController, ToastController } from 'ionic-angular';
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import { Facebook } from '@ionic-native/facebook';
+import { SocialSharing } from '@ionic-native/social-sharing';
 import { AngularFireAuth } from 'angularfire2/auth';
 
 
@@ -28,6 +29,7 @@ export class MyApp {
     public toastCtrl: ToastController,
     private fb: Facebook,
     private angularFauth:AngularFireAuth,
+    private socialSharing: SocialSharing
 
   ) {
 
@@ -62,7 +64,7 @@ export class MyApp {
         this.rootPage = 'OnboardingPage';
     }
 
-    // this.rootPage = 'CartPage';
+    // this.rootPage = 'ScheduleServicePage';
     // this.menu.swipeEnable(false);// deshabilita el sidemenu
 
     this.initializeApp();
@@ -117,6 +119,56 @@ export class MyApp {
   checkActive(page){
     return page == this.activePage;
   }
+
+  perfilPage(){
+    this.nav.push('PerfilPage');
+    this.menu.close();//(false);// Quitar automaticamente el sidemenu
+  }
+
+  //share with Facebook
+  facebookSharing(){
+    let message = 'Style2door - Estilo a tu puerta';
+    let image = 'https://scontent-mia3-1.xx.fbcdn.net/v/t31.0-8/23213489_184705552094311_776544078734079414_o.jpg?oh=5c80861cbac59d358b03e85634aa6b90&oe=5A6C5C28';
+    let url = 'https://www.facebook.com/Style2door-184705328761000/?modal=admin_todo_tour';
+    let pasteMessageHint ='Style2door - App para lucir bien :D';
+    this.socialSharing.shareViaFacebookWithPasteMessageHint(message, image, url, pasteMessageHint).then(() => {
+      // Sharing via email is possible
+      // alert('creo q comparte');
+    }).catch((e) => {
+      // alert('error '+ e);
+      // Sharing via email is not possible
+    });
+  }
+
+  whatsappSharing(){
+    let message = 'Style2door - Estilo a tu puerta';
+    let image = 'https://scontent-mia3-1.xx.fbcdn.net/v/t31.0-8/23213489_184705552094311_776544078734079414_o.jpg?oh=5c80861cbac59d358b03e85634aa6b90&oe=5A6C5C28';
+    let url = 'https://www.facebook.com/Style2door-184705328761000/?modal=admin_todo_tour';
+    let pasteMessageHint ='Style2door - App para lucir bien :D';
+    this.socialSharing.shareViaWhatsApp(message, image, url).then(() => {
+      // Sharing via email is possible
+      // alert('creo q comparte');
+    }).catch((e) => {
+      // alert('error '+ e);
+      // Sharing via email is not possible
+    });
+  }
+
+
+  InstagramSharing(){
+    let message = 'Style2door - Estilo a tu puerta';
+    let image = 'https://scontent-mia3-1.xx.fbcdn.net/v/t31.0-8/23213489_184705552094311_776544078734079414_o.jpg?oh=5c80861cbac59d358b03e85634aa6b90&oe=5A6C5C28';
+    let url = 'https://www.facebook.com/Style2door-184705328761000/?modal=admin_todo_tour';
+    let pasteMessageHint ='Style2door - App para lucir bien :D';
+    this.socialSharing.shareViaInstagram(message, image).then(() => {
+      // Sharing via email is possible
+      // alert('creo q comparte');
+    }).catch((e) => {
+      // alert('error '+ e);
+      // Sharing via email is not possible
+    });
+  }
+
 
   logout(){
     // console.log("Saliendo de la app");

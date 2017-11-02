@@ -1,20 +1,20 @@
 <ion-header>
-  <ion-navbar color='color-app'>
-    <button ion-button menuToggle>
+  <ion-navbar color="white">
+    <button ion-button menuToggle color="color-app">
       <ion-icon name="menu"></ion-icon>
     </button>
-    <ion-title>Perfil</ion-title>
-    <!-- <ion-buttons end>
-      <button ion-button icon-only (click)="openModal()">
-        <ion-icon name="mail"></ion-icon>
+    <ion-title>Style2Door</ion-title>
+    <ion-buttons end>
+      <button ion-button icon-only (tap)="notificationModal()" color="color-app">
+        <ion-icon name="notifications"></ion-icon>
       </button>
-      <button ion-button icon-only (click)="openModal()">
-        <ion-icon name="information-circle"></ion-icon>
+      <button ion-button icon-only (tap)="cartShoppingModal()" color="color-app">
+        <ion-icon name="cart"></ion-icon>
+        <ion-badge *ngIf="count != 0">{{count}}</ion-badge>
       </button>
-    </ion-buttons> -->
+    </ion-buttons>
   </ion-navbar>
 </ion-header>
-
 
 <ion-content>
   <!-- <ion-card>
@@ -36,58 +36,19 @@
   </ion-list-header>
   <button ion-button icon-only full clear (click)="profileSetting()"><ion-item><i class="fa fa-cog fa-2x" aria-hidden="true"></i>Ajuste de la cuenta</ion-item></button>
   <button ion-button icon-only full clear (click)="addPayMents()"><ion-item><i class="fa fa-money fa-2x" aria-hidden="true"></i>Agregar forma de pago</ion-item></button>
-  <button ion-button icon-only full clear (click)="profileSetting()"><ion-item><i class="fa fa-product-hunt fa-2x" aria-hidden="true"></i>Promociones</ion-item></button>
-  <button ion-button icon-only full clear (click)="profileSetting()"><ion-item><i class="fa fa-smile-o fa-2x" aria-hidden="true"></i>Preferidos</ion-item></button>
+  <button ion-button icon-only full clear (click)="promocionesPage()"><ion-item><i class="fa fa-product-hunt fa-2x" aria-hidden="true"></i>Promociones</ion-item></button>
+  <button ion-button icon-only full clear (click)="preferidosPage()"><ion-item><i class="fa fa-smile-o fa-2x" aria-hidden="true"></i>Preferidos</ion-item></button>
 </ion-list>
 
 <ion-list no-lines>
   <ion-list-header>
     Necesitas ayuda?
   </ion-list-header>
-  <button ion-button icon-only full clear (click)="profileSetting()"><ion-item><i class="fa fa-smile-o fa-2x" aria-hidden="true"></i>Centro de ayuda</ion-item></button>
-  <button ion-button icon-only full clear (click)="profileSetting()"><ion-item><i class="fa fa-smile-o fa-2x" aria-hidden="true"></i>Historial</ion-item></button>
+  <button ion-button icon-only full clear (click)="centrodeAyudaPage()"><ion-item><i class="fa fa-smile-o fa-2x" aria-hidden="true"></i>Centro de ayuda</ion-item></button>
+  <button ion-button icon-only full clear (tap)="historialPage()"><ion-item><i class="fa fa-smile-o fa-2x" aria-hidden="true"></i>Historial</ion-item></button>
   <!-- <ion-item>Blade Runner</ion-item> -->
 </ion-list>
 
-<!--
-<ion-grid>
-  <ion-row align-items-start>
-    <ion-col>
-      <button ion-button block outline color='color-app'>
-        <i class="fa fa-behance-square fa-2x" aria-hidden="true"></i>
-        Acerca de mi
-      </button>
-    </ion-col>
-  </ion-row>
 
-  <ion-row align-items-start>
-    <ion-col>
-      <button ion-button block outline color='color-app'>
-        <i class="fa fa-smile-o fa-2x color-app"  aria-hidden="true"></i>
-        Preferidos
-      </button>
-    </ion-col>
-  </ion-row>
-
-  <ion-row align-items-start>
-    <ion-col>
-      <button ion-button block outline color='color-app'>
-        <i class="fa fa-location-arrow fa-2x" aria-hidden="true"></i>
-        Ubicacion
-      </button>
-    </ion-col>
-  </ion-row>
-
-  <ion-row align-items-start>
-    <ion-col>
-
-      <button ion-button block outline color='color-app'>
-        <i class="fa fa-cog fa-2x" aria-hidden="true"></i>
-        Editar perfil
-      </button>
-    </ion-col>
-  </ion-row>
-
-</ion-grid> -->
 
 </ion-content>

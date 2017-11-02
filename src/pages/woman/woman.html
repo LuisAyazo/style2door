@@ -31,94 +31,153 @@
 
 </ion-list> -->
 <!-- <ul>
-  <li *ngFor="let entry of itemCheckedFromFirebase">
-    {{entry.name}} - {{entry.checked}}
+  <li *ngFor="let entry of itemCheckedFromFirebase ">
+    {{entry.id}} - {{entry.nombre}} - {{entry.checked}}
   </li>
 </ul> -->
-   <ion-list>
-      <ion-list-header>
-        Manicure y Pedicure
-      </ion-list-header>
-      <ion-slides slidesPerView=2 spaceBetween=10 speed=1000 >
-        <ion-spinner name='circles' *ngIf="items == 0"></ion-spinner>
-        <!-- <div *ngFor="let entry of itemCheckedFromFirebase"> -->
-      <ion-slide *ngFor="let item of items ; let i = index">
-        <button full clear ion-button  >
-          <img [src]=item.img_url />
-          <div class="space_price">
-            <h2>{{item.nombre}}</h2>
-            <!-- <p>$ {{item.precio}}</p> -->
-            <!-- <p>
-              {{itemCheckedFromFirebase[i].id}}
-            </p> -->
-          </div>
-          <!-- <div>
-            <ion-checkbox *ngIf="itemCheckedFromFirebase.length?.length " [checked]="false" value="item.nombre" (ionChange)="datachanged(item, $event.checked)"></ion-checkbox>
-          </div> -->
-          <!-- <div class="div_check" *ngIf="itemCheckedFromFirebase?.length > 0"> -->
-            <!-- <div class="div_check" *ngIf="itemCheckedFromFirebase?.length > 0"> -->
+<ion-list>
+ <ion-list-header>
+   Manicure y Pedicure
+ </ion-list-header>
+ <ion-slides slidesPerView=2 spaceBetween=8 speed=300 >
+   <ion-spinner name='circles' *ngIf="manicure == 0"></ion-spinner>
+ <ion-slide *ngFor="let item of manicure">
+   <!-- <p>{{item.nombre}}</p> -->
 
-              <!-- <div class="div_check" *ngIf="! entry">
-                <ion-checkbox  [checked]="(item.nombre == entry.nombre ? 'true' : 'false')" value="item.nombre" (ionChange)="datachanged(item, $event.checked)"></ion-checkbox>
-              </div> -->
-              <!-- <div class="div_check" *ngIf="itemCheckedFromFirebase?.length > 0"> -->
+   <button full clear ion-button  >
+     <img [src]=item.img_url />
+     <div class="space_price">
+       <h2>{{item.nombre}}</h2>
+       <p>${{item.precio}}{{i}}</p>
+       <!-- <p>
+         {{item.id}}
+       </p> -->
+     </div>
+     <div class="div_check">
+       <!-- {{entry[i].nombre}} -->
+       <!-- <div class="div_check" *ngIf="! itemCheckedFromFirebase"> -->
+       <ion-checkbox (ionChange)="datachanged(item.id, item.nombre, item.precio, $event.checked)"></ion-checkbox>
+     </div>
+            <!-- {{ itemCheckedFromFirebase[i].nombre }} -->
+           <!-- <ion-checkbox  [checked]="(item.nombre == itemCheckedFromFirebase[i]?.nombre  ? 'true' : 'false')"  (ionChange)="datachanged(item, $event.checked)"></ion-checkbox> -->
+       <!-- </div> -->
+     <button class="info_btn" ion-button icon-only clear (click)="detalle('pruebaa')"> <ion-icon name="information-circle"></ion-icon></button>
+     <button class="heart_like" ion-button icon-only clear (click)="heart('pruebaa')"> <ion-icon name="heart"></ion-icon></button>
 
-
-              <div class="div_check" *ngIf="itemCheckedFromFirebase">
-                <ion-checkbox  [checked]="(item.id == itemCheckedFromFirebase[i]?.id ? true : false)" (ionChange)="datachanged(item, $event.checked)"></ion-checkbox>
-            </div>
-          <!-- </div> -->
-
-          <button class="info_btn" ion-button icon-only clear (click)="detalle('pruebaa')"> <ion-icon name="information-circle"></ion-icon></button>
-        </button>
-      </ion-slide>
-    <!-- </div> -->
-    </ion-slides>
-  </ion-list>
+   </button>
+ </ion-slide>
+</ion-slides>
+</ion-list>
 
 
-  <!-- <ion-list>
-      <ion-list-header>
-        Manicure y Pedicure
-      </ion-list-header>
-      <ion-slides slidesPerView=2 spaceBetween=10   effect="slide" pager>
-      <ion-slide *ngFor="let item of itemMP;">
-        <button full clear ion-button  >
-          <img src="assets/images/manicure/{{ item.title | changespace }}2.jpg"/>
-          <div class="space_price">
-            <h2>{{item.title}}</h2>
-            <p>$ {{item.value}}</p>
-          </div>
-          <div class="div_check">
-            <ion-checkbox [checked]="item.checked" value="item.title" (ionChange)="datachanged('item.title', $event.checked)"></ion-checkbox>
-          </div>
-          <button class="info_btn" ion-button icon-only clear (click)="detalle('pruebaa')"> <ion-icon name="information-circle"></ion-icon></button>
-        </button>
-      </ion-slide>
-      <br />
-    </ion-slides>
-  </ion-list> -->
+<ion-list>
+ <ion-list-header>
+   Maquillaje
+ </ion-list-header>
+ <ion-slides slidesPerView=2 spaceBetween=8 speed=300 >
+   <ion-spinner name='circles' *ngIf="manicure == 0"></ion-spinner>
+ <ion-slide *ngFor="let item of manicure">
+   <!-- <p>{{item.nombre}}</p> -->
 
-  <!-- <ion-list>
-      <ion-list-header>
-        Manicure y Pedicure
-      </ion-list-header>
-      <ion-slides slidesPerView=2 spaceBetween=10   effect="slide" pager>
-      <ion-slide *ngFor="let item of itemMP;">
-        <button full clear ion-button  >
+   <button full clear ion-button  >
+     <img [src]=item.img_url />
+     <div class="space_price">
+       <h2>{{item.nombre}}</h2>
+       <p>${{item.precio}}{{i}}</p>
+       <!-- <p>
+         {{item.id}}
+       </p> -->
+     </div>
+     <div class="div_check">
+       <!-- {{entry[i].nombre}} -->
+       <!-- <div class="div_check" *ngIf="! itemCheckedFromFirebase"> -->
+       <ion-checkbox (ionChange)="datachanged(item.id, item.nombre, item.precio, $event.checked)"></ion-checkbox>
+     </div>
+            <!-- {{ itemCheckedFromFirebase[i].nombre }} -->
+           <!-- <ion-checkbox  [checked]="(item.nombre == itemCheckedFromFirebase[i]?.nombre  ? 'true' : 'false')"  (ionChange)="datachanged(item, $event.checked)"></ion-checkbox> -->
+       <!-- </div> -->
+     <button class="info_btn" ion-button icon-only clear (click)="detalle('pruebaa')"> <ion-icon name="information-circle"></ion-icon></button>
+     <button class="heart_like" ion-button icon-only clear (click)="heart('pruebaa')"> <ion-icon name="heart"></ion-icon></button>
 
-          <button class="info_btn" ion-button icon-only clear (click)="detalle('pruebaa')"><i class="fa fa-info-circle fa-2x" aria-hidden="true"></i></button>
-          <img src="assets/images/manicure/{{ item.title | changespace }}.jpg"/>
-          <div class="space_price">
-            <h2>{{item.title}}</h2>
-            <p>$ {{item.value}}</p>
-          </div>
-          <div class="div_check">
-            <ion-checkbox [checked]="item.checked" value="item.title" (ionChange)="datachanged('item.title', $event.checked)"></ion-checkbox>
-          </div>
-        </button>
-      </ion-slide>
-      <ion-slide class='slide-right'></ion-slide>
-    </ion-slides>
-  </ion-list> -->
+   </button>
+ </ion-slide>
+</ion-slides>
+</ion-list>
+
+
+
+<ion-list>
+ <ion-list-header>
+   Otros servicios
+ </ion-list-header>
+ <ion-slides slidesPerView=2 spaceBetween=8 speed=300 >
+   <ion-spinner name='circles' *ngIf="manicure == 0"></ion-spinner>
+ <ion-slide *ngFor="let item of manicure">
+   <!-- <p>{{item.nombre}}</p> -->
+
+   <button full clear ion-button  >
+     <img [src]=item.img_url />
+     <div class="space_price">
+       <h2>{{item.nombre}}</h2>
+       <p>${{item.precio}}{{i}}</p>
+       <!-- <p>
+         {{item.id}}
+       </p> -->
+     </div>
+     <div class="div_check">
+       <!-- {{entry[i].nombre}} -->
+       <!-- <div class="div_check" *ngIf="! itemCheckedFromFirebase"> -->
+       <ion-checkbox (ionChange)="datachanged(item.id, item.nombre, item.precio, $event.checked)"></ion-checkbox>
+     </div>
+            <!-- {{ itemCheckedFromFirebase[i].nombre }} -->
+           <!-- <ion-checkbox  [checked]="(item.nombre == itemCheckedFromFirebase[i]?.nombre  ? 'true' : 'false')"  (ionChange)="datachanged(item, $event.checked)"></ion-checkbox> -->
+       <!-- </div> -->
+     <button class="info_btn" ion-button icon-only clear (click)="detalle('pruebaa')"> <ion-icon name="information-circle"></ion-icon></button>
+     <button class="heart_like" ion-button icon-only clear (click)="heart('pruebaa')"> <ion-icon name="heart"></ion-icon></button>
+
+   </button>
+ </ion-slide>
+</ion-slides>
+</ion-list>
+<!-- <div *ngIf="itemCheckedFromFirebase">
+    <ion-item>
+        <ion-label>There will be cake</ion-label>
+        <ion-toggle [(ngModel)]="itemCheckedFromFirebase[0].checked"></ion-toggle>
+    </ion-item>
+    <ion-item>
+        <ion-label>The cake is a lie</ion-label>
+        <ion-toggle [(ngModel)]="itemCheckedFromFirebase[0].checked"></ion-toggle>
+    </ion-item>
+</div> -->
+
+<!--
+<ion-item>
+    <p>There will be cake: {{itemCheckedFromFirebase.nombre}}</p>
+</ion-item>
+<ion-item>
+    <p>The cake is a lie: {{itemCheckedFromFirebase.nombre}}</p>
+</ion-item> -->
+
+<!--
+<ion-list>
+ <ion-list-header>
+   Maquillaje
+ </ion-list-header>
+ <ion-slides slidesPerView=2 spaceBetween=10 speed=1000 >
+   <ion-spinner name='circles' *ngIf="items == 0"></ion-spinner>
+ <ion-slide *ngFor="let item of maquillaje ; let i = index">
+   <button full clear ion-button  >
+     <img [src]=item.img_url />
+     <div class="space_price">
+       <h2>{{item.nombre}}</h2>
+       <p>$ {{item.precio}}</p>
+     </div>
+         <div class="div_check" *ngIf="itemCheckedFromFirebase">
+            <ion-checkbox  [checked]="(item.nombre == itemCheckedFromFirebase[i]?.nombre  ? 'true' : 'false')" (ionChange)="datachanged(item, $event.checked)"></ion-checkbox>
+       </div>
+     <button class="info_btn" ion-button icon-only clear (click)="detalle('pruebaa')"> <ion-icon name="information-circle"></ion-icon></button>
+   </button>
+ </ion-slide>
+</ion-slides>
+</ion-list> -->
 </ion-content>

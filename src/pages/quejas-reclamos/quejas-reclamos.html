@@ -1,21 +1,24 @@
-<!--
-  Generated template for the QuejasReclamosPage page.
+<!-- <ion-header [elasticHeader]="myContent" no-border> -->
+<ion-header no-border>
 
-  See http://ionicframework.com/docs/components/#navigation for more info on
-  Ionic pages and navigation.
--->
-<ion-header>
-
-  <ion-navbar color='secondary'>
+  <ion-navbar color="white">
     <button ion-button menuToggle>
-      <ion-icon name="menu"></ion-icon>
+      <ion-icon name="menu" color="color-app"></ion-icon>
     </button>
     <ion-title>Quejas y Reclamos</ion-title>
+    <ion-buttons right >
+      <!-- <button ion-button icon-only (tap)="notificationModal()" color="color-app">
+        <ion-icon name="notifications"></ion-icon>
+      </button> -->
+      <button ion-button icon-only (tap)="cartShoppingModal()" color="color-app">
+        <ion-icon name="add"></ion-icon>
+        <ion-badge *ngIf="count != 0">{{count}}</ion-badge>
+      </button>
+    </ion-buttons>
   </ion-navbar>
-
 </ion-header>
 
-
 <ion-content padding>
-
+<i class="fa fa-history fa-5x" aria-hidden="true"></i>
+<h1>Para realizar una queja o un reclamo, presiona el signo <span class='signo'>+</span> en la parte superior.</h1>
 </ion-content>

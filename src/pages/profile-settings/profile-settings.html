@@ -1,22 +1,23 @@
 <ion-header>
-  <ion-navbar color='color-app'>
-    <!-- <button ion-button menuToggle>
+  <ion-navbar color="white">
+    <button ion-button menuToggle color="color-app">
       <ion-icon name="menu"></ion-icon>
-    </button> -->
-    <ion-title>Editar Perfil</ion-title>
-    <!-- <ion-buttons end>
-      <button ion-button icon-only (click)="openModal()">
-        <ion-icon name="mail"></ion-icon>
+    </button>
+    <ion-title>Ajuste de perfil</ion-title>
+    <ion-buttons end>
+      <button ion-button icon-only (tap)="notificationModal()" color="color-app">
+        <ion-icon name="notifications"></ion-icon>
       </button>
-      <button ion-button icon-only (click)="openModal()">
-        <ion-icon name="information-circle"></ion-icon>
+      <button ion-button icon-only (tap)="cartShoppingModal()" color="color-app">
+        <ion-icon name="cart"></ion-icon>
+        <ion-badge *ngIf="count != 0">{{count}}</ion-badge>
       </button>
-    </ion-buttons> -->
+    </ion-buttons>
   </ion-navbar>
 </ion-header>
 
 
-<ion-content padding>
+<ion-content>
   <ion-thumbnail item-start>
     <img src="assets/images/avatares/mifoto.jpg">
     <div class="edit_cam_profile">
@@ -26,6 +27,66 @@
     </div>
   </ion-thumbnail>
 
+  <ion-list>
+  <ion-list-header>
+    Acerca de ti
+  </ion-list-header>
+  <ion-item><span class='item'>Nombre</span><span class='detail'>Luis Ayazo Herrera</span></ion-item>
+  <ion-item><span class='item'>Sexo</span><span class='detail'>Hombre</span></ion-item>
+  <ion-item><span class='item'>Fecha de nacimiento</span><span class='detail'>1988</span></ion-item>
+  <ion-item><span class='item'>Correo</span><span class='detail'>luiayas@hotmail.com</span></ion-item>
+
+</ion-list>
+
+
+
+
+  <ion-list>
+  <ion-list-header>
+    Preferencia
+  </ion-list-header>
+  <ion-item><span class='item'>Idioma</span><span class='detail'>Espanol</span></ion-item>
+  <ion-item><span class='item'>Sonido</span><span class='detail'>off</span></ion-item>
+  <!-- <ion-item><span class='item'>Fecha de nacimiento</span><span class='detail'>1988</span></ion-item> -->
+  <!-- <ion-item><span class='item'>Correo</span><span class='detail'>luiayas@hotmail.com</span></ion-item> -->
+  <ion-item class=notifiaciones>
+    <span class='item'>Notificaciones</span>
+    <ion-toggle ng-reflect-model="true"  name="notificaciones"></ion-toggle>
+  </ion-item>
+
+</ion-list>
+
+
+
+  <ion-list>
+  <ion-list-header>
+    Informacion
+  </ion-list-header>
+  <ion-item><span class='item'>Acerca de esta version</span><span class='detail'>Espanol</span></ion-item>
+  <ion-item><span class='item'>Valora nuestra aplicacion</span><span class='detail'>Sonido</span></ion-item>
+  <!-- <ion-item><span class='item'>Fecha de nacimiento</span><span class='detail'>1988</span></ion-item> -->
+  <!-- <ion-item><span class='item'>Correo</span><span class='detail'>luiayas@hotmail.com</span></ion-item> -->
+  <!-- <ion-item class=notifiaciones>
+    <ion-label>Notificaciones</ion-label>
+    <ion-toggle ng-reflect-model="true" [(ngModel)]="FormUpdateProfile.notificaciones" name="notificaciones"></ion-toggle>
+  </ion-item> -->
+
+</ion-list>
+
+<!--  borrar cuenta-->
+<ion-list>
+<ion-list-header>
+
+</ion-list-header>
+<ion-item><ion-icon name='trash' color='danger'></ion-icon><span class='delete_account'> Borrar cuenta</span></ion-item>
+<!-- <ion-item><span class='item'>Sexo</span><span class='detail'>Hombre</span></ion-item> -->
+<!-- <ion-item><span class='item'>Fecha de nacimiento</span><span class='detail'>1988</span></ion-item>
+<ion-item><span class='item'>Nombre</span><span class='detail'>Luis Ayazo Herrera</span></ion-item> -->
+
+</ion-list>
+
+
+<!--
 
 <form #FormUpdateProfile="ngForm" (ngSubmit)="updateProfile(FormUpdateProfile)">
   <ion-list>
@@ -59,7 +120,7 @@
     </ion-item>
   </ion-list>
   <button ion-button full [disabled]="!FormUpdateProfile.form.valid" type="submit" color="color-app">Actualizar perfil</button>
-</form>
+</form> -->
 
 
 </ion-content>

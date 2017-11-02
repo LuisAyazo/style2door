@@ -16,6 +16,33 @@ page-profile-settings {
    font-size: 1.2rem;
 }
 
+ion-content{
+  // background: gray !important;
+
+
+ion-list{
+  ion-list-header{
+    color: #66686b !important;
+    background: #e0e0de !important;
+  }
+  ion-item{
+    .item{
+      color: rgb(80, 79, 79);
+      font-size: 13px;
+      float: left;
+    }
+    .detail{
+      color: rgb(140, 140, 140);
+      font-size: 12px;
+      float: right;
+    }
+    .delete_account{
+      color: red;
+      font-size: 12px;
+    }
+  }
+
+}
     ion-thumbnail {
         img {
             position: relative;
@@ -63,5 +90,5 @@ page-profile-settings {
             }
         }
     }// fin form
-
+  }//content
 }

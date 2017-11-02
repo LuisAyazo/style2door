@@ -1,0 +1,176 @@
+// .menu-app {
+//   background: red ;
+//   }
+//color del back button
+.toolbar-md-white .bar-button-clear-md, .toolbar-md-white .bar-button-default-md, .toolbar-md-white .bar-button-outline-md, .toolbar-md-white .toolbar-title-md{
+  color:map-get($colors, color-app) !important;
+}
+page-schedule-service {
+
+  // .transp{
+    position:absolute !important;
+    left:0 !important;
+    top:0 !important;
+    background:rgba(0, 0, 0, 0.84) !important;
+    width:100% !important;
+    z-index: 10 !important;
+    height:100% !important;
+  // }
+  ion-header{
+
+      ion-navbar{
+          ion-title{
+              font-family: 'Great Vibes';
+              font-size: 2.4rem !important;
+              // font-size: 23px !important;
+          }
+          ion-buttons{
+              margin-right: 1em;
+              color: map-get($colors, color-app) !important;
+              ion-badge{
+                background: #e43030 !important;
+                color: map-get($colors, white) !important;
+                margin-left:13px !important;
+                margin-top: -8px !important;
+                border-radius: 30% !important;
+                padding: 3px 6px !important;
+                position: absolute;
+                z-index: 100;
+              }
+          }
+      }
+  }
+
+
+  ion-content{
+    // background: red !important;
+    ion-card{
+      ion-card-content{
+        ion-card-title{
+
+        }
+        p{
+          font-size: 13px !important;
+          font-family: "Oxygen";
+          color: #444444 !important;
+          .signo{
+            color: map-get($colors, color-app) !important;
+            display: inline;
+            max-width: 20px;
+            font-size: 20px;
+            position: relative;
+            top: 3px;
+            font-weight: bolder;
+          }
+        }
+      }
+    }
+    ion-list{
+      ion-list-header{
+        font-size: 17px !important;
+        font-family: 'Open Sans' !important;
+        color: map-get($colors, color-app-oscuro) !important;
+        margin-bottom: none !important;
+        margin-left: 10px ;
+      }
+      // ion-slides{
+      //   ion-slide{
+          // background: rgba(#383838, 0.38);
+          // width: 320px !important;
+          ion-item{
+            border-bottom: none !important;
+            .stilyst_name{
+              font-size: 13px;
+              color: black;
+            }
+            .stilyst_specialist{
+              color:#91929c;
+              font-size: 11px;
+            }
+            .schedule_hour{
+              p{
+                color:white;
+                font-size: 12px;
+                text-shadow: 1px 1px 1px black;
+              }
+              float: right;
+              display: block;
+              max-width: 165px ;
+              background: #404853;
+              padding:5px;
+              border-radius: 6px;
+              position: relative;
+              top: -41px;
+              color: white;
+              opacity: 0.6;
+              font-size: 11px;
+              .hour{
+                left: 5px;
+                position: relative;
+              }
+
+            }
+            .services{
+              h5{
+                color: #335873;
+                margin-top: 15px;
+                font-size: 13px;
+                font-weight: bold;
+              }
+              h6{
+                font-size: 11px;
+                color: #757375;
+
+              }
+            }
+          }
+        // }//slide
+      // }//slides
+    }
+
+    ion-fab{
+      ion-fab-list{
+        .fab_top_schedule{
+          color: black;
+          font-size: 12px;
+          width: 110px;
+          position: absolute;
+          left: -20px !important;
+          top: 5px;
+        }
+        .fab_left_schedule{
+          color: black;
+          font-size: 12px;
+          width: 110px;
+          position: absolute;
+          left: 0px !important;
+          top: 6px;
+        }
+        .fab_right_schedule{
+          color: black;
+          font-size: 12px;
+          width: 110px;
+          position: absolute;
+          left: 10px !important;
+          top: 6px;
+        }
+        .fab_top_schedule_btn{
+          position: absolute !important;
+          bottom: 52px !important;
+          left: 8px !important;
+        }
+        .fab_left_schedule_btn{
+          position: absolute !important;
+          bottom: 60px !important;
+          left: -12px !important;
+        }
+        .fab_right_schedule_btn{
+          position: absolute !important;
+          bottom: 60px !important;
+          left: 12px !important;
+        }
+      }
+    }
+  }
+
+}

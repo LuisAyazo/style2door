@@ -1,18 +1,18 @@
-<ion-header>
-  <ion-navbar color='color-app'>
+<!-- <ion-header [elasticHeader]="myContent" no-border> -->
+<ion-header no-border>
+
+  <ion-navbar color="white">
     <button ion-button menuToggle>
-      <ion-icon name="menu"></ion-icon>
+      <ion-icon name="menu" color="color-app"></ion-icon>
     </button>
     <ion-title>Informacion y Soporte</ion-title>
-    <ion-buttons end>
-      <button ion-button icon-only (click)="perfilPage()">
-        <ion-icon name="person"></ion-icon>
-      </button>
-      <button ion-button icon-only (click)="openModal()">
-        <ion-icon name="mail"></ion-icon>
-      </button>
-      <button ion-button icon-only (click)="openModal()">
-        <ion-icon name="information-circle"></ion-icon>
+    <ion-buttons right >
+      <!-- <button ion-button icon-only (tap)="notificationModal()" color="color-app">
+        <ion-icon name="notifications"></ion-icon>
+      </button> -->
+      <button ion-button icon-only (tap)="cartShoppingModal()" color="color-app">
+        <ion-icon name="add"></ion-icon>
+        <ion-badge *ngIf="count != 0">{{count}}</ion-badge>
       </button>
     </ion-buttons>
   </ion-navbar>

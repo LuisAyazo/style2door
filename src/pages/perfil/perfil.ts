@@ -42,8 +42,21 @@ export class PerfilPage {
   addPayMents(){
     this.navCtrl.push("AddPayMentsPage");
   }
+historialPage(){
+    this.navCtrl.push("HistorialPage");
+  }
 
+  promocionesPage(){
+      this.navCtrl.push("PromocionesPage");
+    }
 
+    preferidosPage(){
+        this.navCtrl.push("PreferidosPage");
+      }
+  centrodeAyudaPage(){
+    this.navCtrl.push("CentroAyudaPage");
+
+  }
 
   // this.auth.facebookProfileInfo().subscribe(
   //   data => {

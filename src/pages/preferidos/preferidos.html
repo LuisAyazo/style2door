@@ -1,0 +1,23 @@
+<!-- <ion-header [elasticHeader]="myContent" no-border> -->
+<ion-header no-border>
+
+  <ion-navbar color="white">
+
+    <ion-title>Preferidos</ion-title>
+    <ion-buttons right >
+      <!-- <button ion-button icon-only (tap)="notificationModal()" color="color-app">
+        <ion-icon name="notifications"></ion-icon>
+      </button> -->
+      <button ion-button icon-only (tap)="cartShoppingModal()" color="color-app">
+        <ion-icon name="add"></ion-icon>
+        <ion-badge *ngIf="count != 0">{{count}}</ion-badge>
+      </button>
+    </ion-buttons>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+<i class="fa fa-history fa-5x" aria-hidden="true"></i>
+<h1>No has agregado preferidos a tu cuenta!.<br /> Para Agregar un preferido, presiona el signo <span class='signo'>+</span> en la parte superior.</h1>
+
+</ion-content>

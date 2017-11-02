@@ -10,6 +10,8 @@ import { ElasticHeaderModule } from "ionic2-elastic-header/dist";
 
 // providers
 import { Facebook } from '@ionic-native/facebook';
+import { SocialSharing } from '@ionic-native/social-sharing';
+
 // import { NativeStorage } from '@ionic-native/native-storage';
 import { AuthServiceProvider } from '../providers/auth-service/auth-service';
 
@@ -60,6 +62,7 @@ enableProdMode();
     SplashScreen,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
     Facebook,
+    SocialSharing,
     // NativeStorage,
     AuthServiceProvider,
     Geolocation,

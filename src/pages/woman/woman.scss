@@ -46,8 +46,8 @@ page-woman {
                 ion-badge{
                   background: #e43030 !important;
                   color: map-get($colors, white) !important;
-                  margin-left:15px !important;
-                  margin-top: -10px !important;
+                  margin-left:13px !important;
+                  margin-top: -8px !important;
                   border-radius: 30% !important;
                   padding: 3px 6px !important;
                   position: absolute;
@@ -59,26 +59,29 @@ page-woman {
 
     ion-content{
     // background: gray !important;
+    // padding-left: 35px !important;
         ion-list{
             // height: 120px;
             // background: green;
             margin-top: 10px !important;
             margin-bottom: 30px !important;
+            // margin-right: 10px !important;
+            padding-left: 15px !important;
             ion-list-header{
                 border-top: None !important;
                 border-bottom: None !important;
                 margin-bottom: 0px !important;
             }
-            ion-slides img{
-                height: 100% !important;
-                width: 100% !important;
-            }
+            // ion-slides img{
+            //     height: 100% !important;
+            //     width: 100% !important;
+            // }
             ion-slides{
                 padding: 0px ;
-                margin-left: 15px;
+                // margin-left: 15px;
                 //  padding-left: -25px;
                 //
-                height: 230px;
+                height: 240px;
                 button.swiper-pagination-bullet{
                     opacity: 0 !important;
                     background: white !important;
@@ -86,21 +89,28 @@ page-woman {
                 }
                 ion-slide{
                     // width: 200px !important;
-                    height: 202px !important;
-                    border: 0.7px #dedede solid;
+                    height: 213px !important;
+                    border: 0.7px #f7f0f0 solid;
+                    padding: 0px !important;
+                    // border: 0.7px red solid;
+
+                    border-radius: 6px;
                     // border: 0.5px solid #d6d6d6;
                     // background: red;
 
                     button{
-                        height: 200px !important;
+                        height: 210px !important;
+                        padding: 0px !important;
 
                         img{
                         position: absolute;
+                        top:0px;
                         // height: 120px;
                         -webkit-background-size: 100% 100%;           /* Safari 3.0 */
                            -moz-background-size: 100% 100%;           /* Gecko 1.9.2 (Firefox 3.6) */
                              -o-background-size: 100% 100%;           /* Opera 9.5 */
-                                background-size: 100% 100%
+                                background-size: 100% 100%;
+                        border-radius: 6px 6px 0px 0px !important;
                         }
 
                         .space_price {
@@ -137,7 +147,7 @@ page-woman {
                               text-transform: capitalize;
                               //  top: 40px;
                                left: 5px;
-                               top: -12px;
+                               top: -60px;
                               //  text-align:  justify;
                               //   color: map-get($colors, color-app);
                               //   font-weight: 580;
@@ -146,7 +156,7 @@ page-woman {
                               color:black;
                               position: absolute;
                               z-index: 4;
-                              top: 14px;
+                              top: -34px;
                               left: 5px;
                               float: left;
                               font-size: 12px;
@@ -195,22 +205,36 @@ page-woman {
                             }
 
                         }
-                        button.info_btn{
-
-                            i{
+                        .heart_like{
+                            position: absolute;
+                            z-index: 1000;
+                            left: 5px;
+                            bottom: 1px;
+                            // left: -5px;
+                            color: red;
+                            font-size: 10px;
+                            height: 20px !important;
+                            ion-icon{
+                                border-color: black;
 
                             }
+                        }
+
+
+                        .info_btn{
+
                             // background: gray !important;
                             // position: absolute !important;
                             // z-index: 1000px !important;
                             position: absolute;
                             z-index: 1000;
-                            right: 0px;
-                            top: -85px;
+                            bottom: 60px;
+                            right: 1px;
+                            // top: -85px;
                             // left: -5px;
                             color: #8a8a8a;
-                            font-size: 13px;
-                            // height: 20px !important;
+                            font-size: 10px;
+                            height: 20px !important;
                             // border-color: green;
                         }
                     }
@@ -219,4 +243,5 @@ page-woman {
         }
 
     }//content
+
 }//page-woman

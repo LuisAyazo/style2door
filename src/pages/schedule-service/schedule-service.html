@@ -1,0 +1,138 @@
+<!-- <div class="transp"> -->
+<ion-header>
+  <ion-navbar color="white">
+    <!-- <ion-buttons left>
+        <button ion-button icon-only navPop color='color-app' clear>
+          <ion-icon name='md-arrow-round-back'></ion-icon>
+        </button>
+    </ion-buttons> -->
+    <ion-title>Style2Door</ion-title>
+    <ion-buttons end>
+      <button ion-button icon-only (tap)="notificationModal()" color="color-app">
+        <ion-icon name="notifications"></ion-icon>
+
+      </button>
+      <button ion-button icon-only (tap)="cartShoppingModal()" color="color-app">
+        <ion-icon name="cart"></ion-icon>
+        <ion-badge *ngIf="count != 0">{{count}}</ion-badge>
+      </button>
+      <button ion-button icon-only (tap)="cartShoppingModal()" color="color-app">
+        <ion-icon name="trash"></ion-icon>
+      </button>
+    </ion-buttons>
+  </ion-navbar>
+</ion-header>
+
+
+<ion-content >
+  <ion-card *ngIf='programacion == 0'>
+  <ion-card-content>
+    <ion-card-title>
+      Programacion de servicio
+      </ion-card-title>
+      <p class='info_card'>Actualmente no tienes programado ningun servicio.</p><br />
+      <p> Por favor presiona el boton con el signo <span class='signo'>+</span> para agregar una programacion.</p>
+  </ion-card-content>
+</ion-card>
+
+<ion-list *ngIf='programacion >= 1'>
+  <ion-list-header>
+    Programacion de servicio
+  </ion-list-header>
+  <!-- <ion-slides slidesPerView=1 spaceBetween=8 speed=300>
+    <ion-slide> -->
+      <div class="schedule_estilist">
+        <ion-item>
+          <ion-avatar item-start>
+            <img src="assets/images/avatares/avatar3.jpg">
+          </ion-avatar>
+          <h5  class="stilyst_name">Jose Rodriguez</h5>
+          <h6 class='stilyst_specialist'>Barbero Profesional</h6>
+          <div class="schedule_hour">
+            <p>
+              - Miercoles 8 de noviembre
+            </p>
+            <span class="hour">13:00 - 15:00</span>
+          </div>
+          <div class="services">
+            <h5 >Servicios programados</h5>
+            <h6> - Manicure </h6>
+            <h6> - Pedicure </h6>
+            <h6> - Corte </h6>
+            <!-- <h6> - manicure </h6>
+            <h6> - manicure </h6> -->
+          </div>
+      </ion-item>
+      </div>
+    <!-- </ion-slide>
+    <ion-slide> -->
+      <div class="schedule_estilist">
+        <ion-item>
+          <ion-avatar item-start>
+            <img src="assets/images/avatares/avatar3.jpg">
+          </ion-avatar>
+          <h5  class="stilyst_name">Jose Rodriguez</h5>
+          <h6 class='stilyst_specialist'>Barbero Profesional</h6>
+          <div class="schedule_hour">
+            <p>
+              - Lunes 13 de noviembre
+            </p>
+            09:00 - 10:00
+          </div>
+          <div class="services">
+            <h5 >Servicios programados</h5>
+            <h6> - Manicure </h6>
+            <!-- <h6> - Pedicure </h6> -->
+            <h6> - Corte </h6>
+            <!-- <h6> - manicure </h6>
+            <h6> - manicure </h6> -->
+          </div>
+      </ion-item>
+      </div>
+    <!-- </ion-slide>
+    <ion-slide> -->
+      <!-- <div class="schedule_estilist">
+        <ion-item>
+          <ion-avatar item-start>
+            <img src="assets/images/avatares/avatar3.jpg">
+          </ion-avatar>
+          <h5  class="stilyst_name">Jose Rodriguez</h5>
+          <h6 class='stilyst_specialist'>Barbero Profesional</h6>
+          <div class="schedule_hour">
+            <p>
+              - Sabado 18 de noviembre
+            </p>
+            17:00 - 18:00
+          </div>
+          <div class="services">
+            <h5 >Servicios programados</h5>
+            <h6> - Barba </h6>
+            <h6> - Pedicure </h6>
+            <h6> - Tratamiento de canas </h6>
+          </div>
+      </ion-item>
+      </div> -->
+    <!-- </ion-slide>
+  </ion-slides> -->
+</ion-list>
+
+
+  <ion-fab center bottom #fab>
+    <button ion-fab color="color-app-oscuro"><ion-icon name="add"></ion-icon></button>
+    <ion-fab-list side="top" >
+      <span class='fab_top_schedule'>Programar servicio</span>
+      <button ion-fab class='fab_top_schedule_btn' (click)="share('PerfilPage', fab)"><ion-icon color='color-app' name="logo-facebook"></ion-icon></button>
+    </ion-fab-list>
+    <ion-fab-list side="left">
+
+      <button ion-fab class='fab_left_schedule_btn' (click)="share('twhiteeer', fab)"><ion-icon color='color-app' name="logo-twitter"></ion-icon></button>
+      <span class='fab_left_schedule'>Alerta</span>
+    </ion-fab-list>
+    <ion-fab-list side="right">
+
+      <button ion-fab class='fab_right_schedule_btn' (click)="share('google', fab)"><ion-icon color='color-app' name="logo-googleplus"></ion-icon></button>
+      <span class='fab_right_schedule'>Preferencias</span>
+    </ion-fab-list>
+  </ion-fab>
+</ion-content>
+<!-- </div> -->

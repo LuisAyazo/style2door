@@ -17,6 +17,11 @@ export class CartPage {
   checkout: any = "currentOrder";
   article:  any[]; // Definir e inicializar array en blanco
   peopleNumber:number =0;
+  public total: number;
+  all_article_to_buy: any;
+  public hours: number[] = [];
+  count: number;
+
 
   constructor(
     public navCtrl: NavController,
@@ -26,7 +31,24 @@ export class CartPage {
     private angularFauth:AngularFireAuth,
     private readonly angularFirestore: AngularFirestore
 
-  ) { this.com() }
+  ) {
+    this.total = 0;
+    this.com();
+
+    this.angularFauth.authState.subscribe( data => {
+        // conso
+          if(data.uid){
+              this.angularFirestore.collection('users' ).doc(`${data.uid}`).collection('shopping_list_temp').valueChanges()
+              .subscribe(count =>{this.count = count.length});
+          }
+
+    });
+
+  }
+
+  ngAfterViewInit() {
+    this.totalOrder();
+  }
 
   com() {
     this.angularFauth.authState.subscribe( data => {
@@ -36,6 +58,8 @@ export class CartPage {
         .subscribe(
           data => {
             this.article = data;
+
+
             console.log(this.article)
         });
       }
@@ -81,7 +105,7 @@ export class CartPage {
         }
       });
     }
-
+    // this.totalOrder();
   }
 
 
@@ -107,12 +131,53 @@ export class CartPage {
         // });
       }
     });
-
+    // this.totalOrder();
 
   }
 
   totalOrder(): void{
+    this.angularFauth.authState.subscribe( data => {
+      if(data.uid){
 
+          // firebase.database().ref('users/' + data.uid+'/shopping_list_temp/'+index+'/').child("cantidad").set(cant_add);
+          this.angularFirestore.collection('users' ).doc(`${data.uid}`).collection('shopping_list_temp').valueChanges().subscribe(
+            items => {
+              this.total = 0;
+              this.all_article_to_buy = items;
+              // console.log( ' - ' + this.all_article_to_buy.length);
+              if(this.all_article_to_buy.length > 0){
+                for(let a = 0; a<this.all_article_to_buy.length; a++){
+                  console.log(a);
+                  // this.total = 0;
+                  // var total_tmp = 0;
+                  // total_tmp += this.all_article_to_buy[a].precio *  this.all_article_to_buy[a].cantidad;
+                  // console.log(this.all_article_to_buy[a].precio *  this.all_article_to_buy[a].cantidad);
+                  // console.log('operacion '+ total_tmp);
+                  // 7500*4
+                  this.hours[a] = this.all_article_to_buy[a].precio *  this.all_article_to_buy[a].cantidad;
+                  console.log(this.hours);
+
+                  // 13822*2
+                  // this.total += total_tmp ;
+                  // console.log("Actual valor --> "+ total_tmp);
+                  // this.all_article_to_buy[a].shift();
+                }
+                // console.log('Antes '+ this.total);
+
+                for(let sum_total in this.hours){
+                  this.total += this.hours[sum_total];
+                  console.log(this.total);
+                }
+                this.hours = [];
+                // this.total += total_tmp;
+                // console.log('Total:  '+ this.total);
+                // this.total += this.total;
+              }
+            }
+          )
+
+        }
+    });
   }
 
 }
