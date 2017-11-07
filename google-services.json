@@ -1,0 +1,42 @@
+{
+  "project_info": {
+    "project_number": "732832336253",
+    "firebase_url": "https://style2door-180721.firebaseio.com",
+    "project_id": "style2door-180721",
+    "storage_bucket": "style2door-180721.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:732832336253:android:7a3303acd9799da3",
+        "android_client_info": {
+          "package_name": "com.Style2Door20062017"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "732832336253-3sueqa1qt6fqa6bou1gnsagqi74q86eo.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyC7-FrYNOz7koIa2we6qu6CZIqfCUoXRYA"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

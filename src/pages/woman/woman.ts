@@ -18,7 +18,7 @@ export class WomanPage {
   @ViewChild(Slides) slides: Slides;
 
   //firestore
-  private itemsCollection: AngularFirestoreCollection<Item>;
+  private itemsCollection: AngularFirestoreCollection<any>;
   items: any;
   manicure: any;
   maquillaje: any;

@@ -26,6 +26,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { Geolocation } from '@ionic-native/geolocation';
 import { GoogleMaps } from '@ionic-native/google-maps';
 
+// push notifications
+import { OneSignal } from '@ionic-native/onesignal';
 
 // Firebase
 // import * as firebase from 'firebase';
@@ -34,6 +36,7 @@ import { AngularFireAuthModule } from 'angularfire2/auth';
 import { AngularFireDatabaseModule } from 'angularfire2/database';
 import { AngularFirestoreModule } from 'angularfire2/firestore';
 import { FIREBASE_CONFIG } from './app.firebase.config';
+import { FCM } from '@ionic-native/fcm'; // notification  push
 
 // Activar modo produccion
 enableProdMode();
@@ -67,7 +70,8 @@ enableProdMode();
     AuthServiceProvider,
     Geolocation,
     GoogleMaps,
-
+    FCM,
+    OneSignal
   ]
 })
 export class AppModule {}

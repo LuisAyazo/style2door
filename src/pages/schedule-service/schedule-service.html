@@ -1,4 +1,4 @@
-<!-- <div class="transp"> -->
+<div class="transp"></div>
 <ion-header>
   <ion-navbar color="white">
     <!-- <ion-buttons left>
@@ -118,13 +118,12 @@
 
 
   <ion-fab center bottom #fab>
-    <button ion-fab color="color-app-oscuro"><ion-icon name="add"></ion-icon></button>
+    <button ion-fab color="color-app-oscuro" tappable (click)='fabActive(fab)'><ion-icon name="add"></ion-icon></button>
     <ion-fab-list side="top" >
       <span class='fab_top_schedule'>Programar servicio</span>
       <button ion-fab class='fab_top_schedule_btn' (click)="share('PerfilPage', fab)"><ion-icon color='color-app' name="logo-facebook"></ion-icon></button>
     </ion-fab-list>
     <ion-fab-list side="left">
-
       <button ion-fab class='fab_left_schedule_btn' (click)="share('twhiteeer', fab)"><ion-icon color='color-app' name="logo-twitter"></ion-icon></button>
       <span class='fab_left_schedule'>Alerta</span>
     </ion-fab-list>

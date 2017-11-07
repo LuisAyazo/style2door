@@ -1,6 +1,6 @@
 #!/bin/bash
 
-date=$(date +"%d-%m-%y-%H:%M")
+date=$(date +"%d-%m-%y_%H:%M")
 export ANDROID_HOME=$ANDROID_HOME
 
 rm -rf style2door*.apk
@@ -42,7 +42,7 @@ keytool -storepasswd -storepass beabby -exportcert -alias style2door -keystore s
 
 
 # Verificar
-zipalign -v 4 platforms/android/build/outputs/apk/android-release.apk style2door${date}.apk
+zipalign -v 4 platforms/android/build/outputs/apk/android-release.apk style2door-${date}.apk
 
 
 # SUBIR APK A GOOGLE DRIVE

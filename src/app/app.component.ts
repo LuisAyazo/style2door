@@ -5,7 +5,11 @@ import { SplashScreen } from '@ionic-native/splash-screen';
 import { Facebook } from '@ionic-native/facebook';
 import { SocialSharing } from '@ionic-native/social-sharing';
 import { AngularFireAuth } from 'angularfire2/auth';
+import { OneSignal } from '@ionic-native/onesignal';
 
+// import { FCM } from '@ionic-native/fcm';
+//
+// declare var FCMPlugin;
 
 @Component({
   selector: 'menu-app',
@@ -29,7 +33,8 @@ export class MyApp {
     public toastCtrl: ToastController,
     private fb: Facebook,
     private angularFauth:AngularFireAuth,
-    private socialSharing: SocialSharing
+    private socialSharing: SocialSharing,
+    private oneSignal: OneSignal
 
   ) {
 
@@ -93,6 +98,16 @@ export class MyApp {
 
   initializeApp() {
     this.platform.ready().then(() => {
+            // FCMPlugin.getToken(
+            //     (pushRegistrationId: any) => {
+            //         console.log('Push registration ID: ');
+            //         console.log(pushRegistrationId);
+            //     },
+            //     (err: any) => {
+            //         console.log('error retrieving push registration id: ' + err);
+            //     }
+            // );
+
       // Okay, so the platform is ready and our plugins are available.
       // Here you can do any higher level native things you might need.
       // this.statusBar.styleDefault();
@@ -101,7 +116,35 @@ export class MyApp {
       // this.statusBar.styleBlackTranslucent();
       // this.statusBar.backgroundColorByName('black'); supported colors -> black, darkGray, lightGray, white, gray, red, green, blue, cyan, yellow, magenta, orange, purple, brown
       this.statusBar.backgroundColorByHexString("#9a056d");
-      this.splashScreen.hide();
+      // this.splashScreen.hide();
+      // setTimeout(() => {
+        this.splashScreen.hide();
+        // 
+        // var notificationOpenedCallback = function(jsonData) {
+        //     console.log('notificationOpenedCallback: ' + JSON.stringify(jsonData));
+        // };
+        //
+        // window["plugins"].OneSignal
+        //     .startInit("c75fdaed-3229-4527-990d-d574eaba27ce", "732832336253")
+        //     .handleNotificationOpened(notificationOpenedCallback)
+        //     .endInit();
+        // });
+
+        this.oneSignal.startInit('c75fdaed-3229-4527-990d-d574eaba27ce', '732832336253');
+
+        this.oneSignal.inFocusDisplaying(this.oneSignal.OSInFocusDisplayOption.InAppAlert);
+
+        this.oneSignal.handleNotificationReceived().subscribe(() => {
+         // do something when notification is received
+        });
+
+        this.oneSignal.handleNotificationOpened().subscribe(() => {
+          // do something when a notification is opened
+        });
+
+        this.oneSignal.endInit();
+
+      // }, 100);
 
     });
   }
