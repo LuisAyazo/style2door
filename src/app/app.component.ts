@@ -1,11 +1,13 @@
 import { Component, ViewChild } from '@angular/core';
 import { Nav, Platform, MenuController, ToastController } from 'ionic-angular';
 import { StatusBar } from '@ionic-native/status-bar';
-import { SplashScreen } from '@ionic-native/splash-screen';
+// import { SplashScreen } from '@ionic-native/splash-screen';
 import { Facebook } from '@ionic-native/facebook';
 import { SocialSharing } from '@ionic-native/social-sharing';
 import { AngularFireAuth } from 'angularfire2/auth';
 import { OneSignal } from '@ionic-native/onesignal';
+import { AngularFirestore, AngularFirestoreCollection } from 'angularfire2/firestore';
+import { Observable } from 'rxjs/Observable';
 
 // import { FCM } from '@ionic-native/fcm';
 //
@@ -22,54 +24,27 @@ export class MyApp {
   // isLogged: boolean = false;
   isLoggedIn: boolean = false;
   activePage: any;
-
+  signal: any;
   pages: Array<{title: string, component: any, description: string, icon: any}>;
-
+  isApp: any;
   constructor(
     public platform: Platform,
     public statusBar: StatusBar,
-    public splashScreen: SplashScreen,
+    // public splashScreen: SplashScreen,
     public  menu: MenuController,
     public toastCtrl: ToastController,
     private fb: Facebook,
     private angularFauth:AngularFireAuth,
     private socialSharing: SocialSharing,
-    private oneSignal: OneSignal
+    private oneSignal: OneSignal,
+    private readonly angularFirestore: AngularFirestore
 
   ) {
 
     // this.rootPage = 'TabsHomePage';
 
 
-    if(window.localStorage.getItem('onboarding_init')){
-        // this.rootPage = 'LoginPage';
-        this.angularFauth.authState.subscribe( data => {
-              // alert("PASAS por a  u QUII");
-              // console.log(JSON.stringify(data));
-              if (data){
-                  // console.log(JSON.stringify(data));
-                  // alert(JSON.stringify(data.providerData[0].providerId));
-                  if ( data.providerData[0].providerId == "password" ){
-                      // console.log(JSON.stringify("ESTOY EN EL IF"));
-                      if(data && data.email && data.uid){
-                        // console.log("PASO APP.COMPONENT.TS" +  JSON.stringify(data));
-                        this.rootPage = 'TabsHomePage';
-                      }
-                  }
-                  if ( data.providerData[0].providerId == "facebook.com" ){
-                      // alert("ES DE FACE ==== "+JSON.stringify(data));
-                      this.rootPage = 'TabsHomePage';
-                  }
-              }
-              else{
-                this.rootPage = 'LoginPage';
-              }
-        })
-    }else{
-        this.rootPage = 'OnboardingPage';
-    }
-
-    // this.rootPage = 'ScheduleServicePage';
+        // this.rootPage = 'ScheduleServicePage';
     // this.menu.swipeEnable(false);// deshabilita el sidemenu
 
     this.initializeApp();
@@ -97,56 +72,102 @@ export class MyApp {
   }
 
   initializeApp() {
-    this.platform.ready().then(() => {
-            // FCMPlugin.getToken(
-            //     (pushRegistrationId: any) => {
-            //         console.log('Push registration ID: ');
-            //         console.log(pushRegistrationId);
-            //     },
-            //     (err: any) => {
-            //         console.log('error retrieving push registration id: ' + err);
-            //     }
-            // );
 
-      // Okay, so the platform is ready and our plugins are available.
-      // Here you can do any higher level native things you might need.
-      // this.statusBar.styleDefault();
-      // this.splashScreen.hide();
-      // this.statusBar.overlaysWebView(false);
-      // this.statusBar.styleBlackTranslucent();
-      // this.statusBar.backgroundColorByName('black'); supported colors -> black, darkGray, lightGray, white, gray, red, green, blue, cyan, yellow, magenta, orange, purple, brown
-      this.statusBar.backgroundColorByHexString("#9a056d");
-      // this.splashScreen.hide();
-      // setTimeout(() => {
-        this.splashScreen.hide();
-        // 
-        // var notificationOpenedCallback = function(jsonData) {
-        //     console.log('notificationOpenedCallback: ' + JSON.stringify(jsonData));
-        // };
-        //
-        // window["plugins"].OneSignal
-        //     .startInit("c75fdaed-3229-4527-990d-d574eaba27ce", "732832336253")
-        //     .handleNotificationOpened(notificationOpenedCallback)
-        //     .endInit();
-        // });
+    console.log(this.platform.platforms());
+    if(this.platform.is('core') || this.platform.is('mobileweb')) {
+      // this.isApp = false;
+      // this.isApp = (!document.URL.startsWith('http') || document.URL.startsWith('http://localhost:8100'));
+      console.log("ESTE ES WEB")
 
-        this.oneSignal.startInit('c75fdaed-3229-4527-990d-d574eaba27ce', '732832336253');
 
-        this.oneSignal.inFocusDisplaying(this.oneSignal.OSInFocusDisplayOption.InAppAlert);
+    }
+    else {
 
-        this.oneSignal.handleNotificationReceived().subscribe(() => {
-         // do something when notification is received
-        });
 
-        this.oneSignal.handleNotificationOpened().subscribe(() => {
-          // do something when a notification is opened
-        });
+      this.platform.ready().then(() => {
 
-        this.oneSignal.endInit();
+        this.statusBar.backgroundColorByHexString("#9a056d");
+        // this.splashScreen.hide();
+        // setTimeout(() => {
+          // this.splashScreen.hide();
 
-      // }, 100);
+          this.oneSignal.startInit('c75fdaed-3229-4527-990d-d574eaba27ce', '732832336253');
 
-    });
+          this.oneSignal.inFocusDisplaying(this.oneSignal.OSInFocusDisplayOption.InAppAlert);
+
+          this.oneSignal.handleNotificationReceived().subscribe((signal_received) => {
+            // alert(JSON.stringify(signal_received));
+            var date = new Date();
+            // console.log(date.toLocaleString());
+            this.signal.push(date.toLocaleString());
+            this.signal.push(signal_received)
+            // var signal = {
+            //   signal_received: signal_received,
+            //   datetime: date
+            // }
+
+
+           // do something when notification is received
+            //  let not_prom = 'notifications'
+             this.angularFauth.authState.subscribe( data => {
+
+                 if(data.uid){
+
+                   this.angularFirestore.collection('users' ).doc(`${data.uid}`).collection('notifications').doc(signal_received.payload.title).set(this.signal)
+                   .then(() => {
+                       alert("Document successfully seteado! ");
+                   }).catch( (error) => {
+                       alert(error);
+                   });
+
+                 }
+             });
+
+          });
+
+          this.oneSignal.handleNotificationOpened().subscribe((signal_opened) => {
+
+            this.nav.setRoot('NotificationsPage');
+          });
+
+          this.oneSignal.endInit();
+
+        // }, 100);
+        if(window.localStorage.getItem('onboarding_init')){
+            // this.rootPage = 'LoginPage';
+            this.angularFauth.authState.subscribe( data => {
+                  // alert("PASAS por a  u QUII");
+                  // console.log(JSON.stringify(data));
+                  if (data){
+                      // console.log(JSON.stringify(data));
+                      // alert(JSON.stringify(data.providerData[0].providerId));
+                      if ( data.providerData[0].providerId == "password" ){
+                          // console.log(JSON.stringify("ESTOY EN EL IF"));
+                          if(data && data.email && data.uid){
+                            // console.log("PASO APP.COMPONENT.TS" +  JSON.stringify(data));
+                            this.rootPage = 'TabsHomePage';
+                          }
+                      }
+                      if ( data.providerData[0].providerId == "facebook.com" ){
+                          // alert("ES DE FACE ==== "+JSON.stringify(data));
+                          this.rootPage = 'TabsHomePage';
+                      }
+                  }
+                  else{
+                    this.rootPage = 'LoginPage';
+                  }
+            })
+        }else{
+            this.rootPage = 'OnboardingPage';
+        }
+
+
+
+
+
+      });
+
+    }
   }
 
 
