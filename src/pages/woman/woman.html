@@ -5,7 +5,7 @@
     </button>
     <ion-title>Style2Door</ion-title>
     <ion-buttons end>
-      <button ion-button icon-only tappable (click)="notificationModal()" color="color-app">
+      <button ion-button icon-only tappable navPush="NotificationsPage" color="color-app">
         <ion-icon name="notifications"></ion-icon>
         <ion-badge *ngIf="notifications != 0">{{this.notifications}}</ion-badge>
       </button>

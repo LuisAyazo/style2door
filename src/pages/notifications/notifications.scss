@@ -20,14 +20,21 @@ page-notifications {
     ion-list{
       ion-list-header{
         background-color: none !important;
-        margin-bottom: 0px !important;  
+        margin-bottom: 0px !important;
       }
-      ion-item{
-        h2{
-          font-weight: bolder;
-        }
-        ion-note{
-          font-size: 11px !important;
+      button{
+        ion-item{
+          background: none !important;
+          h2{
+            font-weight: bolder;
+          }
+          ion-note{
+            font-size: 11px !important;
+            color: map-get($colors, color-app) !important;
+            position: absolute;
+            top: 5px;
+            right: 10px;
+          }
         }
       }
     }

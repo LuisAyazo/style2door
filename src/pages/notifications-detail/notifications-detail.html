@@ -1,0 +1,34 @@
+<ion-header>
+  <ion-navbar color="white">
+    <button ion-button menuToggle color="color-app">
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>{{title}}</ion-title>
+    <!-- <ion-buttons end>
+      <button ion-button icon-only tappable navPush="NotificationsPage" color="color-app">
+        <ion-icon name="notifications"></ion-icon>
+        <ion-badge *ngIf="notifications != 0">{{this.notifications}}</ion-badge>
+      </button>
+      <button ion-button icon-only tappable (click)="cartShoppingModal()" color="color-app">
+        <ion-icon name="cart"></ion-icon>
+        <ion-badge *ngIf="count != 0">{{count}}</ion-badge>
+      </button>
+    </ion-buttons> -->
+  </ion-navbar>
+</ion-header>
+
+<ion-content>
+
+  <ion-card>
+    <img src="http://2.bp.blogspot.com/_he8_WX5Uy64/TERnai_dLHI/AAAAAAAAAiI/P90xF3ZFMNA/s400/alisados_dia_del_amigo.jpg"/>
+    <ion-card-content>
+      <ion-card-title>
+        {{notificationId}}
+        </ion-card-title>
+      <p>
+        {{body}}
+      </p>
+    </ion-card-content>
+  </ion-card>
+
+</ion-content>

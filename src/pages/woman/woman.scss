@@ -44,11 +44,11 @@ page-woman {
                 margin-right: 1em;
                 color: map-get($colors, color-app) !important;
                 ion-badge{
-                  background: #e43030 !important;
+                  background: #ff461d !important;
                   color: map-get($colors, white) !important;
-                  margin-left:13px !important;
+                  left:13px !important;
                   margin-top: -8px !important;
-                  border-radius: 30% !important;
+                  border-radius: 40% !important;
                   padding: 3px 6px !important;
                   position: absolute;
                   z-index: 100;

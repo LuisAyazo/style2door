@@ -95,17 +95,20 @@ export class MyApp {
         //   this.oneSignal.inFocusDisplaying(this.oneSignal.OSInFocusDisplayOption.InAppAlert);
         //
           this.oneSignal.handleNotificationReceived().subscribe((signal_received) => {
-            alert(JSON.stringify(signal_received));
+            // alert(JSON.stringify(signal_received));
             var date = new Date();
-            let  current_notification = signal_received.payload.title + date.toLocaleString().toString();
-
-
-            // // console.log(date.toLocaleString());
-            // this.signal.push(date.toLocaleString());
-            // this.signal.push(signal_received)
+            // // var day = date.getDate();
+            // // var monthIndex = date.getMonth()+1;
+            // // var year = date.getFullYear();
+            // // let  current_notification = ;
+            //
+            //
+            // // // console.log(date.toLocaleString());
+            // // this.signal.push(date.toLocaleString());
+            // // this.signal.push(signal_received)
             // var signal = {
             //   signal_received: signal_received,
-            //   datetime: date
+            //   datetime: date.toLocaleString()
             // }
 
 
@@ -115,9 +118,9 @@ export class MyApp {
 
                  if(data.uid){
 
-                   this.angularFirestore.collection('users' ).doc(`${data.uid}`).collection('notifications').doc(current_notification).set(this.signal)
+                   this.angularFirestore.collection('users' ).doc(`${data.uid}`).collection('notifications').doc(signal_received.payload.notificationID).set({view:false, datetime: date.toLocaleString(), signal_received})
                    .then(() => {
-                       alert("Document successfully seteado!");
+                       console.log("Document successfully seteado!");
                    }).catch( (error) => {
                        alert(error);
                    });

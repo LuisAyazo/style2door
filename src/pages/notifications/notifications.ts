@@ -3,6 +3,7 @@ import { IonicPage, Platform, AlertController, NavController, NavParams, ViewCon
 // import { FCM } from '@ionic-native/fcm';
 import { AngularFireAuth } from 'angularfire2/auth';
 import { AngularFirestore } from 'angularfire2/firestore';
+import { NotificationsProvider } from '../../providers/notifications/notifications';
 // import { Observable } from 'rxjs/Observable';
 
 // declare var FCMPlugin: any;
@@ -12,7 +13,8 @@ import { AngularFirestore } from 'angularfire2/firestore';
   templateUrl: 'notifications.html',
 })
 export class NotificationsPage {
-  notifications: number;
+  notifications: number = 1;
+  notificationData: any;
 
   constructor(
     public navCtrl: NavController,
@@ -23,27 +25,35 @@ export class NotificationsPage {
      private platfrom: Platform,
      private angularFauth:AngularFireAuth,
      private readonly angularFirestore: AngularFirestore,
+     public notiPro: NotificationsProvider
+
    ) {
 
 
 
 
-    var date = new Date();
-    console.log(date.toLocaleString());
-    var day = date.getDate();
-    var monthIndex = date.getMonth();
-    var year = date.getFullYear();
-    var minutes = date.getMinutes();
-    var hours = date.getHours();
-    var seconds = date.getSeconds();
-    console.log(day);
-    console.log(monthIndex);
-    console.log(year);
-    console.log(minutes);
-    console.log(hours);
-    console.log(seconds);
-    var date = new Date();
+    this.notiPro.getNotificationsData().subscribe(data =>{
+      console.log(data);
+      this.notificationData = data;
+    });
+
+    // var date = new Date();
+    // console.log(date.toLocaleString());
+    // var day = date.getDate();
+    // var monthIndex = date.getMonth()+1;
+    // var year = date.getFullYear();
+    // var minutes = date.getMinutes();
+    // var hours = date.getHours();
+    // var seconds = date.getSeconds();
+    // console.log(day);
+    // console.log(monthIndex);
+    // console.log(year);
+    // console.log(minutes);
+    // console.log(hours);
+    // console.log(seconds);
     //
+
+
     // var signal = {[ 'data':
     //   {signal_received: "signal_received"},
     //   'datetime': {datetime: date.toLocaleString()}
@@ -68,14 +78,25 @@ export class NotificationsPage {
   ionViewDidLoad() {
     console.log('ionViewDidLoad NotificationsPage');
   }
+  // enviar el mensaje clickeado a la pagina del detalle con mejor vista
+  notificationsDetail(msg){
+    // console.log(msg);
+    this.navCtrl.push('NotificationsDetailPage', {
+      datetime: msg.datetime,
+      title: msg.signal_received.payload.title,
+      body: msg.signal_received.payload.body,
+      notificationId: msg.signal_received.payload.notificationId
+    });
+  }
 
   /**** Quitar modal y volver a la lista ****/
    dismiss() {
-     if(this.navCtrl.canGoBack() == false){
-      this.navCtrl.setRoot('TabsHomePage');
-     }else{
+     this.navCtrl.setRoot('TabsHomePage');
+     if(this.navCtrl.canGoBack()){
        this.viewCtrl.dismiss();
      }
+    //  else{
+    //  }
    }
 
 }

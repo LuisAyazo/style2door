@@ -62,14 +62,7 @@ export class WomanPage {
     public notiPro: NotificationsProvider
   ) {
 
-      // Notifications
-       this.notiPro.notificationsCount().subscribe(count =>{
-                       this.notifications = count.length;
-                       console.log('notificationes woman' +  this.notifications);
-                     });;
-
-
-      this.itemsCollection = this.angularFirestore.collection<any>('servicios/mujeres/manicure-pedicure');
+      this.itemsCollection = this.angularFirestore.collection<any>('servicios/mujeres/manicure-pedicure')
       this.itemsCollection.valueChanges().subscribe(
            (data) =>
            {
@@ -126,20 +119,16 @@ export class WomanPage {
 
   ionViewDidLoad() {
 
-     // );
-    //  this.itemsCollection = this.angularFirestore.collection<any>('servicios/mujeres/maquillaje');
-    //  this.itemsCollection.valueChanges().subscribe(
-    //     (data) =>
-    //     {
-    //       this.maquillaje = data;
-    //       // console.log(this.maquillaje);
-     //
-    //     }
-    //   );
-    //
+          // Notifications
+          this.notiPro.getNotificationsData().subscribe(data =>{this.notifications=data.length});
+          // .subscribe(
+          //   count =>{
+          //          this.Notifications = count.length;
+          //          console.log(count);
+          //   });
+          //  console.log('w '+this.notifications);
 
 
-      // console.log("Item  proveniente de firebase checked " + JSON.stringify(this.itemCheckedFromFirebase));
   }
 
 
