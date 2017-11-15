@@ -35,6 +35,9 @@ page-woman {
     }
     ion-header{
         ion-navbar{
+            ion-avatar{
+              border-radius: 50% !important;
+            }
             ion-title{
                 font-family: 'Great Vibes';
                 font-size: 2.4rem !important;

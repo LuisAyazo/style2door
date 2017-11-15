@@ -21,7 +21,7 @@ export class NotificationsProvider {
     public angularFirestore: AngularFirestore,
   ) {
     console.log('Hello NotificationsProvider Provider');
-    this.angularFauth.authState.subscribe( (data) => {
+    this.angularFauth.authState.subscribe( data => {
           this.authState = data;
     });
   }
@@ -43,6 +43,17 @@ export class NotificationsProvider {
     return this.angularFirestore.collection('users').doc(this.currentUserId).collection('notifications').doc(notificationId).update({
         "view": true
     });
+  }
+
+  getCurrentNotificationNoView(){
+    try{
+      return this.angularFirestore.collection('users').doc(this.currentUserId).collection('notifications', ref => ref.where("view", "==", false)).valueChanges();
+    }
+    catch(e){
+      // alert(e);
+      return null
+    }
+
   }
 
 

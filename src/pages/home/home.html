@@ -17,8 +17,9 @@
       <!-- <button ion-button icon-only (click)="perfilPage()">
         <ion-icon name="person"></ion-icon>
       </button> -->
-      <button ion-button icon-only tappable navPush="NotificationsPage">
-        <ion-icon name="notifications" color="color-app"></ion-icon>
+      <button ion-button icon-only tappable navPush="NotificationsPage" color="color-app">
+        <ion-icon name="notifications"></ion-icon>
+        <ion-badge *ngIf="_notifications != 0">{{this._notifications}}</ion-badge>
       </button>
       <button ion-button icon-only tappable navPush="CartPage">
         <ion-icon name="cart" color="color-app"></ion-icon>

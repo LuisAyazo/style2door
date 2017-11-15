@@ -31,11 +31,8 @@ export class NotificationsPage {
 
 
 
-
-    this.notiPro.getNotificationsData().subscribe(data =>{
-      console.log(data);
-      this.notificationData = data;
-    });
+    // tomar toda la data de las notificaciones
+    this.notiPro.getNotificationsData().subscribe(data =>{this.notificationData = data});
 
     // var date = new Date();
     // console.log(date.toLocaleString());

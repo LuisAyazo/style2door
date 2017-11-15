@@ -39,6 +39,7 @@ export class WomanPage {
   keys: string[];
   // itemCheckedFromFirebase: Observable<any>;
   itemCheckedFromFirebase: any;
+  _notifications: number = 0;
 
   // item: Item = {
   //   name: '',
@@ -61,7 +62,17 @@ export class WomanPage {
     private readonly angularFirestore: AngularFirestore,
     public notiPro: NotificationsProvider
   ) {
+      // Notificaciones no vistas
+      // if(this.notiPro.getCurrentNotificationNoView().length > 0){
+      //   this.notiPro.getCurrentNotificationNoView().subscribe(data => {
+      //     console.log(data)
+      //
+      //     // this._notifications = data.length
+      //
+      //   });
+      // }
 
+      // Traer todos los servicios de manicure
       this.itemsCollection = this.angularFirestore.collection<any>('servicios/mujeres/manicure-pedicure')
       this.itemsCollection.valueChanges().subscribe(
            (data) =>
@@ -118,6 +129,10 @@ export class WomanPage {
   }
 
   ionViewDidLoad() {
+          // Notificaciones no vistas
+          if(this.notiPro.getCurrentNotificationNoView() !== 0){
+            this.notiPro.getCurrentNotificationNoView().subscribe(data => {this._notifications = data.length });
+          }
 
           // Notifications
           this.notiPro.getNotificationsData().subscribe(data =>{this.notifications=data.length});

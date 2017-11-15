@@ -137,20 +137,32 @@ page-home {
   margin: 0 !important;
 }
 
-  ion-header{
+ion-header{
     ion-navbar{
-      ion-title{
-        font-family: 'Great Vibes';
-        font-size: 2.4rem !important;
-        // font-size: 23px !important;
-      }
-
-      ion-avatar{
-        border-radius: 50% !important;
-
-      }
+        ion-avatar{
+          border-radius: 50% !important;
+        }
+        ion-title{
+            font-family: 'Great Vibes';
+            font-size: 2.4rem !important;
+            // font-size: 23px !important;
+        }
+        ion-buttons{
+            margin-right: 1em;
+            color: map-get($colors, color-app) !important;
+            ion-badge{
+              background: #ff461d !important;
+              color: map-get($colors, white) !important;
+              left:13px !important;
+              margin-top: -8px !important;
+              border-radius: 40% !important;
+              padding: 3px 6px !important;
+              position: absolute;
+              z-index: 100;
+            }
+        }
     }
-  }
+}
 
 
   .color-app{

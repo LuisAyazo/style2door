@@ -21,14 +21,20 @@ export class NotificationsDetailPage {
      this.title = navParams.get('title');
      this.body = navParams.get('body');
      this.datetime = navParams.get('datetime');
-    //  console.log(this.id, title, body, datetime);
+     console.log(this.id, this.title, this.body, this.datetime);
+     alert(this.id);
 
   }
 
   ionViewDidLoad() {
     // console.log(this.id);
     console.log('ionViewDidLoad NotificationsDetailPage');
-    this.notiPro.updateNotificationView(this.id);
+    try{
+      this.notiPro.updateNotificationView(this.id);
+    }
+    catch(e){
+      alert(JSON.stringify(e));
+    }
   }
 
 
