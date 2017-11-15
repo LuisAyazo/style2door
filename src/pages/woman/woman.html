@@ -5,10 +5,11 @@
     </button>
     <ion-title>Style2Door</ion-title>
     <ion-buttons end>
-      <button ion-button icon-only (tap)="notificationModal()" color="color-app">
+      <button ion-button icon-only tappable (click)="notificationModal()" color="color-app">
         <ion-icon name="notifications"></ion-icon>
+        <ion-badge *ngIf="notifications != 0">{{this.notifications}}</ion-badge>
       </button>
-      <button ion-button icon-only (tap)="cartShoppingModal()" color="color-app">
+      <button ion-button icon-only tappable (click)="cartShoppingModal()" color="color-app">
         <ion-icon name="cart"></ion-icon>
         <ion-badge *ngIf="count != 0">{{count}}</ion-badge>
       </button>
@@ -35,12 +36,12 @@
     {{entry.id}} - {{entry.nombre}} - {{entry.checked}}
   </li>
 </ul> -->
-<ion-list>
+<ion-spinner name='circles' *ngIf="manicure == 0"></ion-spinner>
+<ion-list *ngIf="manicure >= 1">
  <ion-list-header>
    Manicure y Pedicure
  </ion-list-header>
  <ion-slides slidesPerView=2 spaceBetween=8 speed=300 >
-   <ion-spinner name='circles' *ngIf="manicure == 0"></ion-spinner>
  <ion-slide *ngFor="let item of manicure">
    <!-- <p>{{item.nombre}}</p> -->
 

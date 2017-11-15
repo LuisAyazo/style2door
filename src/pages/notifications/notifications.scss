@@ -1,10 +1,35 @@
 page-notifications {
+  // menu-app .toolbar-content-ios, menu-app .toolbar-content-md {
+  //   margin: 15px !important;
+  // }
+  ion-header{
+    ion-navbar{
+      ion-title{
+        margin: 15px !important;
+      }
+    }
+  }
   ion-content{
-    margin-top: 50px;
+    // margin-top: 50px;
     background: #ece8e8 !important;
     text-align: center !important;
     h1, i{
       color:  #6c6c66;
+    }
+
+    ion-list{
+      ion-list-header{
+        background-color: none !important;
+        margin-bottom: 0px !important;  
+      }
+      ion-item{
+        h2{
+          font-weight: bolder;
+        }
+        ion-note{
+          font-size: 11px !important;
+        }
+      }
     }
   }
 }

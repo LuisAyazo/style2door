@@ -13,6 +13,7 @@ import { Facebook } from '@ionic-native/facebook';
 import { SocialSharing } from '@ionic-native/social-sharing';
 
 // import { NativeStorage } from '@ionic-native/native-storage';
+import { NotificationsProvider } from '../providers/notifications/notifications';
 import { AuthServiceProvider } from '../providers/auth-service/auth-service';
 
 // Pipes
@@ -36,7 +37,7 @@ import { AngularFireAuthModule } from 'angularfire2/auth';
 import { AngularFireDatabaseModule } from 'angularfire2/database';
 import { AngularFirestoreModule } from 'angularfire2/firestore';
 import { FIREBASE_CONFIG } from './app.firebase.config';
-import { FCM } from '@ionic-native/fcm'; // notification  push
+// import { FCM } from '@ionic-native/fcm'; // notification  push
 
 // Activar modo produccion
 enableProdMode();
@@ -66,11 +67,10 @@ enableProdMode();
     {provide: ErrorHandler, useClass: IonicErrorHandler},
     Facebook,
     SocialSharing,
-    // NativeStorage,
     AuthServiceProvider,
+    NotificationsProvider,
     Geolocation,
     GoogleMaps,
-    FCM,
     OneSignal
   ]
 })

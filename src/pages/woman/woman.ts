@@ -1,13 +1,14 @@
-import { Component, ViewChild, OnInit } from '@angular/core';
+import { Component, ViewChild } from '@angular/core';
 import { IonicPage, NavController, NavParams, ModalController, Slides } from 'ionic-angular';
-import { AngularFireDatabase  } from 'angularfire2/database';
-import { AngularFireAuth } from 'angularfire2/auth';
+// import { AngularFireDatabase  } from 'angularfire2/database';
 // import * as firebase from 'firebase/app';
-import { ShoppingItem } from '../../models/shopping-item/shopping-item.interface';
-import { Item } from '../../models/item/item.model';
+// import { ShoppingItem } from '../../models/shopping-item/shopping-item.interface';
+// import { Item } from '../../models/item/item.model';
 
+import { NotificationsProvider } from '../../providers/notifications/notifications';
+import { AngularFireAuth } from 'angularfire2/auth';
 import { AngularFirestore, AngularFirestoreCollection } from 'angularfire2/firestore';
-import { Observable } from 'rxjs/Observable';
+// import { Observable } from 'rxjs/Observable';
 
 @IonicPage()
 @Component({
@@ -24,7 +25,7 @@ export class WomanPage {
   maquillaje: any;
   // a: Observable<any>;
   a: any;
-
+  notifications: any;
   dataFromfirebaseService: any;
   p: any[] = [];
   public loader;
@@ -46,7 +47,7 @@ export class WomanPage {
   // }
 
   // itemMP: Array<{id: any, title: string, checked: any, description: string, value: any}>;
-  private userId;
+  // private userId;
   // shoppingListRef$: AngularFireList<ShoppingItem[]>;
 
 
@@ -55,13 +56,21 @@ export class WomanPage {
     // public loadingCtrl: LoadingController,
     public navParams: NavParams,
     public modalCtrl: ModalController,
-    private database: AngularFireDatabase,
+    // private database: AngularFireDatabase,
     private angularFauth:AngularFireAuth,
-    private readonly angularFirestore: AngularFirestore
+    private readonly angularFirestore: AngularFirestore,
+    public notiPro: NotificationsProvider
   ) {
 
-        this.itemsCollection = this.angularFirestore.collection<any>('servicios/mujeres/manicure-pedicure');
-        this.itemsCollection.valueChanges().subscribe(
+      // Notifications
+       this.notiPro.notificationsCount().subscribe(count =>{
+                       this.notifications = count.length;
+                       console.log('notificationes woman' +  this.notifications);
+                     });;
+
+
+      this.itemsCollection = this.angularFirestore.collection<any>('servicios/mujeres/manicure-pedicure');
+      this.itemsCollection.valueChanges().subscribe(
            (data) =>
            {
              this.manicure = data;
@@ -70,7 +79,6 @@ export class WomanPage {
          );
 
          this.angularFauth.authState.subscribe( data => {
-           // conso
              if(data.uid){
 
                // console.log(this.itemCheckedFromFirebase[0].nombre);

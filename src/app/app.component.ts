@@ -1,13 +1,13 @@
 import { Component, ViewChild } from '@angular/core';
 import { Nav, Platform, MenuController, ToastController } from 'ionic-angular';
 import { StatusBar } from '@ionic-native/status-bar';
-// import { SplashScreen } from '@ionic-native/splash-screen';
-import { Facebook } from '@ionic-native/facebook';
+import { SplashScreen } from '@ionic-native/splash-screen';
+// import { Facebook } from '@ionic-native/facebook';
 import { SocialSharing } from '@ionic-native/social-sharing';
 import { AngularFireAuth } from 'angularfire2/auth';
 import { OneSignal } from '@ionic-native/onesignal';
 import { AngularFirestore, AngularFirestoreCollection } from 'angularfire2/firestore';
-import { Observable } from 'rxjs/Observable';
+// import { Observable } from 'rxjs/Observable';
 
 // import { FCM } from '@ionic-native/fcm';
 //
@@ -30,10 +30,10 @@ export class MyApp {
   constructor(
     public platform: Platform,
     public statusBar: StatusBar,
-    // public splashScreen: SplashScreen,
+    public splashScreen: SplashScreen,
     public  menu: MenuController,
     public toastCtrl: ToastController,
-    private fb: Facebook,
+    // private fb: Facebook,
     private angularFauth:AngularFireAuth,
     private socialSharing: SocialSharing,
     private oneSignal: OneSignal,
@@ -41,7 +41,7 @@ export class MyApp {
 
   ) {
 
-    // this.rootPage = 'TabsHomePage';
+    // this.rootPage = 'NotificationsPage';
 
 
         // this.rootPage = 'ScheduleServicePage';
@@ -73,34 +73,36 @@ export class MyApp {
 
   initializeApp() {
 
-    console.log(this.platform.platforms());
-    if(this.platform.is('core') || this.platform.is('mobileweb')) {
-      // this.isApp = false;
-      // this.isApp = (!document.URL.startsWith('http') || document.URL.startsWith('http://localhost:8100'));
-      console.log("ESTE ES WEB")
-
-
-    }
-    else {
+    // console.log(this.platform.platforms());
+    // if(this.platform.is('core') || this.platform.is('mobileweb')) {
+    //   // this.isApp = false;
+    //   // this.isApp = (!document.URL.startsWith('http') || document.URL.startsWith('http://localhost:8100'));
+    //   console.log("ESTE ES WEB")
+    //
+    //
+    // }
+    // else {
 
 
       this.platform.ready().then(() => {
-
+        this.splashScreen.hide();
         this.statusBar.backgroundColorByHexString("#9a056d");
         // this.splashScreen.hide();
         // setTimeout(() => {
-          // this.splashScreen.hide();
 
-          this.oneSignal.startInit('c75fdaed-3229-4527-990d-d574eaba27ce', '732832336253');
-
-          this.oneSignal.inFocusDisplaying(this.oneSignal.OSInFocusDisplayOption.InAppAlert);
-
+        //   this.oneSignal.startInit('c75fdaed-3229-4527-990d-d574eaba27ce', '732832336253');
+        //
+        //   this.oneSignal.inFocusDisplaying(this.oneSignal.OSInFocusDisplayOption.InAppAlert);
+        //
           this.oneSignal.handleNotificationReceived().subscribe((signal_received) => {
-            // alert(JSON.stringify(signal_received));
+            alert(JSON.stringify(signal_received));
             var date = new Date();
-            // console.log(date.toLocaleString());
-            this.signal.push(date.toLocaleString());
-            this.signal.push(signal_received)
+            let  current_notification = signal_received.payload.title + date.toLocaleString().toString();
+
+
+            // // console.log(date.toLocaleString());
+            // this.signal.push(date.toLocaleString());
+            // this.signal.push(signal_received)
             // var signal = {
             //   signal_received: signal_received,
             //   datetime: date
@@ -113,9 +115,9 @@ export class MyApp {
 
                  if(data.uid){
 
-                   this.angularFirestore.collection('users' ).doc(`${data.uid}`).collection('notifications').doc(signal_received.payload.title).set(this.signal)
+                   this.angularFirestore.collection('users' ).doc(`${data.uid}`).collection('notifications').doc(current_notification).set(this.signal)
                    .then(() => {
-                       alert("Document successfully seteado! ");
+                       alert("Document successfully seteado!");
                    }).catch( (error) => {
                        alert(error);
                    });
@@ -127,7 +129,7 @@ export class MyApp {
 
           this.oneSignal.handleNotificationOpened().subscribe((signal_opened) => {
 
-            this.nav.setRoot('NotificationsPage');
+            this.nav.setRoot('NotificationsPage'); // configurar  push con envio de datos
           });
 
           this.oneSignal.endInit();
@@ -167,7 +169,7 @@ export class MyApp {
 
       });
 
-    }
+    // }
   }
 
 
@@ -194,12 +196,12 @@ export class MyApp {
     let message = 'Style2door - Estilo a tu puerta';
     let image = 'https://scontent-mia3-1.xx.fbcdn.net/v/t31.0-8/23213489_184705552094311_776544078734079414_o.jpg?oh=5c80861cbac59d358b03e85634aa6b90&oe=5A6C5C28';
     let url = 'https://www.facebook.com/Style2door-184705328761000/?modal=admin_todo_tour';
-    let pasteMessageHint ='Style2door - App para lucir bien :D';
-    this.socialSharing.shareViaFacebookWithPasteMessageHint(message, image, url, pasteMessageHint).then(() => {
+    // let pasteMessageHint ='Style2door - App para lucir bien :D';
+    this.socialSharing.shareViaFacebook(message, image, url).then(() => {
       // Sharing via email is possible
       // alert('creo q comparte');
     }).catch((e) => {
-      // alert('error '+ e);
+      alert(e);
       // Sharing via email is not possible
     });
   }
@@ -208,12 +210,12 @@ export class MyApp {
     let message = 'Style2door - Estilo a tu puerta';
     let image = 'https://scontent-mia3-1.xx.fbcdn.net/v/t31.0-8/23213489_184705552094311_776544078734079414_o.jpg?oh=5c80861cbac59d358b03e85634aa6b90&oe=5A6C5C28';
     let url = 'https://www.facebook.com/Style2door-184705328761000/?modal=admin_todo_tour';
-    let pasteMessageHint ='Style2door - App para lucir bien :D';
+    // let pasteMessageHint ='Style2door - App para lucir bien :D';
     this.socialSharing.shareViaWhatsApp(message, image, url).then(() => {
       // Sharing via email is possible
       // alert('creo q comparte');
     }).catch((e) => {
-      // alert('error '+ e);
+      alert(e);
       // Sharing via email is not possible
     });
   }
@@ -223,12 +225,12 @@ export class MyApp {
     let message = 'Style2door - Estilo a tu puerta';
     let image = 'https://scontent-mia3-1.xx.fbcdn.net/v/t31.0-8/23213489_184705552094311_776544078734079414_o.jpg?oh=5c80861cbac59d358b03e85634aa6b90&oe=5A6C5C28';
     let url = 'https://www.facebook.com/Style2door-184705328761000/?modal=admin_todo_tour';
-    let pasteMessageHint ='Style2door - App para lucir bien :D';
+    // let pasteMessageHint ='Style2door - App para lucir bien :D';
     this.socialSharing.shareViaInstagram(message, image).then(() => {
       // Sharing via email is possible
       // alert('creo q comparte');
     }).catch((e) => {
-      // alert('error '+ e);
+      alert(e);
       // Sharing via email is not possible
     });
   }
