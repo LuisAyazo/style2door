@@ -6,7 +6,7 @@ import { SplashScreen } from '@ionic-native/splash-screen';
 import { SocialSharing } from '@ionic-native/social-sharing';
 import { AngularFireAuth } from 'angularfire2/auth';
 import { OneSignal } from '@ionic-native/onesignal';
-import { AngularFirestore, AngularFirestoreCollection } from 'angularfire2/firestore';
+import { AngularFirestore } from 'angularfire2/firestore';
 // import { Observable } from 'rxjs/Observable';
 
 // import { FCM } from '@ionic-native/fcm';
@@ -242,14 +242,17 @@ export class MyApp {
   logout(){
     // console.log("Saliendo de la app");
     this.angularFauth.auth.signOut().then( result => {
-      this.menu.close();//(false);// Quitar automaticamente el sidemenu
-      this.nav.setRoot("LoginPage");
+      console.log(result);
+      if(result == undefined){
+        this.menu.close();//(false);// Quitar automaticamente el sidemenu
+        this.nav.setRoot("LoginPage");
+      }
       // Sign-out successful.
       // console.log(result)
     }).catch((error) => {
       // console.log(error);
       // console.error(error);
-      alert(error)
+      alert(JSON.stringify(error))
       // An error happened.
     });;
   }

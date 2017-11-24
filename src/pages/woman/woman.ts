@@ -62,6 +62,23 @@ export class WomanPage {
     private readonly angularFirestore: AngularFirestore,
     public notiPro: NotificationsProvider
   ) {
+
+
+
+    this.angularFauth.authState.subscribe( data => {
+          // this.authState = data;
+          if(data == null){
+            this.navCtrl.setRoot('LoginPage');
+          }else{
+            console.log('QUeeeee');
+            // setTimeout(() => {
+            // }, 5000);
+          }
+          console.log(data);
+    });
+
+              this.initAll();
+
       // Notificaciones no vistas
       // if(this.notiPro.getCurrentNotificationNoView().length > 0){
       //   this.notiPro.getCurrentNotificationNoView().subscribe(data => {
@@ -72,65 +89,81 @@ export class WomanPage {
       //   });
       // }
 
-      // Traer todos los servicios de manicure
-      this.itemsCollection = this.angularFirestore.collection<any>('servicios/mujeres/manicure-pedicure')
-      this.itemsCollection.valueChanges().subscribe(
-           (data) =>
-           {
-             this.manicure = data;
-            //  console.log(this.manicure);
-           }
-         );
 
-         this.angularFauth.authState.subscribe( data => {
-             if(data.uid){
+  }
 
-               // console.log(this.itemCheckedFromFirebase[0].nombre);
-               this.angularFirestore.collection('users' ).doc(`${data.uid}`).collection('shopping_list_temp').valueChanges()
-               // if(this.itemCheckedFromFirebase == 'undefined' ){
-               //   this.count = 0
-               // }
-                 .subscribe(
-                   data => {
-                     // console.log(data);
-                     this.itemCheckedFromFirebase = data;
-                    //  console.log(this.itemCheckedFromFirebase[0].nombre);
 
-                     for(let al in this.itemCheckedFromFirebase){
-                       console.log(this.itemCheckedFromFirebase[al].nombre);
-                      //  let p = {
-                      //
-                      //  }
-                     }
-                     // this.count = data.length;
+  initAll(){
+
+
+       this.angularFauth.authState.subscribe( data => {
+           if(data !== null){
+
+             // console.log(this.itemCheckedFromFirebase[0].nombre);
+             this.angularFirestore.collection('users' ).doc(`${data.uid}`).collection('shopping_list_temp').valueChanges()
+             // if(this.itemCheckedFromFirebase == 'undefined' ){
+             //   this.count = 0
+             // }
+               .subscribe(data => {
+                  this.itemCheckedFromFirebase = [];
+
+                   this.itemCheckedFromFirebase = data;
+                   if(this.itemCheckedFromFirebase.length<1){
+                     console.log("ERRRROORRR!!!");
                    }
-                 )
-             }
-         });
+                   console.log(this.itemCheckedFromFirebase);
+                  //  console.log(this.itemCheckedFromFirebase[0].nombre);
+                   //
+                  //  for(let al in this.itemCheckedFromFirebase){
+                  //    console.log(this.itemCheckedFromFirebase[al].nombre);
+                  //   //  let p = {
+                  //   //
+                  //   //  }
+                  //  }
+                   // this.count = data.length;
+                 }
 
-    this.angularFauth.authState.subscribe( data => {
-      // conso
-        if(data.uid){
-            this.angularFirestore.collection('users' ).doc(`${data.uid}`).collection('shopping_list_temp').valueChanges()
-            .subscribe(count =>{this.count = count.length});
-        }
+               )
+           }
+       });
 
-    });
+       // Traer todos los servicios de manicure
+       this.angularFauth.authState.subscribe( data => {
+           if(data !== null){
+               this.angularFirestore.collection('servicios').doc('mujeres').collection('manicure-pedicure').valueChanges()
+               .subscribe( data => { this.manicure = data
+                      // console.log(this.manicure);
+                    }
+                  );
+            }
+
+      });
+      //
+      this.angularFauth.authState.subscribe( data => {
+        // conso
+          if(data !== null){
+              this.angularFirestore.collection('users' ).doc(`${data.uid}`).collection('shopping_list_temp').valueChanges()
+              .subscribe(count =>{this.count = count.length});
+          }
+
+      });
   }
 
-  isChecked(item){
-
-    console.log('rrrr' +item + item.nombre);
-    console.log('llll '+this.itemCheckedFromFirebase);
-    for(let a in this.itemCheckedFromFirebase){
-      console.log('vvvvv '+ a);
-    }
-
-  }
+  // isChecked(item){
+  //
+  //   console.log('rrrr' +item + item.nombre);
+  //   console.log('llll '+this.itemCheckedFromFirebase);
+  //   for(let a in this.itemCheckedFromFirebase){
+  //     console.log('vvvvv '+ a);
+  //   }
+  //
+  // }
 
   ionViewDidLoad() {
+
+
           // Notificaciones no vistas
-          if(this.notiPro.getCurrentNotificationNoView() !== 0){
+          if(this.notiPro.getCurrentNotificationNoView() !== null){
             this.notiPro.getCurrentNotificationNoView().subscribe(data => {this._notifications = data.length });
           }
 
@@ -157,6 +190,30 @@ export class WomanPage {
   cartShoppingModal(){
     let modal = this.modalCtrl.create("CartPage");
     modal.present();
+  }
+
+  datachanged(id, name, price,  e: any){
+    // console.log('ID:  '+ id);
+    // console.log('Valor del item '+ name);
+    // console.log('precio '+ price);
+    console.log('Valor del estado '+ e);
+
+    // console.log('Cucumbers new state:' + item.name)
+
+    if (e == true){
+      this.addItem(id, name, price, e);
+      // this.count = this.obj_buy.length;
+    }else{
+      setTimeout(() => {
+        this.removeItem(name);
+        console.log(JSON.stringify(name));
+        // name = [];
+      }, 1000);
+      // this.count = this.obj_buy.length;
+      // this.count =1;
+    }
+    // console.log(this.count);
+
   }
 
   // Agregar elementos al carrito
@@ -206,6 +263,7 @@ export class WomanPage {
 
     // Eliminar elementos al carrito
   removeItem(name){
+    // console.log(name);
     // console.log("Longitud: "+this.obj_buy.length)
     // console.log("BBJEE "+this.obj_buy[0].id);
     // for(let i = 0; i < this.obj_buy.length; i++) {
@@ -281,26 +339,7 @@ export class WomanPage {
   // }
 
 
-  datachanged(id, name, price,  e: any){
-    console.log('ID:  '+ id);
-    console.log('Valor del item '+ name);
-    console.log('precio '+ price);
-    console.log('Valor del estado '+ e);
 
-    // console.log('Cucumbers new state:' + item.name)
-
-    if (e){
-      this.addItem(id, name, price, e);
-      // this.count = this.obj_buy.length;
-
-    }else{
-      this.removeItem(name);
-      // this.count = this.obj_buy.length;
-      // this.count =1;
-    }
-    // console.log(this.count);
-
-  }
 
 
 }

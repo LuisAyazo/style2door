@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { IonicPage, Platform, AlertController, NavController, NavParams, ViewController } from 'ionic-angular';
 // import { FCM } from '@ionic-native/fcm';
-import { AngularFireAuth } from 'angularfire2/auth';
+// import { AngularFireAuth } from 'angularfire2/auth';
 import { AngularFirestore } from 'angularfire2/firestore';
 import { NotificationsProvider } from '../../providers/notifications/notifications';
 // import { Observable } from 'rxjs/Observable';
@@ -23,7 +23,7 @@ export class NotificationsPage {
      public viewCtrl: ViewController,
      public alert: AlertController,
      private platfrom: Platform,
-     private angularFauth:AngularFireAuth,
+    //  private angularFauth:AngularFireAuth,
      private readonly angularFirestore: AngularFirestore,
      public notiPro: NotificationsProvider
 
@@ -82,15 +82,16 @@ export class NotificationsPage {
       datetime: msg.datetime,
       title: msg.signal_received.payload.title,
       body: msg.signal_received.payload.body,
-      notificationId: msg.signal_received.payload.notificationId
+      notificationId: msg.signal_received.payload.notificationID
     });
   }
 
   /**** Quitar modal y volver a la lista ****/
    dismiss() {
-     this.navCtrl.setRoot('TabsHomePage');
      if(this.navCtrl.canGoBack()){
        this.viewCtrl.dismiss();
+     }else{
+       this.navCtrl.setRoot('TabsHomePage');
      }
     //  else{
     //  }

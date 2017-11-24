@@ -13,10 +13,44 @@ page-child {
     .segment-md .segment-button {
         color: map-get($colors, color-app) !important;
     }
+
+    .item-md, .item-ios {
+      background: None !important;
+      padding-left: 0px !important;
+
+    }
+
+    .toolbar-title-md{
+      font-size: 2.7rem !important;
+      padding: 0 32px !important;
+      // text-align: left !important;
+    }
+
+    .toolbar-title-ios{
+      font-size: 2.1rem !important;
+      font-weight: normal !important;
+      // text-align: left !important;
+    }
+
+    .bar-button-ios {
+      font-size: 15px !important;
+    }
+
+    .item-md.item-block .item-inner{
+      padding-right: 0 !important;
+      border-bottom: None !important;
+    }
+
+    .item-md ion-avatar[item-end]{
+      margin: 0 !important;
+    }
+
     ion-header{
         ion-navbar{
             ion-title{
                 // color: color-contrast($colors, white) !important;
+                font-family: 'Great Vibes';
+                font-size: 2.4rem !important;
             }
             ion-buttons{
                 color: map-get($colors, color-app) !important;

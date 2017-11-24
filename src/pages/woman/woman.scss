@@ -4,35 +4,37 @@
 
 }
 page-woman {
-    .item-md, .item-ios {
-      background: None !important;
-      padding-left: 15px !important;
+  .item-md, .item-ios {
+    background: None !important;
+    padding-left: 0px !important;
 
-    }
+  }
 
-    .toolbar-title-md{
-      font-size: 2.8rem !important;
-      // text-align: left !important;
-    }
+  .toolbar-title-md{
+    font-size: 2.7rem !important;
+    padding: 0 32px !important;
+    // text-align: left !important;
+  }
 
-    .toolbar-title-ios{
-      font-size: 2.1rem !important;
-      font-weight: normal !important;
-      // text-align: left !important;
-    }
+  .toolbar-title-ios{
+    font-size: 2.1rem !important;
+    font-weight: normal !important;
+    // text-align: left !important;
+  }
 
-    .bar-button-ios {
-      font-size: 15px !important;
-    }
+  .bar-button-ios {
+    font-size: 15px !important;
+  }
 
-    .item-md.item-block .item-inner{
-      padding-right: 0 !important;
-      border-bottom: None !important;
-    }
+  .item-md.item-block .item-inner{
+    padding-right: 0 !important;
+    border-bottom: None !important;
+  }
 
-    .item-md ion-avatar[item-end]{
-      margin: 0 !important;
-    }
+  .item-md ion-avatar[item-end]{
+    margin: 0 !important;
+  }
+
     ion-header{
         ion-navbar{
             ion-avatar{
@@ -80,7 +82,7 @@ page-woman {
             //     width: 100% !important;
             // }
             ion-slides{
-                padding: 0px ;
+                padding: 0px !important ;
                 // margin-left: 15px;
                 //  padding-left: -25px;
                 //
@@ -92,9 +94,10 @@ page-woman {
                 }
                 ion-slide{
                     // width: 200px !important;
-                    height: 213px !important;
-                    border: 0.7px #f7f0f0 solid;
+                    height: 220px !important;
+                    border: 0.10px #f7f0f0 solid; // color y grosor de border de la imagen f7f0f0
                     padding: 0px !important;
+                    // margin: 0px !important;
                     // border: 0.7px red solid;
 
                     border-radius: 6px;
@@ -102,20 +105,53 @@ page-woman {
                     // background: red;
 
                     button{
-                        height: 210px !important;
-                        padding: 0px !important;
-
-                        img{
+                        border-radius: 6px;
                         position: absolute;
-                        top:0px;
-                        // height: 120px;
-                        -webkit-background-size: 100% 100%;           /* Safari 3.0 */
-                           -moz-background-size: 100% 100%;           /* Gecko 1.9.2 (Firefox 3.6) */
-                             -o-background-size: 100% 100%;           /* Opera 9.5 */
-                                background-size: 100% 100%;
-                        border-radius: 6px 6px 0px 0px !important;
-                        }
+                        top: -2px !important;
+                        height: 215px !important;
+                        // margin-bottom: -10px;
+                        padding: 0px !important;
+                        .img_container{
+                            border-radius: 6px 6px 0px 0px;
+                            position: absolute;
+                            top:0;
+                            height: 160px !important;
+                            width: 165px !important;
+                            background: rgba(235, 235, 235, 0.82) !important;
+                            font-size: 0;
+                            text-align: center;
+                          .trick {
+                            display: inline-block;
+                            vertical-align: middle;
+                            // height: 150px;
+                          }
+                          img{
+                            display: inline-block;
+                            // vertical-align: middle;
+                            // max-height: 100%;
+                            width: auto;
+                            height: 100vh;
+                            // background-size: 50% auto !important;
+                            background-size: cover;
+                            background-size: contain;
 
+                            /* One-value syntax */
+                            /* the width of the image (height becomes 'auto') */
+                            background-size: 50%;
+                            background-size: 3.2em;
+                            background-size: 12px;
+                            background-size: auto;
+                                                  // position: absolute;
+                            // top:0px;
+
+                            background-size: cover;
+                            // height: 0;
+                            padding: 0; /* reset */
+                          // padding-bottom: calc(100% * 3 / 4);
+                          }
+                          // max-width: 100%;
+
+                        }
                         .space_price {
                           position: absolute;
                         //   border-bottom: 0.5px solid red;
@@ -150,7 +186,7 @@ page-woman {
                               text-transform: capitalize;
                               //  top: 40px;
                                left: 5px;
-                               top: -60px;
+                               top: -23px;
                               //  text-align:  justify;
                               //   color: map-get($colors, color-app);
                               //   font-weight: 580;
@@ -158,8 +194,10 @@ page-woman {
                           p{
                               color:black;
                               position: absolute;
+                              // font-family: 'Open Sans';
+
                               z-index: 4;
-                              top: -34px;
+                              top: 0px;
                               left: 5px;
                               float: left;
                               font-size: 12px;
@@ -179,7 +217,7 @@ page-woman {
                                 height: 100%;
                                 // background: red;
                                 right: 0px;
-                                top: 5px;
+                                top: 0px;
                                 // text-align: center;
                                 // text-align: justify;
                                 opacity: 1;
@@ -208,20 +246,20 @@ page-woman {
                             }
 
                         }
-                        .heart_like{
-                            position: absolute;
-                            z-index: 1000;
-                            left: 5px;
-                            bottom: 1px;
-                            // left: -5px;
-                            color: red;
-                            font-size: 10px;
-                            height: 20px !important;
-                            ion-icon{
-                                border-color: black;
-
-                            }
-                        }
+                        // .heart_like{
+                        //     position: absolute;
+                        //     z-index: 1000;
+                        //     left: 5px;
+                        //     bottom: 1px;
+                        //     // left: -5px;
+                        //     color: red;
+                        //     font-size: 10px;
+                        //     height: 20px !important;
+                        //     ion-icon{
+                        //         border-color: black;
+                        //
+                        //     }
+                        // }
 
 
                         .info_btn{

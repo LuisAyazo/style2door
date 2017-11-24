@@ -5,7 +5,7 @@ import { AngularFireAuth } from 'angularfire2/auth';
 import * as firebase from 'firebase/app';
 import { AngularFirestore, AngularFirestoreCollection } from 'angularfire2/firestore';
 import { Observable } from 'rxjs/Observable';
-
+import { NotificationsProvider } from '../../providers/notifications/notifications';
 
 @IonicPage()
 @Component({
@@ -21,6 +21,7 @@ export class CartPage {
   all_article_to_buy: any;
   public hours: number[] = [];
   count: number;
+  _notifications: number = 0;
 
 
   constructor(
@@ -29,8 +30,8 @@ export class CartPage {
     public viewCtrl: ViewController,
     private database: AngularFireDatabase,
     private angularFauth:AngularFireAuth,
-    private readonly angularFirestore: AngularFirestore
-
+    private readonly angularFirestore: AngularFirestore,
+    public notiPro: NotificationsProvider
   ) {
     this.total = 0;
     this.com();
@@ -43,6 +44,10 @@ export class CartPage {
           }
 
     });
+
+    if(this.notiPro.getCurrentNotificationNoView() !== null){
+      this.notiPro.getCurrentNotificationNoView().subscribe(data => {this._notifications = data.length });
+    }
 
   }
 
@@ -148,30 +153,18 @@ export class CartPage {
               if(this.all_article_to_buy.length > 0){
                 for(let a = 0; a<this.all_article_to_buy.length; a++){
                   console.log(a);
-                  // this.total = 0;
-                  // var total_tmp = 0;
-                  // total_tmp += this.all_article_to_buy[a].precio *  this.all_article_to_buy[a].cantidad;
-                  // console.log(this.all_article_to_buy[a].precio *  this.all_article_to_buy[a].cantidad);
-                  // console.log('operacion '+ total_tmp);
-                  // 7500*4
+
                   this.hours[a] = this.all_article_to_buy[a].precio *  this.all_article_to_buy[a].cantidad;
                   console.log(this.hours);
-
-                  // 13822*2
-                  // this.total += total_tmp ;
-                  // console.log("Actual valor --> "+ total_tmp);
-                  // this.all_article_to_buy[a].shift();
                 }
-                // console.log('Antes '+ this.total);
+
 
                 for(let sum_total in this.hours){
                   this.total += this.hours[sum_total];
                   console.log(this.total);
                 }
                 this.hours = [];
-                // this.total += total_tmp;
-                // console.log('Total:  '+ this.total);
-                // this.total += this.total;
+
               }
             }
           )
