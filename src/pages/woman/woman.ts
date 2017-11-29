@@ -7,7 +7,7 @@ import { IonicPage, NavController, NavParams, ModalController, Slides } from 'io
 
 import { NotificationsProvider } from '../../providers/notifications/notifications';
 import { AngularFireAuth } from 'angularfire2/auth';
-import { AngularFirestore, AngularFirestoreCollection } from 'angularfire2/firestore';
+import { AngularFirestore } from 'angularfire2/firestore';
 // import { Observable } from 'rxjs/Observable';
 
 @IonicPage()
@@ -19,7 +19,7 @@ export class WomanPage {
   @ViewChild(Slides) slides: Slides;
 
   //firestore
-  private itemsCollection: AngularFirestoreCollection<any>;
+  // private itemsCollection: AngularFirestoreCollection<any>;
   items: any;
   manicure: any;
   maquillaje: any;
@@ -37,9 +37,12 @@ export class WomanPage {
   fb_data: any = [];
   itemMP: any;
   keys: string[];
+  arrayTmp: any[];
   // itemCheckedFromFirebase: Observable<any>;
   itemCheckedFromFirebase: any;
   _notifications: number = 0;
+  delTmp: any;
+  ch: any[] = [];
 
   // item: Item = {
   //   name: '',
@@ -99,19 +102,41 @@ export class WomanPage {
        this.angularFauth.authState.subscribe( data => {
            if(data !== null){
 
+
+              //  this.delTmp = this.angularFirestore.collection('users').doc(`${data.uid}`).collection('shopping_list_temp').snapshotChanges().map(actions => {
+              //    return actions.map(a => {
+              //      const data = a.payload.doc.data();
+              //      const id = a.payload.doc.id;
+              //      return({ id, ...data });
+              //    });
+              //  });
              // console.log(this.itemCheckedFromFirebase[0].nombre);
              this.angularFirestore.collection('users' ).doc(`${data.uid}`).collection('shopping_list_temp').valueChanges()
              // if(this.itemCheckedFromFirebase == 'undefined' ){
              //   this.count = 0
-             // }
+            //  // }
                .subscribe(data => {
-                  this.itemCheckedFromFirebase = [];
+                  // this.itemCheckedFromFirebase = [];
 
                    this.itemCheckedFromFirebase = data;
                    if(this.itemCheckedFromFirebase.length<1){
                      console.log("ERRRROORRR!!!");
                    }
-                   console.log(this.itemCheckedFromFirebase);
+
+
+                  // for(let a = 0; a<this.itemCheckedFromFirebase.length; a++){
+
+                  this.ch = [];
+                     for(let a in this.itemCheckedFromFirebase){
+                      //  console.log(a);
+                      //  console.log(this.itemCheckedFromFirebase[a]);
+                       this.ch.push(this.itemCheckedFromFirebase[a].nombre);
+                      //  this.index += this.itemCheckedFromFirebase.findIndex((itemp) => itemp['id'] === data[a].id);
+                       console.log(JSON.stringify(this.ch));
+                     }
+
+                  // }
+                    // sacar object key
                   //  console.log(this.itemCheckedFromFirebase[0].nombre);
                    //
                   //  for(let al in this.itemCheckedFromFirebase){
@@ -156,7 +181,7 @@ export class WomanPage {
   //   for(let a in this.itemCheckedFromFirebase){
   //     console.log('vvvvv '+ a);
   //   }
-  //
+  /**  */
   // }
 
   ionViewDidLoad() {
@@ -192,26 +217,39 @@ export class WomanPage {
     modal.present();
   }
 
-  datachanged(id, name, price,  e: any){
-    // console.log('ID:  '+ id);
-    // console.log('Valor del item '+ name);
-    // console.log('precio '+ price);
-    console.log('Valor del estado '+ e);
+  datachanged(item,  e: any){
+    console.log('ID:  '+ item.id);
+    console.log('Valor del item '+ item.nombre);
+    console.log('precio '+ item.precio);
+    console.log(JSON.stringify(e));
+    console.log(JSON.stringify(item.id));
 
     // console.log('Cucumbers new state:' + item.name)
 
-    if (e == true){
-      this.addItem(id, name, price, e);
+    // if ((e.originalEvent.isTrusted === true && e.originalEvent.isPrimary === undefined) || e.originalEvent.isPrimary === true){
+    // if(this.datachangedClicked){
+      if(e == true){
+        // console.log('added');
+        // console.log('SIiiiiiii TRUSTED');
+        this.addItem(item.id, item.nombre, item.precio, e);
+      }else{
+        // console.log('removed');
+        // console.log('nooooooo TRUSTED');
+        // setTimeout(() => {
+        // console.log(this.itemCheckedFromFirebase);
+        // console.log(Object.keys(item));
+        //   console.log(JSON.stringify(item));
+          this.removeItem(item);
+          // item = []
+          // name = [];
+        // }, 1000);
+        // this.count = this.obj_buy.length;
+        // this.count =1;
+      }
+      // console.log(Object.keys(item));
+        // console.log(JSON.stringify(item));
       // this.count = this.obj_buy.length;
-    }else{
-      setTimeout(() => {
-        this.removeItem(name);
-        console.log(JSON.stringify(name));
-        // name = [];
-      }, 1000);
-      // this.count = this.obj_buy.length;
-      // this.count =1;
-    }
+    // }
     // console.log(this.count);
 
   }
@@ -262,27 +300,94 @@ export class WomanPage {
   }
 
     // Eliminar elementos al carrito
-  removeItem(name){
+  removeItem(item){
     // console.log(name);
     // console.log("Longitud: "+this.obj_buy.length)
     // console.log("BBJEE "+this.obj_buy[0].id);
-    // for(let i = 0; i < this.obj_buy.length; i++) {
-    //     if(this.obj_buy[i].id == item.id){
-    //         this.obj_buy.splice(i, 1);
+    // for(let i = 0; i < this.itemCheckedFromFirebase.length; i++) {
+    //     if(this.itemCheckedFromFirebase[i].id == item.id){
+    //         this.arrayTmp = this.itemCheckedFromFirebase.splice(i, 1);
     //     }
     // }
+    //
+    // console.log(this.arrayTmp);
+
+ //      var result = this.itemCheckedFromFirebase.filter((val) => {
+ //        for (var i = 0; i < item.id.length; i++)
+ //            if (val.indexOf(item.id[i]) == -1){
+ //                return false;
+ //            }else{
+ //                this.itemCheckedFromFirebase.splice(i, 1);
+ //            }
+ //        return true;
+ //    });
+ // console.log(Object.keys(index));
+
+
 
     // const shopping_list_temp = this.obj_buy;
     // localStorage.setItem('userDataBuy', newa);
     // console.log('--'+shopping);
     // console.log(this.obj_buy);
+    // this.shirtCollection = angularFirestore.collection<Shirt>('shirts');
+    // .snapshotChanges() returns a DocumentChangeAction[], which contains
+    // a lot of information about "what happened" with each change. If you want to
+    // get the data and the id use the map operator.
+
+
     this.angularFauth.authState.subscribe( data => {
       // conso
-        if(data.uid){
-          console.log("Valida nombre "+ name);
-          this.angularFirestore.collection('users').doc(`${data.uid}`).collection('shopping_list_temp').doc(name).delete();
-          // this.angularFirestore.collection('servicios/mujeres/manicure-pedicure').doc(name).update({
-          //     "checked": false
+        if(data !== null){
+          // console.log(JSON.stringify(item.nombre));
+          // console.log('sera eliminado!')
+          // console.log("Valida nombre "+ item.nombre);
+          // try{
+          //   let pshirts = this.angularFirestore.collection('users').doc(`${data.uid}`).collection('shopping_list_temp').snapshotChanges().map(actions => {
+          //     return actions.map(a => {
+          //       const data = a.payload.doc.data();
+          //       const id = a.payload.doc.id;
+          //       return({ id, ...data });
+          //     });
+          //   });
+
+            // let pshirts = this.angularFirestore.collection('users' ).doc(`${data.uid}`).collection('shopping_list_temp').valueChanges();
+
+            // pshirts.subscribe(bs =>{
+            //   console.log(bs)
+            //   this.index = bs.findIndex((itemp) => itemp['id'] === item.id);
+            //    console.log('uuuuu= '+this.index)
+            //   console.log(bs);
+            //   console.log(bs[this.index]);
+            //   // // }, 1000);
+            //   if(this.index !== -1 ){
+            //     this.delTmp = bs.splice(this.index, 1, bs[this.index]['nombre'])
+            //     // this.delTmp = bs[this.index]['nombre'];
+            //   }
+            //   console.log(this.delTmp);
+            //   console.log('mmm');
+            //   if(this.delTmp != undefined){
+            //     console.log('dentro '+this.delTmp);
+
+                // if(this.index !== -1 ){
+                this.angularFirestore.collection('users').doc(`${data.uid}`).collection('shopping_list_temp').doc(item.nombre).delete()
+                .then(function() {
+                  console.log("Document successfully ELIMINADO! ");
+                }).catch(function(error) {
+                  console.error("Error DELETING document: ", error);
+                });
+                // }
+              // }
+          //   });
+          //     // console.log('---- '+this.delTmp);
+          //     // setTimeout(() => {
+          //   // this.angularFirestore.collection('users').doc(`${data.uid}`).collection('shopping_list_temp', ref => ref.where("id", "==", this.delTmp[index]['id'])).doc(this.delTmp[index]['nombre']).delete();
+          //
+          //   // return this.angularFirestore.collection('users').doc(this.currentUserId).collection('notifications', ref => ref.where("view", "==", false)).valueChanges();
+          // }
+          // catch(e){
+          //   console.error(e);
+          // }// this.angularFirestore.collection('servicios/mujeres/manicure-pedicure').doc(name).update({
+          // //     "checked": false
           // });
           // .then(function() {
           //     console.log("Document successfully deleted! ");
@@ -328,16 +433,6 @@ export class WomanPage {
    let contactModal = this.modalCtrl.create("NotificationsPage");
    contactModal.present();
   }
-
-  // perfilPage(){
-  //   this.navCtrl.push('PerfilPage');
-  // }
-
-  // goToPage(page){
-  //   this.redirectPage = page;
-  //   this.navCtrl.push(this.redirectPage);
-  // }
-
 
 
 

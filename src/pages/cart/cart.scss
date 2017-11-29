@@ -83,12 +83,31 @@ page-cart {
     }
   }
 
+
+ion-list{
+  ion-item-group{
+    ion-item-divider{
+      color:black !important;
+      background: #dedede !important;
+    }
+    ion-item{
+      color:dimgray !important;
+      font-size: 12px !important;
+    }
+  }
+}
+
+
   ion-footer{
       ion-toolbar{
           .total{
               margin-left: 10px;
               color: map-get($colors, color-app-oscuro);
               font-size: 15px !important;
+          }
+          .domicilio{
+            color:forestgreen;
+            font-size: 14px !important;
           }
           .total_price{
             // color: map-get($colors, color-app-oscuro);

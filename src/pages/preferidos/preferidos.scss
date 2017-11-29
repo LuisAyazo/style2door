@@ -3,18 +3,18 @@ page-preferidos {
     margin-top: 50px;
     background: #ece8e8 !important;
     text-align: center !important;
-    h1, i{
+    h3, i{
       color:  #6c6c66;
     }
 
-    h1{
+    h4{
       .signo{
         color: map-get($colors, color-app) !important;
         display: inline;
         max-width: 20px;
-        font-size: 40px;
+        font-size: 30px;
         position: relative;
-        top: 3px;
+        top: 6px;
         font-weight: bolder;
       }
     }

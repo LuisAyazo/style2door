@@ -60,19 +60,27 @@
 
 <!--  HISTORY OF ORDERS-->
   <ion-list *ngSwitchCase="'history'">
-    <ion-item>
-      <ion-thumbnail item-start>
-        <img src="img/thumbnail-kitten-1.jpg">
-      </ion-thumbnail>
-      <h2>Luna</h2>
-    </ion-item>
+      <ion-item-group>
+        <ion-item-divider>Sabado 25 de noviembre </ion-item-divider>
+        <ion-item>Spa de luna</ion-item>
+        <ion-item>Maquillaje general</ion-item>
+      </ion-item-group>
+    <ion-item-group>
+      <ion-item-divider>Miercoles 15 de noviembre </ion-item-divider>
+      <ion-item>Manicure semipermante</ion-item>
+      <ion-item>Pedicure permantente</ion-item>
+    </ion-item-group>
   </ion-list>
 </div>
 </ion-content>
 
+
+
+<!--  ########################################  -->
 <ion-footer>
   <ion-toolbar>
-    <span class='total'>Total: </span><span class="total_price">${{total}}</span>
-    <button ion-button (click)="checkout()" round icon-end color='color-app'>Ir al checkout</button>
+    <span class='total'>Total: </span><span class="total_price">${{total}}</span><br />
+    <span class='domicilio'>  Domicilio: </span><span class="total_price">$10.000</span>
+    <button ion-button (click)="checkout()" round icon-end color='color-app'>Ir al resumen</button>
   </ion-toolbar>
 </ion-footer>
