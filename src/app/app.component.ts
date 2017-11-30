@@ -46,8 +46,7 @@ export class MyApp {
 
         // this.rootPage = 'ScheduleServicePage';
     // this.menu.swipeEnable(false);// deshabilita el sidemenu
-    let splash = this.modalCtrl.create("SplashPage");
-    splash.present();
+
 
     this.initializeApp();
 
@@ -89,7 +88,8 @@ export class MyApp {
 
       this.platform.ready().then(() => {
         this.statusBar.backgroundColorByHexString("#9a056d");
-
+        let splash = this.modalCtrl.create("SplashPage");
+        splash.present();
 
         // this.splashScreen.hide();
         // this.splashScreen.hide();
@@ -102,26 +102,10 @@ export class MyApp {
           this.oneSignal.handleNotificationReceived().subscribe((signal_received) => {
             // alert(JSON.stringify(signal_received));
             var date = new Date();
-            // // var day = date.getDate();
-            // // var monthIndex = date.getMonth()+1;
-            // // var year = date.getFullYear();
-            // // let  current_notification = ;
-            //
-            //
-            // // // console.log(date.toLocaleString());
-            // // this.signal.push(date.toLocaleString());
-            // // this.signal.push(signal_received)
-            // var signal = {
-            //   signal_received: signal_received,
-            //   datetime: date.toLocaleString()
-            // }
 
-
-           // do something when notification is received
-            //  let not_prom = 'notifications'
              this.angularFauth.authState.subscribe( data => {
 
-                 if(data.uid){
+                 if(data !== null && data.uid){
 
                    this.angularFirestore.collection('users' ).doc(`${data.uid}`).collection('notifications').doc(signal_received.payload.notificationID).set({view:false, datetime: date.toLocaleString(), signal_received})
                    .then(() => {
@@ -135,9 +119,25 @@ export class MyApp {
 
           });
 
-          this.oneSignal.handleNotificationOpened().subscribe((signal_opened) => {
+          this.oneSignal.handleNotificationOpened().subscribe((signal_received) => {
+            // alert(JSON.stringify(signal_received));
+            var date = new Date();
 
-            this.nav.setRoot('NotificationsPage'); // configurar  push con envio de datos
+             this.angularFauth.authState.subscribe( data => {
+
+                 if(data !== null && data.uid){
+
+                   this.angularFirestore.collection('users').doc(`${data.uid}`).collection('notifications').doc(signal_received.notification.payload.notificationID).set({view:false, datetime: date.toLocaleString(), signal_received})
+                   .then(() => {
+                      //  console.log("Document successfully seteado!");
+                       this.nav.setRoot('NotificationsPage'); // configurar  push con envio de datos
+                   }).catch( (error) => {
+                       alert(error);
+                   });
+
+                 }
+             });
+
           });
 
           this.oneSignal.endInit();
@@ -148,7 +148,7 @@ export class MyApp {
             this.angularFauth.authState.subscribe( data => {
                   // alert("PASAS por a  u QUII");
                   // console.log(JSON.stringify(data));
-                  if (data){
+                  if (data !== null){
                       // console.log(JSON.stringify(data));
                       // alert(JSON.stringify(data.providerData[0].providerId));
                       if ( data.providerData[0].providerId == "password" ){

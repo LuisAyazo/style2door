@@ -88,6 +88,7 @@ export class NotificationsPage {
 
   /**** Quitar modal y volver a la lista ****/
    dismiss() {
+     console.log(this.navCtrl.canGoBack());
      if(this.navCtrl.canGoBack()){
        this.viewCtrl.dismiss();
      }else{
