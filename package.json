@@ -43,7 +43,6 @@
     "cordova-plugin-geolocation": "^2.4.3",
     "cordova-plugin-googlemaps": "^2.1.1",
     "cordova-plugin-googlemaps-sdk": "git+https://github.com/mapsplugin/cordova-plugin-googlemaps-sdk.git",
-    "cordova-plugin-splashscreen": "^4.1.0",
     "cordova-plugin-statusbar": "^2.3.0",
     "cordova-plugin-whitelist": "^1.3.3",
     "cordova-plugin-x-socialsharing": "^5.2.1",
@@ -70,7 +69,6 @@
         "APP_NAME": "Style2Door"
       },
       "cordova-plugin-device": {},
-      "cordova-plugin-splashscreen": {},
       "cordova-plugin-statusbar": {},
       "cordova-plugin-whitelist": {},
       "ionic-plugin-keyboard": {},

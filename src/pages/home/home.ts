@@ -22,7 +22,7 @@ export class HomePage {
   // splash: boolean = true;
   // tabBarElement: any;
   _notifications: number = 0;
-
+  count: number = 0;
 
   constructor(
     public navCtrl: NavController,
@@ -37,7 +37,14 @@ export class HomePage {
   ) {
     // alert(e);
 
+    this.angularFauth.authState.subscribe( data => {
+      // conso
+        if(data !== null){
+            this.angularFirestore.collection('users' ).doc(`${data.uid}`).collection('shopping_list_temp').valueChanges()
+            .subscribe(count =>{this.count = count.length});
+        }
 
+    });
 
     // this.notiPro.getCurrentNotificationNoView().subscribe(data => { this._notifications = data.length});
     // this.angularFauth.authState.subscribe( data => {
@@ -90,7 +97,11 @@ export class HomePage {
   //     }, 4000);
   // }
 
-
+  // carrito de compra
+  cartShoppingModal(){
+    let modal = this.modalCtrl.create("CartPage");
+    modal.present();
+  }
 
   ionViewDidLoad(){
     // Notificaciones no vistas

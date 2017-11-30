@@ -4,7 +4,7 @@ import { IonicApp, IonicErrorHandler, IonicModule } from 'ionic-angular';
 import { HttpModule } from '@angular/http';
 import { MyApp } from './app.component';
 import { StatusBar } from '@ionic-native/status-bar';
-import { SplashScreen } from '@ionic-native/splash-screen';
+// import { SplashScreen } from '@ionic-native/splash-screen';
 import { ElasticHeaderModule } from "ionic2-elastic-header/dist";
 
 
@@ -63,7 +63,7 @@ enableProdMode();
   ],
   providers: [
     StatusBar,
-    SplashScreen,
+    // SplashScreen,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
     Facebook,
     SocialSharing,

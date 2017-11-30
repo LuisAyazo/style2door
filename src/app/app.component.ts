@@ -1,7 +1,7 @@
 import { Component, ViewChild } from '@angular/core';
-import { Nav, Platform, MenuController, ToastController } from 'ionic-angular';
+import { Nav, Platform, MenuController, ToastController, ModalController } from 'ionic-angular';
 import { StatusBar } from '@ionic-native/status-bar';
-import { SplashScreen } from '@ionic-native/splash-screen';
+// import { SplashScreen } from '@ionic-native/splash-screen';
 // import { Facebook } from '@ionic-native/facebook';
 import { SocialSharing } from '@ionic-native/social-sharing';
 import { AngularFireAuth } from 'angularfire2/auth';
@@ -30,9 +30,10 @@ export class MyApp {
   constructor(
     public platform: Platform,
     public statusBar: StatusBar,
-    public splashScreen: SplashScreen,
+    // public splashScreen: SplashScreen,
     public  menu: MenuController,
     public toastCtrl: ToastController,
+    public modalCtrl: ModalController,
     // private fb: Facebook,
     private angularFauth:AngularFireAuth,
     private socialSharing: SocialSharing,
@@ -46,7 +47,10 @@ export class MyApp {
 
         // this.rootPage = 'ScheduleServicePage';
     // this.menu.swipeEnable(false);// deshabilita el sidemenu
-
+    this.statusBar.backgroundColorByHexString("#9a056d");
+    
+    let splash = this.modalCtrl.create("SplashPage");
+    splash.present();
     this.initializeApp();
 
     // used for an example of ngFor and navigation
@@ -84,15 +88,15 @@ export class MyApp {
     // else {
 
 
+
       this.platform.ready().then(() => {
-        this.splashScreen.hide();
-        this.statusBar.backgroundColorByHexString("#9a056d");
+        // this.splashScreen.hide();
         // this.splashScreen.hide();
         // setTimeout(() => {
 
-        //   this.oneSignal.startInit('c75fdaed-3229-4527-990d-d574eaba27ce', '732832336253');
-        //
-        //   this.oneSignal.inFocusDisplaying(this.oneSignal.OSInFocusDisplayOption.InAppAlert);
+          this.oneSignal.startInit('c75fdaed-3229-4527-990d-d574eaba27ce', '732832336253');
+
+          this.oneSignal.inFocusDisplaying(this.oneSignal.OSInFocusDisplayOption.InAppAlert);
         //
           this.oneSignal.handleNotificationReceived().subscribe((signal_received) => {
             // alert(JSON.stringify(signal_received));
@@ -227,7 +231,7 @@ export class MyApp {
   InstagramSharing(){
     let message = 'Style2door - Estilo a tu puerta';
     let image = 'https://scontent-mia3-1.xx.fbcdn.net/v/t31.0-8/23213489_184705552094311_776544078734079414_o.jpg?oh=5c80861cbac59d358b03e85634aa6b90&oe=5A6C5C28';
-    let url = 'https://www.facebook.com/Style2door-184705328761000/?modal=admin_todo_tour';
+    // let url = 'https://www.facebook.com/Style2door-184705328761000/?modal=admin_todo_tour';
     // let pasteMessageHint ='Style2door - App para lucir bien :D';
     this.socialSharing.shareViaInstagram(message, image).then(() => {
       // Sharing via email is possible

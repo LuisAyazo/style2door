@@ -13,7 +13,7 @@
     </ion-slide>
     <ion-slide>
       <div class='onbo_img'>
-        <img src='assets/images/onb_2.1.jpg' [@bounce]='state' (@bounce.done)="animationDone($event)"/>
+        <img src='assets/images/onb_2.1.png' [@bounce]='state' (@bounce.done)="animationDone($event)"/>
         <div class='sombra'>
         </div>
         <div [@bounce]='state'>
@@ -23,7 +23,7 @@
     </ion-slide>
     <ion-slide>
       <div class='onbo_img'>
-        <img src='assets/images/onb_3.jpg' [@bounce]='state' (@bounce.done)="animationDone($event)"/>
+        <img src='assets/images/onb_3.png' [@bounce]='state' (@bounce.done)="animationDone($event)"/>
         <div class='sombra'>
         </div>
         <div [@bounce]='state'>
@@ -39,36 +39,36 @@
 <ion-content>
   <ion-slides pager (ionSlideDidChange)="slideChanged()" (ionSlideDrag)="slideMoved()">
     <ion-slide>
-      <h1>Estilo a la puerta de tu casa</h1>
+      <!-- <h1>Estilo a la puerta de tu casa</h1> -->
       <div class='onbo_img'>
-        <img src='assets/images/onb_1.png'/>
-        <div class='sombra'>
-        </div>
-        <div>
+        <img src='assets/images/onboarding/onboarding-1.png' />
+        <!-- <div class='sombra'>
+        </div> -->
+        <!-- <div>
           <h2>Bienvenidos</h2>
-        </div>
+        </div> -->
       </div>
     </ion-slide>
     <ion-slide>
       <div class='onbo_img'>
-        <img src='assets/images/onb_2.1.jpg' />
-        <div class='sombra'>
-        </div>
-        <div >
+        <img src='assets/images/onboarding/onboarding-2.png' />
+        <!-- <div class='sombra'> -->
+        <!-- </div> -->
+        <!-- <div >
           <h3 >La mejor seleccion de estilistas, manicuristas y masajistas de la ciudad</h3>
-        </div>
+        </div> -->
       </div>
     </ion-slide>
     <ion-slide>
       <div class='onbo_img'>
-        <img src='assets/images/onb_3.jpg' />
-        <div class='sombra'>
+        <img src='assets/images/onboarding/onboarding-3.png' />
+        <!-- <div class='sombra'>
         </div>
         <div>
           <h3>En tan solo 3 simples pasos puedes acceder a nuestra red de talentosos estilistas</h3>
-        </div>
+        </div> -->
       </div>
     </ion-slide>
   </ion-slides>
-  <button class='btn_empezar' ion-button clear color="white" (click)="go_login()">{{onboadrBtnMsg}}</button>
+  <button class='btn_empezar' ion-button clear color="color-app-oscuro" (click)="go_login()">{{onboadrBtnMsg}}</button>
 </ion-content>

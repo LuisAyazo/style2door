@@ -33,6 +33,10 @@ export class ScheduleServicePage {
     this.removeTransp();
   }
 
+  createservice(){
+    this.navCtrl.push('CreateServicesPage');
+  }
+  
   fabActive(fab: FabContainer){
       this.transp = this.elRef.nativeElement.querySelector('.transp');
       if(fab._listsActive == false){

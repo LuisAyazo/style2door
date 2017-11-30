@@ -28,4 +28,7 @@ export class ForwardEmailAfterEmailRegistrationPage {
   resendConfirmationEmail(){
     alert('Correo de confirmacion enviado!');
   }
+  go_Login(){
+    this.navCtrl.setRoot('LoginPage');
+  }
 }

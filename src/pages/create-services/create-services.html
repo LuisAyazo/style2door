@@ -1,0 +1,22 @@
+<ion-header [elasticHeader]="myContent">
+  <ion-navbar color="white">
+    <button ion-button menuToggle color="color-app">
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>Programar Servicio</ion-title>
+    <ion-buttons end>
+      <button ion-button icon-only tappable navPush="NotificationsPage" color="color-app">
+        <ion-icon name="notifications"></ion-icon>
+        <ion-badge *ngIf="_notifications != 0">{{this._notifications}}</ion-badge>
+      </button>
+      <button ion-button icon-only tappable (click)="cartShoppingModal()" color="color-app">
+        <ion-icon name="cart"></ion-icon>
+        <ion-badge *ngIf="count != 0">{{count}}</ion-badge>
+      </button>
+    </ion-buttons>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+
+</ion-content>

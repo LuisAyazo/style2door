@@ -1,132 +1,185 @@
-<ion-header>
+<ion-header [elasticHeader]="myContent">
   <ion-navbar color="white">
     <button ion-button menuToggle color="color-app">
       <ion-icon name="menu"></ion-icon>
     </button>
     <ion-title>Style2Door</ion-title>
     <ion-buttons end>
-      <button ion-button icon-only (click)="notificationModal()" color="color-app">
+      <button ion-button icon-only tappable navPush="NotificationsPage" color="color-app">
         <ion-icon name="notifications"></ion-icon>
+        <ion-badge *ngIf="_notifications != 0">{{this._notifications}}</ion-badge>
       </button>
-      <button ion-button icon-only (click)="openModal()" color="color-app">
+      <button ion-button icon-only tappable (click)="cartShoppingModal()" color="color-app">
         <ion-icon name="cart"></ion-icon>
-        <ion-badge>1</ion-badge>
+        <ion-badge *ngIf="count != 0">{{count}}</ion-badge>
       </button>
-      <!-- <button ion-button icon-only (click)="openModal()" color="color-app">
-        <ion-icon name="more"></ion-icon>
-      </button> -->
     </ion-buttons>
   </ion-navbar>
 </ion-header>
 
-<ion-content padding>
-  <ion-list no-lines>
-    <button full ion-button (click)="goToPage('PeinadosPage')"><img src="assets/images/peinados/peinados_hombres.jpg"/>
-      <div class="detail_price" text-wrap>
-        <h2>Corte</h2>
-        <h6 >$12.500</h6>
-        <ion-icon color='dark' name="heart-outline"></ion-icon>
-        <button class="add_cart" ion-button color="primary">Quiero Esto</button>
-      </div>
-    </button>
-    <button full ion-button (click)="goToPage('PeinadosPage')"><img src="assets/images/hombre/barba.jpg"/>
-      <div class="detail_price" text-wrap>
-        <h2>Barba</h2>
-        <h6 >$12.500</h6>
-        <ion-icon color='dark' name="heart-outline"></ion-icon>
-        <button class="add_cart" ion-button color="primary">Quiero Esto</button>
-      </div>
-    </button>
-    <button full ion-button (click)="goToPage('PeinadosPage')"><img src="assets/images/hombre/perfilado_barba.jpg"/>
-      <div class="detail_price" text-wrap>
-        <h2>Perfilado de Barba</h2>
-        <h6 >$12.500</h6>
-        <ion-icon color='dark' name="heart-outline"></ion-icon>
-        <button class="add_cart" ion-button color="primary">Quiero Esto</button>
-      </div>
-    </button>
-    <button full ion-button (click)="goToPage('PeinadosPage')"><img src="assets/images/hombre/keratina.jpg"/>
-      <div class="detail_price" text-wrap>
-        <h2>Keratina</h2>
-        <h6 >$12.500</h6>
-        <ion-icon color='dark' name="heart-outline"></ion-icon>
-        <button class="add_cart" ion-button color="primary">Quiero Esto</button>
-      </div>
-    </button>
-    <button full ion-button (click)="goToPage('PeinadosPage')"><img src="assets/images/hombre/depilacion_oidos.jpg"/>
-      <div class="detail_price" text-wrap>
-        <h2>Depilacion de Oidos</h2>
-        <h6 >$12.500</h6>
-        <ion-icon color='dark' name="heart-outline"></ion-icon>
-        <button class="add_cart" ion-button color="primary">Quiero Esto</button>
-      </div>
-    </button>
-    <button full ion-button (click)="goToPage('PeinadosPage')"><img src="assets/images/hombre/depilacion_nariz.jpg"/>
-      <div class="detail_price" text-wrap>
-        <h2>Depilacion de Nariz</h2>
-        <h6 >$12.500</h6>
-        <ion-icon color='dark' name="heart-outline"></ion-icon>
-        <button class="add_cart" ion-button color="primary">Quiero Esto</button>
-      </div>
-    </button>
-    <button full ion-button (click)="goToPage('PeinadosPage')"><img src="assets/images/hombre/depilacion_cejas.jpg"/>
-      <div class="detail_price" text-wrap>
-        <h2>Depilacion de Cejas</h2>
-        <h6 >$12.500</h6>
-        <ion-icon color='dark' name="heart-outline"></ion-icon>
-        <button class="add_cart" ion-button color="primary">Quiero Esto</button>
-      </div>
-    </button>
-    <button full ion-button (click)="goToPage('PeinadosPage')"><img src="assets/images/hombre/ampolleta.jpg"/>
-      <div class="detail_price" text-wrap>
-        <h2>Ampolleta</h2>
-        <h6 >$12.500</h6>
-        <ion-icon color='dark' name="heart-outline"></ion-icon>
-        <button class="add_cart" ion-button color="primary">Quiero Esto</button>
-      </div>
-    </button>
-    <button full ion-button (click)="goToPage('PeinadosPage')"><img src="assets/images/hombre/mascarilla_facial.jpg"/>
-      <div class="detail_price" text-wrap>
-        <h2>Mascarilla Facial</h2>
-        <h6 >$12.500</h6>
-        <ion-icon color='dark' name="heart-outline"></ion-icon>
-        <button class="add_cart" ion-button color="primary">Quiero Esto</button>
-      </div>
-    </button>
-    <button full ion-button (click)="goToPage('PeinadosPage')"><img src="assets/images/hombre/cubrimiento_canas.jpg"/>
-      <div class="detail_price" text-wrap>
-        <h2>Cubrimiento de Canas</h2>
-        <h6 >$12.500</h6>
-        <ion-icon color='dark' name="heart-outline"></ion-icon>
-        <button class="add_cart" ion-button color="primary">Quiero Esto</button>
-      </div>
-    </button>
-    <button full ion-button (click)="goToPage('PeinadosPage')"><img src="assets/images/hombre/base_tintura.jpg"/>
-      <div class="detail_price" text-wrap>
-        <h2>Base y Tintura</h2>
-        <h6 >$12.500</h6>
-        <ion-icon color='dark' name="heart-outline"></ion-icon>
-        <button class="add_cart" ion-button color="primary">Quiero Esto</button>
-      </div>
-    </button>
-    <!-- <button full ion-button (click)="goToPage('ManicurePedicurePage')"><img src="assets/images/manicure/manicure_pedicure_hombres.jpg"/><h2>Barba</h2></button>
+<ion-content fullscreen #myContent>
+  <!-- <div *ngFor='let g of ch'>
+    {{ g }}
+  </div> -->
+<ion-list>
+ <ion-list-header>
+   Manicure y Pedicure
+ </ion-list-header>
+ <ion-slides slidesPerView=2 spaceBetween=15 speed=300 >
+   <!-- <ion-spinner name='circles' *ngIf="manicure == 0"></ion-spinner> -->
+ <ion-slide *ngFor="let item of manicure; let i = index">
+   <!-- <p>{{item.nombre}}</p> -->
+   <button full clear ion-button  >
+     <!-- <div class="checked_service" *ngFor="let ck of itemCheckedFromFirebase"> -->
+       <!-- <p>{{ck.nombre}}$->{{ck.checked}}</p> -->
+     <div class='img_container' >
+       <div class="trick"></div>
+       <img [src]=item.img_url />
+     </div>
+     <div class="space_price">
+       <h2>{{item.nombre}}</h2>
+       <p>${{item.precio}}{{i}}</p>
+       <!-- <p>
+         {{ch[i] === item.name ? ch[1] : 'false' }}
+       </p> -->
+     </div>
+     <!-- 168432 numero de caso
+     4347170004124936 numero de radicado -->
+     <div class="div_check">
+       <!-- {{entry[i].nombre}} -->
+       <!-- <div class="div_check" *ngIf="item.nombre !== itemCheckedFromFirebase[i]?.nombre"> -->
+       <!-- <ion-checkbox [(ngModel)]="itemCheckedFromFirebase[i]?.checked" (ionChange)="datachanged(item.id, item.nombre, item.precio, $event.checked)"></ion-checkbox> -->
+       <!-- {{itemCheckedFromFirebase[i].nombre}} -->
+       <!-- <ion-checkbox   ></ion-checkbox> -->
+       <!-- <div *ngFor="let f of index">
+         {{ f | json }}
 
-    <button full ion-button><img src="assets/images/masajes/masajes_hombres.jpg"/><h2>Perfilado de Barba</h2><h6>$ 12.500</h6></button>
-    <button full ion-button><img src="assets/images/depilacion/depilacion_hombres.jpg"/><h2>Keratina</h2></button>
-    <button full ion-button>
-      <img src="assets/images/depilacion/depilacion_hombres.jpg"/>
-      <div clas="detail_price">
-        <h2>Depilacion de Oidos Depilacion de Oidos</h2>
-        <h6>$12.500</h6>
-      </div>
-    </button>
-    <button full ion-button><img src="assets/images/depilacion/depilacion_hombres.jpg"/><h2>Depilacion de Nariz</h2></button>
-    <button full ion-button><img src="assets/images/depilacion/depilacion_hombres.jpg"/><h2>Depilacion de Cejas</h2></button>
-    <button full ion-button><img src="assets/images/depilacion/depilacion_hombres.jpg"/><h2>Ampolleta</h2></button>
-    <button full ion-button><img src="assets/images/depilacion/depilacion_hombres.jpg"/><h2>Mascarilla Cacial</h2></button>
-    <button full ion-button><img src="assets/images/depilacion/depilacion_hombres.jpg"/><h2>Cubrimiento de Cañas</h2></button>
-    <button full ion-button><img src="assets/images/depilacion/depilacion_hombres.jpg"/><h2>Base y Tintura</h2></button> -->
-  </ion-list>
+       </div> -->
+       <ion-checkbox  [checked]="(item.nombre === ch[i] ? 'true' : 'false')" (ionChange)="datachanged(item, $event.checked)"></ion-checkbox>
+     <!-- </div> -->
+            <!-- {{ itemCheckedFromFirebase[i].nombre }} -->
+       </div>
+     <button class="info_btn" ion-button icon-only clear (click)="detalle('pruebaa')"> <ion-icon name="information-circle"></ion-icon></button>
+     <!-- <button class="heart_like" ion-button icon-only clear (click)="heart('pruebaa')"> <ion-icon name="heart"></ion-icon></button> -->
+
+   <!-- </div> -->
+   </button>
+ </ion-slide>
+</ion-slides>
+</ion-list>
 
 
+<ion-list>
+ <ion-list-header>
+   Maquillaje
+ </ion-list-header>
+ <ion-slides slidesPerView=2 spaceBetween=8 speed=300 >
+   <!-- <ion-spinner name='circles' *ngIf="manicure == 0"></ion-spinner> -->
+ <ion-slide *ngFor="let item of manicure">
+   <!-- <p>{{item.nombre}}</p> -->
+
+   <button full clear ion-button  >
+     <div class='img_container' >
+       <div class="trick"></div>
+       <img [src]=item.img_url />
+     </div>
+     <div class="space_price">
+       <h2>{{item.nombre}}</h2>
+       <p>${{item.precio}}{{i}}</p>
+       <!-- <p>
+         {{item.id}}
+       </p> -->
+     </div>
+     <div class="div_check">
+       <!-- {{entry[i].nombre}} -->
+       <!-- <div class="div_check" *ngIf="! itemCheckedFromFirebase"> -->
+       <ion-checkbox (ionChange)="datachanged(item.id, item.nombre, item.precio, $event.checked)"></ion-checkbox>
+     </div>
+            <!-- {{ itemCheckedFromFirebase[i].nombre }} -->
+           <!-- <ion-checkbox  [checked]="(item.nombre == itemCheckedFromFirebase[i]?.nombre  ? 'true' : 'false')"  (ionChange)="datachanged(item, $event.checked)"></ion-checkbox> -->
+       <!-- </div> -->
+     <button class="info_btn" ion-button icon-only clear (click)="detalle('pruebaa')"> <ion-icon name="information-circle"></ion-icon></button>
+     <!-- <button class="heart_like" ion-button icon-only clear (click)="heart('pruebaa')"> <ion-icon name="heart"></ion-icon></button> -->
+
+   </button>
+ </ion-slide>
+</ion-slides>
+</ion-list>
+
+
+
+<ion-list>
+ <ion-list-header>
+   Otros servicios
+ </ion-list-header>
+ <ion-slides slidesPerView=2 spaceBetween=8 speed=300 >
+   <ion-spinner name='circles' *ngIf="manicure == 0"></ion-spinner>
+ <ion-slide *ngFor="let item of manicure">
+   <!-- <p>{{item.nombre}}</p> -->
+
+   <button full clear ion-button  >
+     <img [src]=item.img_url />
+     <div class="space_price">
+       <h2>{{item.nombre}}</h2>
+       <p>${{item.precio}}{{i}}</p>
+       <!-- <p>
+         {{item.id}}
+       </p> -->
+     </div>
+     <div class="div_check">
+       <!-- {{entry[i].nombre}} -->
+       <!-- <div class="div_check" *ngIf="! itemCheckedFromFirebase"> -->
+       <ion-checkbox (ionChange)="datachanged(item.id, item.nombre, item.precio, $event.checked)"></ion-checkbox>
+     </div>
+            <!-- {{ itemCheckedFromFirebase[i].nombre }} -->
+           <!-- <ion-checkbox  [checked]="(item.nombre == itemCheckedFromFirebase[i]?.nombre  ? 'true' : 'false')"  (ionChange)="datachanged(item, $event.checked)"></ion-checkbox> -->
+       <!-- </div> -->
+     <button class="info_btn" ion-button icon-only clear (click)="detalle('pruebaa')"> <ion-icon name="information-circle"></ion-icon></button>
+     <button class="heart_like" ion-button icon-only clear (click)="heart('pruebaa')"> <ion-icon name="heart"></ion-icon></button>
+
+   </button>
+ </ion-slide>
+</ion-slides>
+</ion-list>
+<!-- <div *ngIf="itemCheckedFromFirebase">
+    <ion-item>
+        <ion-label>There will be cake</ion-label>
+        <ion-toggle [(ngModel)]="itemCheckedFromFirebase[0].checked"></ion-toggle>
+    </ion-item>
+    <ion-item>
+        <ion-label>The cake is a lie</ion-label>
+        <ion-toggle [(ngModel)]="itemCheckedFromFirebase[0].checked"></ion-toggle>
+    </ion-item>
+</div> -->
+
+<!--
+<ion-item>
+    <p>There will be cake: {{itemCheckedFromFirebase.nombre}}</p>
+</ion-item>
+<ion-item>
+    <p>The cake is a lie: {{itemCheckedFromFirebase.nombre}}</p>
+</ion-item> -->
+
+<!--
+<ion-list>
+ <ion-list-header>
+   Maquillaje
+ </ion-list-header>
+ <ion-slides slidesPerView=2 spaceBetween=10 speed=1000 >
+   <ion-spinner name='circles' *ngIf="items == 0"></ion-spinner>
+ <ion-slide *ngFor="let item of maquillaje ; let i = index">
+   <button full clear ion-button  >
+     <img [src]=item.img_url />
+     <div class="space_price">
+       <h2>{{item.nombre}}</h2>
+       <p>$ {{item.precio}}</p>
+     </div>
+         <div class="div_check" *ngIf="itemCheckedFromFirebase">
+            <ion-checkbox  [checked]="(item.nombre == itemCheckedFromFirebase[i]?.nombre  ? 'true' : 'false')" (ionChange)="datachanged(item, $event.checked)"></ion-checkbox>
+       </div>
+     <button class="info_btn" ion-button icon-only clear (click)="detalle('pruebaa')"> <ion-icon name="information-circle"></ion-icon></button>
+   </button>
+ </ion-slide>
+</ion-slides>
+</ion-list> -->
 </ion-content>
