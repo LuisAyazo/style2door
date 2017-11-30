@@ -14,7 +14,7 @@ export class ChangespacePipe implements PipeTransform {
    * Takes a value and makes it lowercase.
    */
   transform(value: string, ...args) {
-    let newValue = value.toString().replace(/ /g, '_');
+    let newValue = value.toString().replace(/\%8/gi, '/');
     // let newValue = value.toString().replace(/^\s\s*/, '_').replace(/\s\s*$/, '_')
     return newValue;
   }

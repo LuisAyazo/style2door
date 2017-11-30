@@ -1,5 +1,5 @@
 import { Component, ElementRef } from '@angular/core';
-import { IonicPage, NavController, NavParams, FabContainer, Slides } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, FabContainer } from 'ionic-angular';
 
 @IonicPage()
 @Component({
@@ -36,7 +36,7 @@ export class ScheduleServicePage {
   createservice(){
     this.navCtrl.push('CreateServicesPage');
   }
-  
+
   fabActive(fab: FabContainer){
       this.transp = this.elRef.nativeElement.querySelector('.transp');
       if(fab._listsActive == false){

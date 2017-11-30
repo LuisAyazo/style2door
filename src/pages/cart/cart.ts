@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams, ViewController } from 'ionic-angular';
-import { AngularFireDatabase } from 'angularfire2/database';
+// import { AngularFireDatabase } from 'angularfire2/database';
 import { AngularFireAuth } from 'angularfire2/auth';
 import * as firebase from 'firebase/app';
 import { AngularFirestore, AngularFirestoreCollection } from 'angularfire2/firestore';
@@ -28,11 +28,19 @@ export class CartPage {
     public navCtrl: NavController,
     public navParams: NavParams,
     public viewCtrl: ViewController,
-    private database: AngularFireDatabase,
+    // private database: AngularFireDatabase,
     private angularFauth:AngularFireAuth,
     private readonly angularFirestore: AngularFirestore,
     public notiPro: NotificationsProvider
   ) {
+
+    // let email = "https:%8%8firebasestorage.googleapis.com%8v0%8b%8style2door-180721.appspot.com%8o%8services_img%2Fmaquillaje%2FWhatsApp%20Image%202017-11-22%20at%201.05.05%20PM.jpeg?alt=media&token=fa415fe2-43a2-4926-b435-0621d80f23f4"
+    //             //  https://firebasestorage.googleapis.com/v0/b/style2door-180721.appspot.com/o/services/img%2Fmaquillaje%2FWhatsApp%20Image%202017-11-22%20at%201.05.05%20PM.jpeg?alt=media&token=fa415fe2-43a2-4926-b435-0621d80f23f4
+    //             //  https://firebasestorage.googleapis.com/v0/b/style2door-180721.appspot.com/o/services_img%2Fmaquillaje%2FWhatsApp%20Image%202017-11-22%20at%201.05.05%20PM.jpeg?alt=media&token=fa415fe2-43a2-4926-b435-0621d80f23f4
+    // let re = /\%8/gi;
+    // let result = email.replace(re, "/");
+    // console.log(result)
+
     this.total = 0;
     this.com();
 

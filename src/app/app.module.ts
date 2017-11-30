@@ -2,6 +2,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { ErrorHandler, NgModule, enableProdMode } from '@angular/core';
 import { IonicApp, IonicErrorHandler, IonicModule } from 'ionic-angular';
 import { HttpModule } from '@angular/http';
+import {HttpClientModule} from '@angular/common/http';
 import { MyApp } from './app.component';
 import { StatusBar } from '@ionic-native/status-bar';
 // import { SplashScreen } from '@ionic-native/splash-screen';
@@ -14,10 +15,10 @@ import { SocialSharing } from '@ionic-native/social-sharing';
 
 // import { NativeStorage } from '@ionic-native/native-storage';
 import { NotificationsProvider } from '../providers/notifications/notifications';
-import { AuthServiceProvider } from '../providers/auth-service/auth-service';
+// import { AuthServiceProvider } from '../providers/auth-service/auth-service';
 
 // Pipes
-import { PipesModule } from '../pipes/changespace/pipes.module';
+import { PipesModule } from '../pipes/urlrplace/pipes.module';
 
 // Animaciones
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -48,9 +49,10 @@ enableProdMode();
   imports: [
     BrowserModule,
     HttpModule,
+    HttpClientModule,
     PipesModule,
-    IonicModule.forRoot(MyApp),
     BrowserAnimationsModule,
+    IonicModule.forRoot(MyApp),
     AngularFireModule.initializeApp(FIREBASE_CONFIG.firebase),
     AngularFireAuthModule,
     AngularFirestoreModule,
@@ -67,7 +69,7 @@ enableProdMode();
     {provide: ErrorHandler, useClass: IonicErrorHandler},
     Facebook,
     SocialSharing,
-    AuthServiceProvider,
+    // AuthServiceProvider,
     NotificationsProvider,
     Geolocation,
     GoogleMaps,

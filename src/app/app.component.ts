@@ -34,7 +34,6 @@ export class MyApp {
     public  menu: MenuController,
     public toastCtrl: ToastController,
     public modalCtrl: ModalController,
-    // private fb: Facebook,
     private angularFauth:AngularFireAuth,
     private socialSharing: SocialSharing,
     private oneSignal: OneSignal,
@@ -47,10 +46,9 @@ export class MyApp {
 
         // this.rootPage = 'ScheduleServicePage';
     // this.menu.swipeEnable(false);// deshabilita el sidemenu
-    this.statusBar.backgroundColorByHexString("#9a056d");
-    
     let splash = this.modalCtrl.create("SplashPage");
     splash.present();
+
     this.initializeApp();
 
     // used for an example of ngFor and navigation
@@ -90,6 +88,9 @@ export class MyApp {
 
 
       this.platform.ready().then(() => {
+        this.statusBar.backgroundColorByHexString("#9a056d");
+
+
         // this.splashScreen.hide();
         // this.splashScreen.hide();
         // setTimeout(() => {
@@ -203,7 +204,6 @@ export class MyApp {
     let message = 'Style2door - Estilo a tu puerta';
     let image = 'https://scontent-mia3-1.xx.fbcdn.net/v/t31.0-8/23213489_184705552094311_776544078734079414_o.jpg?oh=5c80861cbac59d358b03e85634aa6b90&oe=5A6C5C28';
     let url = 'https://www.facebook.com/Style2door-184705328761000/?modal=admin_todo_tour';
-    // let pasteMessageHint ='Style2door - App para lucir bien :D';
     this.socialSharing.shareViaFacebook(message, image, url).then(() => {
       // Sharing via email is possible
       // alert('creo q comparte');
@@ -217,7 +217,6 @@ export class MyApp {
     let message = 'Style2door - Estilo a tu puerta';
     let image = 'https://scontent-mia3-1.xx.fbcdn.net/v/t31.0-8/23213489_184705552094311_776544078734079414_o.jpg?oh=5c80861cbac59d358b03e85634aa6b90&oe=5A6C5C28';
     let url = 'https://www.facebook.com/Style2door-184705328761000/?modal=admin_todo_tour';
-    // let pasteMessageHint ='Style2door - App para lucir bien :D';
     this.socialSharing.shareViaWhatsApp(message, image, url).then(() => {
       // Sharing via email is possible
       // alert('creo q comparte');
@@ -228,11 +227,9 @@ export class MyApp {
   }
 
 
-  InstagramSharing(){
+  instagramSharing(){
     let message = 'Style2door - Estilo a tu puerta';
     let image = 'https://scontent-mia3-1.xx.fbcdn.net/v/t31.0-8/23213489_184705552094311_776544078734079414_o.jpg?oh=5c80861cbac59d358b03e85634aa6b90&oe=5A6C5C28';
-    // let url = 'https://www.facebook.com/Style2door-184705328761000/?modal=admin_todo_tour';
-    // let pasteMessageHint ='Style2door - App para lucir bien :D';
     this.socialSharing.shareViaInstagram(message, image).then(() => {
       // Sharing via email is possible
       // alert('creo q comparte');

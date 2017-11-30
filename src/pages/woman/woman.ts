@@ -221,6 +221,7 @@ export class WomanPage {
     console.log('ID:  '+ item.id);
     console.log('Valor del item '+ item.nombre);
     console.log('precio '+ item.precio);
+    console.log('img '+ item.img_url);
     console.log(JSON.stringify(e));
     console.log(JSON.stringify(item.id));
 
@@ -231,7 +232,7 @@ export class WomanPage {
       if(e == true){
         // console.log('added');
         // console.log('SIiiiiiii TRUSTED');
-        this.addItem(item.id, item.nombre, item.precio, e);
+        this.addItem(item.id, item.nombre, item.img_url, item.precio, e);
       }else{
         // console.log('removed');
         // console.log('nooooooo TRUSTED');
@@ -255,14 +256,16 @@ export class WomanPage {
   }
 
   // Agregar elementos al carrito
-  addItem(id, name, price, e){
-
-    // console.log(this.userId);
+  addItem(id, name, img, price, e){
+    let img_send = img.replace(/\//g, '%8');
+    console.log(img_send);
+    // console.log('paso');
     let item_to_send = {
         id: id,
         nombre: name,
         precio: price,
         checked: e,
+        img_url: img_send,
         cantidad: 1
     };
 
@@ -276,7 +279,7 @@ export class WomanPage {
 
     this.angularFauth.authState.subscribe( data => {
       // conso
-        if(data.uid){
+        if(data !== null){
 
           this.angularFirestore.collection('users' ).doc(`${data.uid}`).collection('shopping_list_temp').doc(name).set(item_to_send)
           .then(function() {

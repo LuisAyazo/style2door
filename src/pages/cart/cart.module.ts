@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { IonicPageModule } from 'ionic-angular';
 import { CartPage } from './cart';
-import { ElasticHeaderModule } from "ionic2-elastic-header/dist";
+import { PipesModule } from '../../pipes/urlrplace/pipes.module';
 
 @NgModule({
   declarations: [
@@ -9,11 +9,11 @@ import { ElasticHeaderModule } from "ionic2-elastic-header/dist";
   ],
   imports: [
     IonicPageModule.forChild(CartPage),
-    ElasticHeaderModule
+    PipesModule
   ],
   exports: [
     CartPage,
-    ElasticHeaderModule
+    // PipesModule
   ]
 
 })
