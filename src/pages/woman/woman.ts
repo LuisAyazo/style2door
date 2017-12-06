@@ -1,14 +1,8 @@
 import { Component, ViewChild } from '@angular/core';
 import { IonicPage, NavController, NavParams, ModalController, Slides } from 'ionic-angular';
-// import { AngularFireDatabase  } from 'angularfire2/database';
-// import * as firebase from 'firebase/app';
-// import { ShoppingItem } from '../../models/shopping-item/shopping-item.interface';
-// import { Item } from '../../models/item/item.model';
-
 import { NotificationsProvider } from '../../providers/notifications/notifications';
 import { AngularFireAuth } from 'angularfire2/auth';
 import { AngularFirestore } from 'angularfire2/firestore';
-// import { Observable } from 'rxjs/Observable';
 
 @IonicPage()
 @Component({
@@ -68,19 +62,19 @@ export class WomanPage {
 
 
 
-    this.angularFauth.authState.subscribe( data => {
-          // this.authState = data;
-          if(data == null){
-            this.navCtrl.setRoot('LoginPage');
-          }else{
-            console.log('QUeeeee');
-            // setTimeout(() => {
-            // }, 5000);
-          }
-          console.log(data);
-    });
-
-              this.initAll();
+    // this.angularFauth.authState.subscribe( data => {
+    //       // this.authState = data;
+    //       if(data == null){
+    //         this.navCtrl.setRoot('LoginPage');
+    //       }else{
+    //         console.log('QUeeeee');
+    //         // setTimeout(() => {
+    //         // }, 5000);
+    //       }
+    //       console.log(data);
+    // });
+    //
+    // this.initAll();
 
       // Notificaciones no vistas
       // if(this.notiPro.getCurrentNotificationNoView().length > 0){
@@ -155,7 +149,7 @@ export class WomanPage {
        // Traer todos los servicios de manicure
        this.angularFauth.authState.subscribe( data => {
            if(data !== null){
-               this.angularFirestore.collection('servicios').doc('mujeres').collection('manicure-pedicure').valueChanges()
+               this.angularFirestore.collection('servicios').doc('mujeres').collection('brochure').valueChanges()
                .subscribe( data => { this.manicure = data
                       // console.log(this.manicure);
                     }
@@ -163,6 +157,9 @@ export class WomanPage {
             }
 
       });
+
+      //return this.angularFirestore.collection('users').doc(this.currentUserId).collection('notifications', ref => ref.where("view", "==", false)).valueChanges();
+
       //
       this.angularFauth.authState.subscribe( data => {
         // conso
@@ -206,54 +203,54 @@ export class WomanPage {
 
 
 
-
-  ngAfterViewInit() {
-      this.slides.freeMode = true;
-  }
+  // darle fluidez al slide
+  // ngAfterViewInit() {
+  //     this.slides.freeMode = true;
+  // }
 
   // carrito de compra
-  cartShoppingModal(){
-    let modal = this.modalCtrl.create("CartPage");
-    modal.present();
-  }
+  // cartShoppingModal(){
+  //   let modal = this.modalCtrl.create("CartPage");
+  //   modal.present();
+  // }
 
-  datachanged(item,  e: any){
-    console.log('ID:  '+ item.id);
-    console.log('Valor del item '+ item.nombre);
-    console.log('precio '+ item.precio);
-    console.log('img '+ item.img_url);
-    console.log(JSON.stringify(e));
-    console.log(JSON.stringify(item.id));
-
-    // console.log('Cucumbers new state:' + item.name)
-
-    // if ((e.originalEvent.isTrusted === true && e.originalEvent.isPrimary === undefined) || e.originalEvent.isPrimary === true){
-    // if(this.datachangedClicked){
-      if(e == true){
-        // console.log('added');
-        // console.log('SIiiiiiii TRUSTED');
-        this.addItem(item.id, item.nombre, item.img_url, item.precio, e);
-      }else{
-        // console.log('removed');
-        // console.log('nooooooo TRUSTED');
-        // setTimeout(() => {
-        // console.log(this.itemCheckedFromFirebase);
-        // console.log(Object.keys(item));
-        //   console.log(JSON.stringify(item));
-          this.removeItem(item);
-          // item = []
-          // name = [];
-        // }, 1000);
-        // this.count = this.obj_buy.length;
-        // this.count =1;
-      }
-      // console.log(Object.keys(item));
-        // console.log(JSON.stringify(item));
-      // this.count = this.obj_buy.length;
-    // }
-    // console.log(this.count);
-
-  }
+  // datachanged(item,  e: any){
+  //   console.log('ID:  '+ item.id);
+  //   console.log('Valor del item '+ item.nombre);
+  //   console.log('precio '+ item.precio);
+  //   console.log('img '+ item.img_url);
+  //   console.log(JSON.stringify(e));
+  //   console.log(JSON.stringify(item.id));
+  //
+  //   // console.log('Cucumbers new state:' + item.name)
+  //
+  //   // if ((e.originalEvent.isTrusted === true && e.originalEvent.isPrimary === undefined) || e.originalEvent.isPrimary === true){
+  //   // if(this.datachangedClicked){
+  //     if(e == true){
+  //       // console.log('added');
+  //       // console.log('SIiiiiiii TRUSTED');
+  //       this.addItem(item.id, item.nombre, item.img_url, item.precio, e);
+  //     }else{
+  //       // console.log('removed');
+  //       // console.log('nooooooo TRUSTED');
+  //       // setTimeout(() => {
+  //       // console.log(this.itemCheckedFromFirebase);
+  //       // console.log(Object.keys(item));
+  //       //   console.log(JSON.stringify(item));
+  //         this.removeItem(item);
+  //         // item = []
+  //         // name = [];
+  //       // }, 1000);
+  //       // this.count = this.obj_buy.length;
+  //       // this.count =1;
+  //     }
+  //     // console.log(Object.keys(item));
+  //       // console.log(JSON.stringify(item));
+  //     // this.count = this.obj_buy.length;
+  //   // }
+  //   // console.log(this.count);
+  //
+  // }
 
   // Agregar elementos al carrito
   addItem(id, name, img, price, e){

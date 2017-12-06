@@ -1,12 +1,9 @@
-import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { Component, ViewChild } from '@angular/core';
+import { IonicPage, NavController, NavParams, ModalController, Slides } from 'ionic-angular';
+import { NotificationsProvider } from '../../providers/notifications/notifications';
+import { AngularFireAuth } from 'angularfire2/auth';
+import { AngularFirestore } from 'angularfire2/firestore';
 
-/**
- * Generated class for the CreateServicesPage page.
- *
- * See https://ionicframework.com/docs/components/#navigation for more info on
- * Ionic pages and navigation.
- */
 
 @IonicPage()
 @Component({
@@ -15,7 +12,18 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 })
 export class CreateServicesPage {
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+  constructor(
+    public navCtrl: NavController,
+    // public loadingCtrl: LoadingController,
+    public navParams: NavParams,
+    public modalCtrl: ModalController,
+    // private database: AngularFireDatabase,
+    private angularFauth:AngularFireAuth,
+    private readonly angularFirestore: AngularFirestore,
+    public notiPro: NotificationsProvider
+  ) {
+
+
   }
 
   ionViewDidLoad() {

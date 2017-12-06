@@ -94,53 +94,53 @@ export class MyApp {
         // this.splashScreen.hide();
         // this.splashScreen.hide();
         // setTimeout(() => {
-
-          this.oneSignal.startInit('c75fdaed-3229-4527-990d-d574eaba27ce', '732832336253');
-
-          this.oneSignal.inFocusDisplaying(this.oneSignal.OSInFocusDisplayOption.InAppAlert);
+        // 
+        //   this.oneSignal.startInit('c75fdaed-3229-4527-990d-d574eaba27ce', '732832336253');
         //
-          this.oneSignal.handleNotificationReceived().subscribe((signal_received) => {
-            // alert(JSON.stringify(signal_received));
-            var date = new Date();
-
-             this.angularFauth.authState.subscribe( data => {
-
-                 if(data !== null && data.uid){
-
-                   this.angularFirestore.collection('users' ).doc(`${data.uid}`).collection('notifications').doc(signal_received.payload.notificationID).set({view:false, datetime: date.toLocaleString(), signal_received})
-                   .then(() => {
-                       console.log("Document successfully seteado!");
-                   }).catch( (error) => {
-                       alert(error);
-                   });
-
-                 }
-             });
-
-          });
-
-          this.oneSignal.handleNotificationOpened().subscribe((signal_received) => {
-            // alert(JSON.stringify(signal_received));
-            var date = new Date();
-
-             this.angularFauth.authState.subscribe( data => {
-
-                 if(data !== null && data.uid){
-
-                   this.angularFirestore.collection('users').doc(`${data.uid}`).collection('notifications').doc(signal_received.notification.payload.notificationID).set({view:false, datetime: date.toLocaleString(), signal_received})
-                   .then(() => {
-                      //  console.log("Document successfully seteado!");
-                       this.nav.setRoot('NotificationsPage'); // configurar  push con envio de datos
-                   }).catch( (error) => {
-                       alert(error);
-                   });
-
-                 }
-             });
-
-          });
-
-          this.oneSignal.endInit();
+        //   this.oneSignal.inFocusDisplaying(this.oneSignal.OSInFocusDisplayOption.InAppAlert);
+        // //
+        //   this.oneSignal.handleNotificationReceived().subscribe((signal_received) => {
+        //     // alert(JSON.stringify(signal_received));
+        //     var date = new Date();
+        //
+        //      this.angularFauth.authState.subscribe( data => {
+        //
+        //          if(data !== null && data.uid){
+        //
+        //            this.angularFirestore.collection('users' ).doc(`${data.uid}`).collection('notifications').doc(signal_received.payload.notificationID).set({view:false, datetime: date.toLocaleString(), signal_received})
+        //            .then(() => {
+        //                console.log("Document successfully seteado!");
+        //            }).catch( (error) => {
+        //                alert(error);
+        //            });
+        //
+        //          }
+        //      });
+        //
+        //   });
+        //
+        //   this.oneSignal.handleNotificationOpened().subscribe((signal_received) => {
+        //     // alert(JSON.stringify(signal_received));
+        //     var date = new Date();
+        //
+        //      this.angularFauth.authState.subscribe( data => {
+        //
+        //          if(data !== null && data.uid){
+        //
+        //            this.angularFirestore.collection('users').doc(`${data.uid}`).collection('notifications').doc(signal_received.notification.payload.notificationID).set({view:false, datetime: date.toLocaleString(), signal_received})
+        //            .then(() => {
+        //               //  console.log("Document successfully seteado!");
+        //                this.nav.setRoot('NotificationsPage'); // configurar  push con envio de datos
+        //            }).catch( (error) => {
+        //                alert(error);
+        //            });
+        //
+        //          }
+        //      });
+        //
+        //   });
+        //
+        //   this.oneSignal.endInit();
 
         // }, 100);
         if(window.localStorage.getItem('onboarding_init')){
