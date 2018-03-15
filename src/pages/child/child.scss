@@ -3,127 +3,372 @@
 
 
 }
-
-
 page-child {
-    .segment-md .segment-button.activated, .segment-md .segment-button.segment-activated {
-        border-color: map-get($colors, color-app-oscuro) !important;
-    }
+  .item-md, .item-ios {
+    background: None !important;
+    padding-left: 0px !important;
 
-    .segment-md .segment-button {
-        color: map-get($colors, color-app) !important;
-    }
+  }
 
-    .item-md, .item-ios {
-      background: None !important;
-      padding-left: 0px !important;
+  .toolbar-title-md{
+    font-size: 2.7rem !important;
+    padding: 0 32px !important;
+    // text-align: left !important;
+  }
 
-    }
+  .toolbar-title-ios{
+    font-size: 2.1rem !important;
+    font-weight: normal !important;
+    // text-align: left !important;
+  }
 
-    .toolbar-title-md{
-      font-size: 2.7rem !important;
-      padding: 0 32px !important;
-      // text-align: left !important;
-    }
+  .bar-button-ios {
+    font-size: 15px !important;
+  }
 
-    .toolbar-title-ios{
-      font-size: 2.1rem !important;
-      font-weight: normal !important;
-      // text-align: left !important;
-    }
+  .item-md.item-block .item-inner{
+    padding-right: 0 !important;
+    border-bottom: None !important;
+  }
 
-    .bar-button-ios {
-      font-size: 15px !important;
-    }
-
-    .item-md.item-block .item-inner{
-      padding-right: 0 !important;
-      border-bottom: None !important;
-    }
-
-    .item-md ion-avatar[item-end]{
-      margin: 0 !important;
-    }
+  .item-md ion-avatar[item-end]{
+    margin: 0 !important;
+  }
 
     ion-header{
         ion-navbar{
+            ion-avatar{
+              border-radius: 50% !important;
+            }
             ion-title{
-                // color: color-contrast($colors, white) !important;
                 font-family: 'Great Vibes';
                 font-size: 2.4rem !important;
+                // font-size: 23px !important;
             }
             ion-buttons{
+                margin-right: 1em;
                 color: map-get($colors, color-app) !important;
                 ion-badge{
-                    background: #e43030 !important;
-                    color: map-get($colors, white) !important;
-                    margin-left:-10px !important;
-                    margin-top: -20px !important;
-                    border-radius: 50% !important;
-                    padding: 3px 6px !important;
+                  background: #ff461d !important;
+                  color: map-get($colors, white) !important;
+                  left:13px !important;
+                  margin-top: -8px !important;
+                  border-radius: 40% !important;
+                  padding: 3px 6px !important;
+                  position: absolute;
+                  z-index: 100;
                 }
             }
         }
     }
+
     ion-content{
-      .add_cart{
-          height: 42px !important;
-          background-color: #4381eb !important;
-          text-transform: capitalize !important;
-      }
-      ion-list{
-            margin: 0px !important;
-            button{
-                  justify-content: flex-end;
-                  text-align: left !important;
-                  height: 10em !important;
-                  margin-bottom:10px !important;
-                  background: white !important;
-                  img{
-                    position: absolute;
-                    left:0px !important;
-                    z-index: -10;
-                    -webkit-background-size: 100% 100%;           /* Safari 3.0 */
-                    -moz-background-size: 100% 100%;           /* Gecko 1.9.2 (Firefox 3.6) */
-                    -o-background-size: 100% 100%;           /* Opera 9.5 */
-                    background-size: 100% 100%;
-                    width:60vw;
-                    height: 10em;
-                  }
-                  .detail_price{
-                      width:35%;
-                      text-align: center;
+    // background: gray !important;
+    // padding-left: 35px !important;
+        // ion-list{
+        //     // height: 120px;
+        //     // background: green;
+        //     margin-top: 10px !important;
+        //     margin-bottom: 30px !important;
+        //     // margin-right: 10px !important;
+        //     padding-left: 15px !important;
+        //     ion-list-header{
+        //         border-top: None !important;
+        //         border-bottom: None !important;
+        //         margin-bottom: 0px !important;
+        //     }
+        //     // ion-slides img{
+        //     //     height: 100% !important;
+        //     //     width: 100% !important;
+        //     // }
+        //     ion-slides{
+        //         padding: 0px !important ;
+        //         // margin-left: 15px;
+        //         //  padding-left: -25px;
+        //         //
+        //         height: 240px;
+        //         button.swiper-pagination-bullet{
+        //             opacity: 0 !important;
+        //             background: white !important;
+        //             // background: green !important;
+        //         }
+        //         ion-slide{
+        //             // width: 200px !important;
+        //             height: 220px !important;
+        //             border: 0.10px #f7f0f0 solid; // color y grosor de border de la imagen f7f0f0
+        //             padding: 0px !important;
+        //             // margin: 0px !important;
+        //             // border: 0.7px red solid;
+        //
+        //             border-radius: 6px;
+        //             // border: 0.5px solid #d6d6d6;
+        //             // background: red;
+        //
+        //             button{
+        //                 border-radius: 6px;
+        //                 position: absolute;
+        //                 top: -2px !important;
+        //                 height: 215px !important;
+        //                 // margin-bottom: -10px;
+        //                 padding: 0px !important;
+        //                 .img_container{
+        //                     border-radius: 6px 6px 0px 0px;
+        //                     position: absolute;
+        //                     top:0;
+        //                     height: 160px !important;
+        //                     width: 165px !important;
+        //                     background: rgba(235, 235, 235, 0.82) !important;
+        //                     font-size: 0;
+        //                     text-align: center;
+        //                   .trick {
+        //                     display: inline-block;
+        //                     vertical-align: middle;
+        //                     // height: 150px;
+        //                   }
+        //                   img{
+        //                     display: inline-block;
+        //                     // vertical-align: middle;
+        //                     // max-height: 100%;
+        //                     width: auto;
+        //                     height: 100vh;
+        //                     // background-size: 50% auto !important;
+        //                     background-size: cover;
+        //                     background-size: contain;
+        //
+        //                     /* One-value syntax */
+        //                     /* the width of the image (height becomes 'auto') */
+        //                     background-size: 50%;
+        //                     background-size: 3.2em;
+        //                     background-size: 12px;
+        //                     background-size: auto;
+        //                                           // position: absolute;
+        //                     // top:0px;
+        //
+        //                     background-size: cover;
+        //                     // height: 0;
+        //                     padding: 0; /* reset */
+        //                   // padding-bottom: calc(100% * 3 / 4);
+        //                   }
+        //                   // max-width: 100%;
+        //
+        //                 }
+        //                 .space_price {
+        //                   position: absolute;
+        //                 //   border-bottom: 0.5px solid red;
+        //                 //   top:-10px;
+        //                   z-index: 10;
+        //                   // display: inline-block;
+        //                   width: 100vw;
+        //                   max-width: 100%;
+        //                   // float: right;
+        //                   height: 40px;
+        //                   background: white;
+        //                 //   background: Green;
+        //
+        //
+        //                   right: 0px;
+        //                   bottom: 0px;
+        //                   // text-align: center;
+        //                   // text-align: justify;
+        //                   opacity: 1;
+        //                   // bottom:-30px;
+        //                   word-wrap: break-word;
+        //                   h2{
+        //                       //   font-family: 'Great Vibes';
+        //                       font-family: 'Open Sans';
+        //                       // text-shadow: 1px 1px 2px black;
+        //                       z-index: 4;
+        //                       color: black;
+        //                       // font-family: 'Open Sans';
+        //                       font-size: 13px;
+        //                       //   color: black;
+        //                       position: absolute;
+        //                       text-transform: capitalize;
+        //                       //  top: 40px;
+        //                        left: 5px;
+        //                        top: -23px;
+        //                       //  text-align:  justify;
+        //                       //   color: map-get($colors, color-app);
+        //                       //   font-weight: 580;
+        //                   }
+        //                   p{
+        //                       color:black;
+        //                       position: absolute;
+        //                       // font-family: 'Open Sans';
+        //
+        //                       z-index: 4;
+        //                       top: 0px;
+        //                       left: 5px;
+        //                       float: left;
+        //                       font-size: 12px;
+        //                       // right: 15px;
+        //
+        //                   }
+        //
+        //                 }
+        //                 .div_check{
+        //                     ion-checkbox{
+        //                         position: absolute;
+        //                         z-index: 1000;
+        //                         // display: inline-block;
+        //                         width: 100vw;
+        //                         max-width: 100%;
+        //                         float: right;
+        //                         height: 100%;
+        //                         // background: red;
+        //                         right: 0px;
+        //                         top: 0px;
+        //                         // text-align: center;
+        //                         // text-align: justify;
+        //                         opacity: 1;
+        //                         // bottom: 0px;
+        //                         // word-wrap: break-word;
+        //                         // position: absolute;
+        //                         // // display: inline;
+        //                         // // right: 10px;
+        //                         // z-index: 100;
+        //                         // // height: 100%;
+        //                         // // width: 100% !important;
+        //                         // float: left !important;
+        //                         .checkbox-icon{
+        //                             // float: right;
+        //                             position: absolute;
+        //                             right: 3px;
+        //                             bottom: 5px;
+        //                             border-color: white !important;
+        //                             opacity: 0.7 !important;
+        //                         }
+        //                         .checkbox-checked{
+        //                             background: map-get($colors, color-app) !important;
+        //                         }
+        //
+        //
+        //                     }
+        //
+        //                 }
+        //                 // .heart_like{
+        //                 //     position: absolute;
+        //                 //     z-index: 1000;
+        //                 //     left: 5px;
+        //                 //     bottom: 1px;
+        //                 //     // left: -5px;
+        //                 //     color: red;
+        //                 //     font-size: 10px;
+        //                 //     height: 20px !important;
+        //                 //     ion-icon{
+        //                 //         border-color: black;
+        //                 //
+        //                 //     }
+        //                 // }
+        //
+        //
+        //                 .info_btn{
+        //
+        //                     // background: gray !important;
+        //                     // position: absolute !important;
+        //                     // z-index: 1000px !important;
+        //                     position: absolute;
+        //                     z-index: 1000;
+        //                     bottom: 60px;
+        //                     right: 1px;
+        //                     // top: -85px;
+        //                     // left: -5px;
+        //                     color: #8a8a8a;
+        //                     font-size: 10px;
+        //                     height: 20px !important;
+        //                     // border-color: green;
+        //                 }
+        //             }
+        //         }
+        //     }
+        // }
+
+        ion-list{
+              margin: 0px !important;
+              button{
+                    justify-content: flex-end;
+                    text-align: left !important;
+                    height: 10em !important;
+                    margin-bottom:10px !important;
+                    background: white !important;
+                    img{
                       position: absolute;
-                      right: 0px;
-                      display: block;
-                      float:right;
+                      left:30px !important;
+                      z-index: -10;
+                      -webkit-background-size: 100% 100%;           /* Safari 3.0 */
+                      -moz-background-size: 100% 100%;           /* Gecko 1.9.2 (Firefox 3.6) */
+                      -o-background-size: 100% 100%;           /* Opera 9.5 */
+                      background-size: 100% 100%;
+                      max-width: 110px;
+                      max-height: 80% !important;
+                      // height: 10em;
+                    }
+                    .detail_price{
+                        width:45%;
+                        height: 100%;
+                        text-align: center;
+                        position: absolute;
+                        right: 5px;
+                        top:3px;
+                        display: block;
+                        float:right;
+                        .favorites{
+                          position: absolute;
+                          right: 5px;
+                          top: 0px;
+                        }
+                        .add_cart{
+                            height: 32px !important;
+                            border-radius: 6px !important;
+                            background-color: map-get($colors, color-app) !important;
+                            text-transform: capitalize !important;
+                            position: absolute;
+                            bottom: 0px;
+                            right: 0px;
+                        }
+                        .favorite{
+                          position: absolute;
+                          top:10px;
+                          right: 10px;
+                        }
+
+                        h2{
+                            //   font-family: 'Great Vibes';
+                            // font-family: 'Noto Serif';
+                            // max-width: 100px;
+                            color: black;
+                            position: absolute;
+                            top: 15px;
+                            left: -15px;
+                            text-transform: none;
+                            font-size: 18px;
+                            font-weight: 400;
+                        }
+                        h5{
+                          position: absolute;
+                          top: 45px;
+                          left: -15px;
+                          color: #b3b3b3;
+                          font-size: 11px;
+                          text-transform: none;
+
+                        }
+                        h6{
+                            position: absolute;
+                            top: 21px;
+                            font-size: 15px;
+                            left: -15px;
+                            // color:gray;
+                            color: #c84545;
+                        }
+                }
+
+              }
+        }
 
 
-                              h2{
-                                //   font-family: 'Great Vibes';
-                                top:15px;
-                                font-family: 'Noto Serif';
-                                // max-width: 100px;
-                                color: black;
-                                // text-shadow: 1px 1px 2px black;
-                                // font-family: 'Open Sans';
-                                text-transform: capitalize;
-                                font-size: 16px;
-                                //   color: black;
-                                //   position: relative;
-                                //   top: -30px;
-                                //   color: map-get($colors, color-app);
-                                font-weight: bold;
-                                // padding-right:5px ;
-                                // padding-left:4px ;
-                              }
-                              h6{
-                                  margin-top: -6px;
-                                  color: #cd3131;
-                              }
-                  }
 
-            }
-      }
-    }
-}
+
+    }//content
+
+}//page-woman

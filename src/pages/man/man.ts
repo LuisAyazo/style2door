@@ -1,5 +1,6 @@
 import { Component, ViewChild } from '@angular/core';
-import { IonicPage, NavController, NavParams, ModalController, Slides } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, ModalController, PopoverController, Slides, ToastController } from 'ionic-angular';
+import { DomSanitizer } from '@angular/platform-browser';
 // import { AngularFireDatabase  } from 'angularfire2/database';
 // import * as firebase from 'firebase/app';
 // import { ShoppingItem } from '../../models/shopping-item/shopping-item.interface';
@@ -39,10 +40,19 @@ export class ManPage {
   keys: string[];
   arrayTmp: any[];
   // itemCheckedFromFirebase: Observable<any>;
-  itemCheckedFromFirebase: any;
+  itemCheckedFromFirebase: any[];
   _notifications: number = 0;
   delTmp: any;
+  servicios: any[];
   ch: any[] = [];
+  isenabled:boolean = false;
+  buttonColor: any;
+  misElementos : any;
+  innerHtmlVar:any ;
+  // = `<button ion-button (click)="self.alert('message')"></button>`
+
+
+  // buttonDisabled:boolean = true;
 
   // item: Item = {
   //   name: '',
@@ -63,10 +73,16 @@ export class ManPage {
     // private database: AngularFireDatabase,
     private angularFauth:AngularFireAuth,
     private readonly angularFirestore: AngularFirestore,
-    public notiPro: NotificationsProvider
+    public notiPro: NotificationsProvider,
+    public popoverCtrl: PopoverController,
+    protected sanitizer: DomSanitizer,
+    private toastCtrl: ToastController
   ) {
+    // var strHTML = '<input type="text" name="name">';
+    // this.innerHtmlVar = this.sanitizer.bypassSecurityTrustHtml(strHTML);
 
-
+var disabled = false;
+// this.addHTMLElements();
 
     this.angularFauth.authState.subscribe( data => {
           // this.authState = data;
@@ -95,57 +111,97 @@ export class ManPage {
 
   }
 
+  assembleHTMLItem() {
+    var strHTML = '<input type="text" name="name">';
+    return this.sanitizer.bypassSecurityTrustHtml(strHTML);
+  }
+
+  addService(){
+
+    let toast = this.toastCtrl.create({
+        message: 'Servicio agregado a la canasta',
+        duration: 3000,
+        position: 'top'
+      });
+
+      toast.onDidDismiss(() => {
+        console.log('Dismissed toast');
+      });
+
+      toast.present();
+  }
+
+  // addHTMLElements(){
+  //   for(var a of this.this.servicios){
+  //   this.misElementos = `<ion-list no-lines *ngFor="let item of servicios; let i = index">
+  //       <button full ion-button ><img src="assets/images/services/man/barba_de_lujo.jpg"/>
+  //         <div class="detail_price" text-wrap>
+  //           <h2>${item.nombre}</h2>
+  //           <h6 >${item.precio}</h6>
+  //           <h5><button clear ion-button icon-only (click)="detailInfoPopover($event,item)">- detalle </button></h5>
+  //           <span class="favorites"><ion-icon color='googleplus-color' name="heart"></ion-icon></span>
+  //
+  //             <button class="add_cart" [disabled]="disabled" ion-button [ngStyle]="{'color': buttonColor}" (click)='addItem(item.id, item.nombre, item.precio)'>Solicitar</button>
+  //         </div>
+  //       </button>
+  //     </ion-list>`
+  //   }
+  //
+  // }
+
+
 
   initAll(){
+          this.angularFauth.authState.subscribe( data => {
+               if(data !== null){
+                   this.angularFirestore.collection('servicios').doc('hombres').collection('servicios').valueChanges()
+                   .subscribe( data => { this.servicios = data
+                          // console.log(this.servicios);
+
+
+                          for(var a of this.servicios){
+                          this.misElementos += `<button full ion-button ><img src="assets/images/services/man/barba_de_lujo.jpg"/>
+                                <div class="detail_price" text-wrap>
+                                  <h2>${a.nombre}</h2>
+                                  <h6 >${a.precio}</h6>
+                                  <h5><button clear ion-button icon-only (click)="detailInfoPopover($event,item)">- detalle </button></h5>
+                                  <span class="favorites"><ion-icon color='googleplus-color' name="heart"></ion-icon></span>
+                                  <button class="add_cart" [disabled]="disabled" ion-button [ngStyle]="{'color': buttonColor}" (click)='addItem(item.id, item.nombre, item.precio)'>Solicitar</button>
+                                </div>
+                              </button>`
+                          }
+
+                          // return this.misElementos;
+                          // var strHTML = '<input type="text" name="name">';
+                          this.innerHtmlVar = this.sanitizer.bypassSecurityTrustHtml(this.misElementos);
+
+
+                        }
+                      );
+                }
+
+          });
+
+
+
+
 
 
        this.angularFauth.authState.subscribe( data => {
-           if(data !== null){
-
-
-              //  this.delTmp = this.angularFirestore.collection('users').doc(`${data.uid}`).collection('shopping_list_temp').snapshotChanges().map(actions => {
-              //    return actions.map(a => {
-              //      const data = a.payload.doc.data();
-              //      const id = a.payload.doc.id;
-              //      return({ id, ...data });
-              //    });
-              //  });
-             // console.log(this.itemCheckedFromFirebase[0].nombre);
-             this.angularFirestore.collection('users' ).doc(`${data.uid}`).collection('shopping_list_temp').valueChanges()
-             // if(this.itemCheckedFromFirebase == 'undefined' ){
-             //   this.count = 0
-            //  // }
+           if(data){
+             console.log("hay data");
+             this.angularFirestore.collection('users').doc(`${data.uid}`).collection('shopping_list_temp').valueChanges()
                .subscribe(data => {
                   // this.itemCheckedFromFirebase = [];
-
+                   console.log("que hay"+ JSON.stringify(data));
                    this.itemCheckedFromFirebase = data;
-                   if(this.itemCheckedFromFirebase.length<1){
-                     console.log("ERRRROORRR!!!");
-                   }
-
-
-                  // for(let a = 0; a<this.itemCheckedFromFirebase.length; a++){
-
-                  this.ch = [];
-                     for(let a in this.itemCheckedFromFirebase){
-                      //  console.log(a);
-                      //  console.log(this.itemCheckedFromFirebase[a]);
-                       this.ch.push(this.itemCheckedFromFirebase[a].nombre);
-                      //  this.index += this.itemCheckedFromFirebase.findIndex((itemp) => itemp['id'] === data[a].id);
-                       console.log(JSON.stringify(this.ch));
-                     }
-
-                  // }
-                    // sacar object key
-                  //  console.log(this.itemCheckedFromFirebase[0].nombre);
-                   //
-                  //  for(let al in this.itemCheckedFromFirebase){
-                  //    console.log(this.itemCheckedFromFirebase[al].nombre);
-                  //   //  let p = {
-                  //   //
-                  //   //  }
+                   console.log(this.itemCheckedFromFirebase);
+                  //  if(this.itemCheckedFromFirebase.length<1){
+                  //    console.log("NO HAY NADA EN EL CARRITO");
+                  //  }else{
+                  //    console.log("HAYYYYY COSAS");
                   //  }
-                   // this.count = data.length;
+
                  }
 
                )
@@ -207,15 +263,16 @@ export class ManPage {
 
 
 
-  ngAfterViewInit() {
-      this.slides.freeMode = true;
-  }
+  // ngAfterViewInit() {
+  //     this.slides.freeMode = true;
+  // }
 
   // carrito de compra
   cartShoppingModal(){
     let modal = this.modalCtrl.create("CartPage");
     modal.present();
   }
+
 
   datachanged(item,  e: any){
     console.log('ID:  '+ item.id);
@@ -256,15 +313,19 @@ export class ManPage {
 
   // Agregar elementos al carrito
   addItem(id, name, price, e){
+    // this.buttonColor = '#345465'; //desired Color
+    // console.log('chamging button color');
 
+    // this.disabled = true;
     // console.log(this.userId);
     let item_to_send = {
         id: id,
         nombre: name,
         precio: price,
-        checked: e,
+        disabled: 'true',
         cantidad: 1
     };
+    console.log(item_to_send);
 
     // this.obj_buy.push(item_to_send);
 
@@ -434,7 +495,12 @@ export class ManPage {
    contactModal.present();
   }
 
-
+detailInfoPopover(myEvent, data){
+  let popover = this.popoverCtrl.create('DetailServicePage',{infopopover:data});
+    popover.present({
+      ev: myEvent
+    });
+  }
 
 
 }

@@ -1,0 +1,45 @@
+<ion-header>
+  <ion-navbar color="white">
+<ion-buttons left>
+  <button ion-button menuToggle>
+    <ion-icon name="menu" color="color-app"></ion-icon>
+  </button>
+</ion-buttons>
+    <ion-title>Style2Door</ion-title>
+    <ion-buttons end>
+      <button ion-button icon-only tappable navPush="NotificationsPage" color="color-app">
+        <ion-icon name="notifications"></ion-icon>
+        <ion-badge *ngIf="_notifications != 0">{{this._notifications}}</ion-badge>
+      </button>
+      <button ion-button icon-only tappable (click)="cartShoppingModal()" color="color-app">
+        <ion-icon name="cart"></ion-icon>
+        <ion-badge *ngIf="count != 0">{{count}}</ion-badge>
+      </button>
+    </ion-buttons>
+  </ion-navbar>
+</ion-header>
+
+
+<ion-content padding>
+<ion-item no-lines>
+  <ion-avatar item-start>
+    <img src="assets/admin/admin_avatar.png"/>
+  </ion-avatar>
+</ion-item>
+  <ion-card>
+    <div class="card-title">Administrador</div>
+    <div class="card-subtitle">Bienvenido a style2door, Estilo a la puerta de tu casa.</div>
+  </ion-card>
+  <label>12 septiembre de 2017</label>
+</ion-content>
+<ion-footer>
+  <ion-toolbar>
+    <!-- <span class='total'>Total: </span><span class="total_price">$85.000</span><br /> -->
+    <!-- <span class='total'>Total: </span><span class="total_price">${{total}}</span><br /> -->
+    <button class='add' ion-button round color='color-app' icon-start><ion-icon name='add'></ion-icon></button>
+    <ion-item>
+      <ion-input placeholder="Escribe algo..." clearInput></ion-input>
+    </ion-item>
+    <button class='enviar' ion-button (click)="reviewPay()" round  color='color-app' icon-end>enviar</button>
+  </ion-toolbar>
+</ion-footer>

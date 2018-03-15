@@ -46,18 +46,16 @@
           <ion-avatar item-start>
             <img src="assets/images/avatares/avatar3.jpg">
           </ion-avatar>
-          <h5  class="stilyst_name">Jose Rodriguez</h5>
-          <h6 class='stilyst_specialist'>Barbero Profesional</h6>
+          <h5  class="stilyst_name">Marcos Gutierrez</h5>
+          <h6 class='stilyst_specialist'>Barbero</h6>
           <div class="schedule_hour">
             <p>
-              - Miercoles 8 de noviembre
+              - Jueves 8 de marzo
             </p>
             <span class="hour">13:00 - 15:00</span>
           </div>
           <div class="services">
             <h5 >Servicios programados</h5>
-            <h6> - Manicure </h6>
-            <h6> - Pedicure </h6>
             <h6> - Corte </h6>
             <!-- <h6> - manicure </h6>
             <h6> - manicure </h6> -->
@@ -69,19 +67,21 @@
       <div class="schedule_estilist">
         <ion-item>
           <ion-avatar item-start>
-            <img src="assets/images/avatares/avatar3.jpg">
+            <img src="assets/images/avatares/estilista_mujer.jpg">
           </ion-avatar>
-          <h5  class="stilyst_name">Jose Rodriguez</h5>
-          <h6 class='stilyst_specialist'>Barbero Profesional</h6>
+          <h5  class="stilyst_name">Maria Acosta</h5>
+          <h6 class='stilyst_specialist'>Estilista Profesional</h6>
           <div class="schedule_hour">
             <p>
-              - Lunes 13 de noviembre
+              - Lunes 5 de marzo
             </p>
             09:00 - 10:00
           </div>
           <div class="services">
             <h5 >Servicios programados</h5>
+            <!-- <h6> - Manicure </h6> -->
             <h6> - Manicure </h6>
+            <h6> - Pedicure </h6>
             <!-- <h6> - Pedicure </h6> -->
             <h6> - Corte </h6>
             <!-- <h6> - manicure </h6>
@@ -121,15 +121,15 @@
     <button ion-fab color="color-app-oscuro" tappable (click)='fabActive(fab)'><ion-icon name="add"></ion-icon></button>
     <ion-fab-list side="top" >
       <span class='fab_top_schedule'>Programar servicio</span>
-      <button ion-fab class='fab_top_schedule_btn' (click)="createservice()"><ion-icon color='color-app' name="logo-facebook"></ion-icon></button>
+      <button ion-fab class='fab_top_schedule_btn' (click)="createservice()"><ion-icon color='color-app' name="calendar"></ion-icon></button>
     </ion-fab-list>
     <ion-fab-list side="left">
-      <button ion-fab class='fab_left_schedule_btn' (click)="share('twhiteeer', fab)"><ion-icon color='color-app' name="logo-twitter"></ion-icon></button>
+      <button ion-fab class='fab_left_schedule_btn' (click)="share('twhiteeer', fab)"><ion-icon color='color-app' name="alert"></ion-icon></button>
       <span class='fab_left_schedule'>Alerta</span>
     </ion-fab-list>
     <ion-fab-list side="right">
 
-      <button ion-fab class='fab_right_schedule_btn' (click)="share('google', fab)"><ion-icon color='color-app' name="logo-googleplus"></ion-icon></button>
+      <button ion-fab class='fab_right_schedule_btn' (click)="share('google', fab)"><ion-icon color='color-app' name="build"></ion-icon></button>
       <span class='fab_right_schedule'>Preferencias</span>
     </ion-fab-list>
   </ion-fab>

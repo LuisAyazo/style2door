@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { IonicPageModule } from 'ionic-angular';
 import { ChildPage } from './child';
+import { ElasticHeaderModule } from "ionic2-elastic-header/dist";
 
 @NgModule({
   declarations: [
@@ -8,9 +9,11 @@ import { ChildPage } from './child';
   ],
   imports: [
     IonicPageModule.forChild(ChildPage),
+    ElasticHeaderModule
   ],
   exports: [
-    ChildPage
+    ChildPage,
+    ElasticHeaderModule
   ]
 })
 export class ChildPageModule {}

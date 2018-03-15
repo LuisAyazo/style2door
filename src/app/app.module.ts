@@ -10,6 +10,8 @@ import { ElasticHeaderModule } from "ionic2-elastic-header/dist";
 
 
 // providers
+import { DatePicker } from '@ionic-native/date-picker'; //ionic
+import { DatePickerModule } from 'ion-datepicker';
 import { Facebook } from '@ionic-native/facebook';
 import { SocialSharing } from '@ionic-native/social-sharing';
 
@@ -38,6 +40,7 @@ import { AngularFireAuthModule } from 'angularfire2/auth';
 import { AngularFireDatabaseModule } from 'angularfire2/database';
 import { AngularFirestoreModule } from 'angularfire2/firestore';
 import { FIREBASE_CONFIG } from './app.firebase.config';
+import { PayProvider } from '../providers/pay/pay';
 // import { FCM } from '@ionic-native/fcm'; // notification  push
 
 // Activar modo produccion
@@ -57,7 +60,9 @@ enableProdMode();
     AngularFireAuthModule,
     AngularFirestoreModule,
     AngularFireDatabaseModule,
-    ElasticHeaderModule
+    ElasticHeaderModule,
+    DatePickerModule,
+
   ],
   bootstrap: [IonicApp],
   entryComponents: [
@@ -68,12 +73,15 @@ enableProdMode();
     // SplashScreen,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
     Facebook,
+    DatePicker,
     SocialSharing,
     // AuthServiceProvider,
     NotificationsProvider,
     Geolocation,
     GoogleMaps,
-    OneSignal
+    OneSignal,
+    PayProvider,
+
   ]
 })
 export class AppModule {}

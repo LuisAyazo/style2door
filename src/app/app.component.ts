@@ -53,7 +53,7 @@ export class MyApp {
     // used for an example of ngFor and navigation
     this.pages = [
       { title: 'TabsHomePage', component: 'TabsHomePage', description: 'Style2Door', icon: 'ios-home' },
-      { title: 'Home', component: 'HomePage', description: 'Chat', icon: 'chatboxes' },
+      { title: 'Home', component: 'ChatPage', description: 'Chat', icon: 'chatboxes' },
       // { title: 'WeblogicPage', component: 'HomePage', description: 'Llamar', icon: 'code-download' },
       // { title: 'Database', component: 'HomePage', description: 'Noticias', icon: 'md-git-branch' },
       // { title: 'Gitlab', component: 'HomePage', description: 'Quejas y sugerencia', icon: 'logo-facebook' },
@@ -89,66 +89,68 @@ export class MyApp {
       this.platform.ready().then(() => {
         this.statusBar.backgroundColorByHexString("#9a056d");
         let splash = this.modalCtrl.create("SplashPage");
-        splash.present();
+
 
         // this.splashScreen.hide();
-        // this.splashScreen.hide();
-        // setTimeout(() => {
-        // 
-        //   this.oneSignal.startInit('c75fdaed-3229-4527-990d-d574eaba27ce', '732832336253');
-        //
-        //   this.oneSignal.inFocusDisplaying(this.oneSignal.OSInFocusDisplayOption.InAppAlert);
-        // //
-        //   this.oneSignal.handleNotificationReceived().subscribe((signal_received) => {
-        //     // alert(JSON.stringify(signal_received));
-        //     var date = new Date();
-        //
-        //      this.angularFauth.authState.subscribe( data => {
-        //
-        //          if(data !== null && data.uid){
-        //
-        //            this.angularFirestore.collection('users' ).doc(`${data.uid}`).collection('notifications').doc(signal_received.payload.notificationID).set({view:false, datetime: date.toLocaleString(), signal_received})
-        //            .then(() => {
-        //                console.log("Document successfully seteado!");
-        //            }).catch( (error) => {
-        //                alert(error);
-        //            });
-        //
-        //          }
-        //      });
-        //
-        //   });
-        //
-        //   this.oneSignal.handleNotificationOpened().subscribe((signal_received) => {
-        //     // alert(JSON.stringify(signal_received));
-        //     var date = new Date();
-        //
-        //      this.angularFauth.authState.subscribe( data => {
-        //
-        //          if(data !== null && data.uid){
-        //
-        //            this.angularFirestore.collection('users').doc(`${data.uid}`).collection('notifications').doc(signal_received.notification.payload.notificationID).set({view:false, datetime: date.toLocaleString(), signal_received})
-        //            .then(() => {
-        //               //  console.log("Document successfully seteado!");
-        //                this.nav.setRoot('NotificationsPage'); // configurar  push con envio de datos
-        //            }).catch( (error) => {
-        //                alert(error);
-        //            });
-        //
-        //          }
-        //      });
-        //
-        //   });
-        //
-        //   this.oneSignal.endInit();
+        setTimeout(() => {
 
-        // }, 100);
+          this.oneSignal.startInit('c75fdaed-3229-4527-990d-d574eaba27ce', '732832336253');
+
+          this.oneSignal.inFocusDisplaying(this.oneSignal.OSInFocusDisplayOption.InAppAlert);
+        //
+          this.oneSignal.handleNotificationReceived().subscribe((signal_received) => {
+            // alert(JSON.stringify(signal_received));
+            var date = new Date();
+
+             this.angularFauth.authState.subscribe( data => {
+
+                 if(data !== null && data.uid){
+
+                   this.angularFirestore.collection('users' ).doc(`${data.uid}`).collection('notifications').doc(signal_received.payload.notificationID).set({view:false, datetime: date.toLocaleString(), signal_received})
+                   .then(() => {
+                       console.log("Document successfully seteado!");
+                   }).catch( (error) => {
+                       alert(error);
+                   });
+
+                 }
+             });
+
+          });
+
+          this.oneSignal.handleNotificationOpened().subscribe((signal_received) => {
+            // alert(JSON.stringify(signal_received));
+            var date = new Date();
+
+             this.angularFauth.authState.subscribe( data => {
+
+                 if(data !== null && data.uid){
+
+                   this.angularFirestore.collection('users').doc(`${data.uid}`).collection('notifications').doc(signal_received.notification.payload.notificationID).set({view:false, datetime: date.toLocaleString(), signal_received})
+                   .then(() => {
+                      //  console.log("Document successfully seteado!");
+                       this.nav.setRoot('NotificationsPage'); // configurar  push con envio de datos
+                   }).catch( (error) => {
+                       alert(error);
+                   });
+
+                 }
+             });
+
+          });
+
+          this.oneSignal.endInit();
+
+        }, 100);
+
+
         if(window.localStorage.getItem('onboarding_init')){
             // this.rootPage = 'LoginPage';
             this.angularFauth.authState.subscribe( data => {
                   // alert("PASAS por a  u QUII");
                   // console.log(JSON.stringify(data));
                   if (data !== null){
+                    splash.present();
                       // console.log(JSON.stringify(data));
                       // alert(JSON.stringify(data.providerData[0].providerId));
                       if ( data.providerData[0].providerId == "password" ){
@@ -156,11 +158,13 @@ export class MyApp {
                           if(data && data.email && data.uid){
                             // console.log("PASO APP.COMPONENT.TS" +  JSON.stringify(data));
                             this.rootPage = 'TabsHomePage';
+                            // this.rootPage = 'ReviewPayPage';
                           }
                       }
                       if ( data.providerData[0].providerId == "facebook.com" ){
                           // alert("ES DE FACE ==== "+JSON.stringify(data));
                           this.rootPage = 'TabsHomePage';
+
                       }
                   }
                   else{
@@ -208,7 +212,7 @@ export class MyApp {
       // Sharing via email is possible
       // alert('creo q comparte');
     }).catch((e) => {
-      alert(e);
+      //alert(e);
       // Sharing via email is not possible
     });
   }
@@ -221,7 +225,7 @@ export class MyApp {
       // Sharing via email is possible
       // alert('creo q comparte');
     }).catch((e) => {
-      alert(e);
+      //alert(e);
       // Sharing via email is not possible
     });
   }
@@ -234,7 +238,7 @@ export class MyApp {
       // Sharing via email is possible
       // alert('creo q comparte');
     }).catch((e) => {
-      alert(e);
+      //alert(e);
       // Sharing via email is not possible
     });
   }

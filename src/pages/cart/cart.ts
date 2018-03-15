@@ -42,7 +42,7 @@ export class CartPage {
     // console.log(result)
 
     this.total = 0;
-    this.com();
+    // this.com();
 
     this.angularFauth.authState.subscribe( data => {
         // conso
@@ -57,6 +57,10 @@ export class CartPage {
       this.notiPro.getCurrentNotificationNoView().subscribe(data => {this._notifications = data.length });
     }
 
+  }
+
+  reviewPay(){
+    this.navCtrl.push('ReviewPayPage');
   }
 
   ngAfterViewInit() {

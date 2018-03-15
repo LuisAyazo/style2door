@@ -6,6 +6,8 @@ import { AngularFireAuth } from 'angularfire2/auth';
 import { AngularFirestore } from 'angularfire2/firestore';
 import { NotificationsProvider } from '../../providers/notifications/notifications';
 
+import {Md5} from 'ts-md5/dist/md5';
+
 
 @IonicPage()
 @Component({
@@ -36,7 +38,7 @@ export class HomePage {
     public notiPro: NotificationsProvider
   ) {
     // alert(e);
-
+console.log(Md5.hashStr('4Vj8eK4rloUd272L48hsrarnUA~508029~atuio~20000~COP'));
     this.angularFauth.authState.subscribe( data => {
       // conso
         if(data !== null){
