@@ -3,6 +3,12 @@
 date=$(date +"%d-%m-%y_%H:%M")
 export ANDROID_HOME=$ANDROID_HOME
 
+# Generacion del keystore - 1 sola vez
+#keytool -genkey -v -keystore style2door.keystore -alias style2door -keyalg RSA -keysize 2048 -validity 10000
+
+# firmar un apk
+#jarsigner -verbose -sigalg SHA1withRSA -digestalg SHA1 -keystore style2door.keystore platforms/android/build/outputs/apk/android-release.apk style2door -storepass beabby
+
 rm -rf style2door*.apk
 
 # ADD platforms
