@@ -1,5 +1,5 @@
 #!/bin/bash
-
+# build apk in android
 # Created by Luis Ayazo
 date=$(date +"%d-%m-%y_%H:%M")
 export ANDROID_HOME=$ANDROID_HOME
