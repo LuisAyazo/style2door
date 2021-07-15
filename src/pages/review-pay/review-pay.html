@@ -1,0 +1,47 @@
+<ion-header no-shadow no-border>
+  <ion-navbar color="white">
+    <ion-title>Style2Door</ion-title>
+    <ion-buttons end>
+      <button ion-button icon-only tappable navPush="NotificationsPage" color="color-app">
+        <ion-icon name="notifications"></ion-icon>
+        <ion-badge *ngIf="_notifications != 0">{{this._notifications}}</ion-badge>
+      </button>
+      <button ion-button icon-only tappable (click)="cartShoppingModal()" color="color-app">
+        <ion-icon name="trash"></ion-icon>
+        <ion-badge *ngIf="count != 0">{{count}}</ion-badge>
+      </button>
+    </ion-buttons>
+  </ion-navbar>
+</ion-header>
+
+
+<ion-content padding>
+<h3>Resumen</h3>
+<ion-list no-lines>
+  <ion-item>
+    <h5>Barba de lujo</h5>
+        <span class='service-person'>1 persona</span><span class='service-price'>$55.000</span><br />
+        <span class='service'>Domicilio</span><span class='service-price-home'>$10.000</span>
+  </ion-item>
+  <ion-item>
+    <h5>Corte sin lavado</h5>
+        <span class='service-person'>1 persona</span><span class='service-price'>$30.000</span><br />
+        <span class='service'>Domicilio</span><span class='service-price-home'>$10.000</span>
+  </ion-item>
+  <!-- <ion-item>
+    <h5>Barba de lujo</h5>
+        <span class='service-person'>1 persona</span><span class='service-price'>$55.000</span><br />
+        <span class='service'>Domicilio</span><span class='service-price-home'>$10.000</span>
+  </ion-item> -->
+  <hr />
+</ion-list>
+<ion-list no-lines>
+  <ion-item>
+    <span class='total'>Total</span><span class='total-price'>$105.000</span>
+  </ion-item>
+
+
+</ion-list>
+<button ion-button color='color-app-oscuro' full class="pay_button" (click)='payAllService'>Pagar</button>
+<!-- <button ion-button color='light' round class="pay_button" (click)='payAllService'>Cancelar pago</button> -->
+</ion-content>

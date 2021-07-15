@@ -3,7 +3,7 @@ import { IonicPage, NavController, NavParams, LoadingController } from 'ionic-an
 
 
 // provider
-import { AuthServiceProvider } from '../../providers/auth-service/auth-service';
+// import { AuthServiceProvider } from '../../providers/auth-service/auth-service';
 
 @IonicPage()
 @Component({
@@ -25,7 +25,7 @@ export class AddPayMentsPage {
   constructor(
     public navCtrl: NavController,
     public navParams: NavParams,
-    public auth: AuthServiceProvider,
+    // public auth: AuthServiceProvider,
     public loadingCtrl: LoadingController,
   ) {
 

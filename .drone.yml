@@ -1,0 +1,36 @@
+kind: pipeline
+type: docker
+name: greeting
+
+steps:
+- name: en
+  image: alpine
+  commands:
+  - echo hello beautiful world
+
+- name: fr
+  image: alpine
+  commands:
+  - echo bonjour monde
+  when:
+    branch:
+    - develop
+    paths:
+      exclude:
+        - .drone.yml
+- name: test
+  image: node:10
+  commands:
+  - npm install mocha -g
+  - npm test
+  when:
+    branch:
+    - develop
+    paths:
+      exclude:
+        - .drone.yml
+- name: es
+  image: alpine
+  commands:
+  - echo Hola mundo loco
+

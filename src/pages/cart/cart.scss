@@ -38,13 +38,26 @@ page-cart {
     height: 110px;
     ion-card-content{
       padding: 0 !important;
+      .domicilio, .total_price{
+        // color:forestgreen;
+        font-size: 14px !important;
+        position: absolute;
+        top:53px;
+      }
+      .total_price{
+        color: orangered;
+        right: 20px;
+      }
       h2{
         position: absolute;
         top:20px;
+        font-size: 16px;
+        text-transform: capitalize;
       }
       p.price_color{
         position: absolute;
         top:43px;
+        font-size: 16px;
         color:rgba(193, 29, 29, 0.77) !important;
       }
       .personCount{
@@ -55,19 +68,18 @@ page-cart {
           right: 15px;
         }
         float: right;
-        span.peopleNumber{
-          position: relative;
-          top: 40px;
-        }
         .lessPeople{
           position: absolute;
           bottom: 5px;
           right: 40px;
+          font-size: 14px;
         }
         .morePeople{
           position: absolute;
           top: 5px;
           right: 40px;
+          font-size: 14px;
+
         }
         button{
         //
@@ -83,21 +95,55 @@ page-cart {
     }
   }
 
+
+ion-list{
+  ion-item-group{
+    ion-item-divider{
+      color:black !important;
+      background: #dedede !important;
+    }
+    ion-item{
+      color:dimgray !important;
+      font-size: 12px !important;
+    }
+  }
+}
+
+
   ion-footer{
       ion-toolbar{
           .total{
-              margin-left: 10px;
-              color: map-get($colors, color-app-oscuro);
-              font-size: 15px !important;
+            position: absolute;
+            left: 10px;
+            top: 10px;
+            color: #9a1471;
+            font-size: 20px !important;
           }
           .total_price{
+            position: absolute;
+            top: 10px;
+            left:65px;
             // color: map-get($colors, color-app-oscuro);
-            font-size: 15px !important;
+            font-size: 22px !important;
           }
           button{
             position: absolute ;
-            right: 0px;
+            right: -10px;
+            top:0;
+            border-radius: 30px !important;
             float: right;
+          }
+          .button-round-md, .button-round-ios {
+              border-radius: 50px !important;
+          }
+
+          .button-md-color-app {
+              color: #fff;
+              background-color: #bd3c95;
+              position: absolute;
+              right: 10px;
+              top:5px;
+              border-radius: 30px !important;
           }
       }
   }

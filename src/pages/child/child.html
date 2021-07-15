@@ -1,97 +1,141 @@
-<ion-header>
+<ion-header [elasticHeader]="myContent">
   <ion-navbar color="white">
     <button ion-button menuToggle color="color-app">
       <ion-icon name="menu"></ion-icon>
     </button>
-    <ion-title>Paquetes</ion-title>
+    <ion-title>Style2Door</ion-title>
     <ion-buttons end>
-      <button ion-button icon-only (click)="notificationModal()" color="color-app">
+      <button ion-button icon-only tappable navPush="NotificationsPage" color="color-app">
         <ion-icon name="notifications"></ion-icon>
+        <ion-badge *ngIf="_notifications != 0">{{this._notifications}}</ion-badge>
       </button>
-      <button ion-button icon-only (click)="openModal()" color="color-app">
+      <button ion-button icon-only tappable (click)="cartShoppingModal()" color="color-app">
         <ion-icon name="cart"></ion-icon>
-        <ion-badge>1</ion-badge>
+        <ion-badge *ngIf="count != 0">{{count}}</ion-badge>
       </button>
-      <!-- <button ion-button icon-only (click)="openModal()" color="color-app">
-        <ion-icon name="more"></ion-icon>
-      </button> -->
     </ion-buttons>
   </ion-navbar>
 </ion-header>
 
-<ion-content padding>
-  <div padding>
-    <ion-segment [(ngModel)]="package">
-      <ion-segment-button value="novios">
-        Pquetes Para Novios
-      </ion-segment-button>
-      <ion-segment-button value="novias">
-        Pquetes Para Novias
-      </ion-segment-button>
-    </ion-segment>
-  </div>
-
-  <div [ngSwitch]="package">
-    <ion-list *ngSwitchCase="'novios'">
-      <button full ion-button (click)="goToPage('PeinadosPage')"><img src="assets/images/peinados/peinados_hombres.jpg"/>
-        <div class="detail_price" text-wrap>
-          <h2>Corte</h2>
-          <h6 >$12.500</h6>
-          <ion-icon color='dark' name="heart"></ion-icon>
-          <button class="add_cart" ion-button color="primary">Quiero Esto</button>
-        </div>
-      </button>
-      <button full ion-button (click)="goToPage('PeinadosPage')"><img src="assets/images/hombre/barba.jpg"/>
-        <div class="detail_price" text-wrap>
-          <h2>Arreglo de Barba</h2>
-          <h6 >$12.500</h6>
-          <ion-icon color='dark' name="heart-outline"></ion-icon>
-          <button class="add_cart" ion-button color="primary">Quiero Esto</button>
-        </div>
-      </button>
-      <button full ion-button (click)="goToPage('PeinadosPage')"><img src="assets/images/hombre/perfilado_barba.jpg"/>
-        <div class="detail_price" text-wrap>
-          <h2>Spa Bano de Luna</h2>
-          <h6 >$12.500</h6>
-          <ion-icon color='dark' name="heart-outline"></ion-icon>
-          <button class="add_cart" ion-button color="primary">Quiero Esto</button>
-        </div>
-      </button>
-    </ion-list>
-
-    <ion-list *ngSwitchCase="'novias'">
-      <button full ion-button (click)="goToPage('PeinadosPage')"><img src="assets/images/mujer/maquillaje.jpg"/>
-        <div class="detail_price" text-wrap>
-          <h2>Maquillaje</h2>
-          <h6 >$12.500</h6>
-          <ion-icon color='dark' name="heart"></ion-icon>
-          <button class="add_cart" ion-button color="primary">Quiero Esto</button>
-        </div>
-      </button>
-      <button full ion-button (click)="goToPage('PeinadosPage')"><img src="assets/images/mujer/peinado.jpg"/>
-        <div class="detail_price" text-wrap>
-          <h2>Peinado</h2>
-          <h6 >$12.500</h6>
-          <ion-icon color='dark' name="heart-outline"></ion-icon>
-          <button class="add_cart" ion-button color="primary">Quiero Esto</button>
-        </div>
-      </button>
-      <button full ion-button (click)="goToPage('PeinadosPage')"><img src="assets/images/maquillaje/maquillaje2.jpg"/>
-        <div class="detail_price" text-wrap>
-          <h2>Prueba de novia</h2>
-          <h6 >$12.500</h6>
-          <ion-icon color='dark' name="heart-outline"></ion-icon>
-          <button class="add_cart" ion-button color="primary">Quiero Esto</button>
-        </div>
-      </button>
-      <button full ion-button (click)="goToPage('PeinadosPage')"><img src="assets/images/mujer/spa_luna.png"/>
-        <div class="detail_price" text-wrap>
-          <h2>Spa Bano de Luna</h2>
-          <h6 >$12.500</h6>
-          <ion-icon color='dark' name="heart-outline"></ion-icon>
-          <button class="add_cart" ion-button color="primary">Quiero Esto</button>
-        </div>
-      </button>
-    </ion-list>
-  </div>
+<ion-content padding fullscreen #myContent>
+  <ion-list no-lines>
+    <button full ion-button (click)="goToPage('PeinadosPage')"><img src="assets/images/services/packages/dia_de_spa.jpg"/>
+      <div class="detail_price" text-wrap>
+        <h2>Dia de spa</h2>
+        <h6>$420.000</h6>
+        <h5>- Detalle</h5>
+        <span class="favorites"><ion-icon color='favorive-def' name="heart"></ion-icon></span>
+        <button class="add_cart" ion-button >Agregar servicio</button>
+      </div>
+    </button>
+    <button full ion-button (click)="goToPage('PeinadosPage')"><img src="assets/images/services/packages/spa_pareja.jpg"/>
+      <div class="detail_price" text-wrap>
+        <h2>Spa pareja</h2>
+        <h6 >$320.000</h6>
+        <h5>- Detalle</h5>
+        <span class="favorites"><ion-icon color='googleplus-color' name="heart"></ion-icon></span>
+        <button class="add_cart" ion-button >Agregar servicio</button>
+      </div>
+    </button>
+    <button full ion-button (click)="goToPage('PeinadosPage')"><img src="assets/images/services/packages/chocapiloterapia_corto.jpg"/>
+      <div class="detail_price" text-wrap>
+        <h2>Choco capiloterapia</h2>
+        <h6 >$150.000</h6>
+        <h5>- Detalle</h5>
+        <span class="favorites"><ion-icon color='googleplus-color' name="heart"></ion-icon></span>
+        <button class="add_cart" ion-button >Agregar servicio</button>
+      </div>
+    </button>
+    <button full ion-button (click)="goToPage('PeinadosPage')"><img src="assets/images/services/packages/chococapiloterapia_largo.jpg"/>
+      <div class="detail_price" text-wrap>
+        <h2>Choco capiloterapia</h2>
+        <h6 >$400.000</h6>
+        <h5>- Detalle</h5>
+        <span class="favorites"><ion-icon color='googleplus-color' name="heart"></ion-icon></span>
+        <button class="add_cart" ion-button >Agregar servicio</button>
+      </div>
+    </button>
+    <button full ion-button (click)="goToPage('PeinadosPage')"><img src="assets/images/services/packages/24_kilates.jpg"/>
+      <div class="detail_price" text-wrap>
+        <h2>Ritual 24 kilates</h2>
+        <h6 >$50.000</h6>
+        <h5>- Detalle</h5>
+        <span class="favorites"><ion-icon color='googleplus-color' name="heart"></ion-icon></span>
+        <button class="add_cart" ion-button >Agregar servicio</button>
+      </div>
+    </button>
+    <!-- <button full ion-button (click)="goToPage('PeinadosPage')"><img src="assets/images/services/packages/color.jpg"/>
+      <div class="detail_price" text-wrap>
+        <h2>Color</h2>
+        <h6 >$130.000</h6>
+        <h5>- Detalle</h5>
+        <span class="favorites"><ion-icon color='googleplus-color' name="heart"></ion-icon></span>
+        <button class="add_cart" ion-button >Agregar servicio</button>
+      </div>
+    </button>
+    <button full ion-button (click)="goToPage('PeinadosPage')"><img src="assets/images/services/packages/taninoplastia.jpg"/>
+      <div class="detail_price" text-wrap>
+        <h2>Taninoplastia</h2>
+        <h6 >$300.000 - $500.000</h6>
+        <h5>- Detalle</h5>
+        <span class="favorites"><ion-icon color='googleplus-color' name="heart"></ion-icon></span>
+        <button class="add_cart" ion-button >Agregar servicio</button>
+      </div>
+    </button>
+    <button full ion-button (click)="goToPage('PeinadosPage')"><img src="assets/images/services/packages/arreglo_de_novias.jpg"/>
+      <div class="detail_price" text-wrap>
+        <h2>Arreglo de novias</h2>
+        <h6 >$350.000</h6>
+        <h5>- Detalle</h5>
+        <span class="favorites"><ion-icon color='googleplus-color' name="heart"></ion-icon></span>
+        <button class="add_cart" ion-button >Agregar servicio</button>
+      </div>
+    </button>
+    <button full ion-button (click)="goToPage('PeinadosPage')"><img src="assets/images/services/packages/arreglo_de_novias.jpg"/>
+      <div class="detail_price" text-wrap>
+        <h2>Quinceaneras</h2>
+        <h6 >$350.000</h6>
+        <h5>- Detalle</h5>
+        <span class="favorites"><ion-icon color='googleplus-color' name="heart"></ion-icon></span>
+        <button class="add_cart" ion-button >Agregar servicio</button>
+      </div>
+    </button>
+    <button full ion-button (click)="goToPage('PeinadosPage')"><img src="assets/images/services/packages/manicure.jpg"/>
+      <div class="detail_price" text-wrap>
+        <h2>Manicure</h2>
+        <h6 >$25.000</h6>
+        <h5>- Detalle</h5>
+        <span class="favorites"><ion-icon color='googleplus-color' name="heart"></ion-icon></span>
+        <button class="add_cart" ion-button >Agregar servicio</button>
+      </div>
+    </button>
+    <button full ion-button (click)="goToPage('PeinadosPage')"><img src="assets/images/services/packages/spa_manos_mujer.jpg"/>
+      <div class="detail_price" text-wrap>
+        <h2>Spa de manos</h2>
+        <h4>(con manicure)</h4>
+        <h6 >$55.000</h6>
+        <h5>- Detalle</h5>
+        <span class="favorites"><ion-icon color='googleplus-color' name="heart"></ion-icon></span>
+        <button class="add_cart" ion-button >Agregar servicio</button>
+      </div>
+    </button>
+    <button full ion-button (click)="goToPage('PeinadosPage')"><img src="assets/images/services/packages/pedicure.jpg"/>
+      <div class="detail_price" text-wrap>
+        <h2>Pedicure</h2>
+        <h6 >$30.000</h6>
+        <h5>- Detalle</h5>
+        <span class="favorites"><ion-icon color='googleplus-color' name="heart"></ion-icon></span>
+        <button class="add_cart" ion-button >Agregar servicio</button>
+      </div>
+    </button>
+    <button full ion-button (click)="goToPage('PeinadosPage')"><img src="assets/images/services/packages/spa_pies_mujer.jpg"/>
+      <div class="detail_price" text-wrap>
+        <h2>Spa de Pies</h2>
+        <h6 >$50.000</h6>
+        <h5>- Detalle</h5>
+        <span class="favorites"><ion-icon color='googleplus-color' name="heart"></ion-icon></span>
+        <button class="add_cart" ion-button >Agregar servicio</button>
+      </div>
+    </button> -->
+  </ion-list>
 </ion-content>

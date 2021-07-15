@@ -1,9 +1,9 @@
 // puntos del slide
-// .swiper-container-horizontal > .swiper-pagination-bullets{
-//   // bottom:50px !important;
-// }
+.swiper-container-horizontal > .swiper-pagination-bullets{
+   bottom:50px !important;
+}
 button.swiper-pagination-bullet{
-  background: #ffffff;
+  background: map-get($colors, color-app) !important;
   // opacity: 0.5 !important;
 }
 page-onboarding {
@@ -20,13 +20,15 @@ page-onboarding {
     height: 100vh;
     // background: url('assets/images/onb_1.png');
     img{
-      width:65vw;
-      height: 65vh;
+      width:80vw;
+      height: 80vh;
 
-      position: absolute;
-      z-index: 10;
-      top: 15%;
-      left: 18%;
+      position: relative;
+      // z-index: 10;
+      top: 5%;
+      border-radius: 10px !important;
+      text-align: center !important;
+      // left: 0%;
       // border-radius: 50px;
       -webkit-background-size: 100% 100%;           /* Safari 3.0 */
       -moz-background-size: 100% 100%;           /* Gecko 1.9.2 (Firefox 3.6) */
@@ -38,9 +40,9 @@ page-onboarding {
       // padding:80px 80px 80px 51px;
       // margin:0 auto 5px auto;
       background-repeat:no-repeat;
-      background-image: url('../../assets/images/onb_1.png');
+      // background-image: url('../../assets/images/onb_1.png');
       // mask-image: url('../../assets/images/onb_1.png'),linear-gradient(black 0%, transparent 100%) 75 stretch;
-      mask-image: linear-gradient(rgba(255, 0, 161, 0.8) 66%,transparent);
+      // mask-image: linear-gradient(rgba(255, 0, 161, 0.8) 66%,transparent);
       // -webkit-mask-image: linear-gradient(green 20%, transparent 100%);
     }// img
 
@@ -104,13 +106,13 @@ div{
 }
 
 
-  .sombra{
-    background: map-get($colors, color-app);
-    height: 100vh;
-    width: 100vw;
-    // opacity: 0.2;
-    margin: 0px;
-  }
+  // .sombra{
+  //   background: map-get($colors, color-app);
+  //   height: 100vh;
+  //   width: 100vw;
+  //   // opacity: 0.2;
+  //   margin: 0px;
+  // }
 
 
  .o2{
@@ -126,7 +128,7 @@ div{
    z-index: 2;
  }
   .swiper-pagination-bullet-active{
-    background: map-get($colors, white);
+    background: map-get($colors, color-app-oscuro);
     // background: map-get($colors, color-app-oscuro);
   }
   //
@@ -136,11 +138,11 @@ div{
     z-index: 200;
     // bottom:-60px;
     // margin-top: -32px !important;
-    font-size: 15px !important;
+    font-size: 17px !important;
     font-family: 'Open Sans';
     float: right;
     font-weight: 600;
-    bottom: -0px;
+    bottom: 10px;
     right: -0px;
     text-transform: capitalize;
     // background: green !important;

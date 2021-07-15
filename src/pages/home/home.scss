@@ -114,7 +114,8 @@ page-home {
 }
 
 .toolbar-title-md{
-  font-size: 2.8rem !important;
+  font-size: 2.7rem !important;
+  padding: 0 32px !important;
   // text-align: left !important;
 }
 
@@ -144,7 +145,7 @@ ion-header{
         }
         ion-title{
             font-family: 'Great Vibes';
-            font-size: 2.4rem !important;
+            // font-size: 2.4rem !important;
             // font-size: 23px !important;
         }
         ion-buttons{

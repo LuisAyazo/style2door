@@ -1,12 +1,12 @@
 import { Component, ViewChild } from '@angular/core';
-import { Nav, Platform, MenuController, ToastController } from 'ionic-angular';
+import { Nav, Platform, MenuController, ToastController, ModalController } from 'ionic-angular';
 import { StatusBar } from '@ionic-native/status-bar';
-import { SplashScreen } from '@ionic-native/splash-screen';
+// import { SplashScreen } from '@ionic-native/splash-screen';
 // import { Facebook } from '@ionic-native/facebook';
 import { SocialSharing } from '@ionic-native/social-sharing';
 import { AngularFireAuth } from 'angularfire2/auth';
 import { OneSignal } from '@ionic-native/onesignal';
-import { AngularFirestore, AngularFirestoreCollection } from 'angularfire2/firestore';
+import { AngularFirestore } from 'angularfire2/firestore';
 // import { Observable } from 'rxjs/Observable';
 
 // import { FCM } from '@ionic-native/fcm';
@@ -30,10 +30,10 @@ export class MyApp {
   constructor(
     public platform: Platform,
     public statusBar: StatusBar,
-    public splashScreen: SplashScreen,
+    // public splashScreen: SplashScreen,
     public  menu: MenuController,
     public toastCtrl: ToastController,
-    // private fb: Facebook,
+    public modalCtrl: ModalController,
     private angularFauth:AngularFireAuth,
     private socialSharing: SocialSharing,
     private oneSignal: OneSignal,
@@ -47,12 +47,13 @@ export class MyApp {
         // this.rootPage = 'ScheduleServicePage';
     // this.menu.swipeEnable(false);// deshabilita el sidemenu
 
+
     this.initializeApp();
 
     // used for an example of ngFor and navigation
     this.pages = [
       { title: 'TabsHomePage', component: 'TabsHomePage', description: 'Style2Door', icon: 'ios-home' },
-      { title: 'Home', component: 'HomePage', description: 'Chat', icon: 'chatboxes' },
+      { title: 'Home', component: 'ChatPage', description: 'Chat', icon: 'chatboxes' },
       // { title: 'WeblogicPage', component: 'HomePage', description: 'Llamar', icon: 'code-download' },
       // { title: 'Database', component: 'HomePage', description: 'Noticias', icon: 'md-git-branch' },
       // { title: 'Gitlab', component: 'HomePage', description: 'Quejas y sugerencia', icon: 'logo-facebook' },
@@ -84,39 +85,26 @@ export class MyApp {
     // else {
 
 
-      this.platform.ready().then(() => {
-        this.splashScreen.hide();
-        this.statusBar.backgroundColorByHexString("#9a056d");
-        // this.splashScreen.hide();
-        // setTimeout(() => {
 
-        //   this.oneSignal.startInit('c75fdaed-3229-4527-990d-d574eaba27ce', '732832336253');
-        //
-        //   this.oneSignal.inFocusDisplaying(this.oneSignal.OSInFocusDisplayOption.InAppAlert);
+      this.platform.ready().then(() => {
+        this.statusBar.backgroundColorByHexString("#9a056d");
+        let splash = this.modalCtrl.create("SplashPage");
+
+
+        // this.splashScreen.hide();
+        setTimeout(() => {
+
+          this.oneSignal.startInit('c75fdaed-3229-4527-990d-d574eaba27ce', '732832336253');
+
+          this.oneSignal.inFocusDisplaying(this.oneSignal.OSInFocusDisplayOption.InAppAlert);
         //
           this.oneSignal.handleNotificationReceived().subscribe((signal_received) => {
             // alert(JSON.stringify(signal_received));
             var date = new Date();
-            // // var day = date.getDate();
-            // // var monthIndex = date.getMonth()+1;
-            // // var year = date.getFullYear();
-            // // let  current_notification = ;
-            //
-            //
-            // // // console.log(date.toLocaleString());
-            // // this.signal.push(date.toLocaleString());
-            // // this.signal.push(signal_received)
-            // var signal = {
-            //   signal_received: signal_received,
-            //   datetime: date.toLocaleString()
-            // }
 
-
-           // do something when notification is received
-            //  let not_prom = 'notifications'
              this.angularFauth.authState.subscribe( data => {
 
-                 if(data.uid){
+                 if(data !== null && data.uid){
 
                    this.angularFirestore.collection('users' ).doc(`${data.uid}`).collection('notifications').doc(signal_received.payload.notificationID).set({view:false, datetime: date.toLocaleString(), signal_received})
                    .then(() => {
@@ -130,20 +118,39 @@ export class MyApp {
 
           });
 
-          this.oneSignal.handleNotificationOpened().subscribe((signal_opened) => {
+          this.oneSignal.handleNotificationOpened().subscribe((signal_received) => {
+            // alert(JSON.stringify(signal_received));
+            var date = new Date();
 
-            this.nav.setRoot('NotificationsPage'); // configurar  push con envio de datos
+             this.angularFauth.authState.subscribe( data => {
+
+                 if(data !== null && data.uid){
+
+                   this.angularFirestore.collection('users').doc(`${data.uid}`).collection('notifications').doc(signal_received.notification.payload.notificationID).set({view:false, datetime: date.toLocaleString(), signal_received})
+                   .then(() => {
+                      //  console.log("Document successfully seteado!");
+                       this.nav.setRoot('NotificationsPage'); // configurar  push con envio de datos
+                   }).catch( (error) => {
+                       alert(error);
+                   });
+
+                 }
+             });
+
           });
 
           this.oneSignal.endInit();
 
-        // }, 100);
+        }, 100);
+
+
         if(window.localStorage.getItem('onboarding_init')){
             // this.rootPage = 'LoginPage';
             this.angularFauth.authState.subscribe( data => {
                   // alert("PASAS por a  u QUII");
                   // console.log(JSON.stringify(data));
-                  if (data){
+                  if (data !== null){
+                    splash.present();
                       // console.log(JSON.stringify(data));
                       // alert(JSON.stringify(data.providerData[0].providerId));
                       if ( data.providerData[0].providerId == "password" ){
@@ -151,11 +158,13 @@ export class MyApp {
                           if(data && data.email && data.uid){
                             // console.log("PASO APP.COMPONENT.TS" +  JSON.stringify(data));
                             this.rootPage = 'TabsHomePage';
+                            // this.rootPage = 'ReviewPayPage';
                           }
                       }
                       if ( data.providerData[0].providerId == "facebook.com" ){
                           // alert("ES DE FACE ==== "+JSON.stringify(data));
                           this.rootPage = 'TabsHomePage';
+
                       }
                   }
                   else{
@@ -199,12 +208,11 @@ export class MyApp {
     let message = 'Style2door - Estilo a tu puerta';
     let image = 'https://scontent-mia3-1.xx.fbcdn.net/v/t31.0-8/23213489_184705552094311_776544078734079414_o.jpg?oh=5c80861cbac59d358b03e85634aa6b90&oe=5A6C5C28';
     let url = 'https://www.facebook.com/Style2door-184705328761000/?modal=admin_todo_tour';
-    // let pasteMessageHint ='Style2door - App para lucir bien :D';
     this.socialSharing.shareViaFacebook(message, image, url).then(() => {
       // Sharing via email is possible
       // alert('creo q comparte');
     }).catch((e) => {
-      alert(e);
+      //alert(e);
       // Sharing via email is not possible
     });
   }
@@ -213,27 +221,24 @@ export class MyApp {
     let message = 'Style2door - Estilo a tu puerta';
     let image = 'https://scontent-mia3-1.xx.fbcdn.net/v/t31.0-8/23213489_184705552094311_776544078734079414_o.jpg?oh=5c80861cbac59d358b03e85634aa6b90&oe=5A6C5C28';
     let url = 'https://www.facebook.com/Style2door-184705328761000/?modal=admin_todo_tour';
-    // let pasteMessageHint ='Style2door - App para lucir bien :D';
     this.socialSharing.shareViaWhatsApp(message, image, url).then(() => {
       // Sharing via email is possible
       // alert('creo q comparte');
     }).catch((e) => {
-      alert(e);
+      //alert(e);
       // Sharing via email is not possible
     });
   }
 
 
-  InstagramSharing(){
+  instagramSharing(){
     let message = 'Style2door - Estilo a tu puerta';
     let image = 'https://scontent-mia3-1.xx.fbcdn.net/v/t31.0-8/23213489_184705552094311_776544078734079414_o.jpg?oh=5c80861cbac59d358b03e85634aa6b90&oe=5A6C5C28';
-    let url = 'https://www.facebook.com/Style2door-184705328761000/?modal=admin_todo_tour';
-    // let pasteMessageHint ='Style2door - App para lucir bien :D';
     this.socialSharing.shareViaInstagram(message, image).then(() => {
       // Sharing via email is possible
       // alert('creo q comparte');
     }).catch((e) => {
-      alert(e);
+      //alert(e);
       // Sharing via email is not possible
     });
   }
@@ -242,14 +247,17 @@ export class MyApp {
   logout(){
     // console.log("Saliendo de la app");
     this.angularFauth.auth.signOut().then( result => {
-      this.menu.close();//(false);// Quitar automaticamente el sidemenu
-      this.nav.setRoot("LoginPage");
+      console.log(result);
+      if(result == undefined){
+        this.menu.close();//(false);// Quitar automaticamente el sidemenu
+        this.nav.setRoot("LoginPage");
+      }
       // Sign-out successful.
       // console.log(result)
     }).catch((error) => {
       // console.log(error);
       // console.error(error);
-      alert(error)
+      alert(JSON.stringify(error))
       // An error happened.
     });;
   }

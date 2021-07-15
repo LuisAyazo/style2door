@@ -21,8 +21,9 @@
         <ion-icon name="notifications"></ion-icon>
         <ion-badge *ngIf="_notifications != 0">{{this._notifications}}</ion-badge>
       </button>
-      <button ion-button icon-only tappable navPush="CartPage">
-        <ion-icon name="cart" color="color-app"></ion-icon>
+      <button ion-button icon-only tappable (click)="cartShoppingModal()" color="color-app">
+        <ion-icon name="cart"></ion-icon>
+        <ion-badge *ngIf="count != 0">{{count}}</ion-badge>
       </button>
       <!-- <button ion-button icon-only (click)="openModal()">
         <ion-icon name="more" color="color-app"></ion-icon>

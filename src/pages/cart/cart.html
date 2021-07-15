@@ -1,6 +1,4 @@
-<!-- <ion-header [elasticHeader]="myContent" no-border> -->
 <ion-header no-border>
-
   <ion-navbar color="white">
 <ion-buttons left>
     <button ion-button icon-only navPop color='color-app' clear>
@@ -9,11 +7,12 @@
     </button>
 </ion-buttons>
     <ion-title>Style2Door</ion-title>
-    <ion-buttons right >
-      <button ion-button icon-only (tap)="notificationModal()" color="color-app">
+    <ion-buttons end>
+      <button ion-button icon-only tappable navPush="NotificationsPage" color="color-app">
         <ion-icon name="notifications"></ion-icon>
+        <ion-badge *ngIf="_notifications != 0">{{this._notifications}}</ion-badge>
       </button>
-      <button ion-button icon-only (tap)="cartShoppingModal()" color="color-app">
+      <button ion-button icon-only tappable (click)="cartShoppingModal()" color="color-app">
         <ion-icon name="cart"></ion-icon>
         <ion-badge *ngIf="count != 0">{{count}}</ion-badge>
       </button>
@@ -37,41 +36,86 @@
 
 <div [ngSwitch]="checkout">
   <ion-list *ngSwitchCase="'currentOrder'">
-    <ion-card *ngFor="let itemCart of article; let i = index">
+    <!-- <ion-card *ngFor="let itemCart of article; let i = index"> -->
+    <ion-card>
       <ion-card-content>
-        <ion-item>
+        <!-- <ion-item>
           <ion-thumbnail item-start>
-            <img src="assets/images/avatares/avatar2.jpg">
+            <img src="{{ itemCart.img_url  | urlrplace }}">
           </ion-thumbnail>
           <h2>{{itemCart.nombre}}</h2>
           <p class="price_color">${{itemCart.precio}}</p>
+          <span class='domicilio'>Domicilio: </span><span class="total_price">$10.000</span>
           <div class="personCount">
             <button class="lessPeople" ion-button icon-only clear (tap)="removePeople(itemCart,i)"><ion-icon name="md-remove"></ion-icon></button>
-            <p>{{itemCart.cantidad}} Persona<span *ngIf="itemCart.cantidad > 1">s</span></p>
-            <!-- <span class="peopleNumber">{{itemCart.cantidad}}</span> -->
+            <p><span [style.color]="'darkorchid'">{{itemCart.cantidad}}</span> Persona<span *ngIf="itemCart.cantidad > 1">s</span></p>
+            <span class="peopleNumber">{{itemCart.cantidad}}</span>
             <button class="morePeople" ion-button icon-only clear (tap)="addPeople(itemCart,i)"><ion-icon name="md-add"></ion-icon></button>
         </div>
-        </ion-item>
+        </ion-item> -->
+
+        <ion-item>
+          <ion-thumbnail item-start>
+            <img src="assets/images/services/man/barba_de_lujo.jpg">
+          </ion-thumbnail>
+          <h2>Barba de lujo</h2>
+          <p class="price_color">$55.000</p>
+          <!-- <span class='domicilio'>Domicilio: </span><span class="total_price">$10.000</span> -->
+          <div class="personCount">
+            <button class="lessPeople" ion-button icon-only clear (tap)="removePeople()"><ion-icon name="md-remove"></ion-icon></button>
+            <p><span [style.color]="'darkorchid'">1</span> Persona</p>
+            <!-- <span class="peopleNumber">{{itemCart.cantidad}}</span> -->
+            <button class="morePeople" ion-button icon-only clear (tap)="addPeople()"><ion-icon name="md-add"></ion-icon></button>
+      </div>
+      </ion-item>
       </ion-card-content>
+      </ion-card>
+<ion-card>
+    <!-- <ion-card *ngFor="let itemCart of article; let i = index"> -->
+      <ion-card-content>
+    <ion-item>
+      <ion-thumbnail item-start>
+        <img src="assets/images/services/man/corte.jpg">
+      </ion-thumbnail>
+      <h2>Corte sin lavado</h2>
+      <p class="price_color">$30.000</p>
+      <!-- <span class='domicilio'>Domicilio: </span><span class="total_price">$10.000</span> -->
+      <div class="personCount">
+        <button class="lessPeople" ion-button icon-only clear (tap)="removePeople()"><ion-icon name="md-remove"></ion-icon></button>
+        <p><span [style.color]="'darkorchid'">1</span> Persona</p>
+        <!-- <span class="peopleNumber">{{itemCart.cantidad}}</span> -->
+        <button class="morePeople" ion-button icon-only clear (tap)="addPeople()"><ion-icon name="md-add"></ion-icon></button>
+    </div>
+    </ion-item>
+    </ion-card-content>
     </ion-card>
   </ion-list>
 
 
 <!--  HISTORY OF ORDERS-->
   <ion-list *ngSwitchCase="'history'">
-    <ion-item>
-      <ion-thumbnail item-start>
-        <img src="img/thumbnail-kitten-1.jpg">
-      </ion-thumbnail>
-      <h2>Luna</h2>
-    </ion-item>
+      <ion-item-group>
+        <ion-item-divider>Sabado 25 de noviembre </ion-item-divider>
+        <ion-item>Spa de luna</ion-item>
+        <ion-item>Maquillaje general</ion-item>
+      </ion-item-group>
+    <ion-item-group>
+      <ion-item-divider>Miercoles 15 de noviembre </ion-item-divider>
+      <ion-item>Manicure semipermante</ion-item>
+      <ion-item>Pedicure permantente</ion-item>
+    </ion-item-group>
   </ion-list>
 </div>
 </ion-content>
 
+
+
+<!--  ########################################  -->
 <ion-footer>
   <ion-toolbar>
-    <span class='total'>Total: </span><span class="total_price">${{total}}</span>
-    <button ion-button (click)="checkout()" round icon-end color='color-app'>Ir al checkout</button>
+    <span class='total'>Total: </span><span class="total_price">$85.000</span><br />
+    <!-- <span class='total'>Total: </span><span class="total_price">${{total}}</span><br /> -->
+
+    <button ion-button (click)="reviewPay()" round icon-end color='color-app'>Ir al resumen</button>
   </ion-toolbar>
 </ion-footer>

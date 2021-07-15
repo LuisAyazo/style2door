@@ -1,5 +1,5 @@
 import { Component, ElementRef } from '@angular/core';
-import { IonicPage, NavController, NavParams, FabContainer, Slides } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, FabContainer } from 'ionic-angular';
 
 @IonicPage()
 @Component({
@@ -31,6 +31,10 @@ export class ScheduleServicePage {
 
   ionViewWillEnter() {
     this.removeTransp();
+  }
+
+  createservice(){
+    this.navCtrl.push('CreateServicesPage');
   }
 
   fabActive(fab: FabContainer){

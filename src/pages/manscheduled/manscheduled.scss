@@ -1,0 +1,104 @@
+page-manscheduled {
+
+  .item-md, .item-ios {
+    background: None !important;
+    padding-left: 0px !important;
+
+  }
+
+  .toolbar-title-md{
+    font-size: 2.7rem !important;
+    padding: 0 32px !important;
+    // text-align: left !important;
+  }
+
+  .toolbar-title-ios{
+    font-size: 2.1rem !important;
+    font-weight: normal !important;
+    // text-align: left !important;
+  }
+  ion-header{
+      ion-navbar{
+          ion-avatar{
+            border-radius: 50% !important;
+          }
+          ion-title{
+              font-family: 'Great Vibes';
+              font-size: 2.4rem !important;
+              // font-size: 23px !important;
+          }
+          ion-buttons{
+              margin-right: 1em;
+              color: map-get($colors, color-app) !important;
+              ion-badge{
+                background: #ff461d !important;
+                color: map-get($colors, white) !important;
+                left:13px !important;
+                margin-top: -8px !important;
+                border-radius: 40% !important;
+                padding: 3px 6px !important;
+                position: absolute;
+                z-index: 100;
+              }
+          }
+      }
+  }
+
+
+
+ ion-label{
+   font-size: 13px !important;
+   font-family: 'Open Sans' !important;
+    .price{
+      float: right !important;
+      color: blue !important;
+      font-size: 13px;
+      color: map-get($colors, color-app) !important;
+    }
+  }
+
+
+  ionc-footer{
+        margin:0px !important;
+        padding:0px !important;
+
+        ion-toolbar{
+                margin:0px !important;
+                padding: 0px !important;
+                // text-align: left !important;
+        }
+
+
+  }
+
+ion-footer ion-toolbar button{
+        width: 50%;
+        margin: 0px !important;
+        padding: 0px !important;
+        -webkit-border-radius: 0px !important;
+           -moz-border-radius: 0px !important;
+             -o-border-radius: 0px !important;
+                border-radius: 0px !important;
+        float: left;
+}
+
+ion-footer ion-toolbar button i{
+          position: absolute;
+          left: 25px;
+  }
+
+._logout_profile{ /** button de logout y cuenta***/
+          position: absolute;
+          left: 47px;
+          font-size: 14px;
+
+        //   color:green !important;
+  }
+  ._logout_profile2{ /** button de logout y cuenta***/
+            position: absolute;
+            left: 20px;
+            font-size: 14px;
+
+          //   color:green !important;
+    }
+}

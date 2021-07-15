@@ -22,7 +22,7 @@ export class NotificationsDetailPage {
      this.body = navParams.get('body');
      this.datetime = navParams.get('datetime');
      console.log(this.id, this.title, this.body, this.datetime);
-     alert(this.id);
+    //  alert(this.id);
 
   }
 

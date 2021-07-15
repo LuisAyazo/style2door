@@ -34,13 +34,13 @@ export class EmailLoginPage {
   }
   async login(user: User){
 
-    console.log(user.email + ' ----- ' + user.password);
+    // console.log(user.email + ' ----- ' + user.password);
     try{
       const result = await this.angularFauth.auth.signInWithEmailAndPassword(user.email, user.password);
       // console.log(result);
       if(result.uid){
-        console.log(result);
-        console.log(result.emailVerified);
+        // console.log(result);
+        // console.log(result.emailVerified);
         if(result.emailVerified == true){
           this.navCtrl.setRoot('TabsHomePage');
         }

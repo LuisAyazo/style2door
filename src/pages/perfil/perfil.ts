@@ -1,18 +1,6 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 
-
-
-//provider
-import { AuthServiceProvider } from '../../providers/auth-service/auth-service';
-
-
-/**
- * Generated class for the PerfilPage page.
- *
- * See http://ionicframework.com/docs/components/#navigation for more info
- * on Ionic pages and navigation.
- */
 @IonicPage()
 @Component({
   selector: 'page-perfil',
@@ -25,7 +13,7 @@ export class PerfilPage {
   constructor(
     public navCtrl: NavController,
     public navParams: NavParams,
-    private auth:AuthServiceProvider
+    // private auth:AuthServiceProvider
   ) {
     // this.fbAll = this.auth.facebookProfileInfo();
     // this.profile = JSON.parse(this.fbAll);

@@ -17,168 +17,125 @@
   </ion-navbar>
 </ion-header>
 
-  <ion-content fullscreen #myContent>
-  <!-- <ul>
-    <li *ngFor="let todo of todos">
-    <img [src]=todo.img_url />
-    </li>
-  </ul> -->
-
-  <!-- <ion-list inset>
-  <button ion-item *ngFor="let item of todos" (click)="itemSelected(item)">
-    <img [src]={{todo.img_url}};  />
-
-  </button>
-
-</ion-list> -->
-<!-- <ul>
-  <li *ngFor="let entry of itemCheckedFromFirebase ">
-    {{entry.id}} - {{entry.nombre}} - {{entry.checked}}
-  </li>
-</ul> -->
-<ion-spinner name='circles' *ngIf="manicure == 0"></ion-spinner>
-<ion-list *ngIf="manicure >= 1">
- <ion-list-header>
-   Manicure y Pedicure
- </ion-list-header>
- <ion-slides slidesPerView=2 spaceBetween=8 speed=300 >
- <ion-slide *ngFor="let item of manicure">
-   <!-- <p>{{item.nombre}}</p> -->
-
-   <button full clear ion-button  >
-     <img [src]=item.img_url />
-     <div class="space_price">
-       <h2>{{item.nombre}}</h2>
-       <p>${{item.precio}}{{i}}</p>
-       <!-- <p>
-         {{item.id}}
-       </p> -->
-     </div>
-     <div class="div_check">
-       <!-- {{entry[i].nombre}} -->
-       <!-- <div class="div_check" *ngIf="! itemCheckedFromFirebase"> -->
-       <ion-checkbox (ionChange)="datachanged(item.id, item.nombre, item.precio, $event.checked)"></ion-checkbox>
-     </div>
-            <!-- {{ itemCheckedFromFirebase[i].nombre }} -->
-           <!-- <ion-checkbox  [checked]="(item.nombre == itemCheckedFromFirebase[i]?.nombre  ? 'true' : 'false')"  (ionChange)="datachanged(item, $event.checked)"></ion-checkbox> -->
-       <!-- </div> -->
-     <button class="info_btn" ion-button icon-only clear (click)="detalle('pruebaa')"> <ion-icon name="information-circle"></ion-icon></button>
-     <button class="heart_like" ion-button icon-only clear (click)="heart('pruebaa')"> <ion-icon name="heart"></ion-icon></button>
-
-   </button>
- </ion-slide>
-</ion-slides>
-</ion-list>
-
-
-<ion-list>
- <ion-list-header>
-   Maquillaje
- </ion-list-header>
- <ion-slides slidesPerView=2 spaceBetween=8 speed=300 >
-   <ion-spinner name='circles' *ngIf="manicure == 0"></ion-spinner>
- <ion-slide *ngFor="let item of manicure">
-   <!-- <p>{{item.nombre}}</p> -->
-
-   <button full clear ion-button  >
-     <img [src]=item.img_url />
-     <div class="space_price">
-       <h2>{{item.nombre}}</h2>
-       <p>${{item.precio}}{{i}}</p>
-       <!-- <p>
-         {{item.id}}
-       </p> -->
-     </div>
-     <div class="div_check">
-       <!-- {{entry[i].nombre}} -->
-       <!-- <div class="div_check" *ngIf="! itemCheckedFromFirebase"> -->
-       <ion-checkbox (ionChange)="datachanged(item.id, item.nombre, item.precio, $event.checked)"></ion-checkbox>
-     </div>
-            <!-- {{ itemCheckedFromFirebase[i].nombre }} -->
-           <!-- <ion-checkbox  [checked]="(item.nombre == itemCheckedFromFirebase[i]?.nombre  ? 'true' : 'false')"  (ionChange)="datachanged(item, $event.checked)"></ion-checkbox> -->
-       <!-- </div> -->
-     <button class="info_btn" ion-button icon-only clear (click)="detalle('pruebaa')"> <ion-icon name="information-circle"></ion-icon></button>
-     <button class="heart_like" ion-button icon-only clear (click)="heart('pruebaa')"> <ion-icon name="heart"></ion-icon></button>
-
-   </button>
- </ion-slide>
-</ion-slides>
-</ion-list>
-
-
-
-<ion-list>
- <ion-list-header>
-   Otros servicios
- </ion-list-header>
- <ion-slides slidesPerView=2 spaceBetween=8 speed=300 >
-   <ion-spinner name='circles' *ngIf="manicure == 0"></ion-spinner>
- <ion-slide *ngFor="let item of manicure">
-   <!-- <p>{{item.nombre}}</p> -->
-
-   <button full clear ion-button  >
-     <img [src]=item.img_url />
-     <div class="space_price">
-       <h2>{{item.nombre}}</h2>
-       <p>${{item.precio}}{{i}}</p>
-       <!-- <p>
-         {{item.id}}
-       </p> -->
-     </div>
-     <div class="div_check">
-       <!-- {{entry[i].nombre}} -->
-       <!-- <div class="div_check" *ngIf="! itemCheckedFromFirebase"> -->
-       <ion-checkbox (ionChange)="datachanged(item.id, item.nombre, item.precio, $event.checked)"></ion-checkbox>
-     </div>
-            <!-- {{ itemCheckedFromFirebase[i].nombre }} -->
-           <!-- <ion-checkbox  [checked]="(item.nombre == itemCheckedFromFirebase[i]?.nombre  ? 'true' : 'false')"  (ionChange)="datachanged(item, $event.checked)"></ion-checkbox> -->
-       <!-- </div> -->
-     <button class="info_btn" ion-button icon-only clear (click)="detalle('pruebaa')"> <ion-icon name="information-circle"></ion-icon></button>
-     <button class="heart_like" ion-button icon-only clear (click)="heart('pruebaa')"> <ion-icon name="heart"></ion-icon></button>
-
-   </button>
- </ion-slide>
-</ion-slides>
-</ion-list>
-<!-- <div *ngIf="itemCheckedFromFirebase">
-    <ion-item>
-        <ion-label>There will be cake</ion-label>
-        <ion-toggle [(ngModel)]="itemCheckedFromFirebase[0].checked"></ion-toggle>
-    </ion-item>
-    <ion-item>
-        <ion-label>The cake is a lie</ion-label>
-        <ion-toggle [(ngModel)]="itemCheckedFromFirebase[0].checked"></ion-toggle>
-    </ion-item>
-</div> -->
-
-<!--
-<ion-item>
-    <p>There will be cake: {{itemCheckedFromFirebase.nombre}}</p>
-</ion-item>
-<ion-item>
-    <p>The cake is a lie: {{itemCheckedFromFirebase.nombre}}</p>
-</ion-item> -->
-
-<!--
-<ion-list>
- <ion-list-header>
-   Maquillaje
- </ion-list-header>
- <ion-slides slidesPerView=2 spaceBetween=10 speed=1000 >
-   <ion-spinner name='circles' *ngIf="items == 0"></ion-spinner>
- <ion-slide *ngFor="let item of maquillaje ; let i = index">
-   <button full clear ion-button  >
-     <img [src]=item.img_url />
-     <div class="space_price">
-       <h2>{{item.nombre}}</h2>
-       <p>$ {{item.precio}}</p>
-     </div>
-         <div class="div_check" *ngIf="itemCheckedFromFirebase">
-            <ion-checkbox  [checked]="(item.nombre == itemCheckedFromFirebase[i]?.nombre  ? 'true' : 'false')" (ionChange)="datachanged(item, $event.checked)"></ion-checkbox>
-       </div>
-     <button class="info_btn" ion-button icon-only clear (click)="detalle('pruebaa')"> <ion-icon name="information-circle"></ion-icon></button>
-   </button>
- </ion-slide>
-</ion-slides>
-</ion-list> -->
+<ion-content padding fullscreen #myContent>
+  <ion-list no-lines>
+    <button full ion-button (click)="goToPage('PeinadosPage')"><img src="assets/images/services/woman/corte.jpg"/>
+      <div class="detail_price" text-wrap>
+        <h2>Corte</h2>
+        <h6>$30.000</h6>
+        <h5>- Detalle</h5>
+        <span class="favorites"><ion-icon color='favorive-def' name="heart"></ion-icon></span>
+        <button class="add_cart" ion-button >Agregar servicio</button>
+      </div>
+    </button>
+    <button full ion-button (click)="goToPage('PeinadosPage')"><img src="assets/images/services/woman/blower.jpg"/>
+      <div class="detail_price" text-wrap>
+        <h2>Blower</h2>
+        <h6 >$35.500</h6>
+        <h5>- Detalle</h5>
+        <span class="favorites"><ion-icon color='googleplus-color' name="heart"></ion-icon></span>
+        <button class="add_cart" ion-button >Agregar servicio</button>
+      </div>
+    </button>
+    <button full ion-button (click)="goToPage('PeinadosPage')"><img src="assets/images/services/woman/crespos.jpg"/>
+      <div class="detail_price" text-wrap>
+        <h2>Crespos</h2>
+        <h6 >$50.000</h6>
+        <h5>- Detalle</h5>
+        <span class="favorites"><ion-icon color='googleplus-color' name="heart"></ion-icon></span>
+        <button class="add_cart" ion-button >Agregar servicio</button>
+      </div>
+    </button>
+    <button full ion-button (click)="goToPage('PeinadosPage')"><img src="assets/images/services/woman/maquillaje.jpg"/>
+      <div class="detail_price" text-wrap>
+        <h2>Maquillaje</h2>
+        <h6 >$50.000</h6>
+        <h5>- Detalle</h5>
+        <span class="favorites"><ion-icon color='googleplus-color' name="heart"></ion-icon></span>
+        <button class="add_cart" ion-button >Agregar servicio</button>
+      </div>
+    </button>
+    <button full ion-button (click)="goToPage('PeinadosPage')"><img src="assets/images/services/woman/recogido.jpg"/>
+      <div class="detail_price" text-wrap>
+        <h2>Recogido</h2>
+        <h6 >$90.000</h6>
+        <h5>- Detalle</h5>
+        <span class="favorites"><ion-icon color='googleplus-color' name="heart"></ion-icon></span>
+        <button class="add_cart" ion-button >Agregar servicio</button>
+      </div>
+    </button>
+    <button full ion-button (click)="goToPage('PeinadosPage')"><img src="assets/images/services/woman/color.jpg"/>
+      <div class="detail_price" text-wrap>
+        <h2>Color</h2>
+        <h6 >$130.000</h6>
+        <h5>- Detalle</h5>
+        <span class="favorites"><ion-icon color='googleplus-color' name="heart"></ion-icon></span>
+        <button class="add_cart" ion-button >Agregar servicio</button>
+      </div>
+    </button>
+    <button full ion-button (click)="goToPage('PeinadosPage')"><img src="assets/images/services/woman/taninoplastia.jpg"/>
+      <div class="detail_price" text-wrap>
+        <h2>Taninoplastia</h2>
+        <h6 >$300.000 - $500.000</h6>
+        <h5>- Detalle</h5>
+        <span class="favorites"><ion-icon color='googleplus-color' name="heart"></ion-icon></span>
+        <button class="add_cart" ion-button >Agregar servicio</button>
+      </div>
+    </button>
+    <button full ion-button (click)="goToPage('PeinadosPage')"><img src="assets/images/services/woman/arreglo_de_novias.jpg"/>
+      <div class="detail_price" text-wrap>
+        <h2>Arreglo de novias</h2>
+        <h6 >$350.000</h6>
+        <h5>- Detalle</h5>
+        <span class="favorites"><ion-icon color='googleplus-color' name="heart"></ion-icon></span>
+        <button class="add_cart" ion-button >Agregar servicio</button>
+      </div>
+    </button>
+    <button full ion-button (click)="goToPage('PeinadosPage')"><img src="assets/images/services/woman/arreglo_de_novias.jpg"/>
+      <div class="detail_price" text-wrap>
+        <h2>Quinceaneras</h2>
+        <h6 >$350.000</h6>
+        <h5>- Detalle</h5>
+        <span class="favorites"><ion-icon color='googleplus-color' name="heart"></ion-icon></span>
+        <button class="add_cart" ion-button >Agregar servicio</button>
+      </div>
+    </button>
+    <button full ion-button (click)="goToPage('PeinadosPage')"><img src="assets/images/services/woman/manicure.jpg"/>
+      <div class="detail_price" text-wrap>
+        <h2>Manicure</h2>
+        <h6 >$25.000</h6>
+        <h5>- Detalle</h5>
+        <span class="favorites"><ion-icon color='googleplus-color' name="heart"></ion-icon></span>
+        <button class="add_cart" ion-button >Agregar servicio</button>
+      </div>
+    </button>
+    <button full ion-button (click)="goToPage('PeinadosPage')"><img src="assets/images/services/woman/spa_manos_mujer.jpg"/>
+      <div class="detail_price" text-wrap>
+        <h2>Spa de manos</h2>
+        <h4>(con manicure)</h4>
+        <h6 >$55.000</h6>
+        <h5>- Detalle</h5>
+        <span class="favorites"><ion-icon color='googleplus-color' name="heart"></ion-icon></span>
+        <button class="add_cart" ion-button >Agregar servicio</button>
+      </div>
+    </button>
+    <button full ion-button (click)="goToPage('PeinadosPage')"><img src="assets/images/services/woman/pedicure.jpg"/>
+      <div class="detail_price" text-wrap>
+        <h2>Pedicure</h2>
+        <h6 >$30.000</h6>
+        <h5>- Detalle</h5>
+        <span class="favorites"><ion-icon color='googleplus-color' name="heart"></ion-icon></span>
+        <button class="add_cart" ion-button >Agregar servicio</button>
+      </div>
+    </button>
+    <button full ion-button (click)="goToPage('PeinadosPage')"><img src="assets/images/services/woman/spa_pies_mujer.jpg"/>
+      <div class="detail_price" text-wrap>
+        <h2>Spa de Pies</h2>
+        <h6 >$50.000</h6>
+        <h5>- Detalle</h5>
+        <span class="favorites"><ion-icon color='googleplus-color' name="heart"></ion-icon></span>
+        <button class="add_cart" ion-button >Agregar servicio</button>
+      </div>
+    </button>
+  </ion-list>
 </ion-content>

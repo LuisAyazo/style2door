@@ -1,0 +1,104 @@
+<ion-header>
+  <ion-navbar color="white">
+    <!-- <button ion-button menuToggle color="color-app">
+      <ion-icon name="menu"></ion-icon>
+    </button> -->
+    <ion-title>Style2Door</ion-title>
+    <ion-buttons end>
+      <button ion-button icon-only tappable navPush="NotificationsPage" color="color-app">
+        <ion-icon name="notifications"></ion-icon>
+        <ion-badge *ngIf="_notifications != 0">{{this._notifications}}</ion-badge>
+      </button>
+      <button ion-button icon-only tappable (click)="cartShoppingModal()" color="color-app">
+        <ion-icon name="cart"></ion-icon>
+        <ion-badge *ngIf="count != 0">{{count}}</ion-badge>
+      </button>
+    </ion-buttons>
+  </ion-navbar>
+</ion-header>
+
+
+
+<ion-content padding>
+  <ion-list>
+    <ion-item>
+      <ion-label>Barba de lujo <span class='price'> $55.000</span></ion-label>
+      <ion-checkbox color="color-app"></ion-checkbox>
+    </ion-item>
+
+    <ion-item>
+      <ion-label>Barba con vapor <span class='price'> $35.000</span></ion-label>
+      <ion-checkbox color="color-app"></ion-checkbox>
+    </ion-item>
+    <ion-item>
+      <ion-label>Retoque de barba <span class='price'> $20.000</span></ion-label>
+      <ion-checkbox color="color-app"></ion-checkbox>
+    </ion-item>
+
+    <ion-item>
+      <ion-label>Barba color <span class='price'> $20.000</span></ion-label>
+      <ion-checkbox color="color-app"></ion-checkbox>
+    </ion-item>
+    <ion-item>
+      <ion-label>Afeitado <span class='price'> $35.000</span></ion-label>
+      <ion-checkbox color="color-app"></ion-checkbox>
+    </ion-item>
+
+    <ion-item>
+      <ion-label>Corte sin lavado <span class='price'> $30.000</span></ion-label>
+      <ion-checkbox color="color-app"></ion-checkbox>
+    </ion-item>
+
+    <ion-item>
+      <ion-label>Color con lavado<span class='price'> $60.000</span></ion-label>
+      <ion-checkbox color="color-app"></ion-checkbox>
+    </ion-item>
+
+    <ion-item>
+      <ion-label>Masaje capilar <span class='price'> $30.000</span></ion-label>
+      <ion-checkbox color="color-app"></ion-checkbox>
+    </ion-item>
+
+    <ion-item>
+      <ion-label>Manicure <span class='price'> $25.000</span></ion-label>
+      <ion-checkbox color="color-app"></ion-checkbox>
+    </ion-item>
+
+    <ion-item>
+      <ion-label>Spa de manos <span class='price'> $25.000</span></ion-label>
+      <ion-checkbox color="color-app"></ion-checkbox>
+    </ion-item>
+    <ion-item>
+      <ion-label>Pedicure <span class='price'> $30.000</span></ion-label>
+      <ion-checkbox color="color-app"></ion-checkbox>
+    </ion-item>
+
+    <ion-item>
+      <ion-label>Spa de pies <span class='price'> $73.000</span></ion-label>
+      <ion-checkbox color="color-app"></ion-checkbox>
+    </ion-item>
+</ion-list>
+
+</ion-content>
+<!-- <ion-toolbar>
+<button ion-button name='ppp' clear (click)='ppp()'>Agregar servicio</button>
+</ion-toolbar> -->
+<ion-footer>
+  <ion-toolbar>
+    <!-- <button ion-button icon-only full color="color-app-oscuro" (click)="logout()" ><ion-icon name="ios-exit-outline"></ion-icon>Cuenta</button> -->
+    <button ion-button icon-only  color="light" (tap)="dismiss()"><span class="_logout_profile">Cancelar</span></button>
+    <button ion-button icon-only  color="color-app-oscuro" (click)="logout()"><span class="_logout_profile2">Agregar Servicios</span></button>
+  <!-- <ion-title>Footer</ion-title> -->
+  </ion-toolbar>
+</ion-footer>
+
+
+<!-- 951282066
+4433180001810078 radicado movistar. -->
+
+
+ya asigne al proyecto los Issue Type Epicas, el icono es el rayito morado, el mismo que usamos en on-site-task asi que este ultimo lo modifque, para que no hay a confunsion
+"confunsion"
+ja
+bueno, para "evolucionar" una Task a una Epic, hay que ponerle "..." -> More Actions -> Move y en New Issue Type ponen Epica
+Luego en Epic Name, le ponen un nombre como el del subject o mas corto y en Epic Status dejar None

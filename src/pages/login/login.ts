@@ -4,10 +4,10 @@ import { IonicPage, NavController, NavParams, MenuController, AlertController, T
 import { Facebook, FacebookLoginResponse } from '@ionic-native/facebook';
 
 import firebase from 'firebase';
-import { AngularFireAuth } from 'angularfire2/auth';
-import { User } from '../../models/user';
-import { AngularFirestore, AngularFirestoreCollection } from 'angularfire2/firestore';
-import { Observable } from 'rxjs/Observable';
+// import { AngularFireAuth } from 'angularfire2/auth';
+// import { User } from '../../models/user';
+import { AngularFirestore } from 'angularfire2/firestore';
+// import { Observable } from 'rxjs/Observable';
 
 @IonicPage()
 @Component({
@@ -25,9 +25,9 @@ export class LoginPage {
     authResponse: any;
     // apiBaseUrl: string = "http://style2door.com/ws/api.php";
     posts: any;
-    user = {} as User;
+    // user = {} as User;
     // private profileCollection: AngularFirestoreCollection<any>;
-    private profileCollection: Observable<any>;
+    // private profileCollection: Observable<any>;
   constructor(
     public navCtrl: NavController,
     public navParams: NavParams,
@@ -36,7 +36,7 @@ export class LoginPage {
     public alertCtrl: AlertController,
     public toastCtrl: ToastController,
     public loadingCtrl: LoadingController,
-    private angularFauth:AngularFireAuth,
+    // private angularFauth:AngularFireAuth,
     private readonly angularFirestore: AngularFirestore
   ) {
 
@@ -64,10 +64,10 @@ export class LoginPage {
     let permissions = new Array<string>();
     permissions = ['public_profile', 'user_friends', 'email'];
     this.fb.login(permissions).then((response: FacebookLoginResponse) => {
-      let credentials =  firebase.auth.FacebookAuthProvider.credential(response.authResponse.accessToken);
+    let credentials =  firebase.auth.FacebookAuthProvider.credential(response.authResponse.accessToken);
 
-      firebase.auth().signInWithCredential(credentials).then((data) =>{
-              // console.log(data);
+    firebase.auth().signInWithCredential(credentials).then((data) =>{
+              console.log('epa '+data);
               // crear perfil despues del primer login
               // this.profileCollection =
               this.angularFirestore.collection('users' ).doc(`${data.uid}`).collection('client_profile').valueChanges()

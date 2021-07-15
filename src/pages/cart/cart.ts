@@ -1,11 +1,11 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams, ViewController } from 'ionic-angular';
-import { AngularFireDatabase } from 'angularfire2/database';
+// import { AngularFireDatabase } from 'angularfire2/database';
 import { AngularFireAuth } from 'angularfire2/auth';
 import * as firebase from 'firebase/app';
 import { AngularFirestore, AngularFirestoreCollection } from 'angularfire2/firestore';
 import { Observable } from 'rxjs/Observable';
-
+import { NotificationsProvider } from '../../providers/notifications/notifications';
 
 @IonicPage()
 @Component({
@@ -21,19 +21,28 @@ export class CartPage {
   all_article_to_buy: any;
   public hours: number[] = [];
   count: number;
+  _notifications: number = 0;
 
 
   constructor(
     public navCtrl: NavController,
     public navParams: NavParams,
     public viewCtrl: ViewController,
-    private database: AngularFireDatabase,
+    // private database: AngularFireDatabase,
     private angularFauth:AngularFireAuth,
-    private readonly angularFirestore: AngularFirestore
-
+    private readonly angularFirestore: AngularFirestore,
+    public notiPro: NotificationsProvider
   ) {
+
+    // let email = "https:%8%8firebasestorage.googleapis.com%8v0%8b%8style2door-180721.appspot.com%8o%8services_img%2Fmaquillaje%2FWhatsApp%20Image%202017-11-22%20at%201.05.05%20PM.jpeg?alt=media&token=fa415fe2-43a2-4926-b435-0621d80f23f4"
+    //             //  https://firebasestorage.googleapis.com/v0/b/style2door-180721.appspot.com/o/services/img%2Fmaquillaje%2FWhatsApp%20Image%202017-11-22%20at%201.05.05%20PM.jpeg?alt=media&token=fa415fe2-43a2-4926-b435-0621d80f23f4
+    //             //  https://firebasestorage.googleapis.com/v0/b/style2door-180721.appspot.com/o/services_img%2Fmaquillaje%2FWhatsApp%20Image%202017-11-22%20at%201.05.05%20PM.jpeg?alt=media&token=fa415fe2-43a2-4926-b435-0621d80f23f4
+    // let re = /\%8/gi;
+    // let result = email.replace(re, "/");
+    // console.log(result)
+
     this.total = 0;
-    this.com();
+    // this.com();
 
     this.angularFauth.authState.subscribe( data => {
         // conso
@@ -44,6 +53,14 @@ export class CartPage {
 
     });
 
+    if(this.notiPro.getCurrentNotificationNoView() !== null){
+      this.notiPro.getCurrentNotificationNoView().subscribe(data => {this._notifications = data.length });
+    }
+
+  }
+
+  reviewPay(){
+    this.navCtrl.push('ReviewPayPage');
   }
 
   ngAfterViewInit() {
@@ -148,30 +165,18 @@ export class CartPage {
               if(this.all_article_to_buy.length > 0){
                 for(let a = 0; a<this.all_article_to_buy.length; a++){
                   console.log(a);
-                  // this.total = 0;
-                  // var total_tmp = 0;
-                  // total_tmp += this.all_article_to_buy[a].precio *  this.all_article_to_buy[a].cantidad;
-                  // console.log(this.all_article_to_buy[a].precio *  this.all_article_to_buy[a].cantidad);
-                  // console.log('operacion '+ total_tmp);
-                  // 7500*4
+
                   this.hours[a] = this.all_article_to_buy[a].precio *  this.all_article_to_buy[a].cantidad;
                   console.log(this.hours);
-
-                  // 13822*2
-                  // this.total += total_tmp ;
-                  // console.log("Actual valor --> "+ total_tmp);
-                  // this.all_article_to_buy[a].shift();
                 }
-                // console.log('Antes '+ this.total);
+
 
                 for(let sum_total in this.hours){
                   this.total += this.hours[sum_total];
                   console.log(this.total);
                 }
                 this.hours = [];
-                // this.total += total_tmp;
-                // console.log('Total:  '+ this.total);
-                // this.total += this.total;
+
               }
             }
           )
