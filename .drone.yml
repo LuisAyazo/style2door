@@ -32,5 +32,5 @@ steps:
 - name: es
   image: alpine
   commands:
-  - echo Hola mundo
+  - echo Hola mundo loco
 
