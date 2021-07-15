@@ -23,7 +23,12 @@ steps:
   commands:
   - npm install mocha -g
   - npm test
-
+  when:
+    branch:
+    - develop
+    paths:
+      exclude:
+        - .drone.yml
 - name: es
   image: alpine
   commands:
