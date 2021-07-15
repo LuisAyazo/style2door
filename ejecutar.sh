@@ -1,5 +1,5 @@
 #!/bin/bash
-
+# Export androidHome
 export ANDROID_HOME=$ANDROID_HOME
 
 # ADD platforms
