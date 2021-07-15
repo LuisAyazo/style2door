@@ -15,7 +15,9 @@ steps:
   when:
     branch:
     - develop
-
+    paths:
+      exclude:
+        - .drone.yml
 - name: test
   image: node:10
   commands:
