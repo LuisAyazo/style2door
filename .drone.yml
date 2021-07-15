@@ -8,6 +8,16 @@ steps:
   commands:
   - echo hello beautiful world
 
+- name: es-mx
+  image: alpine
+  commands:
+  - echo hola wey
+
+- name: es-co
+  image: alpine
+  commands:
+  - echo que mas primo
+
 - name: fr
   image: alpine
   commands:
@@ -18,6 +28,12 @@ steps:
     paths:
       exclude:
         - .drone.yml
+
+- name: es-es
+  image: alpine
+  commands:
+  - echo hola tio
+
 - name: test
   image: node:10
   commands:
@@ -29,6 +45,13 @@ steps:
     paths:
       exclude:
         - .drone.yml
+
+
+- name: es-en
+  image: alpine
+  commands:
+  - echo hola tio welcome
+
 - name: es
   image: alpine
   commands:
@@ -36,3 +59,12 @@ steps:
   depends_on:
   - en
   - fr
+
+- name: catalan
+  image: alpine
+  commands:
+  - echo Hola mundo loco
+  depends_on:
+  - en
+  - fr
+
