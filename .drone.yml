@@ -6,7 +6,7 @@ steps:
 - name: en
   image: alpine
   commands:
-  - echo hello world
+  - echo hello beautiful world
 
 - name: fr
   image: alpine
