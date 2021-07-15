@@ -33,4 +33,6 @@ steps:
   image: alpine
   commands:
   - echo Hola mundo loco
-
+  depends_on:
+  - en
+  - fr

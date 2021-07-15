@@ -1,5 +1,6 @@
 #!/bin/bash
 
+# script for building android app
 # Created by Luis Ayazo
 date=$(date +"%d-%m-%y_%H:%M")
 export ANDROID_HOME=$ANDROID_HOME
