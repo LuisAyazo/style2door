@@ -27,7 +27,6 @@ steps:
   commands:
   - echo bonjour monde
   - sleep 3
-
   when:
     branch:
     - develop
@@ -38,7 +37,7 @@ steps:
 - name: es-es
   image: alpine
   commands:
-  - echo hola tio
+  - echo hola tio 2
 
 
 - name: test
