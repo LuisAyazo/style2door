@@ -6,7 +6,7 @@ steps:
 - name: en
   image: alpine
   commands:
-  - echo hello beautiful world
+    - echo 'hello beautiful world :kiss'
 
 - name: es-mx
   image: alpine
