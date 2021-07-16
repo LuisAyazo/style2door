@@ -65,6 +65,13 @@ steps:
   depends_on:
   - test
 
+- name: new-es-es
+  image: alpine
+  commands:
+  - echo hola tio
+  depends_on:
+  - es-en
+
 - name: es
   image: alpine
   commands:
