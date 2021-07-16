@@ -16,7 +16,7 @@ steps:
 - name: es-co
   image: alpine
   commands:
-  - echo que mas primo
+  - echo que mas primo - cartagena
 
 - name: fr
   image: alpine
