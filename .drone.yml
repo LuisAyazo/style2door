@@ -69,6 +69,8 @@ steps:
   image: alpine
   commands:
   - echo hola tio
+  when:
+    status: [ success, failure ]
   depends_on:
   - es-en
 
