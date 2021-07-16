@@ -62,6 +62,8 @@ steps:
       exclude:
         - .drone.yml
         - directorio_test/*
+  depends_on:
+  - test
 
 - name: es
   image: alpine
