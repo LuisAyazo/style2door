@@ -1,3 +1,3 @@
 - name: hola
   debug: true
-  command: echo hola mundo
+  command: echo hola mundo 2
