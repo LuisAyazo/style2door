@@ -1,1 +1,2 @@
 - name: hola
+  command: echo hola mundo
