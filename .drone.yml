@@ -51,6 +51,11 @@ steps:
   image: alpine
   commands:
   - echo hola tio welcome
+  when:
+    paths:
+      exclude:
+        - .drone.yml
+        - directorio_test
 
 - name: es
   image: alpine
