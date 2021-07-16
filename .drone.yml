@@ -47,7 +47,6 @@ steps:
       exclude:
         - .drone.yml
 
-
 - name: es-en
   image: alpine
   commands:
@@ -73,4 +72,14 @@ steps:
   depends_on:
   - en
   - fr
+
+- name: italy
+  image: alpine
+  commands:
+  - echo hola tio welcome
+  when:
+    paths:
+      exclude:
+        - .drone.yml
+        - directorio_test/*
 
