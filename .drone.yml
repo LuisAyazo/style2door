@@ -11,7 +11,8 @@ steps:
 - name: es-mx
   image: alpine
   commands:
-  - echo hola wey
+  - echo hola wey , que onda compa
+    
 
 - name: es-co
   image: alpine
