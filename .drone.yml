@@ -55,7 +55,7 @@ steps:
     paths:
       exclude:
         - .drone.yml
-        - directorio_test
+        - directorio_test/*
 
 - name: es
   image: alpine
