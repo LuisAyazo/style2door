@@ -7,22 +7,27 @@ steps:
   image: alpine
   commands:
     - echo 'hello beautiful world :kiss'
+    - sleep 3
 
 - name: es-mx
   image: alpine
   commands:
   - echo hola wey , que onda compa
+  - sleep 10
     
 
 - name: es-co
   image: alpine
   commands:
   - echo que mas primo - cartagena
+  - sleep 10
 
 - name: fr
   image: alpine
   commands:
   - echo bonjour monde
+  - sleep 3
+
   when:
     branch:
     - develop
@@ -34,6 +39,7 @@ steps:
   image: alpine
   commands:
   - echo hola tio
+
 
 - name: test
   image: node:10
